@@ -47,8 +47,13 @@ int main(int argc, char * argv[])
 	cv::Mat lrect,rrect;
 	cv::Mat rect;
 	
+
+	
 	rectifyImageF(lorig,lrect,stereoConfig,true);
+	cv::Mat roi=lrect(stereoConfig.l_ROI_);
+	
 	drawROI(lrect,lrect,stereoConfig,true);
+	drawEpiLines(roi,roi);
 	
 	
 	

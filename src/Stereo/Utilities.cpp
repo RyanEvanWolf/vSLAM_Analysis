@@ -49,12 +49,25 @@ void drawROI(cv::Mat in, cv::Mat& out, StereoRect config, bool left)
 	in.copyTo(out);
 	if(left)
 	{
-		rectangle(out,config.l_ROI_,cv::Scalar(0,0,255,100));//, int thickness=1, int lineType=8, int shift=0)¶
+		rectangle(out,config.l_ROI_,cv::Scalar(0,0,255,100),2);//, int thickness=1, int lineType=8, int shift=0)¶
 	}
 	else
 	{
-		rectangle(out,config.r_ROI_,cv::Scalar(0,0,255,100));
+		rectangle(out,config.r_ROI_,cv::Scalar(0,0,255,100),2);
 	}	
+}
+
+
+void drawEpiLines(cv::Mat in, cv::Mat& out)
+{
+	int totalLines=25;
+	for(int index=0;index<=totalLines;index++)
+	{
+		int step=in.size().height/double(totalLines);
+		cv::Point2f leftP(0,index*step);
+		cv::Point2f rightP(in.size().width+in.size().width-1,index*step);
+		cv::line(out,leftP,rightP,cv::Scalar(0,255,0),1);
+	}
 }
 
 
