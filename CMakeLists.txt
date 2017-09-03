@@ -7,6 +7,7 @@ set(CMAKE_VERBOSE_MAKEFILE TRUE)
 
 
 include(${CMAKE_SOURCE_DIR}/cmake/StructuresConfig.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/vSLAM_FrontEndConfig.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/OpenCVConfig.cmake)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
@@ -39,11 +40,13 @@ include_directories(
   ${Boost_INCLUDE_DIRS}
   ${OpenCV_INCLUDE_DIRS}
   ${Structures_INCLUDE_DIRS}
+  ${vSLAM_FrontEnd_INCLUDE_DIRS}
 #  ${ORB_SLAM2_INCLUDE_DIR}
 )
 
 #MESSAGE(STATUS "  " ${Structures_LIBRARIES_DIR})
 
 link_directories(${Structures_LIBRARIES_DIR})
+link_directories(${vSLAM_FrontEnd_LIBRARIES_DIR})
 #link_directories(${ORB_SLAM2_LIBRARIES_DIR})
 add_subdirectory(src)

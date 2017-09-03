@@ -11,6 +11,7 @@ void rectifyImageF(cv::Mat in, cv::Mat& out, StereoRect config, bool left)
 	}
 	else
 	{
+		std::cout<<config.R_fMapx_.size()<<in.type()<<std::endl;
 		out=cv::Mat(config.R_fMapx_.size(),in.type());
 		cv::remap(in,out,config.R_fMapx_,config.R_fMapy_,cv::INTER_LINEAR);
 	}
