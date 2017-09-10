@@ -2,3 +2,7 @@
 *.kdev4/*
 *.kdev
 *.directory
+devel/*
+build/*
+src/src.kdev4
+src/bumblebee/bumblbee.kdev4

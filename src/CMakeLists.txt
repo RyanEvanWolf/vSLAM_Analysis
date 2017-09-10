@@ -1,2 +1,1 @@
-add_subdirectory(Stereo) 
-add_subdirectory(DataSet)
+/opt/ros/kinetic/share/catkin/cmake/toplevel.cmake

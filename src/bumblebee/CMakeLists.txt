@@ -1,6 +1,32 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(myViz)
+project(bumblebee)
 
+include(${CMAKE_SOURCE_DIR}/cmake/StructuresConfig.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/vSLAM_FrontEndConfig.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/OpenCVConfig.cmake)
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+
+
+list(APPEND CMAKE_MODULE_PATH  ${PROJECT_SOURCE_DIR}/cmake})
+
+
+
+
+find_package(Boost REQUIRED)
+find_package(Eigen3 REQUIRED)
+
+link_directories(${Structures_LIBRARIES_DIR})
+link_directories(${vSLAM_FrontEnd_LIBRARIES_DIR})
+
+include_directories(
+  include
+  /usr/local/include
+  ${Boost_INCLUDE_DIRS}
+  ${OpenCV_INCLUDE_DIRS}
+  ${Structures_INCLUDE_DIRS}
+  ${vSLAM_FrontEnd_INCLUDE_DIRS}
+)
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
 
@@ -8,10 +34,16 @@ project(myViz)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
+  geometry_msgs
   roscpp
   rospy
   rviz
+  sensor_msgs
+  shape_msgs
   std_msgs
+  stereo_msgs
+  tf2
+  tf2_ros
   visualization_msgs
 )
 
@@ -72,7 +104,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## Generate added messages and services with any dependencies listed here
 # generate_messages(
 #   DEPENDENCIES
-#   std_msgs
+#   geometry_msgs#   sensor_msgs#   shape_msgs#   std_msgs#   stereo_msgs#   visualization_msgs
 # )
 
 ################################################
@@ -106,8 +138,8 @@ find_package(catkin REQUIRED COMPONENTS
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES myViz
-#  CATKIN_DEPENDS roscpp rospy rviz std_msgs
+#  LIBRARIES bumblebee
+#  CATKIN_DEPENDS geometry_msgs roscpp rospy rviz sensor_msgs shape_msgs std_msgs stereo_msgs tf2 tf2_ros visualization_msgs
 #  DEPENDS system_lib
 )
 
@@ -122,9 +154,18 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
+add_executable(display src/displayViso.cpp)
+add_dependencies(display ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+
+target_link_libraries(display
+   ${catkin_LIBRARIES}
+   ${Structures_LIBS}
+   ${OpenCV_LIBS}
+)
+
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/myViz.cpp
+#   src/${PROJECT_NAME}/bumblebee.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -135,7 +176,7 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-add_executable(my_node src/basic_shapes.cpp)
+# add_executable(${PROJECT_NAME}_node src/bumblebee_node.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -145,12 +186,12 @@ add_executable(my_node src/basic_shapes.cpp)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
-add_dependencies(my_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+# add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(my_node
-   ${catkin_LIBRARIES}
-)
+# target_link_libraries(${PROJECT_NAME}_node
+#   ${catkin_LIBRARIES}
+# )
 
 #############
 ## Install ##
@@ -192,7 +233,7 @@ target_link_libraries(my_node
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_myViz.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_bumblebee.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
