@@ -114,7 +114,7 @@ int main( int argc, char** argv )
 }*/
 
 #include <unistd.h>
-#define defaultIN "/home/ryan/git/vSLAM_Analysis/output/libVisoOut.xml"
+#define defaultIN "/home/ryan/git/groundTruth/gt/build/bin/viso2/libVisoOut.xml"
 #include <ros/console.h>
 #include <ros/ros.h>
 #include <tf2/LinearMath/Quaternion.h>

@@ -147,12 +147,33 @@ catkin_package(
 ## Build ##
 ###########
 
+add_library(StereoCamera
+	src/StereoCamera/StereoBumble.cpp
+	src/StereoCamera/StereoUtilities.cpp
+	)
+	
+target_link_libraries(StereoCamera
+   ${Structures_LIBS}
+   ${OpenCV_LIBS}
+   ${catkin_LIBRARIES}
+   )
+
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
 # include
   ${catkin_INCLUDE_DIRS}
 )
+
+add_executable(stereo_coord_node src/StereoCamera/StereoCoordinateNode.cpp)
+add_dependencies(stereo_coord_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+
+target_link_libraries(stereo_coord_node
+	StereoCamera
+	${catkin_LIBRARIES}
+	)
+
+
 
 add_executable(display src/displayViso.cpp)
 add_dependencies(display ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
