@@ -122,34 +122,11 @@ int main( int argc, char** argv )
 #include <tf2/convert.h>
 #include <geometry_msgs/TransformStamped.h>
 #include <geometry_msgs/Vector3.h>
-
+#include <tf2/LinearMath/Matrix3x3.h>
 
 #include <visualization_msgs/Marker.h>
 #include "Structures/vSLAM/InterStereoFrame.hpp"
-
-#include <tf2/LinearMath/Matrix3x3.h>
-/*
-std::string turtle_name;
-
-void poseCallback(const turtlesim::PoseConstPtr& msg){
-  static tf2_ros::TransformBroadcaster br;
-  geometry_msgs::TransformStamped transformStamped;
-  
-  transformStamped.header.stamp = ros::Time::now();
-  transformStamped.header.frame_id = "/world";
-  transformStamped.child_frame_id = turtle_name;
-  transformStamped.transform.translation.x = msg->x;
-  transformStamped.transform.translation.y = msg->y;
-  transformStamped.transform.translation.z = 0.0;
-  tf2::Quaternion q;
-  q.setRPY(0, 0, msg->theta);
-  transformStamped.transform.rotation.x = q.x();
-  transformStamped.transform.rotation.y = q.y();
-  transformStamped.transform.rotation.z = q.z();
-  transformStamped.transform.rotation.w = q.w();
-
-  br.sendTransform(transformStamped);
-}*/
+#include <fstream>
 
 int main(int argc, char** argv){
   ros::init(argc, argv, "displayViso");
@@ -164,6 +141,11 @@ int main(int argc, char** argv){
   cv::FileNodeIterator meas_it,meas_end;
   meas_it=inputXML["InterFrame"].begin();
   meas_end=inputXML["InterFrame"].end();
+  
+  //save useful data to a csv format for python graphing
+  std::ofstream outCSV;
+  outCSV.open("/home/ryan/D5.csv");
+  outCSV<<"Timestamp,X,Y,Z,Roll,Pitch,Yaw,Matches,Inliers\n";
   
   for(;meas_it!=meas_end;++meas_it)
   {
@@ -182,9 +164,14 @@ int main(int argc, char** argv){
 						buffer.interMotion.getR().at<double>(2,0),buffer.interMotion.getR().at<double>(2,1),
 						buffer.interMotion.getR().at<double>(2,2));
 
+	  double roll,pitch,yaw;
+	  
+	  rotation.getRPY(roll,pitch,yaw);
+	  
 	  tf2::Quaternion quat;
 	  
 	  rotation.getRotation(quat);
+	  
 	  
 	  
 	  
@@ -203,14 +190,21 @@ int main(int argc, char** argv){
 	  
 	  relativePoses.push_back(current);
 	  std::cout<<"PosesSize={"<<relativePoses.size()<<"}"<<std::endl;
+	  outCSV<<buffer.endFrame;
+	  outCSV<<","<<_point.x<<","<<_point.y<<","<<_point.z;
+	  outCSV<<","<<roll<<","<<pitch<<","<<yaw;
+	  outCSV<<","<<buffer.totalMatches<<","<<buffer.totalInliers<<std::endl;
+	  
   }
   
   inputXML.release();
+  outCSV.close();
   //create the visualization messages, markers, and transforms
   tf2_ros::TransformBroadcaster LeftCameraBc_;
   //tf2
   
   std::cout <<"Beginning Transform broadcasts"<<std::endl;
+  
   for(int frameIndex=0;frameIndex<relativePoses.size();frameIndex++)
   {
 	  relativePoses.at(frameIndex).header.stamp=ros::Time::now();
