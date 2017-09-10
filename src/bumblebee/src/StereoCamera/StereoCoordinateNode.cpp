@@ -3,7 +3,7 @@
 #include <tf2_ros/transform_listener.h>
 #include "bumblebee/StereoCamera/StereoBumble.hpp"
 
-#define DEFAULT_RECTIFIED_INPUT "/home/ryan/git/groundTruth/gt/output/Stereo8/RectifiedBumble8.xml"
+#define DEFAULT_RECTIFIED_INPUT "/home/ryan/git/groundTruth/gt/output/Stereo4/RectifiedBumble4.xml"
 
 int main(int argc, char** argv){
   ros::init(argc, argv, "StereoCoordinateNode");

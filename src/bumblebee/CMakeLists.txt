@@ -175,7 +175,7 @@ target_link_libraries(stereo_coord_node
 
 
 
-add_executable(display src/displayViso.cpp)
+add_executable(display src/display.cpp)
 add_dependencies(display ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 target_link_libraries(display
