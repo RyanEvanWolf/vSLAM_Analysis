@@ -22,6 +22,7 @@ link_directories(${vSLAM_FrontEnd_LIBRARIES_DIR})
 include_directories(
   include
   /usr/local/include
+  /usr/include
   ${Boost_INCLUDE_DIRS}
   ${OpenCV_INCLUDE_DIRS}
   ${Structures_INCLUDE_DIRS}
@@ -188,6 +189,17 @@ add_executable(displayFeatures src/FrontEnd/displayFeatures.cpp)
 add_dependencies(displayFeatures${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 target_link_libraries(displayFeatures
+   ${catkin_LIBRARIES}
+   ${Structures_LIBS}
+   ${OpenCV_LIBS}
+   ${vSLAM_FrontEnd_LIBS}
+)
+
+
+add_executable(displayOrb src/FrontEnd/displayOrb.cpp)
+add_dependencies(displayOrb ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+
+target_link_libraries(displayOrb
    ${catkin_LIBRARIES}
    ${Structures_LIBS}
    ${OpenCV_LIBS}
