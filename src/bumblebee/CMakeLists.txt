@@ -184,6 +184,16 @@ target_link_libraries(display
    ${OpenCV_LIBS}
 )
 
+add_executable(displayFeatures src/FrontEnd/displayFeatures.cpp)
+add_dependencies(displayFeatures${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+
+target_link_libraries(displayFeatures
+   ${catkin_LIBRARIES}
+   ${Structures_LIBS}
+   ${OpenCV_LIBS}
+   ${vSLAM_FrontEnd_LIBS}
+)
+
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
 #   src/${PROJECT_NAME}/bumblebee.cpp

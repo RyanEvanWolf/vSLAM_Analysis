@@ -1,0 +1,6 @@
+ 
+<launch>
+  <group ns="D1">
+    <node pkg="bumblebee" name="test" type="displayFeatures" output="screen"/>
+  </group>
+</launch>
