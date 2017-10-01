@@ -4,8 +4,9 @@
 #include <opencv2/core.hpp>
 #include <opencv2/features2d.hpp>
 #include <opencv2/highgui.hpp>
+#include "Structures/vSLAM/StereoFrame.hpp"
 
-namespace stereo 
+namespace stereo
 {
 
 	
@@ -18,6 +19,24 @@ void getSideSideRect(cv::Mat limg, cv::Mat rimg, cv::Mat& out)
 	
 	limg.copyTo(lroi);
 	rimg.copyTo(rroi);
+}
+
+void draw(cv::Mat limg,cv::Mat rimg, cv::Mat &outImage,StereoFrame in)
+{
+	cv::drawMatches(limg,in.leftFeatures_,
+					rimg,in.rightFeatures_,
+					in.matches_,outImage,cv::Scalar::all(-1),
+					cv::Scalar::all(-1),in.inliersMask_,
+					cv::DrawMatchesFlags::NOT_DRAW_SINGLE_POINTS);
+}
+
+void draw(cv::Mat limg,cv::Mat rimg,cv::Mat &outImage,StereoFrame in,cv::Scalar colour,std::vector<char> mask=std::vector<char>())
+{
+		cv::drawMatches(limg,in.leftFeatures_,
+						rimg,in.rightFeatures_,
+						in.matches_,outImage,colour,
+						colour,mask,
+						cv::DrawMatchesFlags::NOT_DRAW_SINGLE_POINTS);
 }
 
 	
@@ -180,51 +199,11 @@ void StereoDrawing::drawROI(cv::Mat input, cv::Mat& output, bool display, bool l
 		cv::destroyWindow("ROI_Interest");
 	}
 }
+*/
 
-void StereoDrawing::drawStereoEpi(cv::Mat left, cv::Mat right, cv::Mat& output,bool withROI)
-{
-	cv::Mat lRect,rRect;
-	stereoRectify(left,lRect,true,true);
-	stereoRectify(right,rRect,false,true);
-	
-			cv::namedWindow("ROI_Interest",cv::WINDOW_NORMAL);
-		cv::imshow("ROI_Interest",lRect);
-		cv::waitKey(0);
-		cv::destroyWindow("ROI_Interest");
-	
-	cv::Mat lROI,rROI;
-	
-	
-	drawROI(lRect,lROI,false,true,true);
-	drawROI(rRect,rROI,false,false,true);
-	
-				cv::namedWindow("a",cv::WINDOW_NORMAL);
-		cv::imshow("a",lROI);
-		cv::waitKey(0);
-		cv::destroyWindow("a");
-	
-	output=cv::Mat(cv::Size(lROI.size().width+rROI.size().width,lROI.size().height),lROI.type());
-	cv::Mat outl(output,cv::Rect(0,0,lROI.size().width,lROI.size().height));
-	cv::Mat outr(output,cv::Rect(lROI.size().width,0,rROI.size().width,rROI.size().height));
-	
-	lROI.copyTo(outl);
-	rROI.copyTo(outr);
-	
-	//cv::cvtColor(output,output,cv::COLOR_GRAY2RGB);
-	
-	for(int index=0;index<25;index++)
-	{
-		int step=lROI.size().height/25.0;
-		cv::Point2f leftP(0,index*step);
-		cv::Point2f rightP(lROI.size().width+rROI.size().width-1,index*step);
-		cv::line(output,leftP,rightP,cv::Scalar(0,255,0));
-	}
-	
-	
-}
 
 	
-	*/
+	
 }
 
 

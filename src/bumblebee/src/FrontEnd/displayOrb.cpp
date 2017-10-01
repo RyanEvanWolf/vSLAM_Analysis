@@ -4,7 +4,7 @@
 #include <fstream>
 #include <std_msgs/Int32.h>
 #include <std_msgs/Float32.h>
-
+#include "bumblebee/stereoDrawing.hpp"
 
 //Stereo visual display features 
 #include "Structures/DataSet/BumbleDataSet.hpp"
@@ -92,10 +92,11 @@ int main(int argc, char** argv)
 	//initialize the BumbleBee dataset and camera
 	BumbleDataSet bumbleData(outConfig.directory[DirectoryNames::inputDirectory]);
 	
-	cv::namedWindow("leftImage",cv::WINDOW_NORMAL);
-	cv::namedWindow("rightImage",cv::WINDOW_NORMAL);
-	cv::namedWindow("match",cv::WINDOW_NORMAL);
-	
+	//cv::namedWindow("leftImage",cv::WINDOW_NORMAL);
+	//cv::namedWindow("rightImage",cv::WINDOW_NORMAL);
+	//cv::namedWindow("match",cv::WINDOW_NORMAL);
+	cv::namedWindow("epiMatch",cv::WINDOW_NORMAL);
+	cv::namedWindow("outlier",cv::WINDOW_NORMAL);
 	
 	ros::Subscriber keySub = n.subscribe("/keyPress", 15, playBackUpdate);
 	ros::Publisher leftF=n.advertise<std_msgs::Int32>("leftFeatures",2);
@@ -140,7 +141,7 @@ int main(int argc, char** argv)
 			StereoFrame out;
 			Cam.extractStereoFrame(bumbleData.getCurrentLeft(),bumbleData.getCurrentRight(),out);
 	
-			cv::Mat lP,rP,mm;
+			cv::Mat lP,rP,mm,me,mt;
 			cv::drawKeypoints(Cam.lroi_,out.leftFeatures_,lP);
 			cv::drawKeypoints(Cam.rroi_,out.rightFeatures_,rP);
 								
@@ -157,23 +158,31 @@ int main(int argc, char** argv)
 			std::vector<std::vector<cv::DMatch> > initial_;
 
 			m.knnMatch(out,initial_);
+			for(int index=0;index<initial_.size();index++)
+			{
+				out.matches_.push_back(initial_.at(index).at(0));
+			}
 			
-			m.filterLoweRatio(initial_,out.inliersMask_,out.matches_);
+			//m.filterLoweRatio(initial_,out.inliersMask_,out.matches_);
+			//m.WindowMatch(out);
+			
+			
+			std::vector<char> initMask=out.inliersMask_;
+			m.filterEpiPolar(out);	
 
-			cv::drawMatches(Cam.lroi_,out.leftFeatures_,
-								Cam.rroi_,out.rightFeatures_,
-								out.matches_,mm);//,
-								//cv::Scalar::all(-1),cv::Scalar::all(-1),out.inliersMask_);
-							
+			draw(Cam.lroi_,Cam.rroi_,me,out,cv::Scalar(0,50,255),out.inliersMask_);
+			draw(Cam.lroi_,Cam.rroi_,mt,out,cv::Scalar(0,0,255),m.invertMask(out.inliersMask_));
+		
 			std_msgs::Float32 r;
-			r.data=float(out.matches_.size())/(float(initial_.size()));
+			r.data=m.getRatio(out.inliersMask_);
 			
 			inlierPub.publish(r);
 
 			
 			//cv::imshow("leftImage",lP);
 			//cv::imshow("rightImage",rP);
-			cv::imshow("match",mm);
+			cv::imshow("outlier",mt);
+			cv::imshow("epiMatch",me);
 			cv::waitKey(PlayHz);
 		}
 		

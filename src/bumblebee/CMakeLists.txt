@@ -173,6 +173,23 @@ target_link_libraries(stereo_coord_node
 	StereoCamera
 	${catkin_LIBRARIES}
 	)
+	
+add_executable(calibrate_node src/StereoCamera/CalibrateStereoCamera.cpp src/StereoCamera/CalibrationConfig.cpp)
+add_dependencies(calibrate_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+
+target_link_libraries(calibrate_node
+	StereoCamera
+	${catkin_LIBRARIES}
+	)
+	
+add_executable(calib_node src/StereoCamera/CalibrationDisplayNode.cpp)
+add_dependencies(calib_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+
+target_link_libraries(calib_node
+	StereoCamera
+	${catkin_LIBRARIES}
+	)
+
 
 
 

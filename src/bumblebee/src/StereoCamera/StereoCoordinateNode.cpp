@@ -2,13 +2,14 @@
 #include <ros/ros.h> 
 #include <tf2_ros/transform_listener.h>
 #include "bumblebee/StereoCamera/StereoBumble.hpp"
+#include <Structures/CameraInfo/StereoRect.hpp>
 
 #define DEFAULT_RECTIFIED_INPUT "/home/ryan/git/groundTruth/gt/output/Stereo4/RectifiedBumble4.xml"
 
 int main(int argc, char** argv){
   ros::init(argc, argv, "StereoCoordinateNode");
   
-  Analysis::StereoBumble myCam(DEFAULT_RECTIFIED_INPUT);
+  Analysis::StereoBumble myCam(DEFAULT_RECTIFIED_INPUT); 
   tf2_ros::TransformBroadcaster l2r_bc,l2rect_bc,r2rect_bc;
   
   geometry_msgs::TransformStamped l2r,l2rect,r2rect;
@@ -44,8 +45,6 @@ int main(int argc, char** argv){
 	r.sleep();
   }
   
-  
-  ros::spin();
-  
+ 
   return 0;
 }
