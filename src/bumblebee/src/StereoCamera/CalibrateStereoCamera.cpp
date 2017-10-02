@@ -3,15 +3,9 @@
 #include <tf2_ros/transform_listener.h>
 #include "bumblebee/StereoCamera/StereoBumble.hpp"
 #include <Structures/CameraInfo/StereoRect.hpp>
+#include <Structures/CameraInfo/Single.hpp>
 
 #include "bumblebee/StereoCamera/CalibrationConfig.hpp"
-
-
-#define DEFAULT_RECTIFIED_INPUT "/home/ryan/git/groundTruth/gt/output/Stereo4/RectifiedBumble4.xml"
-#define DEFAULT_LEFT_IMAGE "/home/ryan/Masters/calibration/fullLeft/l_1487062206.ppm"
-#define DEFAULT_RIGHT_IMAGE "/home/ryan/Masters/calibration/fullRight/r_1487062206.ppm"
-
-#include <Structures/CameraInfo/SingleDistortion.hpp>
 
 bool genImageList(std::string inputDir,std::vector<std::string> &outFileNames);
 void findCorners(std::vector<std::string> &leftIn,std::vector<std::string> &rightIn,std::vector< std::vector<cv::Point2f> > &leftFound,std::vector< std::vector<cv::Point2f> > &rightFound,stereo::CalibrationConfig &conf);
@@ -43,6 +37,8 @@ int main(int argc, char** argv){
 	  return -1;
   }
   inNode.release();
+  
+  config.createDirectories();
   ROS_INFO_STREAM("XML configuration Loaded");
   std::vector<std::string> leftInputImageFiles,rightInputImageFiles;
   genImageList(config.leftInputImageDir,leftInputImageFiles);
@@ -75,13 +71,7 @@ int main(int argc, char** argv){
 								rightK,rightD,tempR,tempT,
 								config.getCalibrationFlags());
 	ROS_INFO_STREAM("RMS ERROR:\t"<<rms_right);
-	
-	//save these in camera configuration somewhere TODO
-
 	ROS_INFO_STREAM("Beginning Stereo Calibration");
-	
-	
-	
 	//get vector of board coordinates
 	std::vector< std::vector< cv::Point3f > > board_;
 	for(int index=0;index<leftPts.size();index++)
@@ -154,57 +144,102 @@ int main(int argc, char** argv){
 	cv::initUndistortRectifyMap(rightK,rightD,rectRr,
 								IdealCamera,config.calibrationSize,CV_32FC1,
 								finalStereo.R_fMapx_,finalStereo.R_fMapy_);
+	cv::initUndistortRectifyMap(leftK,leftD,rectRl,
+								IdealCamera,config.calibrationSize,CV_16SC2,
+								finalStereo.L_iMapx_,finalStereo.L_iMapy_);
+	
+	cv::initUndistortRectifyMap(rightK,rightD,rectRr,
+								IdealCamera,config.calibrationSize,CV_16SC2 ,
+								finalStereo.R_iMapx_,finalStereo.R_iMapy_);
+	//
+	//compute Isometries//
+	stereo::Isometry lefti,leftRecti;
+	stereo::Isometry righti,rightRecti;
+	stereo::Isometry fullBaseline;
+	//left Camera as Origin
+	lefti.setIdentity();
+	leftRecti.setRT(rectRl,cv::Mat::zeros(3,1,CV_64FC1));
+	//		
+	righti.setRT(stR,stT);
+	rightRecti.setRT(rectRr,cv::Mat::zeros(3,1,CV_64FC1));
+		
+
 	
 	//populate outputFiles
 	finalStereo.l_ROI_=lROI;
 	finalStereo.r_ROI_=rROI;
+	Q.copyTo(finalStereo.Qmap_);
+	pl.copyTo(finalStereo.P_l_);
+	pr.copyTo(finalStereo.P_r_);
+	stR.copyTo(finalStereo.R_);
+	stT.copyTo(finalStereo.T_);
+	stE.copyTo(finalStereo.E_);
+	stF.copyTo(finalStereo.F_);
 	
-	cv::FileStorage ff("/home/ryan/tt.xml",cv::FileStorage::WRITE);
+	
+	
+	finalStereo.lIso_=lefti;
+	finalStereo.lrectIso_=leftRecti;
+	finalStereo.rIso_=righti;
+	finalStereo.rrectIso_=rightRecti;
+	
+	cv::FileStorage ff(config.getStereoFile(),cv::FileStorage::WRITE);
+	ff<<"leftRMS"<<rms_left;
+	ff<<"rightRMS"<<rms_right;
+	//ff<<"found"<<leftPts.size();
+	//ff<<"rejected"<<config.maskImagesRemoved_.size();
+	ff<<"StereoRMS"<<stereoRMS;
 	ff<<"StereoRect"<<finalStereo;
 	ff.release();
 	
-	Analysis::StereoBumble myCam("/home/ryan/tt.xml");
-	
-	//cv::initUndistortRectifyMap(out.LeftOptimal_.K_,out.LeftOptimal_.D_.distParam_,out.LeftOptimal_.D_.RectR_,
-	//							IdealCamera,out.LeftOptimal_.imgResolution_,CV_16SC2,
-	//							out.LeftOptimal_.D_.undistort_mapx_int_,out.LeftOptimal_.D_.undistort_mapy_int_);
-	
-	//cv::initUndistortRectifyMap(out.RightOptimal_.K_,out.RightOptimal_.D_.distParam_,out.RightOptimal_.D_.RectR_,
-	//							IdealCamera,out.RightOptimal_.imgResolution_,CV_16SC2 ,
-	//							out.RightOptimal_.D_.undistort_mapx_int_,out.RightOptimal_.D_.undistort_mapy_int_);
+	Analysis::StereoBumble myCam(config.getStereoFile());
 
 	//display Stereo Output
-		/*//compute Isometries//
-	Isometry lefti,leftRecti;
-	Isometry righti,rightRecti;
-	//left Origin
-	lefti.setIdentity();
-	leftRecti.setRT(out.LeftOptimal_.D_.RectR_,cv::Mat::zeros(3,1,CV_64FC1));
-	//		
-	righti.setRT(out.R_,out.T_);
-	rightRecti.setRT(out.RightOptimal_.D_.RectR_,cv::Mat::zeros(3,1,CV_64FC1));
-		
-	out.LeftOptimal_.rectIso_=leftRecti;
-	out.LeftOptimal_.iso_=lefti;
-			
-	out.RightOptimal_.rectIso_=rightRecti;
-	out.RightOptimal_.iso_=righti;*/
-		
+	//get test images
+	
+	
+	for(int index=0;index<leftPts.size();index++)
+	{
 		std::string leftFullDir,rightFullDir;
-			leftFullDir=config.leftInputImageDir;
-			leftFullDir+="/";
-			leftFullDir+=leftInputImageFiles.at(0);
+		leftFullDir=config.leftInputImageDir;
+		leftFullDir+="/";
+		leftFullDir+=leftInputImageFiles.at(index);
 		
-			rightFullDir=config.rightInputImageDir;
-			rightFullDir+="/";
-			rightFullDir+=rightInputImageFiles.at(0);
+		rightFullDir=config.rightInputImageDir;
+		rightFullDir+="/";
+		rightFullDir+=rightInputImageFiles.at(index);
 
 		
-	cv::Mat inLeft,inRight;
-	inLeft=cv::imread(leftFullDir,cv::IMREAD_GRAYSCALE);
-	inRight=cv::imread(rightFullDir,cv::IMREAD_GRAYSCALE);
+		cv::Mat inLeft,inRight;
+		inLeft=cv::imread(leftFullDir,cv::IMREAD_GRAYSCALE);
+		inRight=cv::imread(rightFullDir,cv::IMREAD_GRAYSCALE);
   
-	cv::Mat l,rr;
+		cv::Mat roiL,roiR;
+		cv::Mat zoomedl,zoomedr;
+	
+	
+		myCam.unDistort(inLeft,zoomedl,true);
+		myCam.unDistort(inRight,zoomedr,false);
+	
+		
+		myCam.drawROI(zoomedl,roiL,true);
+		myCam.drawROI(zoomedr,roiR,false);
+	
+	
+		cv::Mat sidenormal,sideEpi;
+		stereo::getSideSideRect(roiL,roiR,sidenormal);
+	
+		cv::imshow("t",sidenormal);
+		myCam.drawEpiLines(sidenormal,sideEpi);
+	//cv::imshow("aa",sidenormal);
+		cv::imshow("a",sideEpi);
+	
+//	cv::Mat lll,rrr;
+	
+//	lll=zoomedl(myCam.bumbleBee_.l_ROI_);
+//	rrr=zoomedr(myCam.bumbleBee_.r_ROI_);
+	
+	/*cv::Mat l,rr;
 	cv::Mat roiL,roiR;
 	cv::Mat outside,epi,ss;
   
@@ -228,31 +263,11 @@ int main(int argc, char** argv){
 	cv::imshow("aa",epi);
 	cv::imshow("und",ss);
 
-	
-	cv::waitKey(0);
-/*	cv::Mat IdealCamera=out.LeftOptimal_.idealP_(cv::Rect(0,0,3,3));
-	
-	cv::initUndistortRectifyMap(out.LeftOptimal_.K_,out.LeftOptimal_.D_.distParam_,out.LeftOptimal_.D_.RectR_,
-								IdealCamera,out.LeftOptimal_.imgResolution_,CV_32FC1,
-								out.LeftOptimal_.D_.undistort_mapx_,out.LeftOptimal_.D_.undistort_mapy_);
-	
-	cv::initUndistortRectifyMap(out.RightOptimal_.K_,out.RightOptimal_.D_.distParam_,out.RightOptimal_.D_.RectR_,
-								IdealCamera,out.RightOptimal_.imgResolution_,CV_32FC1,
-								out.RightOptimal_.D_.undistort_mapx_,out.RightOptimal_.D_.undistort_mapy_);
-	
-	cv::initUndistortRectifyMap(out.LeftOptimal_.K_,out.LeftOptimal_.D_.distParam_,out.LeftOptimal_.D_.RectR_,
-								IdealCamera,out.LeftOptimal_.imgResolution_,CV_16SC2,
-								out.LeftOptimal_.D_.undistort_mapx_int_,out.LeftOptimal_.D_.undistort_mapy_int_);
-	
-	cv::initUndistortRectifyMap(out.RightOptimal_.K_,out.RightOptimal_.D_.distParam_,out.RightOptimal_.D_.RectR_,
-								IdealCamera,out.RightOptimal_.imgResolution_,CV_16SC2 ,
-								out.RightOptimal_.D_.undistort_mapx_int_,out.RightOptimal_.D_.undistort_mapy_int_);
-	
-	std::cout<<"Computing Isometries\n";
-	
-			*/	
+	*/
+		cv::waitKey(100);
+	}
 
-  ROS_INFO_STREAM("Saving to File");
+  ROS_INFO_STREAM("Saving Config to File");
   inNode.open(configDir,cv::FileStorage::WRITE);
   
   inNode<<"Calibration"<<config;
@@ -349,6 +364,7 @@ void findCorners(std::vector<std::string> &leftIn,std::vector<std::string> &righ
 				cv::imshow("found",out);
 				cv::waitKey(100);
 				conf.calibrationSize=leftImage.size();
+				cv::imwrite(conf.out_directory+"/found/"+conf.distortionModel+"_"+(*it),out);
 			}
 			else
 			{

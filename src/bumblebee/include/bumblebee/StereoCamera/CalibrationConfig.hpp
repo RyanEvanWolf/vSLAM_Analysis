@@ -11,6 +11,7 @@
 #include <algorithm>
 #include <vector>
 #include <sys/types.h>
+#include <stdlib.h>
 #include <dirent.h>
 #include <errno.h>
 #include <cstdlib>
@@ -30,9 +31,10 @@ class CalibrationConfig{
 	public:
 		std::string leftInputImageDir;
 		std::string rightInputImageDir;
-		std::string filename;  //save file name
-		std::string in_directory; //where to look for images
 		std::string out_directory;//where to save all the output
+		std::string leftCamFile;
+		std::string rightCamFile;
+		std::string stereoCamFile;
 		int patternRow;
 		int patternCol;
 		int squareSize;
@@ -41,10 +43,6 @@ class CalibrationConfig{
 		bool displayFound;//true if each found checkerboard will be displayed in the program
 		bool displayUndistorted;//show the undistortion image according to k1 ,k2 etc
 		bool displayMapping;//if show undistorted, also shows the mapping of points from old to new
-		/*Calibration flags for a single camera configuration*/
-		bool cal_adaptive;
-		bool cal_normalize;
-		bool cal_filter;
 		std::string distortionModel;
 		void write(cv::FileStorage& fs) const;
 		void read(const cv::FileNode& node);
@@ -58,6 +56,9 @@ class CalibrationConfig{
 		//opencv requires a set of checkerboard to be passed, image total is the number of found images
 		CalibrationConfig();
 		void createDirectories();
+		std::string getLeftFile();
+		std::string getRightFile();
+		std::string getStereoFile();
 
 };
 

@@ -61,7 +61,14 @@ void StereoBumble::drawROI(cv::Mat& in, cv::Mat& outImage, bool left)
 
 void StereoBumble::drawEpiLines(cv::Mat& in, cv::Mat& outImage, cv::Scalar col)
 {
-	cv::cvtColor(in,outImage,cv::COLOR_GRAY2BGR);
+	if(in.channels()==1)
+	{
+		cv::cvtColor(in,outImage,cv::COLOR_GRAY2BGR);
+	}
+	else
+	{
+		in.copyTo(outImage);
+	}
 	
 	for(int index=0;index<25;index++)
 	{

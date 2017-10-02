@@ -6,18 +6,16 @@ namespace stereo
 
 CalibrationConfig::CalibrationConfig()
 {
-	filename="SingleCalibrationParameters";
-	in_directory="/home/ryan/Masters/calibration";
 	out_directory="/home/ryan/Masters/calibration";
 	patternCol=10;
 	patternRow=12;
 	squareSize=37;
 	debugInfo=true;
 	robustCheckerBoard=true;
-	cal_adaptive=true;
-	cal_filter=true;
-	cal_normalize=false;
 	distortionModel="5Parameter";
+	leftCamFile=out_directory+"/left_"+distortionModel+".xml";
+	rightCamFile=out_directory+"/right_"+distortionModel+".xml";
+	stereoCamFile=out_directory+"/Stereo_"+distortionModel+".xml";
 	displayMapping=false;
 	displayUndistorted=false;
 	displayFound=false;
@@ -29,8 +27,9 @@ void CalibrationConfig::write(cv::FileStorage& fs) const
 	fs<<"{";
 	fs<<"leftInputDir"<<leftInputImageDir;
 	fs<<"rightInputDir"<<rightInputImageDir;
-	fs<<"calFileName"<<filename;
-	fs<<"inputDirectory"<<in_directory;
+	fs<<"leftCameraOutFile"<<leftCamFile;
+	fs<<"rightCameraOutFile"<<rightCamFile;
+	fs<<"stereoOutFile"<<stereoCamFile;
 	fs<<"outDirectory"<<out_directory;
 	fs<<"row"<<patternRow;
 	fs<<"col"<<patternCol;
@@ -40,9 +39,6 @@ void CalibrationConfig::write(cv::FileStorage& fs) const
 	fs<<"displayFound"<<displayFound;
 	fs<<"displayUndistorted"<<displayUndistorted;
 	fs<<"displayMapping"<<displayMapping;
-	fs<<"cal_adapt"<<cal_adaptive;
-	fs<<"cal_norm"<< cal_normalize;
-	fs<<"cal_filter"<<cal_filter;
 	fs<<"DistortionModel"<<distortionModel;
 	fs<<"ImageMask"<<"[";
 	for(int index=0;index<maskImagesRemoved_.size();index++)
@@ -60,11 +56,12 @@ void CalibrationConfig::read(const cv::FileNode& node)
 {
 	maskImagesRemoved_.clear();
 	int temp;
-	filename=std::string(node["calFileName"]);
-	node["inputDirectory"]>>in_directory;
 	node["outDirectory"]>>out_directory;
 	node["leftInputDir"]>>leftInputImageDir;
 	node["rightInputDir"]>>rightInputImageDir;
+	node["leftCameraOutFile"]>>leftCamFile;
+	node["rightCameraOutFile"]>>rightCamFile;
+	node["stereoOutFile"]>>stereoCamFile;
 	node["row"]>>patternRow;
 	node["col"]>>patternCol;
 	node["squareSize"]>>squareSize;
@@ -73,10 +70,8 @@ void CalibrationConfig::read(const cv::FileNode& node)
 	node["displayFound"]>>displayFound;
 	node["displayUndistorted"]>>displayUndistorted;
 	node["displayMapping"]>>displayMapping;
-	node["cal_adapt"]>>cal_adaptive;
-	node["cal_norm"]>> cal_normalize;
-	node["cal_filter"]>>cal_filter;
-	distortionModel=std::string(node["DistortionModel"]);
+	node["DistortionModel"]>>distortionModel;
+	//distortionModel=std::string(node["DistortionModel"]);
 	
 	cv::FileNodeIterator meas_it,meas_end;
 	meas_it=node["ImageMask"].begin();
@@ -92,8 +87,6 @@ void CalibrationConfig::read(const cv::FileNode& node)
 void CalibrationConfig::print()
 {
 	/*Small print out function for debug purposes*/
-	std::cout<<"Output\t"<<filename<<std::endl;
-	std::cout<<"ImageDirectory\t"<<in_directory<<std::endl;
 	std::cout<<"OutputDirectory\t"<<out_directory<<std::endl;
 	std::cout<<"patternRow\t"<<patternRow<<std::endl;
 	std::cout<<"patternCol\t"<<patternCol<<std::endl;
@@ -103,9 +96,6 @@ void CalibrationConfig::print()
 	std::cout<<"displayMap\t"<<displayMapping<<std::endl;
 	std::cout<<"robustCheckerBoard\t"<<robustCheckerBoard<<std::endl;
 	std::cout<<"displayFound\t"<<displayFound<<std::endl;
-	std::cout<<"cal_adapt\t"<<cal_adaptive<<std::endl;
-	std::cout<<"cal_norm\t"<<cal_normalize<<std::endl;
-	std::cout<<"cal_filter\t"<<cal_filter<<std::endl;
 	std::cout<<"DistortionModel\t"<<distortionModel<<std::endl;
 	std::cout<<"Images Removed \t[";
 	for(int index=0;index<maskImagesRemoved_.size();index++)
@@ -194,6 +184,36 @@ std::vector< std::vector< cv::Point3f > > getChessPoints(cv::Size board, double 
 	return Ans;
 
 }
+
+std::string CalibrationConfig::getLeftFile()
+{
+	return out_directory+"/"+leftCamFile+distortionModel+".xml";
+}
+
+std::string CalibrationConfig::getRightFile()
+{
+	return out_directory+"/"+rightCamFile+distortionModel+".xml";
+}
+
+std::string CalibrationConfig::getStereoFile()
+{
+	return out_directory+"/"+stereoCamFile+distortionModel+".xml";
+}
+
+
+void CalibrationConfig::createDirectories()
+{
+	std::stringstream command;
+	command<<"mkdir -pv "<<out_directory<<"/found";
+	std::system(command.str().c_str());
+}
+
+
+
+
+
+
+
 
 
 
