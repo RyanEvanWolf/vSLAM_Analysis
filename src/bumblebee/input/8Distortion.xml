@@ -6,7 +6,7 @@
   <leftCameraOutFile>left_</leftCameraOutFile>
   <rightCameraOutFile>right_</rightCameraOutFile>
   <stereoOutFile>stereo_</stereoOutFile>
-  <outDirectory>/home/ryan/calib</outDirectory>
+  <outDirectory>/home/ryan/git/Output/Calibration</outDirectory>
   <row>12</row>
   <col>10</col>
   <squareSize>37</squareSize>
@@ -15,7 +15,7 @@
   <displayFound>0</displayFound>
   <displayUndistorted>0</displayUndistorted>
   <displayMapping>0</displayMapping>
-  <DistortionModel>ParameterFour</DistortionModel>
+  <DistortionModel>ParameterEight</DistortionModel>
   <ImageMask>
     l_1487677215.ppm l_1487677281.ppm l_1487677347.ppm l_1487677382.ppm
     l_1487677386.ppm l_1487677408.ppm l_1487677411.ppm</ImageMask></Calibration>

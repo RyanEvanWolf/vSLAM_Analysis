@@ -74,6 +74,8 @@ int main(int argc, char** argv){
 	ROS_INFO_STREAM("Beginning Stereo Calibration");
 	//get vector of board coordinates
 	std::vector< std::vector< cv::Point3f > > board_;
+	
+	
 	for(int index=0;index<leftPts.size();index++)
 	{
 		board_.push_back(config.genBoardCoordinate());
@@ -92,7 +94,7 @@ int main(int argc, char** argv){
 										  config.calibrationSize,
 										  stR,stT,stE,stF,
 										  cv::TermCriteria(cv::TermCriteria::COUNT||cv::TermCriteria::EPS,1e-06,5000),
-										  CV_CALIB_USE_INTRINSIC_GUESS);
+										  CV_CALIB_USE_INTRINSIC_GUESS|CV_CALIB_FIX_K3);
 	}
 	else if(config.distortionModel.compare("ParameterEight")==0)
 	{
@@ -105,7 +107,7 @@ int main(int argc, char** argv){
 										  config.calibrationSize,
 										  stR,stT,stE,stF,
 										  cv::TermCriteria(cv::TermCriteria::COUNT||cv::TermCriteria::EPS,1e-06,5000),
-											CV_CALIB_USE_INTRINSIC_GUESS|CV_CALIB_FIX_K3);
+											CV_CALIB_USE_INTRINSIC_GUESS|CV_CALIB_RATIONAL_MODEL);
 	}
 	else
 	{
@@ -117,7 +119,7 @@ int main(int argc, char** argv){
 										  config.calibrationSize,
 										  stR,stT,stE,stF,
 										  cv::TermCriteria(cv::TermCriteria::COUNT||cv::TermCriteria::EPS,1e-06,5000),
-											CV_CALIB_USE_INTRINSIC_GUESS|CV_CALIB_RATIONAL_MODEL);
+											CV_CALIB_USE_INTRINSIC_GUESS);
 	}
 	ROS_INFO_STREAM("Stereo RMS\t"<<stereoRMS);
 	//rectify parameters
@@ -192,11 +194,33 @@ int main(int argc, char** argv){
 	ff<<"StereoRect"<<finalStereo;
 	ff.release();
 	
+	//Add left and right camera info+store them
+	stereo::Single leftOutputCam,rightOutputCam;
+	leftOutputCam.imgResolution_=config.calibrationSize;
+	leftK.copyTo(leftOutputCam.K_);
+	leftD.copyTo(leftOutputCam.D_.distParam_);
+	
+	ff.open(config.getLeftFile(),cv::FileStorage::WRITE);
+	ff<<"Single"<<leftOutputCam;
+	ff.release();
+	
+	rightOutputCam.imgResolution_=config.calibrationSize;
+	rightK.copyTo(rightOutputCam.K_);
+	rightD.copyTo(rightOutputCam.D_.distParam_);
+	
+	ff.open(config.getRightFile(),cv::FileStorage::WRITE);
+	ff<<"Single"<<rightOutputCam;
+	ff.release();
+	
+	
+	
+	
+	leftOutputCam.imgResolution_=config.calibrationSize;
+	
 	Analysis::StereoBumble myCam(config.getStereoFile());
 
 	//display Stereo Output
-	//get test images
-	
+
 	
 	for(int index=0;index<leftPts.size();index++)
 	{
@@ -231,39 +255,10 @@ int main(int argc, char** argv){
 	
 		cv::imshow("t",sidenormal);
 		myCam.drawEpiLines(sidenormal,sideEpi);
-	//cv::imshow("aa",sidenormal);
 		cv::imshow("a",sideEpi);
-	
-//	cv::Mat lll,rrr;
-	
-//	lll=zoomedl(myCam.bumbleBee_.l_ROI_);
-//	rrr=zoomedr(myCam.bumbleBee_.r_ROI_);
-	
-	/*cv::Mat l,rr;
-	cv::Mat roiL,roiR;
-	cv::Mat outside,epi,ss;
-  
-	myCam.unDistort(inLeft,l,true);
-	myCam.unDistort(inRight,rr,true);
-  
-  
-	roiL=l(myCam.bumbleBee_.l_ROI_);
-	roiR=rr(myCam.bumbleBee_.r_ROI_);
-  
-	stereo::getSideSideRect(roiL,roiR,outside);
-  
-  
-	cv::namedWindow("original",cv::WINDOW_NORMAL);
-	cv::namedWindow("und",cv::WINDOW_NORMAL);
-	cv::namedWindow("aa",cv::WINDOW_NORMAL);
- 
-  
-	myCam.drawEpiLines(outside,epi);
-	myCam.drawROI(roiL,ss,true);
-	cv::imshow("aa",epi);
-	cv::imshow("und",ss);
-
-	*/
+		
+		cv::imwrite(config.out_directory+"/rectified/"+config.distortionModel+"_"+leftInputImageFiles.at(index),sideEpi);
+		
 		cv::waitKey(100);
 	}
 

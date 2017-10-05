@@ -206,6 +206,10 @@ void CalibrationConfig::createDirectories()
 	std::stringstream command;
 	command<<"mkdir -pv "<<out_directory<<"/found";
 	std::system(command.str().c_str());
+	
+	command.str("");
+	command<<"mkdir -pv "<<out_directory<<"/rectified";
+	std::system(command.str().c_str());
 }
 
 
