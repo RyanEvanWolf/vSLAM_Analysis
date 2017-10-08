@@ -81,6 +81,35 @@ void StereoBumble::drawEpiLines(cv::Mat& in, cv::Mat& outImage, cv::Scalar col)
 }
 
 
+void StereoBumble::getSideSideRect(cv::Mat limg, cv::Mat rimg, cv::Mat& out)
+{
+	//rectifies a left and right image, and returns the two side by side
+	out=cv::Mat(cv::Size(limg.size().width+rimg.size().width,limg.size().height),limg.type());
+	cv::Mat lroi(out,cv::Rect(0,0,limg.size().width,limg.size().height));
+	cv::Mat rroi(out,cv::Rect(limg.size().width,0,rimg.size().width,rimg.size().height));
+	
+	limg.copyTo(lroi);
+	rimg.copyTo(rroi);
+}
+
+void StereoBumble::draw(cv::Mat limg,cv::Mat rimg, cv::Mat &outImage,stereo::StereoFrame in)
+{
+	cv::drawMatches(limg,in.leftFeatures_,
+					rimg,in.rightFeatures_,
+					in.matches_,outImage,cv::Scalar::all(-1),
+					cv::Scalar::all(-1),in.inliersMask_,
+					cv::DrawMatchesFlags::NOT_DRAW_SINGLE_POINTS);
+}
+
+void StereoBumble::draw(cv::Mat limg,cv::Mat rimg,cv::Mat &outImage,stereo::StereoFrame in,cv::Scalar colour,std::vector<char> mask)
+{
+		cv::drawMatches(limg,in.leftFeatures_,
+						rimg,in.rightFeatures_,
+						in.matches_,outImage,colour,
+						colour,mask,
+						cv::DrawMatchesFlags::NOT_DRAW_SINGLE_POINTS);
+}
+
 
 
 

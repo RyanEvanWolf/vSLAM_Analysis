@@ -20,32 +20,30 @@
 */
 
 
-#include <ros/console.h>
-#include <ros/ros.h> 
 
-#include <iostream>
-#include <algorithm>
-#include <fstream>
-#include <iomanip>
-#include <chrono>
+//#include <iostream>
+//#include <algorithm>
+//#include <fstream>
+//#include <iomanip>
+//#include <chrono>
 
-#include <opencv2/core/core.hpp>
-#include <Structures/DataSet/BumbleDataSet.hpp>
-#include <Structures/vSLAM/InterStereoFrame.hpp>
+#include "viso2/visoGenerator.hpp"
 
-#include <viso2/NextFrame.h>
+//#include <boost/bind.hpp>
 
+//#include <opencv2/core/core.hpp>
+#define DEFAULT_LEFT_IMAGE "/home/ryan/Masters/calibration/fullLeft/l_1487062206.ppm"
 
-#define DEFAULT_DATASET "/home/ryan/DataSets/SortedDataSets/D5"
-#define DEFAULT_RECT "/home/ryan/git/Output/Calibration/stereo_ParameterFour.xml"
-
-#include <viso_stereo.h>
 
 using namespace std;
 
 
-bool extract(viso2::NextFrame::Request  &req,
-         viso2::NextFrame::Response &res)
+
+
+/*bool extract(viso2::NextFrame::Request  &req,
+			 viso2::NextFrame::Response &res,
+			 VisualOdometryStereo &viso
+			 )
 {
 	ROS_INFO_STREAM(req);
 	if(req.Forward.data)
@@ -60,7 +58,7 @@ bool extract(viso2::NextFrame::Request  &req,
   //ROS_INFO("request: x=%ld, y=%ld", (long int)req.a, (long int)req.b);
   //ROS_INFO("sending back response: [%ld]", (long int)res.sum);
   return true;
-}
+}*/
 
 
 //void LoadImages(const string &strPathLeft, const string &strPathRight, const string &strPathTimes,
@@ -68,22 +66,26 @@ bool extract(viso2::NextFrame::Request  &req,
 
 int main(int argc, char **argv)
 {
-	ros::init(argc, argv, "StereoCoordinateNode");
+	ros::init(argc, argv, "viso_node");
 	ros::NodeHandle n;
 	std::string inputDataSetDir;
 	std::string inputRectificationFile;
-    
+	
+	visoGenerator vis;
+	
+   
     if(argc==1)
 	{
 		//use default values
-		inputDataSetDir=DEFAULT_DATASET;
-		inputRectificationFile=DEFAULT_RECT;
+		vis.myCam= cv::Ptr<Analysis::StereoBumble>(new Analysis::StereoBumble(DEFAULT_RECT));
+		vis.dataSet=cv::Ptr<stereo::BumbleDataSet>(new stereo::BumbleDataSet(DEFAULT_DATASET));
+		
 	}
 	else if(argc==3)
 	{
 		//use the command line arguments
-		inputDataSetDir=std::string(argv[1]);
-		inputRectificationFile=std::string(argv[2]);
+		vis.myCam= cv::Ptr<Analysis::StereoBumble>(new Analysis::StereoBumble(std::string(argv[2])));
+		vis.dataSet=cv::Ptr<stereo::BumbleDataSet>(new stereo::BumbleDataSet(std::string(argv[1])));
 	}
 	else
 	{
@@ -92,10 +94,15 @@ int main(int argc, char **argv)
 	    std::cerr <<"./vis_exec" << endl;
         return 1;
 	}
-	VisualOdometryStereo::parameters param;
-
-
-	using namespace stereo;
+	
+	vis.param.calib.f=vis.myCam->bumbleBee_.P_l_.at<double>(0,0);
+	vis.param.calib.cu = vis.myCam->bumbleBee_.P_l_.at<double>(0,2); // principal point (u-coordinate) in pixels
+	vis.param.calib.cv = vis.myCam->bumbleBee_.P_l_.at<double>(1,2); // principal point (v-coordinate) in pixels
+	vis.param.base     = ((-1*vis.myCam->bumbleBee_.T_.at<double>(0,0))*(0.1*0.1*0.1)); // baseline in meters
+	vis.param.ransac_iters=8000;
+		
+	vis.viso_=cv::Ptr<VisualOdometryStereo>(new VisualOdometryStereo(vis.param));
+	/*
 
 	
 	//initialize the BumbleBee dataset and camera
@@ -132,15 +139,22 @@ int main(int argc, char **argv)
 	ROS_INFO_STREAM(bumbleBee_.P_l_);
 	ROS_INFO_STREAM(bumbleBee_.P_r_);
 	VisualOdometryStereo viso(param);
+
 	Matrix pose = Matrix::eye(4);
-	ros::ServiceServer service = n.advertiseService("visoExtract", extract);
+	//ros::ServiceServer service = n.advertiseService("visoExtract", extract);
 	
+	visoGenerator abc;
+	
+	ros::ServiceServer service;
+	
+	service=n.advertiseService("visoExtract",&visoGenerator::extract,&abc);
+//	ros::ServiceServer service = n.advertiseService<viso2::NextFrame::Request, viso2::NextFrame::Response>("visoExtract",&stereo::visoGenerator,&abc);																										   &viso2::NextFrame::Request,
 
 //cv::FileStorage outputFile("libVisoOut.xml",cv::FileStorage::WRITE);
 	
 	//outputFile<<"InterFrame"<<"[";
 	InterStereoFrame current;
-	current.startingFrame="start";
+	current.startingFrame="start";*/
 	/*while(!end)
 	{
 		

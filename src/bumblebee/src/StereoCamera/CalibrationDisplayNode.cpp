@@ -11,10 +11,10 @@
 
 int main(int argc, char** argv){
   ros::init(argc, argv, "StereoCoordinateNode");
-  
+
   Analysis::StereoBumble myCam(DEFAULT_RECTIFIED_INPUT); 
   tf2_ros::TransformBroadcaster l2r_bc,l2rect_bc,r2rect_bc;
-  
+
 
   cv::Mat inLeft,inRight;
   inLeft=cv::imread(DEFAULT_LEFT_IMAGE,cv::IMREAD_GRAYSCALE);
@@ -32,7 +32,7 @@ int main(int argc, char** argv){
   roiL=l(myCam.bumbleBee_.l_ROI_);
   roiR=rr(myCam.bumbleBee_.r_ROI_);
   
-  stereo::getSideSideRect(roiL,roiR,outside);
+  myCam.getSideSideRect(roiL,roiR,outside);
   
   
   cv::namedWindow("original",cv::WINDOW_NORMAL);

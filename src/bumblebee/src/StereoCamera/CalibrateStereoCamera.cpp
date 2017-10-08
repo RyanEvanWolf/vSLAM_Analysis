@@ -251,7 +251,7 @@ int main(int argc, char** argv){
 	
 	
 		cv::Mat sidenormal,sideEpi;
-		stereo::getSideSideRect(roiL,roiR,sidenormal);
+		myCam.getSideSideRect(roiL,roiR,sidenormal);
 	
 		cv::imshow("t",sidenormal);
 		myCam.drawEpiLines(sidenormal,sideEpi);

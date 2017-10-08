@@ -6,14 +6,14 @@ from PyQt5.QtWidgets import QApplication, QWidget, QPushButton
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import pyqtSlot, QThread, QObject, pyqtSignal, QMutex
 import rospy
-from std_msgs.msg import Int32, Bool
+from std_msgs.msg import Int32, Bool, Int8
 from viso2.srv import *
 
 class App(QWidget):
     def __init__(self):
         super(App,self).__init__()
         self.stateRunning_=QMutex()
-        self.title = 'PyQt5 button - pythonspot.com'
+        self.title = 'viso Extraction'
         self.left = 10
         self.top = 10
         self.width = 320
@@ -22,11 +22,11 @@ class App(QWidget):
         self.test=publishThread()
         self.initUI()
         self.test.start()
-        
-        rospy.wait_for_service('visoExtract')
+        print("Waiting for /viso_extract service")
+        rospy.wait_for_service('/viso_extract')
         print("connected")
         try:
-          self.serv = rospy.ServiceProxy('visoExtract', NextFrame)
+          self.serv = rospy.ServiceProxy('/viso_extract', NextFrame)
         #resp1 = add_two_ints(x, y)
         #return resp1.sum
         except rospy.ServiceException, e:
@@ -51,11 +51,11 @@ class App(QWidget):
         self.show()
     @pyqtSlot()
     def on_click(self):
-        print('PyQt5 button click')
         a=Bool()
-        a.data=True
-        abc=self.serv(a)
-        print(abc)
+        for i in range(0,1000):
+            a.data=True
+            abc=self.serv(a)
+            print(abc)
     def close(self):
         print('closing')
         ## = call worker thread close functions

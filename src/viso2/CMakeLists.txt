@@ -24,13 +24,11 @@ find_package(catkin REQUIRED COMPONENTS
   geometry_msgs
   roscpp
   rospy
-  sensor_msgs
   std_msgs
   tf2
   tf2_ros
-  visualization_msgs
-  actionlib_msgs
   message_generation
+  bumblebee
 )
 
 ## System dependencies are found with CMake's conventions
@@ -135,8 +133,8 @@ catkin_package(
   ${OpenCV_INCLUDE_DIRS}
   ${Structures_INCLUDE_DIRS}
   LIBRARIES odomViso
-  CATKIN_DEPENDS geometry_msgs roscpp rospy sensor_msgs std_msgs tf2 tf2_ros visualization_msgs message_runtime
-  DEPENDS png
+  CATKIN_DEPENDS geometry_msgs roscpp rospy std_msgs tf2 tf2_ros message_runtime bumblebee
+  #DEPENDS png
 )
 
 ###########
@@ -145,6 +143,7 @@ catkin_package(
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
+
 include_directories(
   include
   /usr/local/include
@@ -153,16 +152,18 @@ include_directories(
   ${OpenCV_INCLUDE_DIRS}
   ${Structures_INCLUDE_DIRS}
   ${catkin_INCLUDE_DIRS}
+  ${bumblebee_INCLUDE_DIRS}
   Thirdparty/libviso2/src
 )
 
 
-add_executable(viso_node src/visoNode.cpp)
+add_executable(viso_node src/visoNode.cpp src/visoGenerator.cpp)
 add_dependencies(viso_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(viso_node
 	${catkin_LIBRARIES}
 	${OpenCV_LIBS}
 	${Structures_LIBS}
+	StereoCamera
 	odomViso
 	)
 

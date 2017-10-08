@@ -4,7 +4,7 @@
 #include "bumblebee/StereoCamera/StereoBumble.hpp"
 #include <Structures/CameraInfo/StereoRect.hpp>
 
-#define DEFAULT_RECTIFIED_INPUT "/home/ryan/git/groundTruth/gt/output/Stereo4/RectifiedBumble4.xml"
+#define DEFAULT_RECTIFIED_INPUT "/home/ryan/git/Output/Calibration/stereo_ParameterFive.xml"
 
 int main(int argc, char** argv){
   ros::init(argc, argv, "StereoCoordinateNode");
