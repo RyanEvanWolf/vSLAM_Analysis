@@ -9,7 +9,7 @@
   <outDirectory>/home/ryan/git/Output/Calibration</outDirectory>
   <row>12</row>
   <col>10</col>
-  <squareSize>37</squareSize>
+  <squareSize>0.037</squareSize>
   <debugInfo>1</debugInfo>
   <robustCheckerBoard>1</robustCheckerBoard>
   <displayFound>0</displayFound>
