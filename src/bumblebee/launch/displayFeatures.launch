@@ -1,5 +1,0 @@
- 
-<launch>
-    <node pkg="bumblebee" name="displayOrb" type="displayOrb" output="screen" args='D1 /home/ryan ORB'/>
-    <node pkg='rqt_plot' name='rqt_plot' type='rqt_plot'/>
-</launch>
