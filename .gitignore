@@ -4,5 +4,8 @@
 *.directory
 devel/*
 build/*
-src/src.kdev4
-src/bumblebee/bumblbee.kdev4
+src/dataset/.kdev4
+src/dataset/dataset.kdev4
+src/dataset/scripts/.idea/workspace.xml
+src/.kdev4/
+*.pyc

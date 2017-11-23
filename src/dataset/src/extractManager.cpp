@@ -15,22 +15,11 @@ extractManager::extractManager()
 
 bool extractManager::extractSIFT(dataset::extractSIFT::Request& req, dataset::extractSIFT::Response& res)
 {
-	//create a fast detector object
-	//int thresh=int(req.config.thresh.data);
-	//bool suppr=bool(req.config.suppression.data);
-	//int type=int(req.config.type.data);
-	
-	
 	int n=int(req.config.maxFeatures.data);
 	int oct=int(req.config.nOctave.data);
 	double contrast=double(req.config.contrastThresh.data);
 	double edge=double(req.config.edgeThresh.data);
 	double sigma=double(req.config.sigma.data);
-	
-	
-	//cv::SIFT sift;
-	//sift(src, src, keypoints, descriptors, false);
-	//cv::SiftFeatureDetector a=cv::SiftFeatureDetector(n,oct,contrast,edge,sigma);
 	
 	cv::SIFT a1= cv::SIFT(n,oct,contrast,edge,sigma);
 	
@@ -64,18 +53,15 @@ bool extractManager::extractSIFT(dataset::extractSIFT::Request& req, dataset::ex
 	//extractfeatures
 	std::vector<cv::KeyPoint> leftF,rightF;
 	a1(lr,cv::Mat(),leftF);
-//	bumble.leftDetection->detect(lr,leftF);
-//	bumble.rightDetection->detect(rr,rightF);
 //	//draw features onto image, and save it to a directory
 	
-	cv::Mat featl,featr;
-	cv::drawKeypoints(lr,leftF,featl);
-	cv::imwrite(std::string(DEFAULT_SAVE_DIRECTORY)+"/featLeft.ppm",featl);
-	
-	
-	
+	if(std::string(req.outputDir.data)!="")
+	{
+		cv::Mat featl;
+		cv::drawKeypoints(lr,leftF,featl);
+		cv::imwrite(std::string(req.outputDir.data),featl);
+	}
 	res.nleft.data=leftF.size();
-	res.leftFoundDir.data=std::string(DEFAULT_SAVE_DIRECTORY)+"/featLeft.ppm";
 	res.averageTime.data=average;
 	return true;
 }
@@ -129,15 +115,15 @@ bool extractManager::extractFAST(dataset::extractFAST::Request& req, dataset::ex
 	std::vector<cv::KeyPoint> leftF;
 	bumble.leftDetection->detect(lr,leftF);
 	//draw features onto image, and save it to a directory
-	
-	cv::Mat featl;
-	cv::drawKeypoints(lr,leftF,featl);
-	cv::imwrite(std::string(DEFAULT_SAVE_DIRECTORY)+"/featLeft.ppm",featl);
-	
+	if(std::string(req.outputDir.data)!="")
+	{
+		cv::Mat featl;
+		cv::drawKeypoints(lr,leftF,featl);
+		cv::imwrite(std::string(req.outputDir.data),featl);
+	}
 	
 	
 	res.nleft.data=leftF.size();
-	res.leftFoundDir.data=std::string(DEFAULT_SAVE_DIRECTORY)+"/featLeft.ppm";
 	res.averageTime.data=average;
 	return true;
 }
