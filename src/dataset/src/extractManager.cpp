@@ -49,6 +49,18 @@ bool extractManager::extractSIFT(dataset::extractSIFT::Request& req, dataset::ex
 	bumble.getROIimage(leftundist,lr,true);
 	bumble.getROIimage(rightundist,rr,false);
 	
+	double average=0;
+	for(int index=0;index<5;index++)
+	{
+		std::vector<cv::KeyPoint> lf;
+		auto start=std::chrono::steady_clock::now();
+		a1(lr,cv::Mat(),lf);
+		auto end=std::chrono::steady_clock::now();
+		average+= std::chrono::duration<double,std::nano>(end-start).count();
+	}
+	
+
+	average= average/5.0;
 	//extractfeatures
 	std::vector<cv::KeyPoint> leftF,rightF;
 	a1(lr,cv::Mat(),leftF);
@@ -64,6 +76,7 @@ bool extractManager::extractSIFT(dataset::extractSIFT::Request& req, dataset::ex
 	
 	res.nleft.data=leftF.size();
 	res.leftFoundDir.data=std::string(DEFAULT_SAVE_DIRECTORY)+"/featLeft.ppm";
+	res.averageTime.data=average;
 	return true;
 }
 
@@ -99,13 +112,25 @@ bool extractManager::extractFAST(dataset::extractFAST::Request& req, dataset::ex
 	bumble.getROIimage(leftundist,lr,true);
 	bumble.getROIimage(rightundist,rr,false);
 	
+	double average=0;
+	for(int index=0;index<5;index++)
+	{
+		//extractfeatures
+		std::vector<cv::KeyPoint> lf;
+		auto start=std::chrono::steady_clock::now();
+		bumble.leftDetection->detect(lr,lf);
+		auto end=std::chrono::steady_clock::now();
+		average+= std::chrono::duration<double,std::nano>(end-start).count();
+	}
+
+		
+	average= average/5.0;
 	//extractfeatures
-	std::vector<cv::KeyPoint> leftF,rightF;
+	std::vector<cv::KeyPoint> leftF;
 	bumble.leftDetection->detect(lr,leftF);
-	bumble.rightDetection->detect(rr,rightF);
 	//draw features onto image, and save it to a directory
 	
-	cv::Mat featl,featr;
+	cv::Mat featl;
 	cv::drawKeypoints(lr,leftF,featl);
 	cv::imwrite(std::string(DEFAULT_SAVE_DIRECTORY)+"/featLeft.ppm",featl);
 	
@@ -113,6 +138,7 @@ bool extractManager::extractFAST(dataset::extractFAST::Request& req, dataset::ex
 	
 	res.nleft.data=leftF.size();
 	res.leftFoundDir.data=std::string(DEFAULT_SAVE_DIRECTORY)+"/featLeft.ppm";
+	res.averageTime.data=average;
 	return true;
 }
 

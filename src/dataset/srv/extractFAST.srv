@@ -3,4 +3,4 @@ dataset/FAST config
 ---
 std_msgs/String leftFoundDir
 std_msgs/Int32 nleft
-
+std_msgs/Float64 averageTime

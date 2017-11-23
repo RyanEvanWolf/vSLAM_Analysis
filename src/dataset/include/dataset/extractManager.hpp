@@ -20,6 +20,7 @@
 #include <dataset/extractSIFT.h>
 
 #include <dataset/simpleCamera.hpp>
+#include <chrono>
 
 #define DEFAULT_SAVE_DIRECTORY "/home/ryan/git/Output"
 
