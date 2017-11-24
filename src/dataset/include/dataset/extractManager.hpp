@@ -18,6 +18,8 @@
 #include <dataset/stereoInliers.h>
 #include <dataset/extractFAST.h>
 #include <dataset/extractSIFT.h>
+#include <dataset/extractORB.h>
+#include <dataset/extractSURF.h>
 
 #include <dataset/simpleCamera.hpp>
 #include <chrono>
@@ -36,6 +38,8 @@ class extractManager
 		ros::ServiceServer stereoServ;
 		ros::ServiceServer extractFASTserv;
 		ros::ServiceServer extractSIFTserv;
+		ros::ServiceServer extractORBserv;
+		ros::ServiceServer extractSURFserv;
 	public:
 		ros::NodeHandle n;
 		simpleCamera bumble;
@@ -43,6 +47,8 @@ class extractManager
 		extractManager();
 		bool extractFAST(dataset::extractFAST::Request &req,dataset::extractFAST::Response &res);
 		bool extractSIFT(dataset::extractSIFT::Request &req,dataset::extractSIFT::Response &res);
+		bool extractORB(dataset::extractORB::Request &req,dataset::extractORB::Response &res);
+		bool extractSURF(dataset::extractSURF::Request &req,dataset::extractSURF::Response &res);
 		bool extract(dataset::extractFeatures::Request &req,dataset::extractFeatures::Response &res);	
 		bool stereoExtract(dataset::stereoInliers::Request &req,dataset::stereoInliers::Response &res);
 		bool update(dataset::updateSettings::Request &req,dataset::updateSettings::Response &res);

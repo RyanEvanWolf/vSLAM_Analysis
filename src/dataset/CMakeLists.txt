@@ -73,6 +73,7 @@ find_package(catkin REQUIRED COMPONENTS
    ORB.msg
    FAST.msg
    SIFT.msg
+   SURF.msg
 )
 
 ## Generate services in the 'srv' folder
@@ -82,6 +83,8 @@ find_package(catkin REQUIRED COMPONENTS
    extractFeatures.srv
    extractFAST.srv
    extractSIFT.srv
+   extractORB.srv
+   extractSURF.srv
    updateSettings.srv
    rectifiedSettings.srv
    stereoInliers.srv

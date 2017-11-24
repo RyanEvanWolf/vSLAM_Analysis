@@ -11,6 +11,8 @@ extractManager::extractManager()
 	stereoServ=n.advertiseService("extract/stereo",&extractManager::stereoExtract,this);
 	extractFASTserv=n.advertiseService("extract/FAST",&extractManager::extractFAST,this);
 	extractSIFTserv=n.advertiseService("extract/SIFT",&extractManager::extractSIFT,this);
+	extractORBserv=n.advertiseService("extract/ORB",&extractManager::extractORB,this);
+	extractSURFserv=n.advertiseService("extract/SURF",&extractManager::extractSURF,this);
 }
 
 bool extractManager::extractSIFT(dataset::extractSIFT::Request& req, dataset::extractSIFT::Response& res)
@@ -21,7 +23,7 @@ bool extractManager::extractSIFT(dataset::extractSIFT::Request& req, dataset::ex
 	double edge=double(req.config.edgeThresh.data);
 	double sigma=double(req.config.sigma.data);
 	
-	cv::SIFT a1= cv::SIFT(n,oct,contrast,edge,sigma);
+	cv::SIFT siftDetector= cv::SIFT(n,oct,contrast,edge,sigma);
 	
 	//get the input images
 	
@@ -43,7 +45,7 @@ bool extractManager::extractSIFT(dataset::extractSIFT::Request& req, dataset::ex
 	{
 		std::vector<cv::KeyPoint> lf;
 		auto start=std::chrono::steady_clock::now();
-		a1(lr,cv::Mat(),lf);
+		siftDetector(lr,cv::Mat(),lf);
 		auto end=std::chrono::steady_clock::now();
 		average+= std::chrono::duration<double,std::nano>(end-start).count();
 	}
@@ -52,7 +54,7 @@ bool extractManager::extractSIFT(dataset::extractSIFT::Request& req, dataset::ex
 	average= average/5.0;
 	//extractfeatures
 	std::vector<cv::KeyPoint> leftF,rightF;
-	a1(lr,cv::Mat(),leftF);
+	siftDetector(lr,cv::Mat(),leftF);
 //	//draw features onto image, and save it to a directory
 	
 	if(std::string(req.outputDir.data)!="")
@@ -128,6 +130,119 @@ bool extractManager::extractFAST(dataset::extractFAST::Request& req, dataset::ex
 	return true;
 }
 
+bool extractManager::extractORB(dataset::extractORB::Request& req, dataset::extractORB::Response& res)
+{
+	
+	//ORB::ORB(int nfeatures=500, float scaleFactor=1.2f, int nlevels=8, int edgeThreshold=31, int firstLevel=0, int WTA_K=2, int scoreType=ORB::HARRIS_SCORE, int patchSize=31
+	
+	int n=int(req.config.maxFeatures.data);
+	double scale=double(req.config.scale.data);
+	int edge =int(req.config.edge.data);
+	int level = int(req.config.level.data);
+	int wta=int(req.config.wta.data);
+	int score=int(req.config.score.data);
+	int patch=int(req.config.patch.data);
+	
+	cv::ORB OrbDetector= cv::ORB(n,scale,level,edge,0,wta,score,patch);
+	
+	//get the input images
+	
+	cv::Mat leftImage,rightImage;
+	bumble.getImage(std::string(req.imageDir.data),leftImage,true);
+	bumble.getImage(std::string(req.imageDir.data),rightImage,false);
+	
+	//undistort images
+	cv::Mat leftundist,rightundist;
+	bumble.undistort(leftImage,leftundist,true);
+	bumble.undistort(rightImage,rightundist,false);
+	//get ROI images
+	cv::Mat lr,rr;
+	bumble.getROIimage(leftundist,lr,true);
+	bumble.getROIimage(rightundist,rr,false);
+	
+	double average=0;
+	for(int index=0;index<5;index++)
+	{
+		std::vector<cv::KeyPoint> lf;
+		auto start=std::chrono::steady_clock::now();
+		OrbDetector(lr,cv::Mat(),lf);
+		auto end=std::chrono::steady_clock::now();
+		average+= std::chrono::duration<double,std::nano>(end-start).count();
+	}
+	
+
+	average= average/5.0;
+	//extractfeatures
+	std::vector<cv::KeyPoint> leftF,rightF;
+	OrbDetector(lr,cv::Mat(),leftF);
+//	//draw features onto image, and save it to a directory
+	
+	if(std::string(req.outputDir.data)!="")
+	{
+		cv::Mat featl;
+		cv::drawKeypoints(lr,leftF,featl);
+		cv::imwrite(std::string(req.outputDir.data),featl);
+	}
+	res.nleft.data=leftF.size();
+	res.averageTime.data=average;
+	return true;
+}
+
+
+bool extractManager::extractSURF(dataset::extractSURF::Request &req,dataset::extractSURF::Response &res)
+{
+	
+	double thresh=double(req.config.thresh.data);
+	int nOctaves=int(req.config.nOctave.data);
+	int nOctaveLayer=int(req.config.nOctaveLayer.data);
+	bool extended=bool(req.config.extended.data);
+	bool upright=bool(req.config.upright.data);
+
+	cv::SURF SurfDetector= cv::SURF(thresh,nOctaves,nOctaveLayer,extended,upright);
+	
+	//get the input images
+	
+	cv::Mat leftImage,rightImage;
+	bumble.getImage(std::string(req.imageDir.data),leftImage,true);
+	bumble.getImage(std::string(req.imageDir.data),rightImage,false);
+	
+	//undistort images
+	cv::Mat leftundist,rightundist;
+	bumble.undistort(leftImage,leftundist,true);
+	bumble.undistort(rightImage,rightundist,false);
+	//get ROI images
+	cv::Mat lr,rr;
+	bumble.getROIimage(leftundist,lr,true);
+	bumble.getROIimage(rightundist,rr,false);
+	
+	double average=0;
+	for(int index=0;index<5;index++)
+	{
+		std::vector<cv::KeyPoint> lf;
+		auto start=std::chrono::steady_clock::now();
+		SurfDetector(lr,cv::Mat(),lf);
+		auto end=std::chrono::steady_clock::now();
+		average+= std::chrono::duration<double,std::nano>(end-start).count();
+	}
+	
+
+	average= average/5.0;
+	//extractfeatures
+	std::vector<cv::KeyPoint> leftF,rightF;
+	SurfDetector(lr,cv::Mat(),leftF);
+//	//draw features onto image, and save it to a directory
+	
+	if(std::string(req.outputDir.data)!="")
+	{
+		cv::Mat featl;
+		cv::drawKeypoints(lr,leftF,featl);
+		cv::imwrite(std::string(req.outputDir.data),featl);
+	}
+	res.nleft.data=leftF.size();
+	res.averageTime.data=average;
+	return true;
+	
+}
 
 
 

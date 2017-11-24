@@ -12,7 +12,9 @@ from dataset.srv import rectifiedSettings,rectifiedSettingsResponse,rectifiedSet
 ##detector services
 from dataset.srv import extractFAST, extractFASTResponse,extractFASTRequest
 from dataset.srv import extractSIFT,extractSIFTResponse,extractSIFTRequest
-from dataset.msg import ORB, FAST, SIFT
+from dataset.srv import extractORB,extractORBResponse,extractORBRequest
+from dataset.srv import extractSURF,extractSURFResponse,extractSURFRequest
+from dataset.msg import ORB, FAST, SIFT, SURF
 
 
 import numpy as np
@@ -29,12 +31,12 @@ import datetime
 
 def getOrbParameters():
     ORB_Messages = []
-    scaleVect = [0.8]  # np.linspace(0.8, 1.2, 1, endpoint=True)
-    edgeVect = [10, 20]  # np.arange(10, 30, 20)
+    scaleVect =[0.8,1.0]  # np.linspace(0.8, 1.2, 1, endpoint=True)
+    edgeVect = [5,10, 20]  # np.arange(10, 30, 20)
     levelVect = [2]  # np.arange(2, 4, 2)
     wtaVect = [2]  # np.arange(2, 4, 2)
     scoreVect = [cv2.ORB_HARRIS_SCORE]  # [cv2.ORB_HARRIS_SCORE, cv2.ORB_FAST_SCORE]
-    patchVect = [10]  # np.arange(10, 25, 15)
+    patchVect =[10]  # np.arange(10, 25, 15)
     for sc in scaleVect:
         for scor in scoreVect:
             for l in levelVect:
@@ -42,15 +44,38 @@ def getOrbParameters():
                     for ed in edgeVect:
                         for pat in patchVect:
                             newSettings = ORB()
-                            newSettings.orbConfig.scale.data = sc
-                            newSettings.orbConfig.edge.data = ed
-                            newSettings.orbConfig.level.data = l
-                            newSettings.orbConfig.wta.data = wt
-                            newSettings.orbConfig.score.data = scor
-                            newSettings.orbConfig.patch.data = pat
+                            newSettings.maxFeatures.data=10000
+                            newSettings.scale.data = sc
+                            newSettings.edge.data = ed
+                            newSettings.level.data = l
+                            newSettings.wta.data = wt
+                            newSettings.score.data = scor
+                            newSettings.patch.data = pat
                             ORB_Messages.append(newSettings)
     return ORB_Messages
 
+
+
+def getSURFParameters():
+    SURF_Messages=[]
+    threshold=[0.8,1.0]
+    nOctaves=[3]
+    nOctavesLayers=[2]
+    extended=[True]
+    upright=[True]
+    for t in threshold:
+        for oct in nOctaves:
+            for layers in nOctavesLayers:
+                for e in extended:
+                    for u in upright:
+                        newSettings=SURF()
+                        newSettings.thresh.data=t
+                        newSettings.nOctave.data=oct
+                        newSettings.nOctaveLayer.data=layers
+                        newSettings.extended.data=e
+                        newSettings.upright.data=u
+                        SURF_Messages.append(newSettings)
+    return SURF_Messages
 
 def getFastParameters():
     FAST_Messages=[]
@@ -69,7 +94,7 @@ def getFastParameters():
 
 def getSIFTParameters():
     SIFT_Messages=[]
-    nFeatures=40000
+    nFeatures=10000
     octave=np.arange(2, 3, 1)
     contrast=np.linspace(0.001, 0.5, 2, endpoint=True)
     edge=np.linspace(1, 4, 2, endpoint=True)
@@ -121,6 +146,10 @@ class FeaturesAnalysis:
                 self.extract= rospy.ServiceProxy(self.extractServiceName, extractFAST)
             elif(self.detType=="SIFT"):
                 self.extract = rospy.ServiceProxy(self.extractServiceName, extractSIFT)
+            elif(self.detType=="ORB"):
+                self.extract = rospy.ServiceProxy(self.extractServiceName,extractORB)
+            elif(self.detType=="SURF"):
+                self.extract=rospy.ServiceProxy(self.extractServiceName,extractSURF)
         except rospy.ServiceException as exc:
             print("Service did not process request: " + str(exc))
         ##set xml File
@@ -141,6 +170,12 @@ class FeaturesAnalysis:
         elif(self.detType=="SIFT"):
             settings=getSIFTParameters()
             defaultMessage=extractSIFTRequest()
+        elif(self.detType=="ORB"):
+            settings=getOrbParameters()
+            defaultMessage=extractORBRequest()
+        elif(self.detType=="SURF"):
+            settings=getSURFParameters()
+            defaultMessage=extractSURFRequest()
         endSeq = False
         ind=0
         while(not endSeq):
@@ -163,7 +198,6 @@ class FeaturesAnalysis:
                     img = cv2.imread(outputImageName, cv2.IMREAD_COLOR)
                     cv2.imshow('Features', img)
                     cv2.waitKey(1)
-                    print(t)
                 singleFrame.responses.append(reply)
                 currentDetector += 1
             ###draw and save the images for the [min,avg,stdDev1,and max]
