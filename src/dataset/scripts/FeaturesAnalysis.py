@@ -14,7 +14,9 @@ from dataset.srv import extractFAST, extractFASTResponse,extractFASTRequest
 from dataset.srv import extractSIFT,extractSIFTResponse,extractSIFTRequest
 from dataset.srv import extractORB,extractORBResponse,extractORBRequest
 from dataset.srv import extractSURF,extractSURFResponse,extractSURFRequest
-from dataset.msg import ORB, FAST, SIFT, SURF
+from dataset.srv import extractAKAZE,extractAKAZEResponse,extractAKAZERequest
+from dataset.srv import extractBRISK,extractBRISKResponse,extractBRISKRequest
+from dataset.msg import ORB, FAST, SIFT, SURF, AKAZE, BRISK
 
 
 import numpy as np
@@ -54,6 +56,49 @@ def getOrbParameters():
                             ORB_Messages.append(newSettings)
     return ORB_Messages
 
+def getKAZEParameters():
+    KAZE_Messages=[]
+    offset=[1.60]
+    omax=[4]
+    nsublevels=[4]
+    dthresh=[0.0003]
+    min_dthreshold=[0.000001]
+    use_fed=[True]
+    descriptor=[0]
+    diffusivity=[0]
+    sderivatives=[1.0]
+    kcontrast=[0.001]
+    kcontrast_percentile=[0.7]
+    kcontrast_bins=[300]
+    for off in offset:
+        for m in omax:
+            for subl in nsublevels:
+                for thresh in dthresh:
+                    for mi in min_dthreshold:
+                        for use in use_fed:
+                            for desc in descriptor:
+                                for diff in diffusivity:
+                                    for s in sderivatives:
+                                        for kcon in kcontrast:
+                                            for kper in kcontrast_percentile:
+                                                for kbin in kcontrast_bins:
+                                                    newSettings=KAZE()
+                                                    newSettings.offset.data=off
+                                                    newSettings.omax.data=m
+                                                    newSettings.sublevels.data=subl
+                                                    newSettings.dthreshold.data=thresh
+                                                    newSettings.minthresh.data=mi
+                                                    newSettings.use_fed.data=use
+                                                    newSettings.descriptor.data=desc
+                                                    newSettings.diffusivity.data=diff
+                                                    newSettings.sderivative.data=s
+                                                    newSettings.kcontrast.data=kcon
+                                                    newSettings.kcontrast_percentile.data=kper
+                                                    newSettings.kcontrast_percentile.data=kbin
+                                                    KAZE_Messages.append(newSettings)
+    return KAZE_Messages
+
+
 
 
 def getSURFParameters():
@@ -92,6 +137,20 @@ def getFastParameters():
                 FAST_Messages.append(fastSettings)
     return FAST_Messages
 
+def getBRISKParameters():
+    BRISK_Messages=[]
+    thresh_vect=np.arange(4, 8, 2)
+    oct_vect=[2]
+    scale_vect=[1.0,0.9]
+    for t in thresh_vect:
+        for o in oct_vect:
+            for s in scale_vect:
+                newSettings=BRISK()
+                newSettings.thresh.data=t
+                newSettings.octaves.data=o
+                newSettings.patternScale.data=s
+                BRISK_Messages.append(newSettings)
+    return BRISK_Messages
 def getSIFTParameters():
     SIFT_Messages=[]
     nFeatures=10000
@@ -112,7 +171,50 @@ def getSIFTParameters():
                     SIFT_Messages.append(SIFTsettings)
     return SIFT_Messages
 
-
+def getAKAZEParameters():
+    AKAZE_Messages=[]
+    offset = [1.60]
+    derFactor=[1.5]
+    omax = [4]
+    nsublevels = [4]
+    dthresh = [0.0003]
+    min_dthreshold = [0.000001]
+    patternSize = [10]
+    descriptor = [0]  #0-5
+    diffusivity = [0] #0-3
+    sderivatives = [1.0]
+    kcontrast = [0.001]
+    kcontrast_percentile = [0.7]
+    kcontrast_bins =[300]
+    for off in offset:
+        for der in derFactor:
+            for m in omax:
+                for subl in nsublevels:
+                    for thresh in dthresh:
+                        for mi in min_dthreshold:
+                            for pat in patternSize:
+                                for desc in descriptor:
+                                    for diff in diffusivity:
+                                        for s in sderivatives:
+                                            for kcon in kcontrast:
+                                                for kper in kcontrast_percentile:
+                                                    for kbin in kcontrast_bins:
+                                                        newSettings = AKAZE()
+                                                        newSettings.offset.data = off
+                                                        newSettings.derivative_factor.data=der
+                                                        newSettings.omax.data = m
+                                                        newSettings.sublevels.data = subl
+                                                        newSettings.dthreshold.data = thresh
+                                                        newSettings.minthresh.data = mi
+                                                        newSettings.patternSize.data=pat
+                                                        newSettings.descriptor.data = desc
+                                                        newSettings.diffusivity.data = diff
+                                                        newSettings.sderivative.data = s
+                                                        newSettings.kcontrast.data = kcon
+                                                        newSettings.kcontrast_percentile.data = kper
+                                                        newSettings.kcontrast_nbins.data = kbin
+                                                        AKAZE_Messages.append(newSettings)
+    return AKAZE_Messages
 
 from bumbleDataSet import bumbleDataSetNode
 
@@ -150,6 +252,10 @@ class FeaturesAnalysis:
                 self.extract = rospy.ServiceProxy(self.extractServiceName,extractORB)
             elif(self.detType=="SURF"):
                 self.extract=rospy.ServiceProxy(self.extractServiceName,extractSURF)
+            elif(self.detType=="AKAZE"):
+                self.extract=rospy.ServiceProxy(self.extractServiceName,extractAKAZE)
+            elif(self.detType=="BRISK"):
+                self.extract=rospy.ServiceProxy(self.extractServiceName,extractBRISK)
         except rospy.ServiceException as exc:
             print("Service did not process request: " + str(exc))
         ##set xml File
@@ -176,6 +282,12 @@ class FeaturesAnalysis:
         elif(self.detType=="SURF"):
             settings=getSURFParameters()
             defaultMessage=extractSURFRequest()
+        elif(self.detType=="AKAZE"):
+            settings=getAKAZEParameters()
+            defaultMessage=extractAKAZERequest()
+        elif(self.detType=="BRISK"):
+            settings=getBRISKParameters()
+            defaultMessage=extractBRISKRequest()
         endSeq = False
         ind=0
         while(not endSeq):

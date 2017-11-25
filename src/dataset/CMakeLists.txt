@@ -9,13 +9,13 @@ set(CMAKE_VERBOSE_MAKEFILE TRUE)
 include(${CMAKE_SOURCE_DIR}/cmake/StructuresConfig.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/OpenCVConfig.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/vSLAM_FrontEndConfig.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/AKAZEConfig.cmake)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 
 
 find_package(Boost REQUIRED)
-
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -74,6 +74,8 @@ find_package(catkin REQUIRED COMPONENTS
    FAST.msg
    SIFT.msg
    SURF.msg
+   AKAZE.msg
+   BRISK.msg
 )
 
 ## Generate services in the 'srv' folder
@@ -85,6 +87,8 @@ find_package(catkin REQUIRED COMPONENTS
    extractSIFT.srv
    extractORB.srv
    extractSURF.srv
+   extractAKAZE.srv
+   extractBRISK.srv
    updateSettings.srv
    rectifiedSettings.srv
    stereoInliers.srv
@@ -146,6 +150,7 @@ catkin_package(
 
 link_directories(${Structures_LIBRARIES_DIR})
 link_directories(${vSLAM_FrontEnd_LIBRARIES_DIR})
+link_directories(${AKAZE_LIBRARIES_DIR})
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
@@ -158,6 +163,7 @@ include_directories(
   ${Structures_INCLUDE_DIRS}
   ${catkin_INCLUDE_DIRS}
   ${vSLAM_FrontEnd_INCLUDE_DIRS}
+  ${AKAZE_INCLUDE_DIRS}
 )
 
 #add_executable(data_node src/data_node.cpp)
@@ -184,12 +190,14 @@ set(cameraSources src/simpleCamera.cpp)
 ## The recommended prefix ensures that target names across packages don't collide
 add_executable(extractNode src/extractNode.cpp src/extractManager.cpp ${cameraSources})
 add_dependencies(extractNode ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+
 target_link_libraries(extractNode 
 	${OpenCV_LIBS}
 	${Structures_LIBS}
 	${Boost_LIBRARIES}
 	${catkin_LIBRARIES}
 	${vSLAM_FrontEnd_LIBS}
+	${AKAZE_LIBS}
 )
 
 ## Rename C++ executable without prefix

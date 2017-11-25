@@ -8,6 +8,8 @@
 #include "vSLAM_FrontEnd/StereoFront/StereoCamera.hpp"
 #include "vSLAM_FrontEnd/Detection/OrbDetector.hpp"
 #include "vSLAM_FrontEnd/Detection/FastDetector.hpp"
+#include "vSLAM_FrontEnd/Detection/AkazeDetector.hpp"
+//#include "vSLAM_FrontEnd/Detection/KazeDetector.hpp"
 
 #include "vSLAM_FrontEnd/StereoFront/Matching.hpp"
 #include <std_msgs/String.h>
@@ -20,9 +22,13 @@
 #include <dataset/extractSIFT.h>
 #include <dataset/extractORB.h>
 #include <dataset/extractSURF.h>
+#include <dataset/extractAKAZE.h>
+#include <dataset/extractBRISK.h>
+
 
 #include <dataset/simpleCamera.hpp>
 #include <chrono>
+#include <cstring>
 
 #define DEFAULT_SAVE_DIRECTORY "/home/ryan/git/Output"
 
@@ -40,6 +46,9 @@ class extractManager
 		ros::ServiceServer extractSIFTserv;
 		ros::ServiceServer extractORBserv;
 		ros::ServiceServer extractSURFserv;
+		ros::ServiceServer extractAKAZEserv;
+		ros::ServiceServer extractBRISKserv;
+		
 	public:
 		ros::NodeHandle n;
 		simpleCamera bumble;
@@ -49,6 +58,8 @@ class extractManager
 		bool extractSIFT(dataset::extractSIFT::Request &req,dataset::extractSIFT::Response &res);
 		bool extractORB(dataset::extractORB::Request &req,dataset::extractORB::Response &res);
 		bool extractSURF(dataset::extractSURF::Request &req,dataset::extractSURF::Response &res);
+		bool extractAKAZE(dataset::extractAKAZE::Request &req,dataset::extractAKAZE::Response &res);
+		bool extractBRISK(dataset::extractBRISK::Request &req,dataset::extractBRISK::Response &res);
 		bool extract(dataset::extractFeatures::Request &req,dataset::extractFeatures::Response &res);	
 		bool stereoExtract(dataset::stereoInliers::Request &req,dataset::stereoInliers::Response &res);
 		bool update(dataset::updateSettings::Request &req,dataset::updateSettings::Response &res);

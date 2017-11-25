@@ -13,6 +13,64 @@ extractManager::extractManager()
 	extractSIFTserv=n.advertiseService("extract/SIFT",&extractManager::extractSIFT,this);
 	extractORBserv=n.advertiseService("extract/ORB",&extractManager::extractORB,this);
 	extractSURFserv=n.advertiseService("extract/SURF",&extractManager::extractSURF,this);
+	extractAKAZEserv=n.advertiseService("extract/AKAZE",&extractManager::extractAKAZE,this);
+	extractBRISKserv=n.advertiseService("extract/BRISK",&extractManager::extractBRISK,this);
+	
+}
+
+
+bool extractManager::extractBRISK(dataset::extractBRISK::Request& req, dataset::extractBRISK::Response& res)
+{
+	//BRISK::BRISK(int thresh=30, int octaves=3, float patternScale=1.0f)¶
+	
+	
+	int n = int(req.config.thresh.data);
+	int oct = int(req.config.octaves.data);
+	float pattern=float(req.config.patternScale.data);
+	
+	//get the input images
+	
+	cv::Mat leftImage,rightImage;
+	bumble.getImage(std::string(req.imageDir.data),leftImage,true);
+	bumble.getImage(std::string(req.imageDir.data),rightImage,false);
+	
+	//undistort images
+	cv::Mat leftundist,rightundist;
+	bumble.undistort(leftImage,leftundist,true);
+	bumble.undistort(rightImage,rightundist,false);
+	//get ROI images
+	cv::Mat lr,rr;
+	bumble.getROIimage(leftundist,lr,true);
+	bumble.getROIimage(rightundist,rr,false);
+	
+	double average=0;
+	
+	cv::BRISK det(n,oct,pattern);
+	for(int index=0;index<5;index++)
+	{
+		std::vector<cv::KeyPoint> lf;
+		auto start=std::chrono::steady_clock::now();
+		det(lr,cv::Mat(),lf);
+		auto end=std::chrono::steady_clock::now();
+		average+= std::chrono::duration<double,std::nano>(end-start).count();
+	}
+	
+
+	average= average/5.0;
+	//extractfeatures
+	std::vector<cv::KeyPoint> leftF,rightF;
+	det(lr,cv::Mat(),leftF);
+//	//draw features onto image, and save it to a directory
+	
+	if(std::string(req.outputDir.data)!="")
+	{
+		cv::Mat featl;
+		cv::drawKeypoints(lr,leftF,featl);
+		cv::imwrite(std::string(req.outputDir.data),featl);
+	}
+	res.nleft.data=leftF.size();
+	res.averageTime.data=average;
+	return true;
 }
 
 bool extractManager::extractSIFT(dataset::extractSIFT::Request& req, dataset::extractSIFT::Response& res)
@@ -130,11 +188,76 @@ bool extractManager::extractFAST(dataset::extractFAST::Request& req, dataset::ex
 	return true;
 }
 
+
+
+bool extractManager::extractAKAZE(dataset::extractAKAZE::Request& req, dataset::extractAKAZE::Response& res)
+{
+	AKAZEOptions settings;
+	
+	settings.soffset=int(req.config.offset.data);
+	settings.derivative_factor=float(req.config.derivative_factor.data);
+	settings.omax=int(req.config.omax.data);
+	settings.nsublevels=int(req.config.sublevels.data);
+	settings.dthreshold=float(req.config.dthreshold.data);
+	settings.min_dthreshold=float(req.config.minthresh.data);
+	settings.diffusivity=static_cast<DIFFUSIVITY_TYPE>(req.config.diffusivity.data);
+	settings.descriptor=static_cast<DESCRIPTOR_TYPE>(req.config.descriptor.data);
+	settings.descriptor_channels=1;//assume grey image
+	settings.descriptor_pattern_size=int(req.config.patternSize.data);
+	settings.sderivatives=float(req.config.sderivative.data);
+	settings.kcontrast=float(req.config.kcontrast.data);
+	settings.kcontrast_percentile=float(req.config.kcontrast_percentile.data);
+	settings.kcontrast_nbins=size_t(req.config.kcontrast_nbins.data);
+	settings.show_results=false;
+	//get the input images
+	
+	cv::Mat leftImage,rightImage;
+	bumble.getImage(std::string(req.imageDir.data),leftImage,true);
+	bumble.getImage(std::string(req.imageDir.data),rightImage,false);
+	
+	//undistort images
+	cv::Mat leftundist,rightundist;
+	bumble.undistort(leftImage,leftundist,true);
+	bumble.undistort(rightImage,rightundist,false);
+	//get ROI images
+	cv::Mat lr,rr;
+	bumble.getROIimage(leftundist,lr,true);
+	bumble.getROIimage(rightundist,rr,false);
+	
+	settings.img_width=lr.cols;
+	settings.img_height=lr.rows;
+	AkazeDetector a(settings);
+
+	double average=0;
+	for(int index=0;index<5;index++)
+	{
+		std::vector<cv::KeyPoint> lf;
+		auto start=std::chrono::steady_clock::now();
+		a.detect(lr,lf);
+		auto end=std::chrono::steady_clock::now();
+		average+= std::chrono::duration<double,std::nano>(end-start).count();
+	}
+	
+
+	average= average/5.0;
+	//extractfeatures
+	std::vector<cv::KeyPoint> leftF,rightF;
+	a.detect(lr,leftF);
+//	//draw features onto image, and save it to a directory
+	
+	if(std::string(req.outputDir.data)!="")
+	{
+		cv::Mat featl;
+		cv::drawKeypoints(lr,leftF,featl);
+		cv::imwrite(std::string(req.outputDir.data),featl);
+	}
+	res.nleft.data=leftF.size();
+	res.averageTime.data=average;
+	return true;
+}
+
 bool extractManager::extractORB(dataset::extractORB::Request& req, dataset::extractORB::Response& res)
 {
-	
-	//ORB::ORB(int nfeatures=500, float scaleFactor=1.2f, int nlevels=8, int edgeThreshold=31, int firstLevel=0, int WTA_K=2, int scoreType=ORB::HARRIS_SCORE, int patchSize=31
-	
 	int n=int(req.config.maxFeatures.data);
 	double scale=double(req.config.scale.data);
 	int edge =int(req.config.edge.data);
