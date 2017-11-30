@@ -17,7 +17,7 @@ from dataset.srv import extractSURF,extractSURFResponse,extractSURFRequest
 from dataset.srv import extractAKAZE,extractAKAZEResponse,extractAKAZERequest
 from dataset.srv import extractBRISK,extractBRISKResponse,extractBRISKRequest
 from dataset.msg import ORB, FAST, SIFT, SURF, AKAZE, BRISK
-
+import pickle
 
 import numpy as np
 import cv2
@@ -33,12 +33,12 @@ import datetime
 
 def getOrbParameters():
     ORB_Messages = []
-    scaleVect =[0.8,1.0]  # np.linspace(0.8, 1.2, 1, endpoint=True)
-    edgeVect = [5,10, 20]  # np.arange(10, 30, 20)
-    levelVect = [2]  # np.arange(2, 4, 2)
-    wtaVect = [2]  # np.arange(2, 4, 2)
-    scoreVect = [cv2.ORB_HARRIS_SCORE]  # [cv2.ORB_HARRIS_SCORE, cv2.ORB_FAST_SCORE]
-    patchVect =[10]  # np.arange(10, 25, 15)
+    scaleVect =np.linspace(0.8, 2.5, 6, endpoint=True)
+    edgeVect = np.arange(4, 32,4)
+    levelVect = np.arange(2, 6, 2)
+    wtaVect = np.arange(2, 4, 2)
+    scoreVect = [cv2.ORB_HARRIS_SCORE, cv2.ORB_FAST_SCORE]
+    patchVect =np.arange(16, 64, 16)
     for sc in scaleVect:
         for scor in scoreVect:
             for l in levelVect:
@@ -314,8 +314,8 @@ class FeaturesAnalysis:
                 currentDetector += 1
             ###draw and save the images for the [min,avg,stdDev1,and max]
             statsIndexes=[singleFrame.getMinIndex(),singleFrame.getMedianIndex(),singleFrame.getMedianPlusSdIndex(),singleFrame.getMaxIndex()]
-            print(singleFrame.getAsList()[0])
-            print(statsIndexes)
+            #print(singleFrame.getAsList()[0])
+            #print(statsIndexes)
             statsCount=0
             for i in statsIndexes:
                 displayMessage=copy.deepcopy(singleFrame.messages[i])
@@ -326,9 +326,11 @@ class FeaturesAnalysis:
                 cv2.imwrite(imageFileName, img)
                 singleFrame.imageDir.append(imageFileName)
                 statsCount+=1
-            ##append to list and increment
-            extra=copy.deepcopy(singleFrame)##deep copy to double check the data is %100 passed onto the dataset without loss of information
-            output.frames.append(extra)
+
+            #a = a[a.rfind("/"):(len(a) - 4)]
+            pickleName=str(ind)+"_data.p"
+            pickle.dump(singleFrame, open(self.getFullDir() + "/"+pickleName, "wb"))
+            output.frames.append(self.getFullDir() + "/"+pickleName)
             next=nextFrameRequest()
             next.Forward.data=True
             response=self.dataNode.updateFrame(next)
@@ -371,6 +373,7 @@ class FrameFeatures:
         return np.abs(np.array(self.getAsList()[0]) -(self.getMean(0)+ self.getSD(0))).argmin()
 
 
+
 def drawGraph(inDataSetFeatures):
     sty.use("seaborn")
     fig, (ax1, ax2) = plt.subplots(2, 1, sharex=True)
@@ -410,12 +413,70 @@ def drawGraph(inDataSetFeatures):
     ax2.fill_between(x, timTopDev, timMinDev, color='darkblue', alpha=0.2, linewidth=0.0)
     ax2.plot(x, timMed, mew=0.1, marker='o', color='black')
     ax2.set_ylim(ymin=0.0)
-    ax2.set_ylabel("Processing Time")
+    ax2.set_ylabel("Processing Time (ms)")
+    plt.show()
+
+def drawProcVsNfeat(inDataSetFeatures):
+    sty.use("seaborn")
+    averageTime=[]
+    nFeatures=[]
+    for frame in inDataSetFeatures.frames:
+        averageTime.append(frame.getMean(1))
+        nFeatures.append(frame.getMean(0))
+    plt.scatter(nFeatures,averageTime)
+    plt.xlabel("Average Number of Features Extracted")
+    plt.ylabel("Average processing time (ms)")
     plt.show()
 
 
 class DataSetFeatures:
     def __init__(self):
         self.frames = []
+    def drawGraph(self):
         sty.use("seaborn")
+        fig, (ax1, ax2) = plt.subplots(2, 1, sharex=True)
+        x = np.arange(0, len(self.frames), 1)
+        # get left numbers
+        leftMax = []
+        leftMin = []
+        leftTopDev = []
+        leftMinDev = []
+        leftMed = []
+        timMax = []
+
+        timMin = []
+        timTopDev = []
+        timMinDev = []
+        timMed = []
+        LeftListIndex = 0
+        TimeListIndex = 1
+        for i in self.frames:
+            #unpickle object
+            print(i)
+            currentFrame=pickle.load(open(i,"rb"))
+
+            leftMax.append(currentFrame.getMax(LeftListIndex))
+            leftMin.append(currentFrame.getMin(LeftListIndex))
+            leftMed.append(currentFrame.getMean(LeftListIndex))
+            leftTopDev.append(currentFrame.getMean(LeftListIndex) + currentFrame.getSD(LeftListIndex))
+            leftMinDev.append(currentFrame.getMean(LeftListIndex) - currentFrame.getSD(LeftListIndex))
+            timMax.append(currentFrame.getMax(TimeListIndex))
+            timMin.append(currentFrame.getMin(TimeListIndex))
+            timMed.append(currentFrame.getMean(TimeListIndex))
+            timTopDev.append(currentFrame.getMean(TimeListIndex) + currentFrame.getSD(TimeListIndex))
+            timMinDev.append(currentFrame.getMean(TimeListIndex) - currentFrame.getSD(TimeListIndex))
+        ax1.fill_between(x, leftMax, leftMin, color='black', alpha=0.5, linewidth=0.0)
+        ax1.fill_between(x, leftTopDev, leftMinDev, color='darkred', alpha=0.2, linewidth=0.0)
+        ax1.plot(x, leftMed, mew=0.1, marker='o', color='black')
+        ax1.set_ylim(ymin=0.0)
+        ax1.set_ylabel("Number of features")
+
+        ax2.fill_between(x, timMax, timMin, color='black', alpha=0.2, linewidth=0.0)
+        ax2.fill_between(x, timTopDev, timMinDev, color='darkblue', alpha=0.2, linewidth=0.0)
+        ax2.plot(x, timMed, mew=0.1, marker='o', color='black')
+        ax2.set_ylim(ymin=0.0)
+        ax2.set_ylabel("Processing Time (ms)")
+        plt.show()
+        return [fig, (ax1, ax2)]
+
 

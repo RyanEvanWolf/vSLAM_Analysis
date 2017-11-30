@@ -9,6 +9,7 @@
 #include "vSLAM_FrontEnd/Detection/OrbDetector.hpp"
 #include "vSLAM_FrontEnd/Detection/FastDetector.hpp"
 #include "vSLAM_FrontEnd/Detection/AkazeDetector.hpp"
+#include "vSLAM_FrontEnd/Detection/ASiftDetector.hpp"
 //#include "vSLAM_FrontEnd/Detection/KazeDetector.hpp"
 
 #include "vSLAM_FrontEnd/StereoFront/Matching.hpp"

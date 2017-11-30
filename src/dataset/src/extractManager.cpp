@@ -52,7 +52,7 @@ bool extractManager::extractBRISK(dataset::extractBRISK::Request& req, dataset::
 		auto start=std::chrono::steady_clock::now();
 		det(lr,cv::Mat(),lf);
 		auto end=std::chrono::steady_clock::now();
-		average+= std::chrono::duration<double,std::nano>(end-start).count();
+		average+= std::chrono::duration<double,std::milli>(end-start).count();
 	}
 	
 
@@ -105,7 +105,7 @@ bool extractManager::extractSIFT(dataset::extractSIFT::Request& req, dataset::ex
 		auto start=std::chrono::steady_clock::now();
 		siftDetector(lr,cv::Mat(),lf);
 		auto end=std::chrono::steady_clock::now();
-		average+= std::chrono::duration<double,std::nano>(end-start).count();
+		average+= std::chrono::duration<double,std::milli>(end-start).count();
 	}
 	
 
@@ -166,7 +166,7 @@ bool extractManager::extractFAST(dataset::extractFAST::Request& req, dataset::ex
 		auto start=std::chrono::steady_clock::now();
 		bumble.leftDetection->detect(lr,lf);
 		auto end=std::chrono::steady_clock::now();
-		average+= std::chrono::duration<double,std::nano>(end-start).count();
+		average+= std::chrono::duration<double,std::milli>(end-start).count();
 	}
 
 		
@@ -235,7 +235,7 @@ bool extractManager::extractAKAZE(dataset::extractAKAZE::Request& req, dataset::
 		auto start=std::chrono::steady_clock::now();
 		a.detect(lr,lf);
 		auto end=std::chrono::steady_clock::now();
-		average+= std::chrono::duration<double,std::nano>(end-start).count();
+		average+= std::chrono::duration<double,std::milli>(end-start).count();
 	}
 	
 
@@ -290,7 +290,7 @@ bool extractManager::extractORB(dataset::extractORB::Request& req, dataset::extr
 		auto start=std::chrono::steady_clock::now();
 		OrbDetector(lr,cv::Mat(),lf);
 		auto end=std::chrono::steady_clock::now();
-		average+= std::chrono::duration<double,std::nano>(end-start).count();
+		average+= std::chrono::duration<double,std::milli>(end-start).count();
 	}
 	
 
@@ -345,7 +345,7 @@ bool extractManager::extractSURF(dataset::extractSURF::Request &req,dataset::ext
 		auto start=std::chrono::steady_clock::now();
 		SurfDetector(lr,cv::Mat(),lf);
 		auto end=std::chrono::steady_clock::now();
-		average+= std::chrono::duration<double,std::nano>(end-start).count();
+		average+= std::chrono::duration<double,std::milli>(end-start).count();
 	}
 	
 

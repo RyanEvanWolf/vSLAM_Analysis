@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 from FeaturesAnalysis import FeaturesAnalysis, drawGraph
-
+import matplotlib as plt
 import rospy
 import sys
 import cv2
@@ -24,7 +24,4 @@ else:
     data=DataSetDetector.AnalyzeDataSet()
     pickle.dump(data,open(DataSetDetector.getFullDir()+"/Data.p","wb"))
     print("saved to " +DataSetDetector.getFullDir())
-    second =  pickle.load(open(DataSetDetector.getFullDir()+"/Data.p","rb"))
-    print("loaded")
-    drawGraph(second)
 print("finished")
