@@ -4,18 +4,20 @@ project(dataset)
 set(CMAKE_VERBOSE_MAKEFILE TRUE)
 
 
-
-
-include(${CMAKE_SOURCE_DIR}/cmake/StructuresConfig.cmake)
-include(${CMAKE_SOURCE_DIR}/cmake/OpenCVConfig.cmake)
-include(${CMAKE_SOURCE_DIR}/cmake/vSLAM_FrontEndConfig.cmake)
-include(${CMAKE_SOURCE_DIR}/cmake/AKAZEConfig.cmake)
+#include(${CMAKE_SOURCE_DIR}/cmake/StructuresConfig.cmake)
+#include(${CMAKE_SOURCE_DIR}/cmake/OpenCVConfig.cmake)
+#include(${CMAKE_SOURCE_DIR}/cmake/vSLAM_FrontEndConfig.cmake)
+#include(${CMAKE_SOURCE_DIR}/cmake/AKAZEConfig.cmake)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
-
+set(CMAKE_PREFIX_PATH ${CMAKE_SOURCE_DIR}/cmake;${CMAKE_PREFIX_PATH})
+message(STATUS "${CMAKE_PREFIX_PATH}")
 
 find_package(Boost REQUIRED)
+find_package(OpenCV REQUIRED)
+find_package(BasicSLAMStructures REQUIRED CONFIG)
+
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -31,7 +33,9 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   sensor_msgs
   message_generation
+  cv_bridge
 )
+
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -81,7 +85,6 @@ find_package(catkin REQUIRED COMPONENTS
 ## Generate services in the 'srv' folder
  add_service_files(
    FILES
-   nextFrame.srv
    extractFeatures.srv
    extractFAST.srv
    extractSIFT.srv
@@ -92,6 +95,9 @@ find_package(catkin REQUIRED COMPONENTS
    updateSettings.srv
    rectifiedSettings.srv
    stereoInliers.srv
+   resetDataset.srv
+   publishImage.srv
+   getDatasetInfo.srv
 )
 
 ## Generate actions in the 'action' folder
@@ -106,6 +112,7 @@ find_package(catkin REQUIRED COMPONENTS
    DEPENDENCIES
    geometry_msgs
    std_msgs
+   sensor_msgs
  )
 
 ################################################
@@ -148,9 +155,9 @@ catkin_package(
 ## Build ##
 ###########
 
-link_directories(${Structures_LIBRARIES_DIR})
-link_directories(${vSLAM_FrontEnd_LIBRARIES_DIR})
-link_directories(${AKAZE_LIBRARIES_DIR})
+#link_directories(${Structures_LIBRARIES_DIR})
+#link_directories(${vSLAM_FrontEnd_LIBRARIES_DIR})
+#link_directories(${AKAZE_LIBRARIES_DIR})
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
@@ -160,10 +167,10 @@ include_directories(
   /usr/include
   ${Boost_INCLUDE_DIRS}
   ${OpenCV_INCLUDE_DIRS}
-  ${Structures_INCLUDE_DIRS}
+ # ${Structures_INCLUDE_DIRS}
   ${catkin_INCLUDE_DIRS}
-  ${vSLAM_FrontEnd_INCLUDE_DIRS}
-  ${AKAZE_INCLUDE_DIRS}
+ # ${vSLAM_FrontEnd_INCLUDE_DIRS}
+ # ${AKAZE_INCLUDE_DIRS}
 )
 
 #add_executable(data_node src/data_node.cpp)
@@ -180,7 +187,7 @@ include_directories(
 #   src/${PROJECT_NAME}/dataset.cpp
 # )
 
-set(cameraSources src/simpleCamera.cpp)
+#set(cameraSources src/simpleCamera.cpp)
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
@@ -188,17 +195,17 @@ set(cameraSources src/simpleCamera.cpp)
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-add_executable(extractNode src/extractNode.cpp src/extractManager.cpp ${cameraSources})
-add_dependencies(extractNode ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+#add_executable(extractNode src/extractNode.cpp src/extractManager.cpp ${cameraSources})
+#add_dependencies(extractNode ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
-target_link_libraries(extractNode 
-	${OpenCV_LIBS}
-	${Structures_LIBS}
-	${Boost_LIBRARIES}
-	${catkin_LIBRARIES}
-	${vSLAM_FrontEnd_LIBS}
-	${AKAZE_LIBS}
-)
+#target_link_libraries(extractNode 
+#	${OpenCV_LIBS}
+#	${Structures_LIBS}
+#	${Boost_LIBRARIES}
+#	${catkin_LIBRARIES}
+#	${vSLAM_FrontEnd_LIBS}
+#	${AKAZE_LIBS}
+#)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the

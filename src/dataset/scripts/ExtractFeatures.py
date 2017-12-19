@@ -1,27 +1,23 @@
 #!/usr/bin/env python
-from FeaturesAnalysis import FeaturesAnalysis, drawGraph
+from FeaturesAnalysis import FeaturesAnalysis
 import matplotlib as plt
 import rospy
 import sys
 import cv2
 import pickle
 rospy.init_node('ExtractFeaturesNode')
-###set a default output directory for the entire script
-rospy.set_param("/outputDirectory","/media/ryan/Markov/DetectorOutput")
-
-
-if(len(sys.argv)!=4):
+if(len(sys.argv)!=3):
     print("invalid input configuration")
     print("should be ->")
-    print("rosrun dataset ExtractFeatures.py datasetRootDirectory(string) DetectorName(string) Display(bool)")
+    print("rosrun dataset ExtractFeatures.py DetectorName(string) Display(bool)")
 else:
-    if(sys.argv[3]=="True"):
-        cv2.namedWindow('Features', cv2.WINDOW_NORMAL)
-        DataSetDetector=FeaturesAnalysis(str(sys.argv[1]),str(sys.argv[2]),True)
-        cv2.destroyAllWindows()
+    if(sys.argv[2]=="True"):
+        #cv2.namedWindow('Features', cv2.WINDOW_NORMAL)
+        DataSetDetector=FeaturesAnalysis(str(sys.argv[1]),True)
+        #cv2.destroyAllWindows()
     else:
-        DataSetDetector = FeaturesAnalysis(str(sys.argv[1]), str(sys.argv[2]), False)
+        DataSetDetector = FeaturesAnalysis(str(sys.argv[1]), False)
     data=DataSetDetector.AnalyzeDataSet()
-    pickle.dump(data,open(DataSetDetector.getFullDir()+"/Data.p","wb"))
-    print("saved to " +DataSetDetector.getFullDir())
+    #pickle.dump(data,open(DataSetDetector.getFullDir()+"/Data.p","wb"))
+    #print("saved to " +DataSetDetector.getFullDir())
 print("finished")

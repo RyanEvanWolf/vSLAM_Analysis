@@ -1,10 +1,9 @@
 import rospy
+from cv_bridge import CvBridge
 import os
 import time
 ##ros general imports
 from std_msgs.msg import Int32, Bool, Int8, Float64,String
-##dataset settings
-from dataset.srv import nextFrame, nextFrameResponse, nextFrameRequest
 
 ##camera settings
 from dataset.srv import rectifiedSettings,rectifiedSettingsResponse,rectifiedSettingsRequest
@@ -16,7 +15,18 @@ from dataset.srv import extractORB,extractORBResponse,extractORBRequest
 from dataset.srv import extractSURF,extractSURFResponse,extractSURFRequest
 from dataset.srv import extractAKAZE,extractAKAZEResponse,extractAKAZERequest
 from dataset.srv import extractBRISK,extractBRISKResponse,extractBRISKRequest
-from dataset.msg import ORB, FAST, SIFT, SURF, AKAZE, BRISK
+
+
+from dataset.msg import FAST, SIFT, SURF, AKAZE, BRISK
+from dataset.srv import resetDataset,resetDatasetResponse,resetDatasetRequest
+from dataset.srv import getDatasetInfo,getDatasetInfoResponse,getDatasetInfoRequest
+from dataset.srv import publishImage,publishImageResponse,publishImageRequest
+
+
+from front_end.msg import ORB
+from front_end.srv import setDetector,setDetectorRequest,setDetectorResponse
+from front_end.srv import detectCurrent,detectCurrentRequest,detectCurrentResponse
+from drawingFunctions import ImageThread
 import pickle
 
 import numpy as np
@@ -27,24 +37,25 @@ import statistics
 import matplotlib.pyplot as plt
 import matplotlib.style as sty
 
+from sensor_msgs.msg import Image
 
 import datetime
 
 
 def getOrbParameters():
     ORB_Messages = []
-    scaleVect =np.linspace(0.8, 2.5, 6, endpoint=True)
-    edgeVect = np.arange(4, 32,4)
-    levelVect = np.arange(2, 6, 2)
-    wtaVect = np.arange(2, 4, 2)
+    scaleVect =np.linspace(1.0, 2.5, 4, endpoint=True)#,8
+    edgeVect = np.arange(2,32,10)#np.arange(2, 32,2)
+    levelVect = np.arange(2, 10, 4)#2,10,2
+    wtaVect = np.arange(2, 4, 1)
     scoreVect = [cv2.ORB_HARRIS_SCORE, cv2.ORB_FAST_SCORE]
-    patchVect =np.arange(16, 64, 16)
+    patchVect =np.arange(32, 64, 32)#16,64,16
     for sc in scaleVect:
-        for scor in scoreVect:
-            for l in levelVect:
+        for pat in patchVect:
+            for ed in edgeVect:
                 for wt in wtaVect:
-                    for ed in edgeVect:
-                        for pat in patchVect:
+                    for l in levelVect:
+                        for scor in scoreVect:
                             newSettings = ORB()
                             newSettings.maxFeatures.data=10000
                             newSettings.scale.data = sc
@@ -103,11 +114,11 @@ def getKAZEParameters():
 
 def getSURFParameters():
     SURF_Messages=[]
-    threshold=[0.8,1.0]
-    nOctaves=[3]
-    nOctavesLayers=[2]
-    extended=[True]
-    upright=[True]
+    threshold=np.linspace(0.8, 2.5, 5, endpoint=True)
+    nOctaves=np.arange(2, 6,2)
+    nOctavesLayers=np.arange(2,6,2)
+    extended=[False,True]
+    upright=[False,True]
     for t in threshold:
         for oct in nOctaves:
             for layers in nOctavesLayers:
@@ -218,126 +229,220 @@ def getAKAZEParameters():
 
 from bumbleDataSet import bumbleDataSetNode
 
+
+
+# class FeaturesAnalysis:
+#     def __init__(self, detectorName, display=True):
+#         self.s=ImageThread("det")
+#         try:
+#             rospy.wait_for_service("/dataset/publishImage", 4)
+#             print("Connected to /dataset/publishImage")
+#             self.publishSrv = rospy.ServiceProxy("/dataset/publishImage",publishImage)
+#         except rospy.ServiceException as exc:
+#             print("Service did not process request: " + str(exc))
+#         try:
+#             rospy.wait_for_service("/dataset/getDatasetInfo", 4)
+#             print("Connected to /dataset/getDatasetInfo")
+#             self.infoSrv = rospy.ServiceProxy("/dataset/getDatasetInfo",getDatasetInfo)
+#         except rospy.ServiceException as exc:
+#             print("Service did not process request: " + str(exc))
+#         try:
+#             rospy.wait_for_service("/dataset/resetDataset", 4)
+#             print("Connected to /dataset/resetDataset")
+#             self.resetSrv = rospy.ServiceProxy("/dataset/resetDataset", resetDataset)
+#         except rospy.ServiceException as exc:
+#             print("Service did not process request: " + str(exc))
+#         self.startTime=time.strftime('%d_%m_%H_%M_%S')
+#         self.detectorName=detectorName
+#         self.wait=False
+#         self.settings=None
+#         if (self.detectorName == "ORB"):
+#             self.extractMessages=getOrbParameters()
+#         self.cvb = CvBridge()
+#         self.lROISub = rospy.Subscriber("/bumblebee/leftROI", Image, self.updatelROI)
+#     def updatelROI(self,message):
+#         latest=copy.deepcopy(self.cvb.imgmsg_to_cv2(message))
+#         ##create detector
+#         print(self.settings)
+#         d = cv2.ORB_create(self.settings.maxFeatures.data,
+#                            self.settings.scale.data,
+#                            self.settings.edge.data,
+#                            self.settings.level.data,
+#                            self.settings.wta.data,
+#                            self.settings.score.data,
+#                            self.settings.patch.data)
+#         kp = d.detect(latest, None)
+#         print(len(kp))
+#         self.s.updateImage(cv2.drawKeypoints(latest, kp, None, color=(0, 255, 0), flags=0))
+#         self.wait=False
+#     def AnalyzeDataSet(self):
+#         output=DataSetFeatures()
+#         r=resetDatasetRequest()
+#         self.resetSrv(r)
+#         time.sleep(0.1)
+#         self.settings = copy.deepcopy(self.extractMessages[0])
+#         next=publishImageRequest()
+#         next.command.data="Next"
+#         self.publishSrv(next)
+#         time.sleep(0.5)
+#         index=0
+#         for i in self.extractMessages:
+#             self.settings=copy.deepcopy(i)
+#             print(str(index)+"/"+str(len(self.extractMessages)))
+#             next = publishImageRequest()
+#             next.command.data = "Current"
+#             self.wait=True
+#             self.publishSrv(next)
+#             while(self.wait):
+#                 time.sleep(0.1)
+#             index=index+1
+
+# print("made stuff")
+#         try:
 class FeaturesAnalysis:
-    def __init__(self,Dataset,detectorName,display=True):
-        self.outRootDirectory=rospy.get_param("/outputDirectory")
-        print(self.outRootDirectory)
+    def __init__(self,detectorName,display=True):
+        try:
+            rospy.wait_for_service("/front_end/setExtractorDetector", 4)
+            print("Connected to /front_end/setExtractorDetector")
+            self.setExtractor = rospy.ServiceProxy("/front_end/setExtractorDetector", setDetector)
+        except rospy.ServiceException as exc:
+            print("Service did not process request: " + str(exc))
+        try:
+            rospy.wait_for_service("/front_end/detectCurrent", 4)
+            print("Connected to /front_end/detectCurrent")
+            self.extractor = rospy.ServiceProxy("/front_end/detectCurrent", detectCurrent)
+        except rospy.ServiceException as exc:
+            print("Service did not process request: " + str(exc))
+        try:
+            rospy.wait_for_service("/dataset/publishImage", 4)
+            print("Connected to /dataset/publishImage")
+            self.publishSrv = rospy.ServiceProxy("/dataset/publishImage",publishImage)
+        except rospy.ServiceException as exc:
+            print("Service did not process request: " + str(exc))
+        try:
+            rospy.wait_for_service("/dataset/getDatasetInfo", 4)
+            print("Connected to /dataset/getDatasetInfo")
+            self.infoSrv = rospy.ServiceProxy("/dataset/getDatasetInfo",getDatasetInfo)
+        except rospy.ServiceException as exc:
+            print("Service did not process request: " + str(exc))
+        try:
+            rospy.wait_for_service("/dataset/resetDataset", 4)
+            print("Connected to /dataset/resetDataset")
+            self.resetSrv = rospy.ServiceProxy("/dataset/resetDataset", resetDataset)
+        except rospy.ServiceException as exc:
+            print("Service did not process request: " + str(exc))
         self.startTime=time.strftime('%d_%m_%H_%M_%S')
-        self.DataSetRoot= Dataset
         self.display=display
-        print(self.DataSetRoot)
-        rospy.set_param("/bumbledataset/rootDirectory", self.DataSetRoot)
-        pubFolder = rospy.Publisher("dataset/root", String, latch=True, queue_size=10)
-        pubFolder.publish(self.DataSetRoot)
-        time.sleep(0.2)  ##waitfor server to setup
-        self.dataNode = bumbleDataSetNode()
-        self.dataSetName=Dataset[Dataset.rfind("/")+1:len(Dataset)]
-        print(self.dataSetName)
-        self.detType=detectorName
-        self.extractServiceName="/extract/"+self.detType
-        try:
-            rospy.wait_for_service("/extract/rectified", 4)
-            print("Connected to extract/rectified")
-            self.extractRectification = rospy.ServiceProxy("/extract/rectified", rectifiedSettings)
-        except rospy.ServiceException as exc:
-            print("Service did not process request: " + str(exc))
-        try:
-            rospy.wait_for_service(self.extractServiceName, 4)
-            print("Connected to "+self.extractServiceName)
-            if(self.detType=="FAST"):
-                self.extract= rospy.ServiceProxy(self.extractServiceName, extractFAST)
-            elif(self.detType=="SIFT"):
-                self.extract = rospy.ServiceProxy(self.extractServiceName, extractSIFT)
-            elif(self.detType=="ORB"):
-                self.extract = rospy.ServiceProxy(self.extractServiceName,extractORB)
-            elif(self.detType=="SURF"):
-                self.extract=rospy.ServiceProxy(self.extractServiceName,extractSURF)
-            elif(self.detType=="AKAZE"):
-                self.extract=rospy.ServiceProxy(self.extractServiceName,extractAKAZE)
-            elif(self.detType=="BRISK"):
-                self.extract=rospy.ServiceProxy(self.extractServiceName,extractBRISK)
-        except rospy.ServiceException as exc:
-            print("Service did not process request: " + str(exc))
-        ##set xml File
-        rectFile = rectifiedSettingsRequest()
-        rectFile.RectifiedXMLdir.data = "/home/ryan/git/Output/Calibration/stereo_ParameterFour.xml"
-        self.extractRectification(rectFile)
-        print("setXMl Rectification Parameters")
-        ##create output Directories
-        if not os.path.exists(self.getFullDir()):
-            os.makedirs(self.getFullDir())
+        self.detectorName=detectorName
+        self.index=0
+        if(self.detectorName=="ORB"):
+            self.extractMessages=getOrbParameters()
+        self.cvb = CvBridge()
+        self.lROISub = rospy.Subscriber("/bumblebee/leftROI", Image, self.updatelROI)
+        self.a=None
+        #if not os.path.exists(self.getFullDir()):
+        #    os.makedirs(self.getFullDir())
+    def updatelROI(self,message):
+        self.a=copy.deepcopy(self.cvb.imgmsg_to_cv2(message))
+        print("newimage")
     def getFullDir(self):
         return self.outRootDirectory+"/"+self.dataSetName+"/"+self.startTime+"_"+self.detType
     def AnalyzeDataSet(self):
         output=DataSetFeatures()
-        if(self.detType=="FAST"):
-            settings=getFastParameters()
-            defaultMessage=extractFASTRequest()
-        elif(self.detType=="SIFT"):
-            settings=getSIFTParameters()
-            defaultMessage=extractSIFTRequest()
-        elif(self.detType=="ORB"):
-            settings=getOrbParameters()
-            defaultMessage=extractORBRequest()
-        elif(self.detType=="SURF"):
-            settings=getSURFParameters()
-            defaultMessage=extractSURFRequest()
-        elif(self.detType=="AKAZE"):
-            settings=getAKAZEParameters()
-            defaultMessage=extractAKAZERequest()
-        elif(self.detType=="BRISK"):
-            settings=getBRISKParameters()
-            defaultMessage=extractBRISKRequest()
-        endSeq = False
-        ind=0
-        while(not endSeq):
-            ##analyze a single image
-            currentDetector=0
-            singleFrame=FrameFeatures()
-            for detectorSettings in settings:
-                outputImageName=self.outRootDirectory+"/tempExtractImage.png"
-                print("["+str(currentDetector)+"/"+str(len(settings)-1)+"]"+self.dataNode.data.getStatusString() + "--" + self.dataNode.data.getCurrentDir())
-                defaultMessage.config=detectorSettings
-                defaultMessage.imageDir.data=self.dataNode.data.getCurrentDir()
-                if(self.display):
-                    defaultMessage.outputDir.data=outputImageName
-                else:
-                    defaultMessage.outputDir.data=""
-                t=copy.deepcopy(defaultMessage)
-                singleFrame.messages.append(t)##need a deep copy for some reason
-                reply=self.extract(defaultMessage)
-                if(self.display):
-                    img = cv2.imread(outputImageName, cv2.IMREAD_COLOR)
-                    cv2.imshow('Features', img)
-                    cv2.waitKey(1)
-                singleFrame.responses.append(reply)
-                currentDetector += 1
-            ###draw and save the images for the [min,avg,stdDev1,and max]
-            statsIndexes=[singleFrame.getMinIndex(),singleFrame.getMedianIndex(),singleFrame.getMedianPlusSdIndex(),singleFrame.getMaxIndex()]
-            #print(singleFrame.getAsList()[0])
-            #print(statsIndexes)
-            statsCount=0
-            for i in statsIndexes:
-                displayMessage=copy.deepcopy(singleFrame.messages[i])
-                displayMessage.outputDir.data=outputImageName
-                self.extract(displayMessage)
-                img = cv2.imread(outputImageName, cv2.IMREAD_COLOR)
-                imageFileName = self.getFullDir() + "/" + str(ind) + "_" + str(statsCount) + ".ppm"
-                cv2.imwrite(imageFileName, img)
-                singleFrame.imageDir.append(imageFileName)
-                statsCount+=1
-
-            #a = a[a.rfind("/"):(len(a) - 4)]
-            pickleName=str(ind)+"_data.p"
-            pickle.dump(singleFrame, open(self.getFullDir() + "/"+pickleName, "wb"))
-            output.frames.append(self.getFullDir() + "/"+pickleName)
-            next=nextFrameRequest()
-            next.Forward.data=True
-            response=self.dataNode.updateFrame(next)
-            if(response.Status.data=="End"):
-                endSeq=True
-            ind+=1
-        return output
+        r=resetDatasetRequest()
+        self.resetSrv(r)
+        set = setDetectorRequest()
+        set.Name.data = "ORB"
+        set.orbConfig = self.extractMessages[0]
+        self.setExtractor(set)
+        time.sleep(0.1)
+        next=publishImageRequest()
+        next.command.data="Next"
+        self.publishSrv(next)
+        time.sleep(0.5)
+        for i in self.extractMessages:
+            print(i)
+            next = publishImageRequest()
+            next.command.data = "Current"
+            self.publishSrv(next)
+            time.sleep(0.5)
+            set.orbConfig=self.extractMessages[0]
+            set.detection=True
+            self.setExtractor(set)
+            time.sleep(0.1)
+            a=detectCurrentRequest()
+            result=self.extractor(a)
+            print(result)
+            time.sleep(3)
+        return "a"
+    #     if(self.detType=="FAST"):
+    #         settings=getFastParameters()
+    #         defaultMessage=extractFASTRequest()
+    #     elif(self.detType=="SIFT"):
+    #         settings=getSIFTParameters()
+    #         defaultMessage=extractSIFTRequest()
+    #     elif(self.detType=="ORB"):
+    #         settings=getOrbParameters()
+    #         defaultMessage=extractORBRequest()
+    #     elif(self.detType=="SURF"):
+    #         settings=getSURFParameters()
+    #         defaultMessage=extractSURFRequest()
+    #     elif(self.detType=="AKAZE"):
+    #         settings=getAKAZEParameters()
+    #         defaultMessage=extractAKAZERequest()
+    #     elif(self.detType=="BRISK"):
+    #         settings=getBRISKParameters()
+    #         defaultMessage=extractBRISKRequest()
+    #     endSeq = False
+    #     ind=0
+    #     while(not endSeq):
+    #         ##analyze a single image
+    #         currentDetector=0
+    #         singleFrame=FrameFeatures()
+    #         for detectorSettings in settings:
+    #             outputImageName=self.outRootDirectory+"/tempExtractImage.png"
+    #             print("["+str(currentDetector)+"/"+str(len(settings)-1)+"]"+self.dataNode.data.getStatusString() + "--" + self.dataNode.data.getCurrentDir())
+    #             defaultMessage.config=detectorSettings
+    #             defaultMessage.imageDir.data=self.dataNode.data.getCurrentDir()
+    #             if(self.display):
+    #                 defaultMessage.outputDir.data=outputImageName
+    #             else:
+    #                 defaultMessage.outputDir.data=""
+    #             t=copy.deepcopy(defaultMessage)
+    #             singleFrame.messages.append(t)##need a deep copy for some reason
+    #             reply=self.extract(defaultMessage)
+    #             if(self.display):
+    #                 img = cv2.imread(outputImageName, cv2.IMREAD_COLOR)
+    #                 cv2.imshow('Features', img)
+    #                 cv2.waitKey(1)
+    #             singleFrame.responses.append(reply)
+    #             currentDetector += 1
+    #         ###draw and save the images for the [min,avg,stdDev1,and max]
+    #         statsIndexes=[singleFrame.getMinIndex(),singleFrame.getMedianIndex(),singleFrame.getMedianPlusSdIndex(),singleFrame.getMaxIndex()]
+    #         #print(singleFrame.getAsList()[0])
+    #         #print(statsIndexes)
+    #         statsCount=0
+    #         for i in statsIndexes:
+    #             displayMessage=copy.deepcopy(singleFrame.messages[i])
+    #             displayMessage.outputDir.data=outputImageName
+    #             self.extract(displayMessage)
+    #             img = cv2.imread(outputImageName, cv2.IMREAD_COLOR)
+    #             imageFileName = self.getFullDir() + "/" + str(ind) + "_" + str(statsCount) + ".ppm"
+    #             cv2.imwrite(imageFileName, img)
+    #             singleFrame.imageDir.append(imageFileName)
+    #             statsCount+=1
+    #
+    #         #a = a[a.rfind("/"):(len(a) - 4)]
+    #         pickleName=str(ind)+"_data.p"
+    #         pickle.dump(singleFrame, open(self.getFullDir() + "/"+pickleName, "wb"))
+    #         output.frames.append(self.getFullDir() + "/"+pickleName)
+    #         next=nextFrameRequest()
+    #         next.Forward.data=True
+    #         response=self.dataNode.updateFrame(next)
+    #         if(response.Status.data=="End"):
+    #             endSeq=True
+    #         ind+=1
+    #     return output
 
 class FrameFeatures:
     def __init__(self):
@@ -374,47 +479,6 @@ class FrameFeatures:
 
 
 
-def drawGraph(inDataSetFeatures):
-    sty.use("seaborn")
-    fig, (ax1, ax2) = plt.subplots(2, 1, sharex=True)
-    x = np.arange(0, len(inDataSetFeatures.frames), 1)
-    # get left numbers
-    leftMax = []
-    leftMin = []
-    leftTopDev = []
-    leftMinDev = []
-    leftMed = []
-    timMax=[]
-
-    timMin=[]
-    timTopDev=[]
-    timMinDev=[]
-    timMed=[]
-    LeftListIndex=0
-    TimeListIndex=1
-    for i in inDataSetFeatures.frames:
-        leftMax.append(i.getMax(LeftListIndex))
-        leftMin.append(i.getMin(LeftListIndex))
-        leftMed.append(i.getMean(LeftListIndex))
-        leftTopDev.append(i.getMean(LeftListIndex) + i.getSD(LeftListIndex))
-        leftMinDev.append(i.getMean(LeftListIndex) - i.getSD(LeftListIndex))
-        timMax.append(i.getMax(TimeListIndex))
-        timMin.append(i.getMin(TimeListIndex))
-        timMed.append(i.getMean(TimeListIndex))
-        timTopDev.append(i.getMean(TimeListIndex) + i.getSD(TimeListIndex))
-        timMinDev.append(i.getMean(TimeListIndex) - i.getSD(TimeListIndex))
-    ax1.fill_between(x, leftMax, leftMin, color='black', alpha=0.5, linewidth=0.0)
-    ax1.fill_between(x, leftTopDev, leftMinDev, color='darkred', alpha=0.2, linewidth=0.0)
-    ax1.plot(x, leftMed, mew=0.1, marker='o', color='black')
-    ax1.set_ylim(ymin=0.0)
-    ax1.set_ylabel("Number of features")
-
-    ax2.fill_between(x, timMax, timMin, color='black', alpha=0.2, linewidth=0.0)
-    ax2.fill_between(x, timTopDev, timMinDev, color='darkblue', alpha=0.2, linewidth=0.0)
-    ax2.plot(x, timMed, mew=0.1, marker='o', color='black')
-    ax2.set_ylim(ymin=0.0)
-    ax2.set_ylabel("Processing Time (ms)")
-    plt.show()
 
 def drawProcVsNfeat(inDataSetFeatures):
     sty.use("seaborn")
@@ -478,5 +542,33 @@ class DataSetFeatures:
         ax2.set_ylabel("Processing Time (ms)")
         plt.show()
         return [fig, (ax1, ax2)]
+    def getBestDetectorsSettings(self):
+        #define best detectors settings as Max,0.9Max, 0.8Max,0.7Max,stdDev,Mean
+        max=[]
+        max9=[]
+        max8=[]
+        max7=[]
+        maxdev=[]
+        maxmean=[]
+        for frameIndex in self.frames:
+            print("loading from ",frameIndex)
+            currentFrame = pickle.load(open(frameIndex, "rb"))
+            nfeatures=currentFrame.getAsList()[0]
+            maximumFeaturesFound=currentFrame.getMax(0)
+            stdDev_mean=currentFrame.getSD(0)+currentFrame.getMean(0)
+            ##get the index numbers
+            maxIndex = currentFrame.getMaxIndex()
+            max9Index = np.abs(np.array(nfeatures) - 0.9*maximumFeaturesFound).argmin()
+            max8Index= np.abs(np.array(nfeatures) - 0.8*maximumFeaturesFound).argmin()
+            max7Index=np.abs(np.array(nfeatures) - 0.7*maximumFeaturesFound).argmin()
+            maxdevIndex=currentFrame.getMedianPlusSdIndex()
+            meanIndex=currentFrame.getMedianIndex()
+            max.append([currentFrame.messages[maxIndex],currentFrame.responses[maxIndex]])
+            max9.append([currentFrame.messages[max9Index],currentFrame.responses[max9Index]])
+            max8.append([currentFrame.messages[max8Index],currentFrame.responses[max8Index]])
+            max7.append([currentFrame.messages[max7Index],currentFrame.responses[max7Index]])
+            maxdev.append([currentFrame.messages[maxdevIndex],currentFrame.responses[maxdevIndex]])
+            maxmean.append([currentFrame.messages[meanIndex],currentFrame.responses[meanIndex]])
+        return [max,max9,max8,max7,maxdev,maxmean]
 
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from bumbleDataSet import bumbleDataSet
+from bumbleDataSet import bumbleDataSet,bumbleDataSetNode
 
 ##Ros specific imports
 import rospy
@@ -17,6 +17,17 @@ from Queue import Queue
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QTabWidget, QFormLayout, QLineEdit,QCheckBox, QComboBox
 from PyQt5.QtCore import pyqtSlot, QThread, QObject, pyqtSignal, QMutex, QSettings
 from PyQt5.QtGui import QKeyEvent
+import cv2
+
+from dataset.srv import loadDataSet,loadDataSetRequest,loadDataSetResponse
+from dataset.srv import nextFrame, nextFrameResponse, nextFrameRequest
+
+from front_end.srv import setDetector,setDetectorResponse,setDetectorRequest
+from front_end.msg import ORB,StereoFrame
+
+
+
+from drawingFunctions import stereoDrawing
 
 
 class mainApp(QWidget):
@@ -38,7 +49,6 @@ class mainApp(QWidget):
 
         self.node = rospy.init_node('dataset_node')
         self.initUI()
-        self.data=bumbleDataSet()
         self.show()
         self.worker.start()
     def initUI(self):
@@ -68,6 +78,7 @@ class workerClass(Thread):
         super(workerClass,self).__init__()
         self.settingsUpdate=Queue()
         self.commands=Queue()
+        self.data = bumbleDataSet()
     def run(self):
         alive=True
         while(alive):
@@ -96,9 +107,72 @@ class workerClass(Thread):
         else:
             print("invalid command received")
 
+global receivedData
+global count
+global feedback
+def callback(data):
+    global receivedData
+    global count
+    global feedback
+    count= count+1
+    print("recived packet NUMBER",count)
+    feedback.drawMatches(data.matches)
+    receivedData=True
 
 if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    main = mainApp()
-    main.data.loadFiles(sys.argv[1])
-    app.exec_()
+    rospy.init_node('DataSet')
+
+    receivedData = False
+    count = 0
+    feedback = stereoDrawing("bumblebee/leftROI", "bumblebee/rightROI", "bumblebee/leftRectified",
+                             "bumblebee/rightRectified", "front_end/ROIleft", "front_end/ROIright")
+    #app = QApplication(sys.argv)
+    #main = mainApp()
+    ##main.worker.data.loadFiles(sys.argv[1])
+    #app.exec_()
+    dataNode = bumbleDataSetNode()
+    rospy.wait_for_service("dataset/loadDataSet", 4)
+    rospy.wait_for_service("front_end/setDetector",4)
+    dataRootSrv=rospy.ServiceProxy("dataset/loadDataSet",loadDataSet)
+    detSrv=rospy.ServiceProxy("front_end/setDetector",setDetector)
+
+    stereoSub=rospy.Subscriber("front_end/stereo",StereoFrame,callback)
+
+    newRoot=loadDataSetRequest()
+    newRoot.dataSetRootPath.data=str(sys.argv[1])
+    dataRootSrv(newRoot)
+
+    time.sleep(0.2)  ##waitfor server to setup
+    print("loaded Dataset "+ str(sys.argv[1]))
+    m = setDetectorRequest()
+    settings=ORB()
+    settings.maxFeatures.data=10000
+    settings.scale.data = 1.5
+    settings.edge.data = 4
+    settings.level.data =3
+    settings.wta.data = 2
+    settings.score.data = cv2.ORB_HARRIS_SCORE
+    settings.patch.data = 16
+    m.orbConfig = settings
+    m.Name.data="ORB"
+    m.detection=True
+    detSrv(m)
+    m.detection=False
+    detSrv(m)
+    time.sleep(1)
+    next = nextFrameRequest()
+    next.Forward.data = True
+    print(dataNode.data.getStatusString())
+    receivedData=False
+    dataNode.updateFrame(next)
+    #while(not receivedData):
+    ##    time.sleep(0.5)
+     #   print("waiting-1")
+    #print(dataNode.data.getStatusString())
+    #receivedData=False
+    #dataNode.updateFrame(next)
+    #while(not receivedData):
+    #    time.sleep(0.5)
+    #    print("waiting-2")
+    print("completed")
+    rospy.spin()
