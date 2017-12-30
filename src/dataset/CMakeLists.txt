@@ -98,6 +98,7 @@ find_package(catkin REQUIRED COMPONENTS
    resetDataset.srv
    publishImage.srv
    getDatasetInfo.srv
+   updateImage.srv
 )
 
 ## Generate actions in the 'action' folder

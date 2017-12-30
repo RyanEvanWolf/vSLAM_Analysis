@@ -213,19 +213,6 @@ class OrbAnalysis(Analysis):
             trajectoryName=outputDirectory+"/"+summaryIndex[0][2]+".p"
             print("save settings trajectory to " + trajectoryName)
             pickle.dump(TrajectorySettings, open(trajectoryName, "wb"))
-        # for i in answers:
-        #     det = cv2.ORB_create(nfeatures=i[0][0].maxFeatures.data,
-        #                          scaleFactor=i[0][0].scale.data,
-        #                          nlevels=i[0][0].level.data,
-        #                          edgeThreshold=i[0][0].edge.data,
-        #                          firstLevel=0,
-        #                          WTA_K=i[0][0].wta.data,
-        #                          scoreType=i[0][0].score.data,
-        #                          patchSize=i[0][0].patch.data)
-        #     ans=det.detect(image[und],None)
-        #     error=len(ans)-i[0][1]
-        #     print(error)
-
 if __name__ == '__main__':
     rospy.init_node('getFeatures')
     if(len(sys.argv)==1):

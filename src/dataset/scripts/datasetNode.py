@@ -121,7 +121,6 @@ def callback(data):
 
 if __name__ == '__main__':
     rospy.init_node('DataSet')
-
     receivedData = False
     count = 0
     feedback = stereoDrawing("bumblebee/leftROI", "bumblebee/rightROI", "bumblebee/leftRectified",

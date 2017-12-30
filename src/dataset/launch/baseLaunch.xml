@@ -1,0 +1,4 @@
+<launch>
+  <node name="dataset" pkg="dataset" type="bumbleDataSet.py" output="screen" args="/home/ryan/DataSets/SortedDataSets/D4" />
+  <node name="bumblebee_configuration" pkg="bumblebee" type="bumblebee_config_node" output="screen"/>
+</launch>

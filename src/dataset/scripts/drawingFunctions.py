@@ -25,8 +25,6 @@ class stereoDrawing():
 
         req=getOffsetRequest()
         self.info=self.getinfoServ(req)
-
-
     def updatelROI(self,message):
         self.MATlroi=copy.deepcopy(self.cvb.imgmsg_to_cv2(message))
     def updaterROI(self,message):
@@ -80,3 +78,24 @@ class ImageThread():
             self.imgMutex.acquire()
             self.img=copy.deepcopy(newImage)
             self.imgMutex.release()
+
+class tracking():
+    def __init__(self):
+        self.cvb = CvBridge()
+        self.lROISub = rospy.Subscriber("bumblebee/leftROI", Image, self.update)
+        self.imgList=[]
+        self.outImg=np.zeros(100, dtype=np.uint8)
+        self.outMutex=Lock()
+        self.maskSub=rospy.Subscriber("bumblebee/leftROI", Image, self.updateMask)
+        ##mask to subscribe to
+        ##stereoMatches to subsribe to 
+
+        ##outImage
+        ##window
+    def update(self,message):
+        self.img.append(copy.deepcopy(self.cvb.imgmsg_to_cv2(message)))
+        if(len(self.imgList)>2):
+            self.imgList.pop(0)
+    def updateMask(self,message):
+        print("abc")
+

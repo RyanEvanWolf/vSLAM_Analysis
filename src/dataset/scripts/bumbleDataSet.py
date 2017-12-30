@@ -105,7 +105,8 @@ class bumbleDataSetNode:
         return res
 if __name__ == '__main__':
     rospy.init_node('dataset')
-    if(len(sys.argv)!=2):
+    print(sys.argv)
+    if(len(sys.argv)<2):
         print("Incorrect Parameters Specified")
         print("expected: rosrun dataset bumbleDataSet.py ROOTDIR_OF_DATASET")
         exit(-1)
