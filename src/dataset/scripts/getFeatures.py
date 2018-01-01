@@ -2,10 +2,10 @@
 from dataset.srv import resetDataset,resetDatasetResponse,resetDatasetRequest
 from dataset.srv import getDatasetInfo,getDatasetInfoResponse,getDatasetInfoRequest
 from dataset.srv import publishImage,publishImageResponse,publishImageRequest
-from FeaturesAnalysis import getOrbParameters
+
+from front_end.msg import ORB
 
 import time
-from drawingFunctions import ImageThread
 from sensor_msgs.msg import Image
 import rospy
 import cv2
@@ -17,6 +17,31 @@ import datetime
 import pickle
 import numpy as np
 import statistics
+
+def getOrbParameters():
+    ORB_Messages = []
+    scaleVect =np.linspace(1.0, 2.5, 4, endpoint=True)#,8
+    edgeVect = np.arange(32, 64, 16)#16,64,16
+    levelVect = np.arange(2, 10, 4)#2,10,2
+    wtaVect = np.arange(2, 4, 1)
+    scoreVect = [cv2.ORB_HARRIS_SCORE, cv2.ORB_FAST_SCORE]
+    patchVect =edgeVect
+    for sc in scaleVect:
+        for pat in patchVect:
+            for ed in edgeVect:
+                for wt in wtaVect:
+                    for l in levelVect:
+                        for scor in scoreVect:
+                            newSettings = ORB()
+                            newSettings.maxFeatures.data=10000
+                            newSettings.scale.data = sc
+                            newSettings.edge.data = ed
+                            newSettings.level.data = l
+                            newSettings.wta.data = wt
+                            newSettings.score.data = scor
+                            newSettings.patch.data = pat
+                            ORB_Messages.append(newSettings)
+    return ORB_Messages
 
 defaultSaveOutput="/media/ryan/Markov/DetectorOutput"
 class frameFeatures():
@@ -67,12 +92,12 @@ class datasetFeatures():
             meanIndex=np.abs(np.array(currentFrame.nFound)-mean).argmin()
             ##store the settings in arrays
 
-            max.append([self.settings[maxIndex], currentFrame.nFound[maxIndex],"maxFeatures"])
-            max9.append([self.settings[max9Index], currentFrame.nFound[max9Index],"max9Features"])
-            max8.append([self.settings[max8Index], currentFrame.nFound[max8Index],"max8Features"])
-            max7.append([self.settings[max7Index], currentFrame.nFound[max7Index],"max7Features"])
-            maxdev.append([self.settings[maxdevIndex], currentFrame.nFound[maxdevIndex],"devFeatures"])
-            maxmean.append([self.settings[meanIndex], currentFrame.nFound[meanIndex],"meanFeatures"])
+            max.append([self.settings[maxIndex], currentFrame.nFound[maxIndex],currentFrame.avgTime[maxIndex],"maxFeatures"])
+            max9.append([self.settings[max9Index], currentFrame.nFound[max9Index],currentFrame.avgTime[max9Index],"max9Features"])
+            max8.append([self.settings[max8Index], currentFrame.nFound[max8Index],currentFrame.avgTime[max8Index],"max8Features"])
+            max7.append([self.settings[max7Index], currentFrame.nFound[max7Index],currentFrame.avgTime[max7Index],"max7Features"])
+            maxdev.append([self.settings[maxdevIndex], currentFrame.nFound[maxdevIndex],currentFrame.avgTime[maxdevIndex],"devFeatures"])
+            maxmean.append([self.settings[meanIndex], currentFrame.nFound[meanIndex],currentFrame.avgTime[meanIndex],"meanFeatures"])
         return [max,max9,max8,max7,maxdev,maxmean]
 
 class Analysis():
@@ -98,10 +123,9 @@ class Analysis():
             self.resetSrv(r)
         except rospy.ServiceException as exc:
             print("Service did not process request: " + str(exc))
-        self.original = ImageThread("original")
+        #self.original = ImageThread("original")
         self.cvb = CvBridge()
-        self.ROISub = rospy.Subscriber("b"
-                                       "umblebee/leftROI", Image, self.update)
+        self.ROISub = rospy.Subscriber("bumblebee/leftROI", Image, self.update)
         self.settings=None
         self.latest=None
         self.wait=None
@@ -165,7 +189,7 @@ class OrbAnalysis(Analysis):
                 currentFrame.nFound.append(len(kp))
                 currentFrame.avgTime.append(average)
                 img2 = cv2.drawKeypoints(self.latest, kp, None, color=(0, 255, 0), flags=0)
-                self.original.updateImage(img2)
+                #self.original.updateImage(img2)
                 print("["+str(imagecount)+"]["+str(detectorCount) + "]/" + str(len(getOrbParameters())))
                 detectorCount = detectorCount + 1
             fileName=frameOutputDir+"/"+str(imagecount)+"_frameData.p"
@@ -183,7 +207,8 @@ class OrbAnalysis(Analysis):
             print("data sequence Reset")
             imgcount=0
             ##make new folders
-            dataSequenceFolder=outputDirectory+"/"+summaryIndex[0][2]
+            dataSequenceFolder=outputDirectory+"/"+summaryIndex[0][3]
+            ##dataSequenceFolder = outputDirectory + "/" + summaryIndex[0][2]##BACKUP
             print("saving to "+dataSequenceFolder)
             if not os.path.exists(dataSequenceFolder):
                 os.makedirs(dataSequenceFolder)
@@ -205,12 +230,12 @@ class OrbAnalysis(Analysis):
                                         patchSize=frameSummaryIndex[0].patch.data)
                 kp = det.detect(self.latest, None)
                 img2 = cv2.drawKeypoints(a.latest, kp, None, color=(20, 255, 10), flags=0)
-                self.original.updateImage(img2)
-                print(frameSummaryIndex[2]+"//"+str(imgcount))
+                #self.original.updateImage(img2)
+                print(frameSummaryIndex[3]+"//"+str(imgcount))###was index 2
                 filename=dataSequenceFolder+"/img_"+str(imgcount)+".ppm"
                 cv2.imwrite(filename,img2)
                 imgcount=imgcount +1
-            trajectoryName=outputDirectory+"/"+summaryIndex[0][2]+".p"
+            trajectoryName=outputDirectory+"/"+summaryIndex[0][3]+".p"####was index 2 instead of 3
             print("save settings trajectory to " + trajectoryName)
             pickle.dump(TrajectorySettings, open(trajectoryName, "wb"))
 if __name__ == '__main__':
