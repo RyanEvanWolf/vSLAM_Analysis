@@ -39,7 +39,7 @@ class DataSetFeatures:
         self.frames = []
 
 class Simulation:
-    def __init__(self,waitTopic,topicType=Bool,extractFile="/media/ryan/Markov/DetectorOutput/D4/31_12_06-27-23-ORB/devFeatures.p"):
+    def __init__(self,waitTopic,topicType=Bool,extractFile="/media/ryan/Markov/DetectorOutput/B1/08_01_20-36-44-ORB/devFeatures.p"):
         self.detSrv = rospy.ServiceProxy("front_end/setDetector", setDetector)
         self.publishSrv = rospy.ServiceProxy("/dataset/publishImage", publishImage)
         self.infoSrv = rospy.ServiceProxy("/dataset/getDatasetInfo", getDatasetInfo)

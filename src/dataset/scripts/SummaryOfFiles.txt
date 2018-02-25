@@ -1,0 +1,5 @@
+ 
+1) bumbleDataSet.py
+    If given a directory to a folder of bumblebee raw recorded images. It can publish the set of images on a ros server.
+    
+    

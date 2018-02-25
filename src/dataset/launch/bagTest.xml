@@ -1,0 +1,12 @@
+
+<launch>
+
+  <node name="dataset" pkg="dataset" type="bumbleDataSet.py" output="screen" args="/home/ryan/DataSets/SortedDataSets/B/B1" />
+  <!--
+  
+  <node name="bumblebee_configuration" pkg="bumblebee" type="bumblebee_config_node" args="/home/ryan/git/Output/Calibration2/Rectified_five_parameter.xml" output="screen"/>
+  <node name="bumblebee_TF" pkg="bumblebee" type="stereoTF_node" args="/home/ryan/git/Output/Calibration2/Rectified_five_parameter.xml" output="screen"/>
+  <node name="bumblebee_node" pkg="bumblebee" type="bumblebee_node.py" output="screen"/ -->
+  <node name="imageBag" pkg="rosbag" type="record" args="--output-prefix=StereoImageBag -e /dataset/(.*)"/>
+  <node name="playback" type="playbackDataset.py" pkg="dataset" args="80 /bumblebee/leftROI/wait" output="screen"/>
+</launch>

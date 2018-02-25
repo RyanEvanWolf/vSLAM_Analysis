@@ -1,0 +1,8 @@
+std_msgs/Bool Forward
+---
+std_msgs/String startImageDir
+std_msgs/String endImageDir
+std_msgs/Int32 nMatches
+std_msgs/Int32 nInliers
+geometry_msgs/Transform delta
+std_msgs/Bool Failed

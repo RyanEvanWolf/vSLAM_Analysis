@@ -147,7 +147,7 @@ class OrbAnalysis(Analysis):
     def __init__(self,detectorName):
         Analysis.__init__(self,detectorName)
     def runTest(self):
-        totalImages=45
+        totalImages=100
         next = publishImageRequest()
         next.command.data = "Next"
         imagecount=0

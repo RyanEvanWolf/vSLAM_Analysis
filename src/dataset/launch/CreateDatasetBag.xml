@@ -1,0 +1,6 @@
+
+<launch>
+  <arg name="outputFolder" default="/home/ryan/git/Output/27Jan"/>
+  <node name="rawImageBag" pkg="rosbag" type="record" args="/tf -e /dataset/currentImage --output-name=$(arg outputFolder)/rawImageBag "/>
+  <node name="playback" type="playbackDataset.py" pkg="dataset" args="150" output="screen"/>
+</launch>

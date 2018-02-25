@@ -79,19 +79,19 @@ class bumbleDataSetNode:
         res=publishImageResponse()
         if(req.command.data=="Next"):
             if(self.data.increment()):
-                newImage=cv2.imread(self.data.getCurrentDir(),cv2.IMREAD_GRAYSCALE)
+                newImage=cv2.imread(self.data.getCurrentDir(),cv2.IMREAD_GRAYSCALE)#cv2.cvtColor(cv2.imread(self.data.getCurrentDir(),cv2.IMREAD_GRAYSCALE),cv2.COLOR_BAYER_BG2RGB)
                 self.pubImage.publish(self.cvb.cv2_to_imgmsg(newImage))
                 res.success=True
             else:
                 print("Error, Dataset at end of sequnce")
                 res.success=False
         elif(req.command.data=="Current"):
-            newImage = cv2.imread(self.data.getCurrentDir(), cv2.IMREAD_GRAYSCALE)
+            newImage =cv2.imread(self.data.getCurrentDir(),cv2.IMREAD_GRAYSCALE)# cv2.cvtColor(cv2.imread(self.data.getCurrentDir(), cv2.IMREAD_GRAYSCALE),cv2.COLOR_BAYER_BG2RGB)
             self.pubImage.publish(self.cvb.cv2_to_imgmsg(newImage))
             res.success = True
         elif(req.command.data=="Previous"):
             if (self.data.decrement()):
-                newImage = cv2.imread(self.data.getCurrentDir(), cv2.IMREAD_GRAYSCALE)
+                newImage = cv2.cvtColor(cv2.imread(self.data.getCurrentDir(), cv2.IMREAD_GRAYSCALE),cv2.COLOR_BAYER_BG2RGB)
                 self.pubImage.publish(self.cvb.cv2_to_imgmsg(newImage))
                 res.success = True
             else:
@@ -112,3 +112,4 @@ if __name__ == '__main__':
         exit(-1)
     manager=bumbleDataSetNode(sys.argv[1])
     rospy.spin()
+
