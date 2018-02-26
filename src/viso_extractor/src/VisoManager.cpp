@@ -1,10 +1,11 @@
  
 #include <viso_extractor/VisoManager.hpp>
 
-VisoManager::VisoManager(std::string lTopic,std::string rTopic,std::string bumblebeeConfig)
+VisoManager::VisoManager(std::string lTopic,std::string rTopic,VisualOdometryStereo::parameters inParam)
 {
   it= new image_transport::ImageTransport(n);
-  
+  odom=cv::Ptr<VisualOdometryStereo>(new VisualOdometryStereo(inParam));
+
   boost::thread OdomThread(boost::bind(&VisoManager::processOdom,this));
 
 	leftSub=it->subscribe(lTopic, 5, &VisoManager::bufferLeft, this);
@@ -61,5 +62,12 @@ void VisoManager::processOdom()
 		rlock.unlock();
     
     std::cout<<"Image Received\n";
+    
+    /*			int32_t width = leftUndist.cols;  
+			int32_t height = leftUndist.rows;
+		
+			uint8_t* left_img_data  = leftUndist.data;
+			uint8_t* right_img_data = rightUndist.data;
+			int32_t dims[] = {width,height,width};*/
   }
 }

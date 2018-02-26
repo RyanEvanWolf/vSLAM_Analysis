@@ -32,23 +32,24 @@
 #include <queue>
 
 #include <string.h>
-
+#include <viso_stereo.h>
 class VisoManager 
 {
   public:
-    VisoManager(std::string lTopic,std::string rTopic,std::string bumblebeeConfig);
+    VisoManager(std::string lTopic,std::string rTopic,VisualOdometryStereo::parameters inParam);
     ros::NodeHandle n;
   private:
+    cv::Ptr<VisualOdometryStereo> odom;
     std::queue<cv::Mat> leftImages,rightImages;
     boost::mutex mutexLImg,mutexRImg;
     boost::condition_variable leftImagesEmpty,rightImagesEmpty;
-    
     image_transport::ImageTransport *it;
     image_transport::Subscriber leftSub;
 		image_transport::Subscriber rightSub;
     void bufferLeft(const sensor_msgs::ImageConstPtr& msg);
     void bufferRight(const sensor_msgs::ImageConstPtr& msg);
     void processOdom();
+    //Subscriber functions
 };
 
 #endif
