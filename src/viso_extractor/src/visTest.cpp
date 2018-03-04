@@ -33,19 +33,18 @@ Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 #include <viso_stereo.h>
 #include <png++/png.hpp>
+#include <opencv2/imgproc.hpp>
+#include <opencv2/features2d.hpp>
+
+
+#include <opencv2/core/core.hpp>
+
+#include <opencv2/highgui/highgui.hpp>
+
 
 using namespace std;
 
 int main (int argc, char** argv) {
-
-  // we need the path name to 2010_03_09_drive_0019 as input argument
-  if (argc<2) {
-    cerr << "Usage: ./viso2 path/to/sequence/2010_03_09_drive_0019" << endl;
-    return 1;
-  }
-
-  // sequence directory
-  string dir = argv[1];
   
   // set most important visual odometry parameters
   // for a full parameter list, look at: viso_stereo.h
@@ -65,41 +64,20 @@ int main (int argc, char** argv) {
   Matrix pose = Matrix::eye(4);
     
   // loop through all frames i=0:372
-  for (int32_t i=0; i<373; i++) {
+  for (int32_t i=0; i<2; i++) {
 
-    // input file names
-    char base_name[256]; sprintf(base_name,"%06d.png",i);
-    string left_img_file_name  = dir + "/I1_" + base_name;
-    string right_img_file_name = dir + "/I2_" + base_name;
-    
-    // catch image read/write errors here
-    try {
-
-      // load left and right input image
-      png::image< png::gray_pixel > left_img(left_img_file_name);
-      png::image< png::gray_pixel > right_img(right_img_file_name);
-
-      // image dimensions
-      int32_t width  = left_img.get_width();
-      int32_t height = left_img.get_height();
-
-      // convert input images to uint8_t buffer
-      uint8_t* left_img_data  = (uint8_t*)malloc(width*height*sizeof(uint8_t));
-      uint8_t* right_img_data = (uint8_t*)malloc(width*height*sizeof(uint8_t));
-      int32_t k=0;
-      for (int32_t v=0; v<height; v++) {
-        for (int32_t u=0; u<width; u++) {
-          left_img_data[k]  = left_img.get_pixel(u,v);
-          right_img_data[k] = right_img.get_pixel(u,v);
-          k++;
-        }
-      }
-
+      cv::Mat l,r;
+      l=cv::imread("/home/ryan/D5_out.png",cv::IMREAD_GRAYSCALE);
+      r=cv::imread("/home/ryan/D5_out.png",cv::IMREAD_GRAYSCALE);
       // status
       cout << "Processing: Frame: " << i;
       
-      // compute visual odometry
-      int32_t dims[] = {width,height,width};
+        int32_t width = l.cols;  
+		  int32_t height = l.rows;
+
+		  uint8_t* left_img_data  = l.data;
+		  uint8_t* right_img_data = r.data;
+		  int32_t dims[] = {width,height,width};
       if (viso.process(left_img_data,right_img_data,dims)) {
       
         // on success, update current pose
@@ -119,12 +97,6 @@ int main (int argc, char** argv) {
       // release uint8_t buffers
       free(left_img_data);
       free(right_img_data);
-
-    // catch image read errors here
-    } catch (...) {
-      cerr << "ERROR: Couldn't read input files!" << endl;
-      return 1;
-    }
   }
   
   // output
@@ -134,3 +106,4 @@ int main (int argc, char** argv) {
   return 0;
 }
 
+ 

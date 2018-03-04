@@ -8,14 +8,9 @@ project(viso_extractor)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 
-
+set(CMAKE_BUILD_TYPE DEBUG)
 set(CMAKE_PREFIX_PATH ${CMAKE_SOURCE_DIR}/cmake;${CMAKE_PREFIX_PATH})
 
-
-
-find_package(libviso REQUIRED CONFIG)
-
-find_package(Boost REQUIRED)
 find_package(OpenCV REQUIRED)
 
 find_package(catkin REQUIRED COMPONENTS
@@ -68,6 +63,12 @@ find_package(catkin REQUIRED COMPONENTS
 ##   * uncomment the generate_messages entry below
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
+add_message_files(
+  FILES 
+    VisoFrame.msg
+    pMatch.msg
+)
+
 ## Generate messages in the 'msg' folder
 # add_message_files(
 #   FILES
@@ -90,10 +91,12 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate added messages and services with any dependencies listed here
-# generate_messages(
-#   DEPENDENCIES
-#   geometry_msgs#   sensor_msgs#   std_msgs
-# )
+generate_messages(
+   DEPENDENCIES
+    geometry_msgs
+    sensor_msgs
+    std_msgs
+ )
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -137,21 +140,18 @@ catkin_package(
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
+
+
+FILE(GLOB LIBVISO2_SRC_FILES "libviso2/src/*.cpp")
+SET(CMAKE_CXX_FLAGS "-msse3")
+
 include_directories(
  include
- ${libviso_INCLUDE_DIRS}
+ libviso2/src
  ${catkin_INCLUDE_DIRS}
 )
 
 
-link_directories(
-  ${libviso_LIBRARIES_DIR}
-)
-
-
-MESSAGE(STATUS "${libviso_LIBRARIES_DIR}")
-MESSAGE(STATUS "${libviso_INCLUDE_DIRS}")
-MESSAGE(STATUS "${libviso_SRC_FILES}")
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
 #   src/${PROJECT_NAME}/viso_extractor.cpp
@@ -166,13 +166,17 @@ MESSAGE(STATUS "${libviso_SRC_FILES}")
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 
-add_executable(viso_node src/viso_node.cpp src/VisoManager.cpp ${libviso_SRC_FILES})
+link_libraries(/usr/local/lib)
+
+add_executable(viso_node src/viso_node.cpp src/VisoManager.cpp ${LIBVISO2_SRC_FILES})
 target_link_libraries(viso_node
+  ${OpenCV_LIBS}
   ${catkin_LIBRARIES}
-  ${libviso_LIBS}
+  boost_system
+  boost_thread
+  png
   )
 add_dependencies(viso_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-
 #add_executable(${PROJECT_NAME}_node src/viso_extractor_node.cpp)
 
 ## Rename C++ executable without prefix

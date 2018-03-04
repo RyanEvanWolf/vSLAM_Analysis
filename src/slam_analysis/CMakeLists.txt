@@ -1,20 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(viso2)
-add_subdirectory(Thirdparty)
-
-include(${CMAKE_SOURCE_DIR}/cmake/StructuresConfig.cmake)
-include(${CMAKE_SOURCE_DIR}/cmake/OpenCVConfig.cmake)
-
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
-
-list(APPEND CMAKE_MODULE_PATH  ${PROJECT_SOURCE_DIR}/cmake})
-
-
-find_package(Boost REQUIRED)
-find_package(Eigen3 REQUIRED)
-
-link_directories(${Structures_LIBRARIES_DIR})
-
+project(slam_analysis)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -23,14 +8,19 @@ link_directories(${Structures_LIBRARIES_DIR})
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
+  bumblebee
+  cv_bridge
+  dataset
   geometry_msgs
+  image_transport
+  message_generation
+  message_runtime
   roscpp
   rospy
+  sensor_msgs
   std_msgs
+  tf
   tf2
-  tf2_ros
-  message_generation
-  bumblebee
 )
 
 ## System dependencies are found with CMake's conventions
@@ -68,34 +58,30 @@ find_package(catkin REQUIRED COMPONENTS
 
 ## Generate messages in the 'msg' folder
 # add_message_files(
- #  FILES
-   
+#   FILES
 #   Message1.msg
 #   Message2.msg
- #)
+# )
 
 ## Generate services in the 'srv' folder
- add_service_files(
-   FILES
-   NextFrame.srv
+# add_service_files(
+#   FILES
 #   Service1.srv
 #   Service2.srv
- )
+# )
 
 ## Generate actions in the 'action' folder
-#add_action_files(
- ##  FILES
- #  NextFrame.action
+# add_action_files(
+#   FILES
+#   Action1.action
 #   Action2.action
-#)
+# )
 
 ## Generate added messages and services with any dependencies listed here
- generate_messages(
-   DEPENDENCIES
-   std_msgs
-   geometry_msgs
-#   geometry_msgs#   sensor_msgs#   std_msgs#   visualization_msgs
-)
+# generate_messages(
+#   DEPENDENCIES
+#   geometry_msgs#   sensor_msgs#   std_msgs
+# )
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -127,16 +113,10 @@ find_package(catkin REQUIRED COMPONENTS
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-  INCLUDE_DIRS
-  include
-  /usr/local/include
-  /usr/include
-  ${Boost_INCLUDE_DIRS}
-  ${OpenCV_INCLUDE_DIRS}
-  ${Structures_INCLUDE_DIRS}
-  LIBRARIES odomViso
-  CATKIN_DEPENDS geometry_msgs roscpp rospy std_msgs tf2 tf2_ros message_runtime bumblebee
-  #DEPENDS png
+#  INCLUDE_DIRS include
+#  LIBRARIES slam_analysis
+#  CATKIN_DEPENDS bumblebee cv_bridge dataset geometry_msgs iamge_transport message_generation message_runtime roscpp rospy sensor_msgs std_msgs tf tf2
+#  DEPENDS system_lib
 )
 
 ###########
@@ -145,33 +125,14 @@ catkin_package(
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
-
 include_directories(
-  include
-  /usr/local/include
-  /usr/include
-  ${Boost_INCLUDE_DIRS}
-  ${OpenCV_INCLUDE_DIRS}
-  ${Structures_INCLUDE_DIRS}
+# include
   ${catkin_INCLUDE_DIRS}
-  ${bumblebee_INCLUDE_DIRS}
-  Thirdparty/libviso2/src
 )
-
-
-add_executable(viso_node src/visoNode.cpp src/visoGenerator.cpp)
-add_dependencies(viso_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(viso_node
-	${catkin_LIBRARIES}
-	${OpenCV_LIBS}
-	${Structures_LIBS}
-	StereoCamera
-	odomViso
-	)
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/viso2.cpp
+#   src/${PROJECT_NAME}/slam_analysis.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -182,7 +143,7 @@ target_link_libraries(viso_node
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-# add_executable(${PROJECT_NAME}_node src/viso2_node.cpp)
+# add_executable(${PROJECT_NAME}_node src/slam_analysis_node.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -239,7 +200,7 @@ target_link_libraries(viso_node
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_viso2.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_slam_analysis.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()

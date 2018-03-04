@@ -20,3 +20,5 @@ Example Usage
 First create a rosbag of stereo images.
 
 
+  roslaunch dataset CreateStereoBag.xml 
+  rosplay 

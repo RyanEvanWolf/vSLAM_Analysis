@@ -17,11 +17,7 @@ FILE(GLOB LIBVISO2_SRC_FILES "src/*.cpp")
 # make release version
 set(CMAKE_BUILD_TYPE Release)
 
-add_library(odomViso ${LIBVISO2_SRC_FILES})
-target_link_libraries(odomViso png)
-
-
 # demo program
-#add_executable(viso2 ${LIBVISO2_SRC_FILES})
-#target_link_libraries (viso2 png)
+add_executable(viso2 ${LIBVISO2_SRC_FILES})
+target_link_libraries (viso2 png)
 
