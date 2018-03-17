@@ -75,7 +75,10 @@ void VisoManager::processOdom()
     std::cout<<rightBuffer.cols<<","<<rightBuffer.rows<<std::endl;
     std::cout<<"-----\n";
     viso_extractor::VisoFrame outMessage;
+    auto end = std::chrono::high_resolution_clock::now();
+    auto start = std::chrono::high_resolution_clock::now();
 		if (odom->process(left_img_data,right_img_data,dims)) {
+        end = std::chrono::high_resolution_clock::now();
         outMessage.success=true;
 				Matrix mot=odom->getMotion();//Eigen matrix ->  (row,column)
 
@@ -112,10 +115,13 @@ void VisoManager::processOdom()
            outMessage.matches.push_back(currentMatch);
          }
       } else {
+        end = std::chrono::high_resolution_clock::now();
         outMessage.success=false;
         std::cout << " ... failed!" << std::endl;
       }
-
+    outMessage.time.data=int(std::chrono::duration_cast<std::chrono::milliseconds>( \
+           end-start \
+    ).count());
     pubOutput.publish(outMessage);
 
   }

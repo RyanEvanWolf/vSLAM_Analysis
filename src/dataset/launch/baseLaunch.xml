@@ -1,12 +1,9 @@
 <launch>
   <arg name="BumblebeeConfigurationFolder" default="/home/ryan/currentTesting/stereoOut"/>
-  <arg name="datasetInputFolder" default="/home/ryan/DataSets/27Jan2017"/>
-  <arg name="outputFolder" default="/home/ryan/git/Output/27Jan2017"/>
+  <arg name="datasetInputFolder" default="/home/ryan/DataSets/raw/auto/1/A"/>
+  <arg name="outputFolder" default="/home/ryan/DataSets/raw/auto/1/A/output"/>
   <arg name="publishTransform" default="False"/>
   <node name="dataset" pkg="dataset" type="bumbleDataSet.py" output="screen" args="$(arg datasetInputFolder)" />
   <node name="bumblebee_configuration" type="bumblebee_configuration.py" output="screen" pkg="bumblebee" args="$(arg BumblebeeConfigurationFolder) bumblebee_configuration $(arg publishTransform)"/>
   <node name="bumblebee" type="bumblebee_node.py" output="screen" pkg="bumblebee" args="bumblebee_configuration"/>
-  <!-- <node name="bumblebee_configuration" pkg="bumblebee" type="bumblebee_config_node" args="/home/ryan/git/Output/Calibration2/Rectified_five_parameter.xml" output="screen"/>
-  <node name="bumblebee_TF" pkg="bumblebee" type="stereoTF_node" args="/home/ryan/git/Output/Calibration2/Rectified_five_parameter.xml" output="screen"/>
-  <node name="bumblebee_node" pkg="bumblebee" type="bumblebee_node.py" output="screen"/>-->
-</launch>
+ </launch>

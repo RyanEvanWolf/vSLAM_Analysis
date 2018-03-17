@@ -11,7 +11,8 @@ from dataset.srv import publishImage,publishImageResponse,publishImageRequest
 from PyQt5.QtWidgets import QApplication
 
 from std_msgs.msg import Bool
-
+##TODO
+###add parameter of max images, otherwise full set
 
 import message_filters
 from sensor_msgs.msg import Image

@@ -1,8 +1,7 @@
 <launch>
-  <arg name="outputFolder" default="/home/ryan/git/Output/27Jan"/>
+  <arg name="outputFolder" default="/home/ryan/DataSets/raw/auto/1/output"/>
   <arg name="bumblebee_name" default="bumblebee"/>
-  <arg name="rawImageInput" default="/home/ryan/git/Output/27Jan/rawImageBag.bag"/>
+  <arg name="rawImageInput" default="/home/ryan/DataSets/raw/auto/1/output/rawImageBag.bag"/>
   <node name="stereoImageBag" pkg="rosbag" type="record" args="/tf -e /$(arg bumblebee_name)/(left|right)/(.*) --output-name=$(arg outputFolder)/stereoImageBag "/>
   <node name="playBackBag" pkg="rosbag" type="play" args="--clock -r 0.5 $(arg rawImageInput)" output="screen" />
-  <!--<node name="playback" type="playbackDataset.py" pkg="dataset" args="150" output="screen"/> -->
 </launch>

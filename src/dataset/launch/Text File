@@ -1,2 +1,0 @@
-  <!--
-  <node name="stereoImageBag" pkg="rosbag" type="record" args="/tf -e /bumblebee_node/(left|right)/(.*) --output-name=$(arg outputFolder)/stereoImageBag "/> --> 
