@@ -1,17 +1,6 @@
 <launch>
-  <arg name="StereoBag" default="/home/ryan/DataSets/raw/complex/output/stereoImageBag.bag"/>
-  <arg name="outputFolder" default="/home/ryan/DataSets/raw/complex/output"/>
+  <arg name="StereoBag" default="/home/ryan/DataSets/raw/auto/1/output/stereoImageBag.bag"/>
+  <arg name="outputFolder" default="/home/ryan/DataSets/raw/auto/1/output"/>
   <node name="VisoBag" pkg="rosbag" type="record" args="--all --output-name=$(arg outputFolder)/visoBag"/>
   <node name="playBackBag" pkg="rosbag" type="play" args="--clock $(arg StereoBag)" output="screen" />
-<!--
-run dataset nodes
-run bumblebee extractor
-run viso configeo
-
-run viso extractor
-
-begin recording topics
-
-begin data playback
--->
 </launch> 

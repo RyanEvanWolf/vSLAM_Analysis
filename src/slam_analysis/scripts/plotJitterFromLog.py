@@ -13,11 +13,14 @@ inputFile=sys.argv[1]
 difference=[]
 with open(inputFile, "r") as ins:
     ins.next()
+    ins.next()
     for line in ins:
         msg=line.split(",")
-        #print(msg[1])
-        difference.append(msg[1])
-        #print(msg)
+        print(msg)
+        try:
+          difference.append(msg[1])
+        except:
+          pass
 ins.close()
 
 plt.plot(difference[1:-1])

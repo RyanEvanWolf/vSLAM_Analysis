@@ -21,6 +21,7 @@ import tf
 
 import rosbag
 
+
 cvb=CvBridge()
 
 def convertHomographyToMsg(homography,TFName="/world"):
@@ -50,7 +51,7 @@ def getMotion(visoList):
     fails=[]
     for index in range(1,len(visoList)):
         if(visoList[index].success):
-            homographies.append(deserialHomography(visoList[index].homography))
+            homographies.append(np.linalg.inv(deserialHomography(visoList[index].homography)))
             fails.append(True)
         else:
             homographies.append(homographies[-1])
@@ -70,7 +71,7 @@ class singleFrame:
   
 
 
-inputBag=rosbag.Bag('/home/ryan/DataSets/raw/complex/output/visoBag.bag')
+inputBag=rosbag.Bag('/home/ryan/DataSets/raw/auto/1/output/visoBag.bag')
 
 leftImages=[]
 rightImages=[]
@@ -89,9 +90,6 @@ for topic,msg,t in inputBag.read_messages(topics=['/viso_extractor/output','/bum
 
 print("topic data extracted")
 MotionData=getMotion(outputData)
-
-print(np.eye(4,dtype=np.float64))
-print(np.eye(4,dtype=np.float64).shape)
 a=tf.transformations.quaternion_from_matrix(np.eye(4,dtype=np.float64))
 
 
@@ -102,6 +100,8 @@ print(a)
 for i in MotionData[1]:
     poses.poses.append(convertHomographyToMsg(i).pose)
 
+
+
 inputBag.close()
 
 
@@ -109,6 +109,13 @@ rospy.init_node("display")
 
 pub=rospy.Publisher("/poses_array",PoseArray,latch=True,queue_size=2)
 pub.publish(poses)
+print("published!")
+###plot the number of fails
+
+plt.figure(100)
+
+plt.plot(MotionData[2])
+plt.show()
 
 
 rospy.spin()

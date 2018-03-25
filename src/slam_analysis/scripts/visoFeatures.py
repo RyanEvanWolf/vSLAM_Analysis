@@ -4,7 +4,7 @@ import cv2
 import sys
 
 import time
-
+import copy
 from cv_bridge import CvBridge
 
 ###common ros messages and imports
@@ -14,46 +14,38 @@ import argparse
 
 import rosbag
 
-
-import numpy as np
 cvb=CvBridge()
 
-logExtension=".LoggedData"
-dataExtension=".rawData"
-
+import numpy as np
 
 from datetime import datetime 
 
 import matplotlib.pyplot as plt
 import matplotlib.style as sty
 
-fileInput=sys.argv[1]
-timePrefix=fileInput.split("/")[-1]
-timePrefix=timePrefix[:timePrefix.rfind(".")]
-######
-##
 
-###calculate the recording stats first
 
-LogFile=fileInput+logExtension
-jitter=[]
-bufferId=[]
 
-print("Fetching Recording Stats")
 
-with open(LogFile,"r") as lFile:
-    ##skip the first data Point and header
-    lFile.next()
-    lFile.next()
-    for line in lFile:
-        msg=line.split(",")
-        jitter.append(float(msg[1])/1000)
-        bufferId.append(float(msg[2]))
+inputBag=rosbag.Bag("/home/ryan/DataSets/raw/auto/1/output/visoBag.bag")
 
-lFile.close()
-print("completed")
+leftImages=[]
+rightImages=[]
+outputData=[]
 
-print("Calculating Viso Stats")
+
+
+
+for topic,msg,t in inputBag.read_messages(topics=['/viso_extractor/output','/bumblebee/left/ROI','/bumblebee/right/ROI']):
+    if(topic=="/viso_extractor/output"):
+        outputData.append(msg)
+    if(topic=="/bumblebee/left/ROI"):
+        leftImages.append(msg)
+    if(topic=="/bumblebee/right/ROI"):
+        rightImages.append(msg)
+
+
+inputBag.close()
 
 CurrentIndex=0
 PreviousIndex=1
@@ -113,110 +105,14 @@ class singleFrame:
             cv2.line(Epi,(int(data[CurrentIndex][featureIndex][LeftIndex].u),int(round(data[CurrentIndex][featureIndex][LeftIndex].v))),
                                 (int(data[CurrentIndex][featureIndex][RightIndex].u)+leftColour.shape[1],int(round(data[CurrentIndex][featureIndex][RightIndex].v))),(255,0,0),1)
         return (leftColour,rightColour,Epi)
-    def getEpiPolarError(self):
-        data=copy.deepcopy(self.getMatches())
-        EpiError=[]
-        for featureIndex in range(0,len(data[0])):
-            e=data[CurrentIndex][featureIndex][LeftIndex].v-data[CurrentIndex][featureIndex][RightIndex].v
-            EpiError.append(e)
-        return EpiError
 
-   
-    
-
-#inputBag=rosbag.Bag("/home/ryan/DataSets/raw/auto/1/output/visoBag.bag")
-
-#leftImages=[]
-#rightImages=[]
-#outputData=[]
+cv2.namedWindow("a",cv2.WINDOW_NORMAL)
 
 
-
-
-#for topic,msg,t in inputBag.read_messages(topics=['/viso_extractor/output','/bumblebee/left/ROI','/bumblebee/right/ROI']):
-    #if(topic=="/viso_extractor/output"):
-        #outputData.append(msg)
-    #if(topic=="/bumblebee/left/ROI"):
-        #leftImages.append(msg)
-    #if(topic=="/bumblebee/right/ROI"):
-        #rightImages.append(msg)
-
-#########
-##calculate motion Fail Statistics
-##get Processing time
-motionFail=[]
-procTime=[]
-
-
-for i in outputData:
-    if(i.success):
-        motionFail.append(True)
-    else:
-        motionFail.append(False)
-    procTime.append(i.time.data)
-
-
-
-
-
-
-
-# for i in range(0,len(leftImages)):
-#     a=singleFrame(leftImages[i],rightImages[i],outputData[i],i)
-#     print(a.nNumber)
-#     cv2.imshow("a",a.left)
-#     cv2.waitKey(1)
-
-#RMS_EPI=[]
-#Matches=[]
-#inputBag.close()
-#for i in range(1,len(leftImages)):
-    #a=singleFrame(leftImages[i],rightImages[i],outputData[i],i)
-    #err=a.getEpiPolarError()
-    #RMS=0
-    #for i in err:
-        #RMS+=np.power(i,2)
-    #RMS_EPI.append(np.sqrt(RMS/len(err)))
-    #Matches.append(len(a.getMatches()[LeftIndex]))
-
-
-
-
-
-
-
-sty.use("seaborn")
-
-###jitter
-plt.figure(100)
-t = range(1,len(jitter)+1)
-plt.plot(t, jitter, 'b-')
-plt.xlabel('Image Frame')
-plt.ylabel('Timestamp Difference (ms)')
-
-
-
-###validate bufferID
-plt.figure(200)
-
-t = range(1,len(bufferId)+1)
-plt.plot(t, bufferId, 'b-')
-plt.xlabel('Image Frame')
-plt.ylabel('Image Buffer ID')
-
-
-
-plt.figure(300)
-plt.plot(motionFail)
-
-plt.figure(400)
-plt.plot(procTime)
-
-#plt.figure()
-#plt.plot(RMS_EPI)
-
-
-#plt.figure()
-#plt.plot(Matches)
-
-plt.show()
+for i in range(0,len(leftImages)):
+    Images=singleFrame(leftImages[i],rightImages[i],outputData[i],i).drawFeatures()
+    cv2.imshow("a",Images[2])
+    cv2.imwrite("/home/ryan/DataSets/raw/auto/1/output/Epi/"+"%05d"%i+".ppm",Images[2])
+    cv2.imwrite("/home/ryan/DataSets/raw/auto/1/output/leftTracks/"+"%05d"%i+".ppm",Images[0])
+    cv2.imwrite("/home/ryan/DataSets/raw/auto/1/output/rightTracks/"+"%05d"%i+".ppm",Images[1])
+    cv2.waitKey(1)

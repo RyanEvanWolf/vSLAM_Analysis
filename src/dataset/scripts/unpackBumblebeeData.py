@@ -25,7 +25,7 @@ with open(inputDirectory,"rb") as f:
         image=image.reshape(2*768,1024)
         #image=cv2.cvtColor(image,cv2.COLOR_BAYER_BG2RGB)
         imageName="%05d.ppm"%int(imageIndex)
-        name="/home/ryan/DataSets/raw/auto/Extracted/"+imageName
+        name="/home/ryan/DataSets/raw/auto/2/Extracted/"+imageName
         cv2.imwrite(name,image)
         print(imageIndex,totalImages)
         ##copy an image into a np array

@@ -54,9 +54,7 @@ class bumbleDataSet:
         return "["+str(self.currentIndex+1)+"/"+str(len(self.filesList))+"]"
     def getCurrentDir(self):
         return self.filesList[self.currentIndex]
-    def getTimeStamps(self):
-        print(self.getCurrentDir())
-        print(self.getCurrentDir().rfind("/"))
+
 
 class bumbleDataSetNode:
     def __init__(self,rootFolder):
