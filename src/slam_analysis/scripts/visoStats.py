@@ -11,16 +11,12 @@ from cv_bridge import CvBridge
 import rospy
 import copy
 import argparse
-
+import os
 import rosbag
 
 
 import numpy as np
 cvb=CvBridge()
-
-logExtension=".LoggedData"
-dataExtension=".rawData"
-
 
 from datetime import datetime 
 
@@ -28,32 +24,20 @@ import matplotlib.pyplot as plt
 import matplotlib.style as sty
 
 fileInput=sys.argv[1]
-timePrefix=fileInput.split("/")[-1]
-timePrefix=timePrefix[:timePrefix.rfind(".")]
-######
-##
 
-###calculate the recording stats first
+bagName=fileInput.split("/")[-1]
+print(bagName)
 
-LogFile=fileInput+logExtension
-jitter=[]
-bufferId=[]
+loopName=bagName[:bagName.rfind(".")]
+loopName=loopName[loopName.find("_"):]
+print(loopName)
 
-print("Fetching Recording Stats")
+#######
+###Calculates libviso results from a rosbag trajectory
 
-with open(LogFile,"r") as lFile:
-    ##skip the first data Point and header
-    lFile.next()
-    lFile.next()
-    for line in lFile:
-        msg=line.split(",")
-        jitter.append(float(msg[1])/1000)
-        bufferId.append(float(msg[2]))
 
-lFile.close()
-print("completed")
 
-print("Calculating Viso Stats")
+####these essentially define Enum type values, but indicate the position in the array
 
 CurrentIndex=0
 PreviousIndex=1
@@ -124,22 +108,22 @@ class singleFrame:
    
     
 
-#inputBag=rosbag.Bag("/home/ryan/DataSets/raw/auto/1/output/visoBag.bag")
+inputBag=rosbag.Bag(sys.argv[1])
 
-#leftImages=[]
-#rightImages=[]
-#outputData=[]
-
-
+leftImages=[]
+rightImages=[]
+outputData=[]
 
 
-#for topic,msg,t in inputBag.read_messages(topics=['/viso_extractor/output','/bumblebee/left/ROI','/bumblebee/right/ROI']):
-    #if(topic=="/viso_extractor/output"):
-        #outputData.append(msg)
-    #if(topic=="/bumblebee/left/ROI"):
-        #leftImages.append(msg)
-    #if(topic=="/bumblebee/right/ROI"):
-        #rightImages.append(msg)
+
+
+for topic,msg,t in inputBag.read_messages(topics=['/viso_extractor/output','/bumblebee/left/ROI','/bumblebee/right/ROI']):
+    if(topic=="/viso_extractor/output"):
+        outputData.append(msg)
+    if(topic=="/bumblebee/left/ROI"):
+        leftImages.append(msg)
+    if(topic=="/bumblebee/right/ROI"):
+        rightImages.append(msg)
 
 #########
 ##calculate motion Fail Statistics
@@ -156,67 +140,46 @@ for i in outputData:
     procTime.append(i.time.data)
 
 
-
-
-
-
-
-# for i in range(0,len(leftImages)):
-#     a=singleFrame(leftImages[i],rightImages[i],outputData[i],i)
-#     print(a.nNumber)
-#     cv2.imshow("a",a.left)
-#     cv2.waitKey(1)
-
-#RMS_EPI=[]
-#Matches=[]
-#inputBag.close()
-#for i in range(1,len(leftImages)):
-    #a=singleFrame(leftImages[i],rightImages[i],outputData[i],i)
-    #err=a.getEpiPolarError()
-    #RMS=0
-    #for i in err:
-        #RMS+=np.power(i,2)
-    #RMS_EPI.append(np.sqrt(RMS/len(err)))
-    #Matches.append(len(a.getMatches()[LeftIndex]))
-
-
-
+RMS_EPI=[]
+Matches=[]
+inputBag.close()
+for i in range(1,len(leftImages)):
+    a=singleFrame(leftImages[i],rightImages[i],outputData[i],i)
+    err=a.getEpiPolarError()
+    RMS=0
+    if(len(err)>0):
+        for featureError in err:
+            RMS+=np.power(featureError,2)
+        RMS=np.sqrt(RMS/len(err))
+    print(i,len(err))
+    RMS_EPI.append(RMS)
+    Matches.append(len(a.getMatches()[LeftIndex]))
 
 
 
 
 sty.use("seaborn")
 
-###jitter
-plt.figure(100)
-t = range(1,len(jitter)+1)
-plt.plot(t, jitter, 'b-')
-plt.xlabel('Image Frame')
-plt.ylabel('Timestamp Difference (ms)')
-
-
-
-###validate bufferID
-plt.figure(200)
-
-t = range(1,len(bufferId)+1)
-plt.plot(t, bufferId, 'b-')
-plt.xlabel('Image Frame')
-plt.ylabel('Image Buffer ID')
-
-
-
 plt.figure(300)
+plt.xlabel("Frame Number")
+plt.ylabel("Success")
+plt.title("Odometry Failure")
 plt.plot(motionFail)
 
-plt.figure(400)
+plt.figure(600)
+plt.xlabel("Frame Number")
+plt.ylabel("Processing Time (ms)")
 plt.plot(procTime)
 
-#plt.figure()
-#plt.plot(RMS_EPI)
+plt.figure(400)
+plt.xlabel("Frame Number")
+plt.ylabel("RMS Epipolar Error")
+plt.plot(RMS_EPI)
 
 
-#plt.figure()
-#plt.plot(Matches)
+plt.figure(500)
+plt.xlabel("Frame Number")
+plt.ylabel("Total Features Tracked")
+plt.plot(Matches)
 
 plt.show()

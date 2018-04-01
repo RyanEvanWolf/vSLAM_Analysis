@@ -4,81 +4,57 @@ import cv2
 import sys
 
 import time
-
-from datetime import datetime 
-
-import matplotlib.pyplot as plt
+import copy
 from cv_bridge import CvBridge
-import numpy as np
 
 ###common ros messages and imports
 import rospy
 import copy
 import argparse
 
-from geometry_msgs.msg import PoseStamped,PoseArray,Quaternion
-import tf
-
 import rosbag
-
 
 cvb=CvBridge()
 
-def convertHomographyToMsg(homography,TFName="/world"):
-    latestMsg=PoseStamped()
-    quat=tf.transformations.quaternion_from_matrix(homography).reshape(1,4)
-    latestMsg.pose.orientation=Quaternion(quat[0,0],quat[0,1],quat[0,2],quat[0,3])
-    latestMsg.pose.position.x=homography[0,3]
-    latestMsg.pose.position.y=homography[1,3]
-    latestMsg.pose.position.z=homography[2,3]
-    latestMsg.header.frame_id=TFName
-    return latestMsg
+import numpy as np
+
+from datetime import datetime 
+
+import matplotlib.pyplot as plt
+import matplotlib.style as sty
 
 
-def deserialHomography(arrayIn):
-    outHomography=np.zeros((4,4),dtype=np.float64)
-    row=0
-    col=0
-    for row in range(0,4):
-        for col in range(0,4):
-            outHomography[row,col]=arrayIn[row*4+col]
-    return outHomography
+fileInput=sys.argv[1]
+outputDirectory=sys.argv[2]
 
-def getMotion(visoList):
-    homographies=[]
-    currentPosition=np.eye(4,dtype=np.float64)
-    Poses=[]
-    fails=[]
-    for index in range(1,len(visoList)):
-        if(visoList[index].success):
-            homographies.append(np.linalg.inv(deserialHomography(visoList[index].homography)))
-            fails.append(True)
-        else:
-            homographies.append(homographies[-1])
-            fails.append(False)
-        currentPosition=currentPosition.dot(homographies[-1])
-        Poses.append(currentPosition)
-    print(len(homographies),len(Poses),len(fails))
-    return (homographies,Poses,fails)
+bagName=fileInput.split("/")[-1]
+print(bagName)
 
-class singleFrame:
-    def __init__(self,lmsg,rmsg,vmsg,frameN):
-        self.left=cvb.imgmsg_to_cv2(lmsg)
-        self.right=cvb.imgmsg_to_cv2(rmsg)
-        self.viso=copy.deepcopy(vmsg)
-        self.nNumber=frameN
-
-  
-
-
-inputBag=rosbag.Bag('/home/ryan/DataSets/raw/auto/1/output/visoBag.bag')
+loopName=bagName[:bagName.rfind(".")]
+loopName=loopName[loopName.find("_"):]
+print(loopName)
 
 leftImages=[]
 rightImages=[]
 outputData=[]
 
 
-print("extracting Topic Data")
+fullOutDirectory=outputDirectory+"/"+loopName
+
+directoryList=[fullOutDirectory,fullOutDirectory+"/Epi",fullOutDirectory+"/leftTracks",fullOutDirectory+"/rightTracks"]
+
+for i in directoryList:
+    if(not os.path.exists(i)):
+        os.makedirs(i)
+
+
+
+
+inputBag=rosbag.Bag(sys.argv[1])
+
+leftImages=[]
+rightImages=[]
+outputData=[]
 
 for topic,msg,t in inputBag.read_messages(topics=['/viso_extractor/output','/bumblebee/left/ROI','/bumblebee/right/ROI']):
     if(topic=="/viso_extractor/output"):
@@ -88,133 +64,75 @@ for topic,msg,t in inputBag.read_messages(topics=['/viso_extractor/output','/bum
     if(topic=="/bumblebee/right/ROI"):
         rightImages.append(msg)
 
-print("topic data extracted")
-MotionData=getMotion(outputData)
-a=tf.transformations.quaternion_from_matrix(np.eye(4,dtype=np.float64))
-
-
-poses=PoseArray()
-poses.header.frame_id="/world"
-
-print(a)
-for i in MotionData[1]:
-    poses.poses.append(convertHomographyToMsg(i).pose)
-
-
 
 inputBag.close()
 
+CurrentIndex=0
+PreviousIndex=1
 
-rospy.init_node("display")
+LeftIndex=0
+RightIndex=1
 
-pub=rospy.Publisher("/poses_array",PoseArray,latch=True,queue_size=2)
-pub.publish(poses)
-print("published!")
-###plot the number of fails
-
-plt.figure(100)
-
-plt.plot(MotionData[2])
-plt.show()
-
-
-rospy.spin()
+class Feature:
+    def __init__(self,u,v,id):
+        self.u=u
+        self.v=v
+        self.id=id
 
 
-'''
-import rospy
-import rosbag
-from geometry_msgs.msg import PoseArray,Transform,TransformStamped,Point
+class singleFrame:
+    def __init__(self,lmsg,rmsg,vmsg,frameN):
+        self.left=cvb.imgmsg_to_cv2(lmsg)
+        self.right=cvb.imgmsg_to_cv2(rmsg)
+        self.viso=copy.deepcopy(vmsg)
+        self.nNumber=frameN
+    def getMatches(self):
+        ###[LeftFeature,RightFeature]
+        currentMatches=[]
+        previousMatches=[]
+        for index in self.viso.matches:
+            currentMatches.append((Feature(index.u1c.data,index.v1c.data,index.i1c.data),
+                                    Feature(index.u2c.data,index.v2c.data,index.i2c.data)))
+            previousMatches.append((Feature(index.u1p.data,index.v1p.data,index.i1p.data),
+                                    Feature(index.u2p.data,index.v2p.data,index.i2p.data)))
+        return (currentMatches,previousMatches)
+    def drawFeatures(self):
+        data=copy.deepcopy(self.getMatches())
+        leftColour=cv2.cvtColor(self.left,cv2.COLOR_GRAY2RGB)
+        rightColour=cv2.cvtColor(self.right,cv2.COLOR_GRAY2RGB)
+        Epi=np.hstack((leftColour, rightColour))
 
-from std_msgs.msg import String,Int32
-from viso2_ros.msg import VisoInfo
-import time
-import tf
-import math
+        for featureIndex in range(0,len(data[0])):
+            ##draw current features on left,right, and epipolar Image
+            cv2.circle(leftColour,(int(data[CurrentIndex][featureIndex][LeftIndex].u),int(data[CurrentIndex][featureIndex][LeftIndex].v)),2,(0,255,0))
+            cv2.circle(rightColour,(int(data[CurrentIndex][featureIndex][RightIndex].u),int(data[CurrentIndex][featureIndex][RightIndex].v)),2,(0,255,0))
+            cv2.circle(Epi,(int(data[CurrentIndex][featureIndex][LeftIndex].u),int(round(data[CurrentIndex][featureIndex][LeftIndex].v))),2,(25,255,120))
+            cv2.circle(Epi,(int(data[CurrentIndex][featureIndex][RightIndex].u)+leftColour.shape[1],int(round(data[CurrentIndex][featureIndex][RightIndex].v))),2,(25,255,120))
+            ##draw previous features on left,right, and epipolar Image
+            cv2.circle(leftColour,(int(data[PreviousIndex][featureIndex][LeftIndex].u),int(data[PreviousIndex][featureIndex][LeftIndex].v)),2,(255,0,0))
+            cv2.circle(rightColour,(int(data[PreviousIndex][featureIndex][RightIndex].u),int(data[PreviousIndex][featureIndex][RightIndex].v)),2,(255,0,0))
+            ##draw Tracked Lines
+            cv2.line(leftColour,(int(data[CurrentIndex][featureIndex][LeftIndex].u),int(data[CurrentIndex][featureIndex][LeftIndex].v)),
+                                (int(data[PreviousIndex][featureIndex][LeftIndex].u),int(data[PreviousIndex][featureIndex][LeftIndex].v)),(255,0,0),1)
+            cv2.line(rightColour,(int(data[CurrentIndex][featureIndex][RightIndex].u),int(data[CurrentIndex][featureIndex][RightIndex].v)),
+                                (int(data[PreviousIndex][featureIndex][RightIndex].u),int(data[PreviousIndex][featureIndex][RightIndex].v)),(255,0,0),1)
 
-from visualization_msgs.msg import Marker
+            #draw Epi Lines
+            cv2.line(leftColour,(int(data[0][featureIndex][0].u),int(data[0][featureIndex][0].v)),
+                                (int(data[1][featureIndex][0].u),int(data[1][featureIndex][0].v)),(255,0,0),1)
 
-rospy.init_node("analyze")
-inBag=rosbag.Bag('/home/ryan/git/Output/visoBag.bag','r')
+            #draw Epi Image
+            cv2.line(Epi,(int(data[CurrentIndex][featureIndex][LeftIndex].u),int(round(data[CurrentIndex][featureIndex][LeftIndex].v))),
+                                (int(data[CurrentIndex][featureIndex][RightIndex].u)+leftColour.shape[1],int(round(data[CurrentIndex][featureIndex][RightIndex].v))),(255,0,0),1)
+        return (leftColour,rightColour,Epi)
 
-
-
-
-test=PoseArray()
-test.header.frame_id="cv"
-
-m=Marker()
-mp=Marker()
-
-pointLocations=[]
-
-topCount=0
-for topic, msg, t in inBag.read_messages():
-    if(topic=="/lib_viso/pose"):
-        test.poses.append(msg.pose)
-        m.points.append(msg.pose.position)#.x,msg.pose.translation.y,msg.pose.translation.z))
-        mp.points.append(msg.pose.position)
-print(len(test.poses))
-a=rospy.Publisher("set",PoseArray,queue_size=10)
-
-
-br=tf.TransformBroadcaster()
-
-toWorld=TransformStamped()
-toWorld.header.frame_id="world"
-toWorld.child_frame_id="cv"
-
-toWorld.transform.translation.x=0
-toWorld.transform.translation.y=0
-toWorld.transform.translation.z=0
-
-toWorld.transform.rotation= tf.transformations.quaternion_from_euler(math.radians(90),math.radians(90),0)
-
-
-m.type=4
-m.action=0
-m.header.frame_id="world"
+cv2.namedWindow("a",cv2.WINDOW_NORMAL)
 
 
-m.scale.x=0.01
-m.scale.y=0.01
-m.scale.z=0.01
-m.color.g=1.0
-m.pose.orientation.w=0
-m.color.a=1
-
-mp.type=6
-mp.action=0
-mp.header.frame_id="world"
-
-
-mp.scale.x=0.01
-mp.scale.y=0.01
-mp.scale.z=0.01
-mp.color.r=1.0
-mp.pose.orientation.w=0
-mp.color.a=1
-
-
-p=rospy.Publisher("mark",Marker,queue_size=10)
-pp=rospy.Publisher("marker2",Marker,queue_size=10)
-p.publish(m)
-pp.publish(mp)
-
-
-
-
-while(not  rospy.is_shutdown()):
-    time.sleep(0.5)
-    m.header.stamp=rospy.Time.now()
-    mp.header.stamp=rospy.Time.now()
-    p.publish(m)
-    pp.publish(mp)
-#    toWorld.header.stamp=rospy.Time.now()
-#    test.header.stamp=rospy.Time.now()
-##    br.sendTransform((0,0,0),toWorld.transform.rotation,toWorld.header.stamp,toWorld.child_frame_id,toWorld.header.frame_id)
-#    a.publish(test)
-
-
-rospy.spin()
-'''
+for i in range(0,len(leftImages)):
+    Images=singleFrame(leftImages[i],rightImages[i],outputData[i],i).drawFeatures()
+    cv2.imshow("a",Images[2])
+    cv2.imwrite(fullOutDirectory+"/Epi/"+"%05d"%i+".ppm",Images[2])
+    cv2.imwrite(fullOutDirectory+"/leftTracks/"+"%05d"%i+".ppm",Images[0])
+    cv2.imwrite(fullOutDirectory+"/rightTracks/"+"%05d"%i+".ppm",Images[1])
+    cv2.waitKey(1)

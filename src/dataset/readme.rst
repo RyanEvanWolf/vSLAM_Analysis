@@ -35,3 +35,15 @@ First create a rosbag of stereo images.
 
   roslaunch dataset CreateStereoBag.xml 
   rosplay 
+  
+  
+  
+To execute in looped mode where a dataset has been split up into individual loops, provide a metaData file as shown in github project gpsData
+
+1) execute a minLaunch.xml where it provides only the stereo processing node and tf transform chain.
+
+roslaunch dataset minLaunch.xml BumblebeeConfigurationFolder:=DIRECTORY_TO_CALIBRATION publishTransform:=True
+
+2) once these have started up, start recording the stereo output topics and saving them to bags, give a track and loop number to select which set of images to use
+
+roslaunch dataset CreateStereoLoop.xml

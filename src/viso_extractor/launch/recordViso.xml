@@ -1,6 +1,8 @@
 <launch>
-  <arg name="StereoBag" default="/home/ryan/DataSets/raw/auto/1/output/stereoImageBag.bag"/>
-  <arg name="outputFolder" default="/home/ryan/DataSets/raw/auto/1/output"/>
-  <node name="VisoBag" pkg="rosbag" type="record" args="--all --output-name=$(arg outputFolder)/visoBag"/>
-  <node name="playBackBag" pkg="rosbag" type="play" args="--clock $(arg StereoBag)" output="screen" />
+  <arg name="TrackNumber" default="1"/>
+  <arg name="LoopNumber" default="1"/>
+  <arg name="StereoBag" default="/media/ryan/DATA/Bags/stereoBag_$(arg TrackNumber)_$(arg LoopNumber).bag"/>
+  <arg name="outputFolder" default="/media/ryan/DATA/Bags"/>
+  <node name="VisoBag" pkg="rosbag" type="record" args="--all --output-name=$(arg outputFolder)/visoBag_$(arg TrackNumber)_$(arg LoopNumber)"/>
+  <node name="playBackBag" pkg="rosbag" type="play" args="-r 0.8 --clock $(arg StereoBag)" output="screen" />
 </launch> 

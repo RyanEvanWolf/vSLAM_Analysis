@@ -16,6 +16,60 @@ from dataset.srv import resetDataset,resetDatasetResponse,resetDatasetRequest
 from dataset.srv import getDatasetInfo,getDatasetInfoResponse,getDatasetInfoRequest
 from dataset.srv import publishImage,publishImageResponse,publishImageRequest
 
+class loop:
+    def __init__(self,data):
+        parts=data.split(",")
+        self.id=int(parts[1])
+        self.startImage=parts[2]
+        self.stopImage=parts[3]
+    def getImageList(self,rootDir):
+        tempFiles=[]
+        for files in os.listdir(rootDir):
+            tempFiles.append(files)    
+        outFiles=sorted(tempFiles)
+        startIndex=outFiles.index(self.startImage)
+        endIndex=outFiles.index(self.stopImage)
+        return outFiles[startIndex:(endIndex+1)]
+
+class singleTrack:
+    def __init__(self,dir,id):
+        self.dir=dir
+        self.id=id
+        self.loops=[]
+
+
+class videoSequence:
+    def __init__(self,metaInformationDir):
+        self.pubImage=rospy.Publisher("dataset/currentImage",Image,queue_size=5)
+        self.inDir=metaInformationDir
+        f=open(self.inDir,"r")
+        ##read header 
+        linesRead=0
+        self.Track=[]
+        for line in f:
+            parts=line.strip("\n").split(',')
+            if(linesRead==0):
+                self.Track.append(singleTrack(parts[1],int(parts[0])))
+                self.Track.append(singleTrack(parts[3],int(parts[2])))
+            else:
+                newLoop=loop(line.strip("\n"))
+                self.Track[int(parts[0])-1].loops.append(newLoop)
+                #print(newLoop.getImageList(self.Track[int(parts[0])-1].dir)[0],
+                #    newLoop.getImageList(self.Track[int(parts[0])-1].dir)[1])
+
+            linesRead+=1
+
+        f.close()
+    def playbackLoop(self,trackID,loopID,delay=7.5/15.0):
+        rootDir=self.Track[trackID-1].dir
+        imageList=self.Track[trackID-1].loops[loopID-1].getImageList(rootDir)
+        cvb=CvBridge()
+        for images in imageList:
+            print(images+"/"+imageList[-1])
+            newImage=cv2.imread(rootDir+"/"+images,cv2.IMREAD_GRAYSCALE)#cv2.cvtColor(cv2.imread(self.data.getCurrentDir(),cv2.IMREAD_GRAYSCALE),cv2.COLOR_BAYER_BG2RGB)
+            self.pubImage.publish(cvb.cv2_to_imgmsg(newImage))
+            time.sleep(delay)
+
 
 class bumbleDataSet:
     def __init__(self):

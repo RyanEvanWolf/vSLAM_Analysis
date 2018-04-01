@@ -26,3 +26,4 @@ ins.close()
 plt.plot(difference[1:-1])
 
 plt.show()
+

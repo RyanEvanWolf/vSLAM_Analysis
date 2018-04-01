@@ -16,4 +16,5 @@
   <param name="$(arg outputTopic)/cu" type="double" value="$(arg cu)"/>
   <param name="$(arg outputTopic)/cv" type="double" value="$(arg cv)"/>
   <param name="$(arg outputTopic)/baseline" type="double" value="$(arg baseline)"/>
+  <node name="viso_extractor" pkg="viso_extractor" type="viso_node" output="screen"/>
 </launch>
