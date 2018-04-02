@@ -28,17 +28,16 @@ from std_msgs.msg import ColorRGBA
 import matplotlib as mpl
 from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
+import matplotlib.animation as animation
 
-
-cvb=CvBridge()
-
+cvb=CvBridge() 
 
 def getHomogZeros():
     out=np.zeros((4,1),dtype=np.float64)
     out[3,0]=1
     return out
 
-def plotPose(graph,H,scale=0.2):
+def plotPose(graph,H,scale=0.1):
     ###
     centre=getHomogZeros()
     newCentre=H.dot(centre)
@@ -67,31 +66,6 @@ def plotPose(graph,H,scale=0.2):
                 color='blue')
 
 
-mpl.rcParams['legend.fontsize'] = 10
-
-fig = plt.figure()
-ax = fig.gca(projection='3d')
-ax.set_xlabel('X axis')
-ax.set_ylabel('Y axis')
-ax.set_zlabel('Z axis')
-
-# fig2 = plt.figure()
-# ax2 = fig2.gca(projection='3d')
-# ax2.set_xlabel('X axis')
-# ax2.set_ylabel('Y axis')
-# ax2.set_zlabel('Z axis')
-
-
-
-newMotion=np.eye(4,dtype=np.float64)
-plotPose(ax,newMotion)
-plotPose(ax,newMotion)
-
-ax.view_init(elev=0,azim=-90)
-ax.legend()
-#ax2.legend()
-
-
 
 def convertHomographyToMsg(homography):
     msg=Pose()
@@ -101,16 +75,6 @@ def convertHomographyToMsg(homography):
     msg.position.y=homography[1,3]
     msg.position.z=homography[2,3]
     return msg
-
-# def convertHomographyToMsg(homography,TFName="/world"):
-#     latestMsg=PoseStamped()
-#     quat=tf.transformations.quaternion_from_matrix(homography).reshape(1,4)
-#     latestMsg.pose.orientation=Quaternion(quat[0,0],quat[0,1],quat[0,2],quat[0,3])
-#     latestMsg.pose.position.x=homography[0,3]
-#     latestMsg.pose.position.y=homography[1,3]
-#     latestMsg.pose.position.z=homography[2,3]
-#     latestMsg.header.frame_id=TFName
-#     return latestMsg
 
 
 def deserialHomography(arrayIn):
@@ -155,6 +119,9 @@ print("Reading from "+inDir)
 
 inputBag=rosbag.Bag(inDir)
 
+global leftImages
+global rightImages
+
 leftImages=[]
 rightImages=[]
 outputData=[]
@@ -164,70 +131,75 @@ print("extracting Topic Data")
 
 
 
-for topic,msg,t in inputBag.read_messages(topics=['/viso_extractor/output']):#,'/bumblebee/left/ROI','/bumblebee/right/ROI']):
+for topic,msg,t in inputBag.read_messages(topics=['/viso_extractor/output','/bumblebee/left/ROI','/bumblebee/right/ROI']):
     if(topic=="/viso_extractor/output"):
         outputData.append(msg)
         print(len(outputData))
-    # if(topic=="/bumblebee/left/ROI"):
-    #     leftImages.append(msg)
-    # if(topic=="/bumblebee/right/ROI"):
-    #     rightImages.append(msg)
+    if(topic=="/bumblebee/left/ROI"):
+        leftImages.append(msg)
+    if(topic=="/bumblebee/right/ROI"):
+        rightImages.append(msg)
 
 ##only start from the second frame (once a motion was calculated)
 
 CurrentPose=np.eye(4,dtype=np.float64)
 previousMotion=np.eye(4,dtype=np.float64)
-displayArray=PoseArray()
-displayArray.header.frame_id='sensor'
-
-
-
-# outmarker=Marker()
-
-# outmarker.type=Marker.LINE_STRIP
-# outmarker.action=0
-# outmarker.header.frame_id="sensor"
-# outmarker.scale.x=0.05
-# outmarker.pose.position.x=0
-# outmarker.pose.position.y=0
-# outmarker.pose.position.z=0
-# outmarker.pose.orientation.x=0
-# outmarker.pose.orientation.y=0
-# outmarker.pose.orientation.z=0
-# outmarker.pose.orientation.w=1
-# outmarker.id=1
-# outmarker.ns=""
-# outmarker.points=[]
-
-projec=[]
 
 print("calculating Motion")
 
-for index in range(1,200):#len(outputData)):
-    print(index)
-    #latestFrame=singleFrame(leftImages[index],rightImages[index],outputData[index],index)
-    if(outputData[index].success):
-        latestMotion=np.linalg.inv(deserialHomography(outputData[index].homography))
+w=cv2.namedWindow("left",cv2.WINDOW_NORMAL)
+
+mpl.rcParams['legend.fontsize'] = 10
+fig = plt.figure()
+fig.show()
+ax = fig.gca(projection='3d')
+ax.set_xlabel('X axis')
+ax.set_ylabel('Y axis')
+ax.set_zlabel('Z axis')
+
+
+ax.view_init(elev=0,azim=-90)
+ax.legend()
+
+
+
+global count
+count=0
+
+def update(i):
+    global count
+    global leftImages
+    global outputData
+    ax.clear()
+    plotPose(ax,np.eye(4,dtype=np.float64))
+    if(outputData[count].success):
+        latestMotion=np.linalg.inv(deserialHomography(outputData[count].homography))
         plotPose(ax,latestMotion)
-        CurrentPose=CurrentPose.dot(latestMotion)
-        plotPose(ax,CurrentPose)
-        previousMotion=latestMotion
-    else:
-        CurrentPose=CurrentPose.dot(previousMotion)
-        plotPose(ax,CurrentPose)
-    #displayArray.poses.append(convertHomographyToMsg(CurrentPose))
-    # outmarker.points.append(Point(displayArray.poses[-1].position.x,displayArray.poses[-1].position.y,0))
-    # outmarker.colors.append(ColorRGBA(1, 0, 0, 1))
+        cv2.imshow("left",cvb.imgmsg_to_cv2(leftImages[count]))
+    if(count<len(outputData)-1):
+        count+=1
+    cv2.waitKey(1)
 
 
-#rospy.init_node("display")
 
-#pub=rospy.Publisher("/poses_array",PoseArray,latch=True,queue_size=2)
-#pub.publish(displayArray)
-# pub2=rospy.Publisher("myMarker",Marker,latch=True,queue_size=2)
-# pub2.publish(outmarker)
-print("published!")
+
+ani=animation.FuncAnimation(fig,update,interval=4000)
 plt.show()
 
-#rospy.spin()
-print("Completed")
+# for index in range(len(outputData)):
+#     print(index)
+#     latestFrame=singleFrame(leftImages[index],rightImages[index],outputData[index],index)
+#     ax.clear()
+#     plotPose(ax,np.eye(4,dtype=np.float64))
+#     if(outputData[index].success):
+#         latestMotion=np.linalg.inv(deserialHomography(outputData[index].homography))
+#         CurrentPose=CurrentPose.dot(latestMotion)
+#         plotPose(ax,CurrentPose)
+#         previousMotion=latestMotion
+#     else:
+#         CurrentPose=CurrentPose.dot(previousMotion)
+#         plotPose(ax,CurrentPose)
+#     plt.draw()
+#     cv2.waitKey(300)
+
+# print("Completed")
