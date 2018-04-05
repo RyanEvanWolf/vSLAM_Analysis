@@ -75,21 +75,10 @@ ax.set_xlabel('X axis')
 ax.set_ylabel('Y axis')
 ax.set_zlabel('Z axis')
 
-# fig2 = plt.figure()
-# ax2 = fig2.gca(projection='3d')
-# ax2.set_xlabel('X axis')
-# ax2.set_ylabel('Y axis')
-# ax2.set_zlabel('Z axis')
-
-
-
-newMotion=np.eye(4,dtype=np.float64)
-plotPose(ax,newMotion)
-plotPose(ax,newMotion)
 
 ax.view_init(elev=0,azim=-90)
 ax.legend()
-#ax2.legend()
+
 
 
 
@@ -101,17 +90,6 @@ def convertHomographyToMsg(homography):
     msg.position.y=homography[1,3]
     msg.position.z=homography[2,3]
     return msg
-
-# def convertHomographyToMsg(homography,TFName="/world"):
-#     latestMsg=PoseStamped()
-#     quat=tf.transformations.quaternion_from_matrix(homography).reshape(1,4)
-#     latestMsg.pose.orientation=Quaternion(quat[0,0],quat[0,1],quat[0,2],quat[0,3])
-#     latestMsg.pose.position.x=homography[0,3]
-#     latestMsg.pose.position.y=homography[1,3]
-#     latestMsg.pose.position.z=homography[2,3]
-#     latestMsg.header.frame_id=TFName
-#     return latestMsg
-
 
 def deserialHomography(arrayIn):
     outHomography=np.zeros((4,4),dtype=np.float64)
@@ -182,23 +160,6 @@ displayArray.header.frame_id='sensor'
 
 
 
-# outmarker=Marker()
-
-# outmarker.type=Marker.LINE_STRIP
-# outmarker.action=0
-# outmarker.header.frame_id="sensor"
-# outmarker.scale.x=0.05
-# outmarker.pose.position.x=0
-# outmarker.pose.position.y=0
-# outmarker.pose.position.z=0
-# outmarker.pose.orientation.x=0
-# outmarker.pose.orientation.y=0
-# outmarker.pose.orientation.z=0
-# outmarker.pose.orientation.w=1
-# outmarker.id=1
-# outmarker.ns=""
-# outmarker.points=[]
-
 projec=[]
 
 print("calculating Motion")
@@ -215,19 +176,7 @@ for index in range(1,200):#len(outputData)):
     else:
         CurrentPose=CurrentPose.dot(previousMotion)
         plotPose(ax,CurrentPose)
-    #displayArray.poses.append(convertHomographyToMsg(CurrentPose))
-    # outmarker.points.append(Point(displayArray.poses[-1].position.x,displayArray.poses[-1].position.y,0))
-    # outmarker.colors.append(ColorRGBA(1, 0, 0, 1))
-
-
-#rospy.init_node("display")
-
-#pub=rospy.Publisher("/poses_array",PoseArray,latch=True,queue_size=2)
-#pub.publish(displayArray)
-# pub2=rospy.Publisher("myMarker",Marker,latch=True,queue_size=2)
-# pub2.publish(outmarker)
 print("published!")
 plt.show()
 
-#rospy.spin()
 print("Completed")

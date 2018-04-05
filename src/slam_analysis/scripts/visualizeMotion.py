@@ -37,7 +37,7 @@ def getHomogZeros():
     out[3,0]=1
     return out
 
-def plotPose(graph,H,scale=0.1):
+def plotPose(graph,H,scale=0.1,c=('red','green','blue')):
     ###
     centre=getHomogZeros()
     newCentre=H.dot(centre)
@@ -55,16 +55,18 @@ def plotPose(graph,H,scale=0.1):
     graph.plot((newCentre[0,0],newX[0,0]),             
                 (newCentre[1,0],newX[1,0]),
                 (newCentre[2,0],newX[2,0]),
-                color='red')
+                color=c[0])
     graph.plot((newCentre[0,0],newY[0,0]),             
                 (newCentre[1,0],newY[1,0]),
                 (newCentre[2,0],newY[2,0]),
-                color='green')
+                color=c[1])
     graph.plot((newCentre[0,0],newZ[0,0]),             
                 (newCentre[1,0],newZ[1,0]),
                 (newCentre[2,0],newZ[2,0]),
-                color='blue')
-
+                color=c[2])
+    print("x",c[0])
+    print("y",c[1])
+    print("z",c[2])
 
 
 def convertHomographyToMsg(homography):
@@ -174,7 +176,7 @@ def update(i):
     plotPose(ax,np.eye(4,dtype=np.float64))
     if(outputData[count].success):
         latestMotion=np.linalg.inv(deserialHomography(outputData[count].homography))
-        plotPose(ax,latestMotion)
+        plotPose(ax,latestMotion,c=('red','yellow','blue'))
         cv2.imshow("left",cvb.imgmsg_to_cv2(leftImages[count]))
     if(count<len(outputData)-1):
         count+=1
@@ -183,23 +185,5 @@ def update(i):
 
 
 
-ani=animation.FuncAnimation(fig,update,interval=4000)
+ani=animation.FuncAnimation(fig,update,interval=300)
 plt.show()
-
-# for index in range(len(outputData)):
-#     print(index)
-#     latestFrame=singleFrame(leftImages[index],rightImages[index],outputData[index],index)
-#     ax.clear()
-#     plotPose(ax,np.eye(4,dtype=np.float64))
-#     if(outputData[index].success):
-#         latestMotion=np.linalg.inv(deserialHomography(outputData[index].homography))
-#         CurrentPose=CurrentPose.dot(latestMotion)
-#         plotPose(ax,CurrentPose)
-#         previousMotion=latestMotion
-#     else:
-#         CurrentPose=CurrentPose.dot(previousMotion)
-#         plotPose(ax,CurrentPose)
-#     plt.draw()
-#     cv2.waitKey(300)
-
-# print("Completed")
