@@ -16,7 +16,7 @@ message(STATUS "${CMAKE_PREFIX_PATH}")
 
 find_package(Boost REQUIRED)
 find_package(OpenCV REQUIRED)
-find_package(BasicSLAMStructures REQUIRED CONFIG)
+#find_package(BasicSLAMStructures REQUIRED CONFIG)
 
 
 ## Compile as C++11, supported in ROS Kinetic and newer
@@ -71,30 +71,30 @@ find_package(catkin REQUIRED COMPONENTS
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
- add_message_files(
-   FILES
-   extractSettings.msg
-   ORB.msg
-   FAST.msg
-   SIFT.msg
-   SURF.msg
-   AKAZE.msg
-   BRISK.msg
-)
+#  add_message_files(
+#    FILES
+#   #  extractSettings.msg
+#   #  ORB.msg
+#   #  FAST.msg
+#   #  SIFT.msg
+#   #  SURF.msg
+#   #  AKAZE.msg
+#   #  BRISK.msg
+# )
 
 ## Generate services in the 'srv' folder
  add_service_files(
    FILES
-   extractFeatures.srv
-   extractFAST.srv
-   extractSIFT.srv
-   extractORB.srv
-   extractSURF.srv
-   extractAKAZE.srv
-   extractBRISK.srv
-   updateSettings.srv
-   rectifiedSettings.srv
-   stereoInliers.srv
+  #  extractFeatures.srv
+  #  extractFAST.srv
+  #  extractSIFT.srv
+  #  extractORB.srv
+  #  extractSURF.srv
+  #  extractAKAZE.srv
+  #  extractBRISK.srv
+  #  updateSettings.srv
+  #  rectifiedSettings.srv
+  #  stereoInliers.srv
    resetDataset.srv
    publishImage.srv
    getDatasetInfo.srv
@@ -114,6 +114,7 @@ find_package(catkin REQUIRED COMPONENTS
    geometry_msgs
    std_msgs
    sensor_msgs
+   front_end
  )
 
 ################################################

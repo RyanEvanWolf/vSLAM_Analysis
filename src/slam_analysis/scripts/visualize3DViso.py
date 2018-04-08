@@ -150,7 +150,7 @@ for topic,msg,t in inputBag.read_messages(topics=['/viso_extractor/output']):#,'
     #     leftImages.append(msg)
     # if(topic=="/bumblebee/right/ROI"):
     #     rightImages.append(msg)
-
+inputBag.close()
 ##only start from the second frame (once a motion was calculated)
 
 CurrentPose=np.eye(4,dtype=np.float64)
