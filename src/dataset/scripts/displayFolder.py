@@ -3,9 +3,8 @@
 import rospy
 import cv2
 from bumbleDataSet import bumbleDataSet
-from displayImages import imageWindow
 import sys
-
+import time
 
 rospy.init_node('View')
 
@@ -18,7 +17,9 @@ cv2.namedWindow("image",cv2.WINDOW_NORMAL)
 
 count=0
 for i in inData.filesList:
-    print(count)
+    
+    print(count,i)
+    time.sleep(1)
     if(debayer=="True"):
         cv2.imshow("image",cv2.cvtColor(cv2.imread(i,cv2.IMREAD_GRAYSCALE),cv2.COLOR_BAYER_BG2RGB))
     else:

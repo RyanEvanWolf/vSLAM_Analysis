@@ -8,6 +8,6 @@ src/dataset/.kdev4
 src/dataset/dataset.kdev4
 src/dataset/scripts/.idea/workspace.xml
 src/.kdev4/
-*.pyc
+**.pyc
 baccccck
 **.vscode

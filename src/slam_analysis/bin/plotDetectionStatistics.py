@@ -8,7 +8,7 @@ from front_end.utils import *
 from front_end.srv import *
 from front_end.msg import frameDetection,ProcTime,kPoint
 
-from slam_analysis.features import plotFeatures,getBestSettings
+from slam_analysis.features import plotFeatures,getBestSettings,getFeatureSummary
 
 from cv_bridge import CvBridge
 import matplotlib.pyplot as plt
@@ -30,8 +30,9 @@ inputPickle.close()
 print("Data Loaded")
 
 
-OperatingCurves=getBestSettings(dataIn)
-
+OperatingCurves=getFeatureSummary(dataIn)
+sett=getBestSettings(dataIn)
+print(len(sett["Maximum"]))
 
 
 sty.use("seaborn")
