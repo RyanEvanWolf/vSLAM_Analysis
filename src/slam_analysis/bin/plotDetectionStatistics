@@ -19,7 +19,7 @@ cvb=CvBridge()
 
 parser = argparse.ArgumentParser()
 parser.add_argument("feature_pickle_dir")
-parser.add_argument("output_pickle_dir")
+parser.add_argument("--prefix",default="",type=str)
 args=parser.parse_args()
 
 
@@ -32,9 +32,18 @@ print("Data Loaded")
 
 OperatingCurves=getFeatureSummary(dataIn)
 sett=getBestSettings(dataIn)
+outputSettings={}
+outputSettings["name"]=dataIn["detectorName"]
+outputSettings["operatingCurves"]=sett
+
+
 print(len(sett["Maximum"]))
+print(len(sett.keys()))
+print(sett["Maximum"])
 
-
+outputFileName=args.feature_pickle_dir[:args.feature_pickle_dir.rfind("/")+1]+"operatingCurves.p"
+print(outputFileName)
+pickle.dump(outputSettings,open(outputFileName,"w"))
 sty.use("seaborn")
 ###plot left number of features statistics
 
