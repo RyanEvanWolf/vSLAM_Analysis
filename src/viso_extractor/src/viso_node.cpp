@@ -35,16 +35,8 @@ int main(int argc, char **argv)
   n.getParam("/viso_config/bucketHeight",param.bucket.bucket_height);
   n.getParam("/viso_config/bucketWidth",param.bucket.bucket_width);
   n.getParam("/viso_config/subPixel",param.match.refinement);
-      /*      
-              * /viso_config/baseline: 0.12
- * /viso_config/bucketHeight: 50
- * /viso_config/bucketWidth: 50
- * /viso_config/cu: 550.0
- * /viso_config/cv: 444.0
- * /viso_config/f: 850.0
- * /viso_config/maxFeatures: 10
- * /viso_config/subPixel: 2
-*/
+  n.getParam("/viso_config/nms_tau",param.match.nms_tau);
+  n.getParam("/viso_config/match_radius",param.match.match_radius);
   
   
   

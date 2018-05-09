@@ -1,0 +1,38 @@
+
+(cl:in-package :asdf)
+
+(defsystem "dataset-srv"
+  :depends-on (:roslisp-msg-protocol :roslisp-utils :dataset-msg
+               :sensor_msgs-msg
+               :std_msgs-msg
+)
+  :components ((:file "_package")
+    (:file "extractAKAZE" :depends-on ("_package_extractAKAZE"))
+    (:file "_package_extractAKAZE" :depends-on ("_package"))
+    (:file "extractBRISK" :depends-on ("_package_extractBRISK"))
+    (:file "_package_extractBRISK" :depends-on ("_package"))
+    (:file "extractFAST" :depends-on ("_package_extractFAST"))
+    (:file "_package_extractFAST" :depends-on ("_package"))
+    (:file "extractFeatures" :depends-on ("_package_extractFeatures"))
+    (:file "_package_extractFeatures" :depends-on ("_package"))
+    (:file "extractORB" :depends-on ("_package_extractORB"))
+    (:file "_package_extractORB" :depends-on ("_package"))
+    (:file "extractSIFT" :depends-on ("_package_extractSIFT"))
+    (:file "_package_extractSIFT" :depends-on ("_package"))
+    (:file "extractSURF" :depends-on ("_package_extractSURF"))
+    (:file "_package_extractSURF" :depends-on ("_package"))
+    (:file "getDatasetInfo" :depends-on ("_package_getDatasetInfo"))
+    (:file "_package_getDatasetInfo" :depends-on ("_package"))
+    (:file "publishImage" :depends-on ("_package_publishImage"))
+    (:file "_package_publishImage" :depends-on ("_package"))
+    (:file "rectifiedSettings" :depends-on ("_package_rectifiedSettings"))
+    (:file "_package_rectifiedSettings" :depends-on ("_package"))
+    (:file "resetDataset" :depends-on ("_package_resetDataset"))
+    (:file "_package_resetDataset" :depends-on ("_package"))
+    (:file "stereoInliers" :depends-on ("_package_stereoInliers"))
+    (:file "_package_stereoInliers" :depends-on ("_package"))
+    (:file "updateImage" :depends-on ("_package_updateImage"))
+    (:file "_package_updateImage" :depends-on ("_package"))
+    (:file "updateSettings" :depends-on ("_package_updateSettings"))
+    (:file "_package_updateSettings" :depends-on ("_package"))
+  ))

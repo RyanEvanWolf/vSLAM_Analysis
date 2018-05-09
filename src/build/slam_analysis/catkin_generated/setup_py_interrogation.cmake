@@ -1,0 +1,6 @@
+set(slam_analysis_SETUP_PY_VERSION "0.0.0")
+set(slam_analysis_SETUP_PY_SCRIPTS "")
+set(slam_analysis_SETUP_PY_PACKAGES "slam_analysis")
+set(slam_analysis_SETUP_PY_PACKAGE_DIRS "src/slam_analysis")
+set(slam_analysis_SETUP_PY_MODULES "")
+set(slam_analysis_SETUP_PY_MODULE_DIRS "")

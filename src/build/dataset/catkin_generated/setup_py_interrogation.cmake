@@ -1,0 +1,6 @@
+set(dataset_SETUP_PY_VERSION "0.0.0")
+set(dataset_SETUP_PY_SCRIPTS "")
+set(dataset_SETUP_PY_PACKAGES "dataset")
+set(dataset_SETUP_PY_PACKAGE_DIRS "src/dataset")
+set(dataset_SETUP_PY_MODULES "")
+set(dataset_SETUP_PY_MODULE_DIRS "")

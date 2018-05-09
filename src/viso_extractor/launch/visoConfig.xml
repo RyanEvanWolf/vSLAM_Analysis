@@ -1,13 +1,17 @@
 <launch>
-  <arg name="maxFeatures" default="10"/>
-  <arg name="bucketHeight" default="50"/>
-  <arg name="bucketWidth" default="50"/>
+  <arg name="maxFeatures" default="50"/>
+  <arg name="bucketHeight" default="25"/>
+  <arg name="bucketWidth" default="25"/>
   <arg name="subPixel" default="2"/>
   <arg name="f" default="850"/>
   <arg name="cu" default="550"/>
   <arg name="cv" default="444"/>
   <arg name="baseline" default="0.120"/>
+  <arg name="nms_tau" default="50"/>
+  <arg name="match_radius" default="200"/>
   <arg name="outputTopic" default="viso_config"/>
+  <param name="$(arg outputTopic)/nms_tau" type="int" value="$(arg nms_tau)"/>
+  <param name="$(arg outputTopic)/match_radius" type="int" value="$(arg match_radius)"/>
   <param name="$(arg outputTopic)/maxFeatures" type="int" value="$(arg maxFeatures)"/>
   <param name="$(arg outputTopic)/bucketHeight" type="int" value="$(arg bucketHeight)"/>
   <param name="$(arg outputTopic)/bucketWidth" type="int" value="$(arg bucketWidth)"/>

@@ -1,0 +1,8 @@
+prefix=/usr/local
+
+Name: slam_analysis
+Description: Description of slam_analysis
+Version: 0.0.0
+Cflags: -I/usr/local/include
+Libs: -L/usr/local/lib 
+Requires: 

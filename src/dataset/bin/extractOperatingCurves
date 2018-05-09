@@ -1,0 +1,102 @@
+#!/usr/bin/env python
+#####ros related imports
+import rospy 
+import cv2
+import time
+
+from dataset.utils import Directories
+from front_end.utils import *
+from front_end.srv import *
+from front_end.msg import frameDetection,ProcTime,kPoint
+
+from front_end.analysis import featureDatabase
+#from front_end.features import plotFeatures,getBestSettings,getFeatureSummary
+
+from cv_bridge import CvBridge
+import matplotlib.pyplot as plt
+import matplotlib.style as sty
+import pickle
+import argparse
+
+###
+from front_end.srv import getStereoFeatures,getStereoFeaturesRequest,getStereoFeaturesResponse
+rospy.init_node('curves')
+##
+
+cvb=CvBridge() 
+
+
+parser =argparse.ArgumentParser()
+parser.add_argument("rootDir")
+parser.add_argument("loopID")
+parser.add_argument("--output_directory",default="/media/ryan/EXTRA/output")
+args,unknown=parser.parse_known_args()
+
+projectFolder=Directories(args.rootDir,args.output_directory) 
+pickleDir=projectFolder.getFeaturePickle(args.loopID)
+print("Loading from "+pickleDir)
+features=featureDatabase(pickleDir)
+print("completed Loading")
+sett,OperatingCurves=features.getOperatingCurves("FAST")
+print(OperatingCurves["Maximum"])
+print("complete")
+
+
+
+outputSettings={}
+outputSettings["FAST"]=sett
+
+
+# #####
+# from dataset.utils import Directories,unpackBag
+# from front_end.features import detectorLookUpTable,descriptorLookUpTable,getDetector
+# detTable=detectorLookUpTable()
+# descTable=descriptorLookUpTable()
+
+
+
+# newRequest=singleImageDetectionRequest()
+# ###get detector Settings
+# newRequest.returnKP=False
+# newRequest.detID=detTable.keys()
+
+
+
+# kpServiceName="feature_node/singleImageDetection"
+# kpService=rospy.ServiceProxy(kpServiceName,singleImageDetection)
+
+
+# stereoServiceName="feature_node/getStereoFeatures"
+# stereoService=rospy.ServiceProxy(stereoServiceName,getStereoFeatures)
+# Bag=unpackBag(projectFolder.getBagPath(args.loopID),5)
+
+# c=[]
+
+# for f in range(0,len(Bag["Left"])):
+#     ###for each image, extract the output data, and save to Results
+#     ###get KPS
+#     # newRequest.leftImg=Bag["Left"][f]
+#     # newRequest.rightImg=Bag["Right"][f]
+#     # ans1=kpService(newRequest)
+
+#     #index=ans1.outputFrames.leftFeatures
+
+#     request=getStereoFeaturesRequest()
+#     request.detID=outputSettings["FAST"]["Maximum"][f]
+#     print(request.detID)
+#     request.descrID=descTable.keys()[0]
+#     request.leftImg=Bag["Left"][f]
+#     request.rightImg=Bag["Right"][f]
+#     ans=stereoService(request)
+#     print(len(ans.latestFeatures.leftFeatures))
+#     c.append(len(ans.latestFeatures.leftFeatures))
+
+# plt.plot(c)
+sett,OperatingCurves=features.getOperatingCurves("SURF")
+
+outputSettings["SURF"]=sett
+
+
+outputFileName=projectFolder.getCurvePickle(args.loopID)
+print(outputFileName)
+pickle.dump(outputSettings,open(outputFileName,"w"))

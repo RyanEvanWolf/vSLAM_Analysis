@@ -1,0 +1,8 @@
+prefix=/home/ryan/git/vSLAM_Analysis/src/build/devel
+
+Name: dataset
+Description: Description of dataset
+Version: 0.0.0
+Cflags: -I/home/ryan/git/vSLAM_Analysis/src/build/devel/include -I/home/ryan/git/vSLAM_Analysis/src/dataset/include
+Libs: -L/home/ryan/git/vSLAM_Analysis/src/build/devel/lib 
+Requires: 
