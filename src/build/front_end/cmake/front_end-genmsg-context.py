@@ -1,7 +1,7 @@
 # generated from genmsg/cmake/pkg-genmsg.context.in
 
-messages_str = "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/frameDetection.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/loopStereoFrame.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/Descriptors.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/frameDescription.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/Homography.msg"
-services_str = "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleImageDetection.srv;/home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleImageDescription.srv;/home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleStereo.srv"
+messages_str = "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/frameDetection.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/Homography.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoFeatures.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoLandmarks.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/windowStatus.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/cvMatch.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/interFrameTracks.msg"
+services_str = "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleImageDetection.srv;/home/ryan/git/vSLAM_Analysis/src/front_end/srv/getStereoFeatures.srv;/home/ryan/git/vSLAM_Analysis/src/front_end/srv/windowMatching.srv;/home/ryan/git/vSLAM_Analysis/src/front_end/srv/stereoMatching.srv"
 pkg_name = "front_end"
 dependencies_str = "std_msgs;sensor_msgs;geometry_msgs"
 langs = "gencpp;geneus;genlisp;gennodejs;genpy"

@@ -11,7 +11,6 @@ const _deserializer = _ros_msg_utils.Deserialize;
 const _arrayDeserializer = _deserializer.Array;
 const _finder = _ros_msg_utils.Find;
 const _getByteLength = _ros_msg_utils.getByteLength;
-let sensor_msgs = _finder('sensor_msgs');
 
 //-----------------------------------------------------------
 
@@ -26,7 +25,6 @@ class kPoint {
       this.response = null;
       this.octave = null;
       this.class_id = null;
-      this.descriptors = null;
     }
     else {
       if (initObj.hasOwnProperty('x')) {
@@ -71,12 +69,6 @@ class kPoint {
       else {
         this.class_id = 0;
       }
-      if (initObj.hasOwnProperty('descriptors')) {
-        this.descriptors = initObj.descriptors
-      }
-      else {
-        this.descriptors = [];
-      }
     }
   }
 
@@ -96,12 +88,6 @@ class kPoint {
     bufferOffset = _serializer.int32(obj.octave, buffer, bufferOffset);
     // Serialize message field [class_id]
     bufferOffset = _serializer.int32(obj.class_id, buffer, bufferOffset);
-    // Serialize message field [descriptors]
-    // Serialize the length for message field [descriptors]
-    bufferOffset = _serializer.uint32(obj.descriptors.length, buffer, bufferOffset);
-    obj.descriptors.forEach((val) => {
-      bufferOffset = sensor_msgs.msg.Image.serialize(val, buffer, bufferOffset);
-    });
     return bufferOffset;
   }
 
@@ -123,22 +109,11 @@ class kPoint {
     data.octave = _deserializer.int32(buffer, bufferOffset);
     // Deserialize message field [class_id]
     data.class_id = _deserializer.int32(buffer, bufferOffset);
-    // Deserialize message field [descriptors]
-    // Deserialize array length for message field [descriptors]
-    len = _deserializer.uint32(buffer, bufferOffset);
-    data.descriptors = new Array(len);
-    for (let i = 0; i < len; ++i) {
-      data.descriptors[i] = sensor_msgs.msg.Image.deserialize(buffer, bufferOffset)
-    }
     return data;
   }
 
   static getMessageSize(object) {
-    let length = 0;
-    object.descriptors.forEach((val) => {
-      length += sensor_msgs.msg.Image.getMessageSize(val);
-    });
-    return length + 32;
+    return 28;
   }
 
   static datatype() {
@@ -148,7 +123,7 @@ class kPoint {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '42809bfff6ca27b1c8dd8bc19c75a12c';
+    return '6cdfd0fe8fb759c2e28f776698d1b6c3';
   }
 
   static messageDefinition() {
@@ -161,54 +136,6 @@ class kPoint {
     float32 response
     int32 octave
     int32 class_id
-    sensor_msgs/Image[] descriptors
-    ================================================================================
-    MSG: sensor_msgs/Image
-    # This message contains an uncompressed image
-    # (0, 0) is at top-left corner of image
-    #
-    
-    Header header        # Header timestamp should be acquisition time of image
-                         # Header frame_id should be optical frame of camera
-                         # origin of frame should be optical center of cameara
-                         # +x should point to the right in the image
-                         # +y should point down in the image
-                         # +z should point into to plane of the image
-                         # If the frame_id here and the frame_id of the CameraInfo
-                         # message associated with the image conflict
-                         # the behavior is undefined
-    
-    uint32 height         # image height, that is, number of rows
-    uint32 width          # image width, that is, number of columns
-    
-    # The legal values for encoding are in file src/image_encodings.cpp
-    # If you want to standardize a new string format, join
-    # ros-users@lists.sourceforge.net and send an email proposing a new encoding.
-    
-    string encoding       # Encoding of pixels -- channel meaning, ordering, size
-                          # taken from the list of strings in include/sensor_msgs/image_encodings.h
-    
-    uint8 is_bigendian    # is this data bigendian?
-    uint32 step           # Full row length in bytes
-    uint8[] data          # actual matrix data, size is (step * rows)
-    
-    ================================================================================
-    MSG: std_msgs/Header
-    # Standard metadata for higher-level stamped data types.
-    # This is generally used to communicate timestamped data 
-    # in a particular coordinate frame.
-    # 
-    # sequence ID: consecutively increasing ID 
-    uint32 seq
-    #Two-integer timestamp that is expressed as:
-    # * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')
-    # * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')
-    # time-handling sugar is provided by the client library
-    time stamp
-    #Frame this data is associated with
-    # 0: no frame
-    # 1: global frame
-    string frame_id
     
     `;
   }
@@ -266,16 +193,6 @@ class kPoint {
     }
     else {
       resolved.class_id = 0
-    }
-
-    if (msg.descriptors !== undefined) {
-      resolved.descriptors = new Array(msg.descriptors.length);
-      for (let i = 0; i < resolved.descriptors.length; ++i) {
-        resolved.descriptors[i] = sensor_msgs.msg.Image.Resolve(msg.descriptors[i]);
-      }
-    }
-    else {
-      resolved.descriptors = []
     }
 
     return resolved;

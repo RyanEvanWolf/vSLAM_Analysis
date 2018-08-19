@@ -1,18 +1,24 @@
 
 "use strict";
 
-let singleStereo = require('./singleStereo.js')
+let getStereoFeatures = require('./getStereoFeatures.js')
 let ~setDetector = require('./~setDetector.js')
 let singleImageDetection = require('./singleImageDetection.js')
+let windowMatching = require('./windowMatching.js')
+let ~singleStereo = require('./~singleStereo.js')
+let ~singleImageDescription = require('./~singleImageDescription.js')
 let ~detectCurrent = require('./~detectCurrent.js')
-let singleImageDescription = require('./singleImageDescription.js')
+let stereoMatching = require('./stereoMatching.js')
 let ~singleImageExtraction = require('./~singleImageExtraction.js')
 
 module.exports = {
-  singleStereo: singleStereo,
+  getStereoFeatures: getStereoFeatures,
   ~setDetector: ~setDetector,
   singleImageDetection: singleImageDetection,
+  windowMatching: windowMatching,
+  ~singleStereo: ~singleStereo,
+  ~singleImageDescription: ~singleImageDescription,
   ~detectCurrent: ~detectCurrent,
-  singleImageDescription: singleImageDescription,
+  stereoMatching: stereoMatching,
   ~singleImageExtraction: ~singleImageExtraction,
 };

@@ -41,18 +41,21 @@ if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
     "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/frameDetection.msg"
     "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg"
     "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg"
-    "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/loopStereoFrame.msg"
-    "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/Descriptors.msg"
-    "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/frameDescription.msg"
     "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/Homography.msg"
+    "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoFeatures.msg"
+    "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoLandmarks.msg"
+    "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/windowStatus.msg"
+    "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/cvMatch.msg"
+    "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/interFrameTracks.msg"
     )
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/front_end/srv" TYPE FILE FILES
     "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleImageDetection.srv"
-    "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleImageDescription.srv"
-    "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleStereo.srv"
+    "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/getStereoFeatures.srv"
+    "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/windowMatching.srv"
+    "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/stereoMatching.srv"
     )
 endif()
 

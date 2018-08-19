@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="(empty)"
+	BuildStamp="20180728-1225-Experimental"
+	Name="(empty)"
+	Generator="ctest-3.5.1"
+	CompilerName=""
+	CompilerVersion=""
+	OSName="Linux"
+	Hostname="Byakuya"
+	OSRelease="4.4.0-57-generic"
+	OSVersion="#78-Ubuntu SMP Fri Dec 9 23:50:32 UTC 2016"
+	OSPlatform="x86_64"
+	Is64Bits="1"
+	VendorString="GenuineIntel"
+	VendorID="Intel Corporation"
+	FamilyID="6"
+	ModelID="61"
+	ProcessorCacheSize="4096"
+	NumberOfLogicalCPU="4"
+	NumberOfPhysicalCPU="1"
+	TotalVirtualMemory="9536"
+	TotalPhysicalMemory="7883"
+	LogicalProcessorsPerPhysical="4"
+	ProcessorClockFrequency="2899.97"
+	>
+	<Testing>
+		<StartDateTime>Jul 28 14:25 SAST</StartDateTime>
+		<StartTestTime>1532780704</StartTestTime>
+		<TestList/>
+		<EndDateTime>Jul 28 14:25 SAST</EndDateTime>
+		<EndTestTime>1532780704</EndTestTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+	</Testing>
+</Site>

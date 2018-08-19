@@ -33,6 +33,10 @@ if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
+  include("/home/ryan/git/vSLAM_Analysis/src/build/viso_extractor/catkin_generated/safe_execute_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/viso_extractor/msg" TYPE FILE FILES
     "/home/ryan/git/vSLAM_Analysis/src/viso_extractor/msg/VisoFrame.msg"
     "/home/ryan/git/vSLAM_Analysis/src/viso_extractor/msg/pMatch.msg"
@@ -64,7 +68,11 @@ if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages" TYPE DIRECTORY FILES "/home/ryan/git/vSLAM_Analysis/src/build/devel/lib/python2.7/dist-packages/viso_extractor")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages" TYPE DIRECTORY FILES "/home/ryan/git/vSLAM_Analysis/src/build/devel/lib/python2.7/dist-packages/viso_extractor" REGEX "/\\_\\_init\\_\\_\\.py$" EXCLUDE REGEX "/\\_\\_init\\_\\_\\.pyc$" EXCLUDE)
+endif()
+
+if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages" TYPE DIRECTORY FILES "/home/ryan/git/vSLAM_Analysis/src/build/devel/lib/python2.7/dist-packages/viso_extractor" FILES_MATCHING REGEX "/home/ryan/git/vSLAM_Analysis/src/build/devel/lib/python2.7/dist-packages/viso_extractor/.+/__init__.pyc?$")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")

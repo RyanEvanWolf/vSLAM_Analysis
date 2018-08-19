@@ -1,6 +1,8 @@
 (cl:in-package front_end-msg)
 (cl:export '(LEFTFEATURES-VAL
           LEFTFEATURES
+          DETID-VAL
+          DETID
           NLEFT-VAL
           NLEFT
           L_XAVG-VAL

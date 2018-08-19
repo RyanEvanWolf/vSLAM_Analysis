@@ -1,6 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.cmake.em
 
-message(STATUS "front_end: 7 messages, 3 services")
+message(STATUS "front_end: 9 messages, 4 services")
 
 set(MSG_I_FLAGS "-Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg;-Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg;-Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg;-Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg")
 
@@ -17,6 +17,16 @@ add_custom_target(front_end_generate_messages ALL)
 
 
 
+get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/windowStatus.msg" NAME_WE)
+add_custom_target(_front_end_generate_messages_check_deps_${_filename}
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "front_end" "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/windowStatus.msg" "front_end/stereoLandmarks:front_end/cvMatch:front_end/interFrameTracks:sensor_msgs/Image:front_end/ProcTime:front_end/kPoint:std_msgs/Header"
+)
+
+get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoFeatures.msg" NAME_WE)
+add_custom_target(_front_end_generate_messages_check_deps_${_filename}
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "front_end" "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoFeatures.msg" "sensor_msgs/Image:front_end/kPoint:std_msgs/Header:front_end/ProcTime"
+)
+
 get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg" NAME_WE)
 add_custom_target(_front_end_generate_messages_check_deps_${_filename}
   COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "front_end" "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg" ""
@@ -27,34 +37,39 @@ add_custom_target(_front_end_generate_messages_check_deps_${_filename}
   COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "front_end" "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleImageDetection.srv" "front_end/frameDetection:front_end/ProcTime:sensor_msgs/Image:std_msgs/Header:front_end/kPoint"
 )
 
+get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoLandmarks.msg" NAME_WE)
+add_custom_target(_front_end_generate_messages_check_deps_${_filename}
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "front_end" "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoLandmarks.msg" "sensor_msgs/Image:front_end/ProcTime:front_end/kPoint:std_msgs/Header:front_end/cvMatch"
+)
+
+get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/getStereoFeatures.srv" NAME_WE)
+add_custom_target(_front_end_generate_messages_check_deps_${_filename}
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "front_end" "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/getStereoFeatures.srv" "front_end/ProcTime:sensor_msgs/Image:front_end/kPoint:std_msgs/Header:front_end/stereoFeatures"
+)
+
 get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/frameDetection.msg" NAME_WE)
 add_custom_target(_front_end_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "front_end" "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/frameDetection.msg" "sensor_msgs/Image:front_end/kPoint:std_msgs/Header:front_end/ProcTime"
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "front_end" "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/frameDetection.msg" "front_end/kPoint:front_end/ProcTime"
 )
 
-get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleStereo.srv" NAME_WE)
+get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/cvMatch.msg" NAME_WE)
 add_custom_target(_front_end_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "front_end" "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleStereo.srv" "sensor_msgs/Image:front_end/ProcTime:front_end/kPoint:std_msgs/Header:front_end/Descriptors"
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "front_end" "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/cvMatch.msg" ""
 )
 
-get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/Descriptors.msg" NAME_WE)
+get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/stereoMatching.srv" NAME_WE)
 add_custom_target(_front_end_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "front_end" "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/Descriptors.msg" "sensor_msgs/Image:std_msgs/Header:front_end/ProcTime"
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "front_end" "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/stereoMatching.srv" "front_end/stereoLandmarks:std_msgs/Header:sensor_msgs/Image:front_end/ProcTime:front_end/stereoFeatures:front_end/kPoint:front_end/cvMatch"
 )
 
-get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/loopStereoFrame.msg" NAME_WE)
+get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/windowMatching.srv" NAME_WE)
 add_custom_target(_front_end_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "front_end" "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/loopStereoFrame.msg" "sensor_msgs/Image:front_end/kPoint:std_msgs/Header:front_end/ProcTime"
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "front_end" "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/windowMatching.srv" "front_end/stereoLandmarks:front_end/cvMatch:front_end/interFrameTracks:sensor_msgs/Image:front_end/ProcTime:front_end/windowStatus:front_end/kPoint:std_msgs/Header"
 )
 
-get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleImageDescription.srv" NAME_WE)
+get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/interFrameTracks.msg" NAME_WE)
 add_custom_target(_front_end_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "front_end" "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleImageDescription.srv" "front_end/Descriptors:front_end/ProcTime:sensor_msgs/Image:std_msgs/Header:front_end/kPoint"
-)
-
-get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/frameDescription.msg" NAME_WE)
-add_custom_target(_front_end_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "front_end" "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/frameDescription.msg" ""
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "front_end" "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/interFrameTracks.msg" "sensor_msgs/Image:front_end/cvMatch:std_msgs/Header"
 )
 
 get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/Homography.msg" NAME_WE)
@@ -64,7 +79,7 @@ add_custom_target(_front_end_generate_messages_check_deps_${_filename}
 
 get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg" NAME_WE)
 add_custom_target(_front_end_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "front_end" "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg" "sensor_msgs/Image:std_msgs/Header"
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "front_end" "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg" ""
 )
 
 #
@@ -74,6 +89,18 @@ add_custom_target(_front_end_generate_messages_check_deps_${_filename}
 ### Section generating for lang: gencpp
 ### Generating Messages
 _generate_msg_cpp(front_end
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/windowStatus.msg"
+  "${MSG_I_FLAGS}"
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoLandmarks.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/cvMatch.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/interFrameTracks.msg;/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg"
+  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/front_end
+)
+_generate_msg_cpp(front_end
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoFeatures.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg"
+  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/front_end
+)
+_generate_msg_cpp(front_end
   "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg"
   "${MSG_I_FLAGS}"
   ""
@@ -82,25 +109,25 @@ _generate_msg_cpp(front_end
 _generate_msg_cpp(front_end
   "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/frameDetection.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg"
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/front_end
 )
 _generate_msg_cpp(front_end
-  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/Descriptors.msg"
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoLandmarks.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg"
+  "/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/cvMatch.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/front_end
 )
 _generate_msg_cpp(front_end
-  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/loopStereoFrame.msg"
-  "${MSG_I_FLAGS}"
-  "/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg"
-  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/front_end
-)
-_generate_msg_cpp(front_end
-  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/frameDescription.msg"
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/cvMatch.msg"
   "${MSG_I_FLAGS}"
   ""
+  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/front_end
+)
+_generate_msg_cpp(front_end
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/interFrameTracks.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/cvMatch.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/front_end
 )
 _generate_msg_cpp(front_end
@@ -112,15 +139,21 @@ _generate_msg_cpp(front_end
 _generate_msg_cpp(front_end
   "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg"
+  ""
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/front_end
 )
 
 ### Generating Services
 _generate_srv_cpp(front_end
-  "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleStereo.srv"
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/windowMatching.srv"
   "${MSG_I_FLAGS}"
-  "/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/Descriptors.msg"
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoLandmarks.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/cvMatch.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/interFrameTracks.msg;/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/windowStatus.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg"
+  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/front_end
+)
+_generate_srv_cpp(front_end
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/getStereoFeatures.srv"
+  "${MSG_I_FLAGS}"
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg;/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoFeatures.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/front_end
 )
 _generate_srv_cpp(front_end
@@ -130,9 +163,9 @@ _generate_srv_cpp(front_end
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/front_end
 )
 _generate_srv_cpp(front_end
-  "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleImageDescription.srv"
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/stereoMatching.srv"
   "${MSG_I_FLAGS}"
-  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/Descriptors.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg;/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg"
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoLandmarks.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoFeatures.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/cvMatch.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/front_end
 )
 
@@ -148,21 +181,27 @@ add_custom_target(front_end_generate_messages_cpp
 add_dependencies(front_end_generate_messages front_end_generate_messages_cpp)
 
 # add dependencies to all check dependencies targets
+get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/windowStatus.msg" NAME_WE)
+add_dependencies(front_end_generate_messages_cpp _front_end_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoFeatures.msg" NAME_WE)
+add_dependencies(front_end_generate_messages_cpp _front_end_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg" NAME_WE)
 add_dependencies(front_end_generate_messages_cpp _front_end_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleImageDetection.srv" NAME_WE)
 add_dependencies(front_end_generate_messages_cpp _front_end_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoLandmarks.msg" NAME_WE)
+add_dependencies(front_end_generate_messages_cpp _front_end_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/getStereoFeatures.srv" NAME_WE)
+add_dependencies(front_end_generate_messages_cpp _front_end_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/frameDetection.msg" NAME_WE)
 add_dependencies(front_end_generate_messages_cpp _front_end_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleStereo.srv" NAME_WE)
+get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/cvMatch.msg" NAME_WE)
 add_dependencies(front_end_generate_messages_cpp _front_end_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/Descriptors.msg" NAME_WE)
+get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/stereoMatching.srv" NAME_WE)
 add_dependencies(front_end_generate_messages_cpp _front_end_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/loopStereoFrame.msg" NAME_WE)
+get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/windowMatching.srv" NAME_WE)
 add_dependencies(front_end_generate_messages_cpp _front_end_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleImageDescription.srv" NAME_WE)
-add_dependencies(front_end_generate_messages_cpp _front_end_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/frameDescription.msg" NAME_WE)
+get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/interFrameTracks.msg" NAME_WE)
 add_dependencies(front_end_generate_messages_cpp _front_end_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/Homography.msg" NAME_WE)
 add_dependencies(front_end_generate_messages_cpp _front_end_generate_messages_check_deps_${_filename})
@@ -179,6 +218,18 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS front_end_generate_messages_cpp)
 ### Section generating for lang: geneus
 ### Generating Messages
 _generate_msg_eus(front_end
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/windowStatus.msg"
+  "${MSG_I_FLAGS}"
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoLandmarks.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/cvMatch.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/interFrameTracks.msg;/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg"
+  ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/front_end
+)
+_generate_msg_eus(front_end
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoFeatures.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg"
+  ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/front_end
+)
+_generate_msg_eus(front_end
   "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg"
   "${MSG_I_FLAGS}"
   ""
@@ -187,25 +238,25 @@ _generate_msg_eus(front_end
 _generate_msg_eus(front_end
   "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/frameDetection.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg"
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/front_end
 )
 _generate_msg_eus(front_end
-  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/Descriptors.msg"
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoLandmarks.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg"
+  "/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/cvMatch.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/front_end
 )
 _generate_msg_eus(front_end
-  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/loopStereoFrame.msg"
-  "${MSG_I_FLAGS}"
-  "/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg"
-  ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/front_end
-)
-_generate_msg_eus(front_end
-  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/frameDescription.msg"
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/cvMatch.msg"
   "${MSG_I_FLAGS}"
   ""
+  ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/front_end
+)
+_generate_msg_eus(front_end
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/interFrameTracks.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/cvMatch.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/front_end
 )
 _generate_msg_eus(front_end
@@ -217,15 +268,21 @@ _generate_msg_eus(front_end
 _generate_msg_eus(front_end
   "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg"
+  ""
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/front_end
 )
 
 ### Generating Services
 _generate_srv_eus(front_end
-  "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleStereo.srv"
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/windowMatching.srv"
   "${MSG_I_FLAGS}"
-  "/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/Descriptors.msg"
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoLandmarks.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/cvMatch.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/interFrameTracks.msg;/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/windowStatus.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg"
+  ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/front_end
+)
+_generate_srv_eus(front_end
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/getStereoFeatures.srv"
+  "${MSG_I_FLAGS}"
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg;/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoFeatures.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/front_end
 )
 _generate_srv_eus(front_end
@@ -235,9 +292,9 @@ _generate_srv_eus(front_end
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/front_end
 )
 _generate_srv_eus(front_end
-  "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleImageDescription.srv"
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/stereoMatching.srv"
   "${MSG_I_FLAGS}"
-  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/Descriptors.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg;/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg"
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoLandmarks.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoFeatures.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/cvMatch.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/front_end
 )
 
@@ -253,21 +310,27 @@ add_custom_target(front_end_generate_messages_eus
 add_dependencies(front_end_generate_messages front_end_generate_messages_eus)
 
 # add dependencies to all check dependencies targets
+get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/windowStatus.msg" NAME_WE)
+add_dependencies(front_end_generate_messages_eus _front_end_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoFeatures.msg" NAME_WE)
+add_dependencies(front_end_generate_messages_eus _front_end_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg" NAME_WE)
 add_dependencies(front_end_generate_messages_eus _front_end_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleImageDetection.srv" NAME_WE)
 add_dependencies(front_end_generate_messages_eus _front_end_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoLandmarks.msg" NAME_WE)
+add_dependencies(front_end_generate_messages_eus _front_end_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/getStereoFeatures.srv" NAME_WE)
+add_dependencies(front_end_generate_messages_eus _front_end_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/frameDetection.msg" NAME_WE)
 add_dependencies(front_end_generate_messages_eus _front_end_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleStereo.srv" NAME_WE)
+get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/cvMatch.msg" NAME_WE)
 add_dependencies(front_end_generate_messages_eus _front_end_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/Descriptors.msg" NAME_WE)
+get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/stereoMatching.srv" NAME_WE)
 add_dependencies(front_end_generate_messages_eus _front_end_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/loopStereoFrame.msg" NAME_WE)
+get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/windowMatching.srv" NAME_WE)
 add_dependencies(front_end_generate_messages_eus _front_end_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleImageDescription.srv" NAME_WE)
-add_dependencies(front_end_generate_messages_eus _front_end_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/frameDescription.msg" NAME_WE)
+get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/interFrameTracks.msg" NAME_WE)
 add_dependencies(front_end_generate_messages_eus _front_end_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/Homography.msg" NAME_WE)
 add_dependencies(front_end_generate_messages_eus _front_end_generate_messages_check_deps_${_filename})
@@ -284,6 +347,18 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS front_end_generate_messages_eus)
 ### Section generating for lang: genlisp
 ### Generating Messages
 _generate_msg_lisp(front_end
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/windowStatus.msg"
+  "${MSG_I_FLAGS}"
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoLandmarks.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/cvMatch.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/interFrameTracks.msg;/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg"
+  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/front_end
+)
+_generate_msg_lisp(front_end
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoFeatures.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg"
+  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/front_end
+)
+_generate_msg_lisp(front_end
   "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg"
   "${MSG_I_FLAGS}"
   ""
@@ -292,25 +367,25 @@ _generate_msg_lisp(front_end
 _generate_msg_lisp(front_end
   "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/frameDetection.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg"
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/front_end
 )
 _generate_msg_lisp(front_end
-  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/Descriptors.msg"
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoLandmarks.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg"
+  "/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/cvMatch.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/front_end
 )
 _generate_msg_lisp(front_end
-  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/loopStereoFrame.msg"
-  "${MSG_I_FLAGS}"
-  "/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg"
-  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/front_end
-)
-_generate_msg_lisp(front_end
-  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/frameDescription.msg"
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/cvMatch.msg"
   "${MSG_I_FLAGS}"
   ""
+  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/front_end
+)
+_generate_msg_lisp(front_end
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/interFrameTracks.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/cvMatch.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/front_end
 )
 _generate_msg_lisp(front_end
@@ -322,15 +397,21 @@ _generate_msg_lisp(front_end
 _generate_msg_lisp(front_end
   "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg"
+  ""
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/front_end
 )
 
 ### Generating Services
 _generate_srv_lisp(front_end
-  "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleStereo.srv"
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/windowMatching.srv"
   "${MSG_I_FLAGS}"
-  "/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/Descriptors.msg"
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoLandmarks.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/cvMatch.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/interFrameTracks.msg;/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/windowStatus.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg"
+  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/front_end
+)
+_generate_srv_lisp(front_end
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/getStereoFeatures.srv"
+  "${MSG_I_FLAGS}"
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg;/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoFeatures.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/front_end
 )
 _generate_srv_lisp(front_end
@@ -340,9 +421,9 @@ _generate_srv_lisp(front_end
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/front_end
 )
 _generate_srv_lisp(front_end
-  "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleImageDescription.srv"
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/stereoMatching.srv"
   "${MSG_I_FLAGS}"
-  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/Descriptors.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg;/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg"
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoLandmarks.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoFeatures.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/cvMatch.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/front_end
 )
 
@@ -358,21 +439,27 @@ add_custom_target(front_end_generate_messages_lisp
 add_dependencies(front_end_generate_messages front_end_generate_messages_lisp)
 
 # add dependencies to all check dependencies targets
+get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/windowStatus.msg" NAME_WE)
+add_dependencies(front_end_generate_messages_lisp _front_end_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoFeatures.msg" NAME_WE)
+add_dependencies(front_end_generate_messages_lisp _front_end_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg" NAME_WE)
 add_dependencies(front_end_generate_messages_lisp _front_end_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleImageDetection.srv" NAME_WE)
 add_dependencies(front_end_generate_messages_lisp _front_end_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoLandmarks.msg" NAME_WE)
+add_dependencies(front_end_generate_messages_lisp _front_end_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/getStereoFeatures.srv" NAME_WE)
+add_dependencies(front_end_generate_messages_lisp _front_end_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/frameDetection.msg" NAME_WE)
 add_dependencies(front_end_generate_messages_lisp _front_end_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleStereo.srv" NAME_WE)
+get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/cvMatch.msg" NAME_WE)
 add_dependencies(front_end_generate_messages_lisp _front_end_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/Descriptors.msg" NAME_WE)
+get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/stereoMatching.srv" NAME_WE)
 add_dependencies(front_end_generate_messages_lisp _front_end_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/loopStereoFrame.msg" NAME_WE)
+get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/windowMatching.srv" NAME_WE)
 add_dependencies(front_end_generate_messages_lisp _front_end_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleImageDescription.srv" NAME_WE)
-add_dependencies(front_end_generate_messages_lisp _front_end_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/frameDescription.msg" NAME_WE)
+get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/interFrameTracks.msg" NAME_WE)
 add_dependencies(front_end_generate_messages_lisp _front_end_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/Homography.msg" NAME_WE)
 add_dependencies(front_end_generate_messages_lisp _front_end_generate_messages_check_deps_${_filename})
@@ -389,6 +476,18 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS front_end_generate_messages_lisp)
 ### Section generating for lang: gennodejs
 ### Generating Messages
 _generate_msg_nodejs(front_end
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/windowStatus.msg"
+  "${MSG_I_FLAGS}"
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoLandmarks.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/cvMatch.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/interFrameTracks.msg;/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg"
+  ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/front_end
+)
+_generate_msg_nodejs(front_end
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoFeatures.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg"
+  ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/front_end
+)
+_generate_msg_nodejs(front_end
   "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg"
   "${MSG_I_FLAGS}"
   ""
@@ -397,25 +496,25 @@ _generate_msg_nodejs(front_end
 _generate_msg_nodejs(front_end
   "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/frameDetection.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg"
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/front_end
 )
 _generate_msg_nodejs(front_end
-  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/Descriptors.msg"
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoLandmarks.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg"
+  "/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/cvMatch.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/front_end
 )
 _generate_msg_nodejs(front_end
-  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/loopStereoFrame.msg"
-  "${MSG_I_FLAGS}"
-  "/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg"
-  ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/front_end
-)
-_generate_msg_nodejs(front_end
-  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/frameDescription.msg"
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/cvMatch.msg"
   "${MSG_I_FLAGS}"
   ""
+  ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/front_end
+)
+_generate_msg_nodejs(front_end
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/interFrameTracks.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/cvMatch.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/front_end
 )
 _generate_msg_nodejs(front_end
@@ -427,15 +526,21 @@ _generate_msg_nodejs(front_end
 _generate_msg_nodejs(front_end
   "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg"
+  ""
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/front_end
 )
 
 ### Generating Services
 _generate_srv_nodejs(front_end
-  "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleStereo.srv"
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/windowMatching.srv"
   "${MSG_I_FLAGS}"
-  "/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/Descriptors.msg"
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoLandmarks.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/cvMatch.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/interFrameTracks.msg;/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/windowStatus.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg"
+  ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/front_end
+)
+_generate_srv_nodejs(front_end
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/getStereoFeatures.srv"
+  "${MSG_I_FLAGS}"
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg;/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoFeatures.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/front_end
 )
 _generate_srv_nodejs(front_end
@@ -445,9 +550,9 @@ _generate_srv_nodejs(front_end
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/front_end
 )
 _generate_srv_nodejs(front_end
-  "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleImageDescription.srv"
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/stereoMatching.srv"
   "${MSG_I_FLAGS}"
-  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/Descriptors.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg;/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg"
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoLandmarks.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoFeatures.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/cvMatch.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/front_end
 )
 
@@ -463,21 +568,27 @@ add_custom_target(front_end_generate_messages_nodejs
 add_dependencies(front_end_generate_messages front_end_generate_messages_nodejs)
 
 # add dependencies to all check dependencies targets
+get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/windowStatus.msg" NAME_WE)
+add_dependencies(front_end_generate_messages_nodejs _front_end_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoFeatures.msg" NAME_WE)
+add_dependencies(front_end_generate_messages_nodejs _front_end_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg" NAME_WE)
 add_dependencies(front_end_generate_messages_nodejs _front_end_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleImageDetection.srv" NAME_WE)
 add_dependencies(front_end_generate_messages_nodejs _front_end_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoLandmarks.msg" NAME_WE)
+add_dependencies(front_end_generate_messages_nodejs _front_end_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/getStereoFeatures.srv" NAME_WE)
+add_dependencies(front_end_generate_messages_nodejs _front_end_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/frameDetection.msg" NAME_WE)
 add_dependencies(front_end_generate_messages_nodejs _front_end_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleStereo.srv" NAME_WE)
+get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/cvMatch.msg" NAME_WE)
 add_dependencies(front_end_generate_messages_nodejs _front_end_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/Descriptors.msg" NAME_WE)
+get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/stereoMatching.srv" NAME_WE)
 add_dependencies(front_end_generate_messages_nodejs _front_end_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/loopStereoFrame.msg" NAME_WE)
+get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/windowMatching.srv" NAME_WE)
 add_dependencies(front_end_generate_messages_nodejs _front_end_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleImageDescription.srv" NAME_WE)
-add_dependencies(front_end_generate_messages_nodejs _front_end_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/frameDescription.msg" NAME_WE)
+get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/interFrameTracks.msg" NAME_WE)
 add_dependencies(front_end_generate_messages_nodejs _front_end_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/Homography.msg" NAME_WE)
 add_dependencies(front_end_generate_messages_nodejs _front_end_generate_messages_check_deps_${_filename})
@@ -494,6 +605,18 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS front_end_generate_messages_nodejs)
 ### Section generating for lang: genpy
 ### Generating Messages
 _generate_msg_py(front_end
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/windowStatus.msg"
+  "${MSG_I_FLAGS}"
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoLandmarks.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/cvMatch.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/interFrameTracks.msg;/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg"
+  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/front_end
+)
+_generate_msg_py(front_end
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoFeatures.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg"
+  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/front_end
+)
+_generate_msg_py(front_end
   "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg"
   "${MSG_I_FLAGS}"
   ""
@@ -502,25 +625,25 @@ _generate_msg_py(front_end
 _generate_msg_py(front_end
   "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/frameDetection.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg"
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/front_end
 )
 _generate_msg_py(front_end
-  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/Descriptors.msg"
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoLandmarks.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg"
+  "/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/cvMatch.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/front_end
 )
 _generate_msg_py(front_end
-  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/loopStereoFrame.msg"
-  "${MSG_I_FLAGS}"
-  "/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg"
-  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/front_end
-)
-_generate_msg_py(front_end
-  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/frameDescription.msg"
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/cvMatch.msg"
   "${MSG_I_FLAGS}"
   ""
+  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/front_end
+)
+_generate_msg_py(front_end
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/interFrameTracks.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/cvMatch.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/front_end
 )
 _generate_msg_py(front_end
@@ -532,15 +655,21 @@ _generate_msg_py(front_end
 _generate_msg_py(front_end
   "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg"
+  ""
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/front_end
 )
 
 ### Generating Services
 _generate_srv_py(front_end
-  "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleStereo.srv"
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/windowMatching.srv"
   "${MSG_I_FLAGS}"
-  "/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/Descriptors.msg"
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoLandmarks.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/cvMatch.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/interFrameTracks.msg;/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/windowStatus.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg"
+  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/front_end
+)
+_generate_srv_py(front_end
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/getStereoFeatures.srv"
+  "${MSG_I_FLAGS}"
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg;/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoFeatures.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/front_end
 )
 _generate_srv_py(front_end
@@ -550,9 +679,9 @@ _generate_srv_py(front_end
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/front_end
 )
 _generate_srv_py(front_end
-  "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleImageDescription.srv"
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/stereoMatching.srv"
   "${MSG_I_FLAGS}"
-  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/Descriptors.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg;/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg"
+  "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoLandmarks.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/kinetic/share/sensor_msgs/cmake/../msg/Image.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoFeatures.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg;/home/ryan/git/vSLAM_Analysis/src/front_end/msg/cvMatch.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/front_end
 )
 
@@ -568,21 +697,27 @@ add_custom_target(front_end_generate_messages_py
 add_dependencies(front_end_generate_messages front_end_generate_messages_py)
 
 # add dependencies to all check dependencies targets
+get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/windowStatus.msg" NAME_WE)
+add_dependencies(front_end_generate_messages_py _front_end_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoFeatures.msg" NAME_WE)
+add_dependencies(front_end_generate_messages_py _front_end_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg" NAME_WE)
 add_dependencies(front_end_generate_messages_py _front_end_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleImageDetection.srv" NAME_WE)
 add_dependencies(front_end_generate_messages_py _front_end_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoLandmarks.msg" NAME_WE)
+add_dependencies(front_end_generate_messages_py _front_end_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/getStereoFeatures.srv" NAME_WE)
+add_dependencies(front_end_generate_messages_py _front_end_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/frameDetection.msg" NAME_WE)
 add_dependencies(front_end_generate_messages_py _front_end_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleStereo.srv" NAME_WE)
+get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/cvMatch.msg" NAME_WE)
 add_dependencies(front_end_generate_messages_py _front_end_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/Descriptors.msg" NAME_WE)
+get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/stereoMatching.srv" NAME_WE)
 add_dependencies(front_end_generate_messages_py _front_end_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/loopStereoFrame.msg" NAME_WE)
+get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/windowMatching.srv" NAME_WE)
 add_dependencies(front_end_generate_messages_py _front_end_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleImageDescription.srv" NAME_WE)
-add_dependencies(front_end_generate_messages_py _front_end_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/frameDescription.msg" NAME_WE)
+get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/interFrameTracks.msg" NAME_WE)
 add_dependencies(front_end_generate_messages_py _front_end_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/ryan/git/vSLAM_Analysis/src/front_end/msg/Homography.msg" NAME_WE)
 add_dependencies(front_end_generate_messages_py _front_end_generate_messages_check_deps_${_filename})

@@ -53,84 +53,122 @@ CMAKE_BINARY_DIR = /home/ryan/git/vSLAM_Analysis/src/build
 # Include the progress variables for this target.
 include front_end/CMakeFiles/front_end_generate_messages_cpp.dir/progress.make
 
+front_end/CMakeFiles/front_end_generate_messages_cpp: devel/include/front_end/windowStatus.h
+front_end/CMakeFiles/front_end_generate_messages_cpp: devel/include/front_end/stereoFeatures.h
 front_end/CMakeFiles/front_end_generate_messages_cpp: devel/include/front_end/ProcTime.h
 front_end/CMakeFiles/front_end_generate_messages_cpp: devel/include/front_end/frameDetection.h
-front_end/CMakeFiles/front_end_generate_messages_cpp: devel/include/front_end/Descriptors.h
-front_end/CMakeFiles/front_end_generate_messages_cpp: devel/include/front_end/loopStereoFrame.h
-front_end/CMakeFiles/front_end_generate_messages_cpp: devel/include/front_end/frameDescription.h
+front_end/CMakeFiles/front_end_generate_messages_cpp: devel/include/front_end/stereoLandmarks.h
+front_end/CMakeFiles/front_end_generate_messages_cpp: devel/include/front_end/cvMatch.h
+front_end/CMakeFiles/front_end_generate_messages_cpp: devel/include/front_end/interFrameTracks.h
 front_end/CMakeFiles/front_end_generate_messages_cpp: devel/include/front_end/Homography.h
 front_end/CMakeFiles/front_end_generate_messages_cpp: devel/include/front_end/kPoint.h
-front_end/CMakeFiles/front_end_generate_messages_cpp: devel/include/front_end/singleStereo.h
+front_end/CMakeFiles/front_end_generate_messages_cpp: devel/include/front_end/windowMatching.h
+front_end/CMakeFiles/front_end_generate_messages_cpp: devel/include/front_end/getStereoFeatures.h
 front_end/CMakeFiles/front_end_generate_messages_cpp: devel/include/front_end/singleImageDetection.h
-front_end/CMakeFiles/front_end_generate_messages_cpp: devel/include/front_end/singleImageDescription.h
+front_end/CMakeFiles/front_end_generate_messages_cpp: devel/include/front_end/stereoMatching.h
 
+
+devel/include/front_end/windowStatus.h: /opt/ros/kinetic/lib/gencpp/gen_cpp.py
+devel/include/front_end/windowStatus.h: ../front_end/msg/windowStatus.msg
+devel/include/front_end/windowStatus.h: ../front_end/msg/stereoLandmarks.msg
+devel/include/front_end/windowStatus.h: ../front_end/msg/cvMatch.msg
+devel/include/front_end/windowStatus.h: ../front_end/msg/interFrameTracks.msg
+devel/include/front_end/windowStatus.h: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
+devel/include/front_end/windowStatus.h: ../front_end/msg/ProcTime.msg
+devel/include/front_end/windowStatus.h: ../front_end/msg/kPoint.msg
+devel/include/front_end/windowStatus.h: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+devel/include/front_end/windowStatus.h: /opt/ros/kinetic/share/gencpp/msg.h.template
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C++ code from front_end/windowStatus.msg"
+	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/windowStatus.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/include/front_end -e /opt/ros/kinetic/share/gencpp/cmake/..
+
+devel/include/front_end/stereoFeatures.h: /opt/ros/kinetic/lib/gencpp/gen_cpp.py
+devel/include/front_end/stereoFeatures.h: ../front_end/msg/stereoFeatures.msg
+devel/include/front_end/stereoFeatures.h: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
+devel/include/front_end/stereoFeatures.h: ../front_end/msg/kPoint.msg
+devel/include/front_end/stereoFeatures.h: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+devel/include/front_end/stereoFeatures.h: ../front_end/msg/ProcTime.msg
+devel/include/front_end/stereoFeatures.h: /opt/ros/kinetic/share/gencpp/msg.h.template
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating C++ code from front_end/stereoFeatures.msg"
+	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoFeatures.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/include/front_end -e /opt/ros/kinetic/share/gencpp/cmake/..
 
 devel/include/front_end/ProcTime.h: /opt/ros/kinetic/lib/gencpp/gen_cpp.py
 devel/include/front_end/ProcTime.h: ../front_end/msg/ProcTime.msg
 devel/include/front_end/ProcTime.h: /opt/ros/kinetic/share/gencpp/msg.h.template
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C++ code from front_end/ProcTime.msg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating C++ code from front_end/ProcTime.msg"
 	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/include/front_end -e /opt/ros/kinetic/share/gencpp/cmake/..
 
 devel/include/front_end/frameDetection.h: /opt/ros/kinetic/lib/gencpp/gen_cpp.py
 devel/include/front_end/frameDetection.h: ../front_end/msg/frameDetection.msg
-devel/include/front_end/frameDetection.h: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
 devel/include/front_end/frameDetection.h: ../front_end/msg/kPoint.msg
-devel/include/front_end/frameDetection.h: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
 devel/include/front_end/frameDetection.h: ../front_end/msg/ProcTime.msg
 devel/include/front_end/frameDetection.h: /opt/ros/kinetic/share/gencpp/msg.h.template
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating C++ code from front_end/frameDetection.msg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating C++ code from front_end/frameDetection.msg"
 	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/frameDetection.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/include/front_end -e /opt/ros/kinetic/share/gencpp/cmake/..
 
-devel/include/front_end/Descriptors.h: /opt/ros/kinetic/lib/gencpp/gen_cpp.py
-devel/include/front_end/Descriptors.h: ../front_end/msg/Descriptors.msg
-devel/include/front_end/Descriptors.h: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
-devel/include/front_end/Descriptors.h: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
-devel/include/front_end/Descriptors.h: ../front_end/msg/ProcTime.msg
-devel/include/front_end/Descriptors.h: /opt/ros/kinetic/share/gencpp/msg.h.template
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating C++ code from front_end/Descriptors.msg"
-	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/Descriptors.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/include/front_end -e /opt/ros/kinetic/share/gencpp/cmake/..
+devel/include/front_end/stereoLandmarks.h: /opt/ros/kinetic/lib/gencpp/gen_cpp.py
+devel/include/front_end/stereoLandmarks.h: ../front_end/msg/stereoLandmarks.msg
+devel/include/front_end/stereoLandmarks.h: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
+devel/include/front_end/stereoLandmarks.h: ../front_end/msg/ProcTime.msg
+devel/include/front_end/stereoLandmarks.h: ../front_end/msg/kPoint.msg
+devel/include/front_end/stereoLandmarks.h: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+devel/include/front_end/stereoLandmarks.h: ../front_end/msg/cvMatch.msg
+devel/include/front_end/stereoLandmarks.h: /opt/ros/kinetic/share/gencpp/msg.h.template
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating C++ code from front_end/stereoLandmarks.msg"
+	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoLandmarks.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/include/front_end -e /opt/ros/kinetic/share/gencpp/cmake/..
 
-devel/include/front_end/loopStereoFrame.h: /opt/ros/kinetic/lib/gencpp/gen_cpp.py
-devel/include/front_end/loopStereoFrame.h: ../front_end/msg/loopStereoFrame.msg
-devel/include/front_end/loopStereoFrame.h: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
-devel/include/front_end/loopStereoFrame.h: ../front_end/msg/kPoint.msg
-devel/include/front_end/loopStereoFrame.h: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
-devel/include/front_end/loopStereoFrame.h: ../front_end/msg/ProcTime.msg
-devel/include/front_end/loopStereoFrame.h: /opt/ros/kinetic/share/gencpp/msg.h.template
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating C++ code from front_end/loopStereoFrame.msg"
-	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/loopStereoFrame.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/include/front_end -e /opt/ros/kinetic/share/gencpp/cmake/..
+devel/include/front_end/cvMatch.h: /opt/ros/kinetic/lib/gencpp/gen_cpp.py
+devel/include/front_end/cvMatch.h: ../front_end/msg/cvMatch.msg
+devel/include/front_end/cvMatch.h: /opt/ros/kinetic/share/gencpp/msg.h.template
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Generating C++ code from front_end/cvMatch.msg"
+	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/cvMatch.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/include/front_end -e /opt/ros/kinetic/share/gencpp/cmake/..
 
-devel/include/front_end/frameDescription.h: /opt/ros/kinetic/lib/gencpp/gen_cpp.py
-devel/include/front_end/frameDescription.h: ../front_end/msg/frameDescription.msg
-devel/include/front_end/frameDescription.h: /opt/ros/kinetic/share/gencpp/msg.h.template
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating C++ code from front_end/frameDescription.msg"
-	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/frameDescription.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/include/front_end -e /opt/ros/kinetic/share/gencpp/cmake/..
+devel/include/front_end/interFrameTracks.h: /opt/ros/kinetic/lib/gencpp/gen_cpp.py
+devel/include/front_end/interFrameTracks.h: ../front_end/msg/interFrameTracks.msg
+devel/include/front_end/interFrameTracks.h: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
+devel/include/front_end/interFrameTracks.h: ../front_end/msg/cvMatch.msg
+devel/include/front_end/interFrameTracks.h: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+devel/include/front_end/interFrameTracks.h: /opt/ros/kinetic/share/gencpp/msg.h.template
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Generating C++ code from front_end/interFrameTracks.msg"
+	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/interFrameTracks.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/include/front_end -e /opt/ros/kinetic/share/gencpp/cmake/..
 
 devel/include/front_end/Homography.h: /opt/ros/kinetic/lib/gencpp/gen_cpp.py
 devel/include/front_end/Homography.h: ../front_end/msg/Homography.msg
 devel/include/front_end/Homography.h: /opt/ros/kinetic/share/gencpp/msg.h.template
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Generating C++ code from front_end/Homography.msg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Generating C++ code from front_end/Homography.msg"
 	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/Homography.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/include/front_end -e /opt/ros/kinetic/share/gencpp/cmake/..
 
 devel/include/front_end/kPoint.h: /opt/ros/kinetic/lib/gencpp/gen_cpp.py
 devel/include/front_end/kPoint.h: ../front_end/msg/kPoint.msg
-devel/include/front_end/kPoint.h: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
-devel/include/front_end/kPoint.h: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
 devel/include/front_end/kPoint.h: /opt/ros/kinetic/share/gencpp/msg.h.template
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Generating C++ code from front_end/kPoint.msg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Generating C++ code from front_end/kPoint.msg"
 	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/include/front_end -e /opt/ros/kinetic/share/gencpp/cmake/..
 
-devel/include/front_end/singleStereo.h: /opt/ros/kinetic/lib/gencpp/gen_cpp.py
-devel/include/front_end/singleStereo.h: ../front_end/srv/singleStereo.srv
-devel/include/front_end/singleStereo.h: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
-devel/include/front_end/singleStereo.h: ../front_end/msg/ProcTime.msg
-devel/include/front_end/singleStereo.h: ../front_end/msg/kPoint.msg
-devel/include/front_end/singleStereo.h: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
-devel/include/front_end/singleStereo.h: ../front_end/msg/Descriptors.msg
-devel/include/front_end/singleStereo.h: /opt/ros/kinetic/share/gencpp/msg.h.template
-devel/include/front_end/singleStereo.h: /opt/ros/kinetic/share/gencpp/srv.h.template
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Generating C++ code from front_end/singleStereo.srv"
-	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleStereo.srv -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/include/front_end -e /opt/ros/kinetic/share/gencpp/cmake/..
+devel/include/front_end/windowMatching.h: /opt/ros/kinetic/lib/gencpp/gen_cpp.py
+devel/include/front_end/windowMatching.h: ../front_end/srv/windowMatching.srv
+devel/include/front_end/windowMatching.h: ../front_end/msg/stereoLandmarks.msg
+devel/include/front_end/windowMatching.h: ../front_end/msg/cvMatch.msg
+devel/include/front_end/windowMatching.h: ../front_end/msg/interFrameTracks.msg
+devel/include/front_end/windowMatching.h: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
+devel/include/front_end/windowMatching.h: ../front_end/msg/ProcTime.msg
+devel/include/front_end/windowMatching.h: ../front_end/msg/windowStatus.msg
+devel/include/front_end/windowMatching.h: ../front_end/msg/kPoint.msg
+devel/include/front_end/windowMatching.h: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+devel/include/front_end/windowMatching.h: /opt/ros/kinetic/share/gencpp/msg.h.template
+devel/include/front_end/windowMatching.h: /opt/ros/kinetic/share/gencpp/srv.h.template
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Generating C++ code from front_end/windowMatching.srv"
+	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/ryan/git/vSLAM_Analysis/src/front_end/srv/windowMatching.srv -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/include/front_end -e /opt/ros/kinetic/share/gencpp/cmake/..
+
+devel/include/front_end/getStereoFeatures.h: /opt/ros/kinetic/lib/gencpp/gen_cpp.py
+devel/include/front_end/getStereoFeatures.h: ../front_end/srv/getStereoFeatures.srv
+devel/include/front_end/getStereoFeatures.h: ../front_end/msg/ProcTime.msg
+devel/include/front_end/getStereoFeatures.h: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
+devel/include/front_end/getStereoFeatures.h: ../front_end/msg/kPoint.msg
+devel/include/front_end/getStereoFeatures.h: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+devel/include/front_end/getStereoFeatures.h: ../front_end/msg/stereoFeatures.msg
+devel/include/front_end/getStereoFeatures.h: /opt/ros/kinetic/share/gencpp/msg.h.template
+devel/include/front_end/getStereoFeatures.h: /opt/ros/kinetic/share/gencpp/srv.h.template
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Generating C++ code from front_end/getStereoFeatures.srv"
+	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/ryan/git/vSLAM_Analysis/src/front_end/srv/getStereoFeatures.srv -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/include/front_end -e /opt/ros/kinetic/share/gencpp/cmake/..
 
 devel/include/front_end/singleImageDetection.h: /opt/ros/kinetic/lib/gencpp/gen_cpp.py
 devel/include/front_end/singleImageDetection.h: ../front_end/srv/singleImageDetection.srv
@@ -141,32 +179,37 @@ devel/include/front_end/singleImageDetection.h: /opt/ros/kinetic/share/std_msgs/
 devel/include/front_end/singleImageDetection.h: ../front_end/msg/kPoint.msg
 devel/include/front_end/singleImageDetection.h: /opt/ros/kinetic/share/gencpp/msg.h.template
 devel/include/front_end/singleImageDetection.h: /opt/ros/kinetic/share/gencpp/srv.h.template
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Generating C++ code from front_end/singleImageDetection.srv"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Generating C++ code from front_end/singleImageDetection.srv"
 	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleImageDetection.srv -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/include/front_end -e /opt/ros/kinetic/share/gencpp/cmake/..
 
-devel/include/front_end/singleImageDescription.h: /opt/ros/kinetic/lib/gencpp/gen_cpp.py
-devel/include/front_end/singleImageDescription.h: ../front_end/srv/singleImageDescription.srv
-devel/include/front_end/singleImageDescription.h: ../front_end/msg/Descriptors.msg
-devel/include/front_end/singleImageDescription.h: ../front_end/msg/ProcTime.msg
-devel/include/front_end/singleImageDescription.h: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
-devel/include/front_end/singleImageDescription.h: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
-devel/include/front_end/singleImageDescription.h: ../front_end/msg/kPoint.msg
-devel/include/front_end/singleImageDescription.h: /opt/ros/kinetic/share/gencpp/msg.h.template
-devel/include/front_end/singleImageDescription.h: /opt/ros/kinetic/share/gencpp/srv.h.template
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Generating C++ code from front_end/singleImageDescription.srv"
-	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleImageDescription.srv -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/include/front_end -e /opt/ros/kinetic/share/gencpp/cmake/..
+devel/include/front_end/stereoMatching.h: /opt/ros/kinetic/lib/gencpp/gen_cpp.py
+devel/include/front_end/stereoMatching.h: ../front_end/srv/stereoMatching.srv
+devel/include/front_end/stereoMatching.h: ../front_end/msg/stereoLandmarks.msg
+devel/include/front_end/stereoMatching.h: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+devel/include/front_end/stereoMatching.h: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
+devel/include/front_end/stereoMatching.h: ../front_end/msg/ProcTime.msg
+devel/include/front_end/stereoMatching.h: ../front_end/msg/stereoFeatures.msg
+devel/include/front_end/stereoMatching.h: ../front_end/msg/kPoint.msg
+devel/include/front_end/stereoMatching.h: ../front_end/msg/cvMatch.msg
+devel/include/front_end/stereoMatching.h: /opt/ros/kinetic/share/gencpp/msg.h.template
+devel/include/front_end/stereoMatching.h: /opt/ros/kinetic/share/gencpp/srv.h.template
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Generating C++ code from front_end/stereoMatching.srv"
+	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/ryan/git/vSLAM_Analysis/src/front_end/srv/stereoMatching.srv -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/include/front_end -e /opt/ros/kinetic/share/gencpp/cmake/..
 
 front_end_generate_messages_cpp: front_end/CMakeFiles/front_end_generate_messages_cpp
+front_end_generate_messages_cpp: devel/include/front_end/windowStatus.h
+front_end_generate_messages_cpp: devel/include/front_end/stereoFeatures.h
 front_end_generate_messages_cpp: devel/include/front_end/ProcTime.h
 front_end_generate_messages_cpp: devel/include/front_end/frameDetection.h
-front_end_generate_messages_cpp: devel/include/front_end/Descriptors.h
-front_end_generate_messages_cpp: devel/include/front_end/loopStereoFrame.h
-front_end_generate_messages_cpp: devel/include/front_end/frameDescription.h
+front_end_generate_messages_cpp: devel/include/front_end/stereoLandmarks.h
+front_end_generate_messages_cpp: devel/include/front_end/cvMatch.h
+front_end_generate_messages_cpp: devel/include/front_end/interFrameTracks.h
 front_end_generate_messages_cpp: devel/include/front_end/Homography.h
 front_end_generate_messages_cpp: devel/include/front_end/kPoint.h
-front_end_generate_messages_cpp: devel/include/front_end/singleStereo.h
+front_end_generate_messages_cpp: devel/include/front_end/windowMatching.h
+front_end_generate_messages_cpp: devel/include/front_end/getStereoFeatures.h
 front_end_generate_messages_cpp: devel/include/front_end/singleImageDetection.h
-front_end_generate_messages_cpp: devel/include/front_end/singleImageDescription.h
+front_end_generate_messages_cpp: devel/include/front_end/stereoMatching.h
 front_end_generate_messages_cpp: front_end/CMakeFiles/front_end_generate_messages_cpp.dir/build.make
 
 .PHONY : front_end_generate_messages_cpp

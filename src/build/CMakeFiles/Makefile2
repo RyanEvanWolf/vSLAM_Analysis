@@ -245,12 +245,12 @@ gtest/preinstall:
 gtest/CMakeFiles/gtest.dir/all:
 	$(MAKE) -f gtest/CMakeFiles/gtest.dir/build.make gtest/CMakeFiles/gtest.dir/depend
 	$(MAKE) -f gtest/CMakeFiles/gtest.dir/build.make gtest/CMakeFiles/gtest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=67,68 "Built target gtest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=70 "Built target gtest"
 .PHONY : gtest/CMakeFiles/gtest.dir/all
 
 # Build rule for subdir invocation for target.
 gtest/CMakeFiles/gtest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 gtest/CMakeFiles/gtest.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
 .PHONY : gtest/CMakeFiles/gtest.dir/rule
@@ -277,7 +277,7 @@ clean: gtest/CMakeFiles/gtest.dir/clean
 gtest/CMakeFiles/gtest_main.dir/all: gtest/CMakeFiles/gtest.dir/all
 	$(MAKE) -f gtest/CMakeFiles/gtest_main.dir/build.make gtest/CMakeFiles/gtest_main.dir/depend
 	$(MAKE) -f gtest/CMakeFiles/gtest_main.dir/build.make gtest/CMakeFiles/gtest_main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=69 "Built target gtest_main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=71,72 "Built target gtest_main"
 .PHONY : gtest/CMakeFiles/gtest_main.dir/all
 
 # Build rule for subdir invocation for target.
@@ -312,19 +312,22 @@ front_end/all: front_end/src/all
 .PHONY : front_end/all
 
 # Convenience name for "clean" pass in the directory.
+front_end/clean: front_end/CMakeFiles/front_end_genpy.dir/clean
+front_end/clean: front_end/CMakeFiles/front_end_generate_messages_py.dir/clean
+front_end/clean: front_end/CMakeFiles/front_end_gennodejs.dir/clean
 front_end/clean: front_end/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/clean
 front_end/clean: front_end/CMakeFiles/front_end_generate_messages_lisp.dir/clean
-front_end/clean: front_end/CMakeFiles/front_end_genpy.dir/clean
 front_end/clean: front_end/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean
+front_end/clean: front_end/CMakeFiles/front_end_geneus.dir/clean
 front_end/clean: front_end/CMakeFiles/std_msgs_generate_messages_eus.dir/clean
+front_end/clean: front_end/CMakeFiles/_front_end_generate_messages_check_deps_interFrameTracks.dir/clean
 front_end/clean: front_end/CMakeFiles/roscpp_generate_messages_lisp.dir/clean
+front_end/clean: front_end/CMakeFiles/_front_end_generate_messages_check_deps_windowStatus.dir/clean
 front_end/clean: front_end/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/clean
 front_end/clean: front_end/CMakeFiles/front_end_generate_messages_cpp.dir/clean
 front_end/clean: front_end/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/clean
 front_end/clean: front_end/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/clean
 front_end/clean: front_end/CMakeFiles/roscpp_generate_messages_eus.dir/clean
-front_end/clean: front_end/CMakeFiles/front_end_geneus.dir/clean
-front_end/clean: front_end/CMakeFiles/_front_end_generate_messages_check_deps_loopStereoFrame.dir/clean
 front_end/clean: front_end/CMakeFiles/_front_end_generate_messages_check_deps_kPoint.dir/clean
 front_end/clean: front_end/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/clean
 front_end/clean: front_end/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/clean
@@ -332,31 +335,31 @@ front_end/clean: front_end/CMakeFiles/sensor_msgs_generate_messages_eus.dir/clea
 front_end/clean: front_end/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
 front_end/clean: front_end/CMakeFiles/roscpp_generate_messages_cpp.dir/clean
 front_end/clean: front_end/CMakeFiles/roscpp_generate_messages_nodejs.dir/clean
+front_end/clean: front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoFeatures.dir/clean
 front_end/clean: front_end/CMakeFiles/_front_end_generate_messages_check_deps_frameDetection.dir/clean
 front_end/clean: front_end/CMakeFiles/front_end_gencpp.dir/clean
 front_end/clean: front_end/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/clean
 front_end/clean: front_end/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/clean
 front_end/clean: front_end/CMakeFiles/roscpp_generate_messages_py.dir/clean
-front_end/clean: front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleStereo.dir/clean
-front_end/clean: front_end/CMakeFiles/front_end_generate_messages_py.dir/clean
 front_end/clean: front_end/CMakeFiles/sensor_msgs_generate_messages_py.dir/clean
-front_end/clean: front_end/CMakeFiles/front_end_gennodejs.dir/clean
+front_end/clean: front_end/CMakeFiles/std_msgs_generate_messages_py.dir/clean
 front_end/clean: front_end/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/clean
 front_end/clean: front_end/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean
 front_end/clean: front_end/CMakeFiles/geometry_msgs_generate_messages_py.dir/clean
-front_end/clean: front_end/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/clean
-front_end/clean: front_end/CMakeFiles/front_end_generate_messages.dir/clean
+front_end/clean: front_end/CMakeFiles/_front_end_generate_messages_check_deps_getStereoFeatures.dir/clean
 front_end/clean: front_end/CMakeFiles/geometry_msgs_generate_messages_eus.dir/clean
 front_end/clean: front_end/CMakeFiles/_front_end_generate_messages_check_deps_ProcTime.dir/clean
-front_end/clean: front_end/CMakeFiles/std_msgs_generate_messages_py.dir/clean
-front_end/clean: front_end/CMakeFiles/_front_end_generate_messages_check_deps_Descriptors.dir/clean
-front_end/clean: front_end/CMakeFiles/_front_end_generate_messages_check_deps_frameDescription.dir/clean
+front_end/clean: front_end/CMakeFiles/_front_end_generate_messages_check_deps_cvMatch.dir/clean
+front_end/clean: front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoLandmarks.dir/clean
+front_end/clean: front_end/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/clean
+front_end/clean: front_end/CMakeFiles/front_end_generate_messages.dir/clean
+front_end/clean: front_end/CMakeFiles/_front_end_generate_messages_check_deps_windowMatching.dir/clean
+front_end/clean: front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoMatching.dir/clean
 front_end/clean: front_end/CMakeFiles/_front_end_generate_messages_check_deps_Homography.dir/clean
 front_end/clean: front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleImageDetection.dir/clean
 front_end/clean: front_end/CMakeFiles/front_end_generate_messages_eus.dir/clean
 front_end/clean: front_end/CMakeFiles/front_end_genlisp.dir/clean
 front_end/clean: front_end/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/clean
-front_end/clean: front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleImageDescription.dir/clean
 front_end/clean: front_end/CMakeFiles/front_end_generate_messages_nodejs.dir/clean
 front_end/clean: front_end/src/clean
 
@@ -366,6 +369,117 @@ front_end/clean: front_end/src/clean
 front_end/preinstall: front_end/src/preinstall
 
 .PHONY : front_end/preinstall
+
+#=============================================================================
+# Target rules for target front_end/CMakeFiles/front_end_genpy.dir
+
+# All Build rule for target.
+front_end/CMakeFiles/front_end_genpy.dir/all: front_end/CMakeFiles/front_end_generate_messages_py.dir/all
+	$(MAKE) -f front_end/CMakeFiles/front_end_genpy.dir/build.make front_end/CMakeFiles/front_end_genpy.dir/depend
+	$(MAKE) -f front_end/CMakeFiles/front_end_genpy.dir/build.make front_end/CMakeFiles/front_end_genpy.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num= "Built target front_end_genpy"
+.PHONY : front_end/CMakeFiles/front_end_genpy.dir/all
+
+# Build rule for subdir invocation for target.
+front_end/CMakeFiles/front_end_genpy.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 8
+	$(MAKE) -f CMakeFiles/Makefile2 front_end/CMakeFiles/front_end_genpy.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
+.PHONY : front_end/CMakeFiles/front_end_genpy.dir/rule
+
+# Convenience name for target.
+front_end_genpy: front_end/CMakeFiles/front_end_genpy.dir/rule
+
+.PHONY : front_end_genpy
+
+# clean rule for target.
+front_end/CMakeFiles/front_end_genpy.dir/clean:
+	$(MAKE) -f front_end/CMakeFiles/front_end_genpy.dir/build.make front_end/CMakeFiles/front_end_genpy.dir/clean
+.PHONY : front_end/CMakeFiles/front_end_genpy.dir/clean
+
+# clean rule for target.
+clean: front_end/CMakeFiles/front_end_genpy.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target front_end/CMakeFiles/front_end_generate_messages_py.dir
+
+# All Build rule for target.
+front_end/CMakeFiles/front_end_generate_messages_py.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_interFrameTracks.dir/all
+front_end/CMakeFiles/front_end_generate_messages_py.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_windowStatus.dir/all
+front_end/CMakeFiles/front_end_generate_messages_py.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_kPoint.dir/all
+front_end/CMakeFiles/front_end_generate_messages_py.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoFeatures.dir/all
+front_end/CMakeFiles/front_end_generate_messages_py.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_frameDetection.dir/all
+front_end/CMakeFiles/front_end_generate_messages_py.dir/all: front_end/CMakeFiles/sensor_msgs_generate_messages_py.dir/all
+front_end/CMakeFiles/front_end_generate_messages_py.dir/all: front_end/CMakeFiles/std_msgs_generate_messages_py.dir/all
+front_end/CMakeFiles/front_end_generate_messages_py.dir/all: front_end/CMakeFiles/geometry_msgs_generate_messages_py.dir/all
+front_end/CMakeFiles/front_end_generate_messages_py.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_getStereoFeatures.dir/all
+front_end/CMakeFiles/front_end_generate_messages_py.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_ProcTime.dir/all
+front_end/CMakeFiles/front_end_generate_messages_py.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_cvMatch.dir/all
+front_end/CMakeFiles/front_end_generate_messages_py.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoLandmarks.dir/all
+front_end/CMakeFiles/front_end_generate_messages_py.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_windowMatching.dir/all
+front_end/CMakeFiles/front_end_generate_messages_py.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoMatching.dir/all
+front_end/CMakeFiles/front_end_generate_messages_py.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_Homography.dir/all
+front_end/CMakeFiles/front_end_generate_messages_py.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleImageDetection.dir/all
+	$(MAKE) -f front_end/CMakeFiles/front_end_generate_messages_py.dir/build.make front_end/CMakeFiles/front_end_generate_messages_py.dir/depend
+	$(MAKE) -f front_end/CMakeFiles/front_end_generate_messages_py.dir/build.make front_end/CMakeFiles/front_end_generate_messages_py.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=62,63,64,65,66,67,68,69 "Built target front_end_generate_messages_py"
+.PHONY : front_end/CMakeFiles/front_end_generate_messages_py.dir/all
+
+# Build rule for subdir invocation for target.
+front_end/CMakeFiles/front_end_generate_messages_py.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 8
+	$(MAKE) -f CMakeFiles/Makefile2 front_end/CMakeFiles/front_end_generate_messages_py.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
+.PHONY : front_end/CMakeFiles/front_end_generate_messages_py.dir/rule
+
+# Convenience name for target.
+front_end_generate_messages_py: front_end/CMakeFiles/front_end_generate_messages_py.dir/rule
+
+.PHONY : front_end_generate_messages_py
+
+# clean rule for target.
+front_end/CMakeFiles/front_end_generate_messages_py.dir/clean:
+	$(MAKE) -f front_end/CMakeFiles/front_end_generate_messages_py.dir/build.make front_end/CMakeFiles/front_end_generate_messages_py.dir/clean
+.PHONY : front_end/CMakeFiles/front_end_generate_messages_py.dir/clean
+
+# clean rule for target.
+clean: front_end/CMakeFiles/front_end_generate_messages_py.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target front_end/CMakeFiles/front_end_gennodejs.dir
+
+# All Build rule for target.
+front_end/CMakeFiles/front_end_gennodejs.dir/all: front_end/CMakeFiles/front_end_generate_messages_nodejs.dir/all
+	$(MAKE) -f front_end/CMakeFiles/front_end_gennodejs.dir/build.make front_end/CMakeFiles/front_end_gennodejs.dir/depend
+	$(MAKE) -f front_end/CMakeFiles/front_end_gennodejs.dir/build.make front_end/CMakeFiles/front_end_gennodejs.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num= "Built target front_end_gennodejs"
+.PHONY : front_end/CMakeFiles/front_end_gennodejs.dir/all
+
+# Build rule for subdir invocation for target.
+front_end/CMakeFiles/front_end_gennodejs.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 8
+	$(MAKE) -f CMakeFiles/Makefile2 front_end/CMakeFiles/front_end_gennodejs.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
+.PHONY : front_end/CMakeFiles/front_end_gennodejs.dir/rule
+
+# Convenience name for target.
+front_end_gennodejs: front_end/CMakeFiles/front_end_gennodejs.dir/rule
+
+.PHONY : front_end_gennodejs
+
+# clean rule for target.
+front_end/CMakeFiles/front_end_gennodejs.dir/clean:
+	$(MAKE) -f front_end/CMakeFiles/front_end_gennodejs.dir/build.make front_end/CMakeFiles/front_end_gennodejs.dir/clean
+.PHONY : front_end/CMakeFiles/front_end_gennodejs.dir/clean
+
+# clean rule for target.
+clean: front_end/CMakeFiles/front_end_gennodejs.dir/clean
+
+.PHONY : clean
 
 #=============================================================================
 # Target rules for target front_end/CMakeFiles/sensor_msgs_generate_messages_lisp.dir
@@ -405,17 +519,20 @@ clean: front_end/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/clean
 # All Build rule for target.
 front_end/CMakeFiles/front_end_generate_messages_lisp.dir/all: front_end/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/all
 front_end/CMakeFiles/front_end_generate_messages_lisp.dir/all: front_end/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
-front_end/CMakeFiles/front_end_generate_messages_lisp.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_loopStereoFrame.dir/all
+front_end/CMakeFiles/front_end_generate_messages_lisp.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_interFrameTracks.dir/all
+front_end/CMakeFiles/front_end_generate_messages_lisp.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_windowStatus.dir/all
 front_end/CMakeFiles/front_end_generate_messages_lisp.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_kPoint.dir/all
+front_end/CMakeFiles/front_end_generate_messages_lisp.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoFeatures.dir/all
 front_end/CMakeFiles/front_end_generate_messages_lisp.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_frameDetection.dir/all
-front_end/CMakeFiles/front_end_generate_messages_lisp.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleStereo.dir/all
+front_end/CMakeFiles/front_end_generate_messages_lisp.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_getStereoFeatures.dir/all
 front_end/CMakeFiles/front_end_generate_messages_lisp.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_ProcTime.dir/all
-front_end/CMakeFiles/front_end_generate_messages_lisp.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_Descriptors.dir/all
-front_end/CMakeFiles/front_end_generate_messages_lisp.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_frameDescription.dir/all
+front_end/CMakeFiles/front_end_generate_messages_lisp.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_cvMatch.dir/all
+front_end/CMakeFiles/front_end_generate_messages_lisp.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoLandmarks.dir/all
+front_end/CMakeFiles/front_end_generate_messages_lisp.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_windowMatching.dir/all
+front_end/CMakeFiles/front_end_generate_messages_lisp.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoMatching.dir/all
 front_end/CMakeFiles/front_end_generate_messages_lisp.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_Homography.dir/all
 front_end/CMakeFiles/front_end_generate_messages_lisp.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleImageDetection.dir/all
 front_end/CMakeFiles/front_end_generate_messages_lisp.dir/all: front_end/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/all
-front_end/CMakeFiles/front_end_generate_messages_lisp.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleImageDescription.dir/all
 	$(MAKE) -f front_end/CMakeFiles/front_end_generate_messages_lisp.dir/build.make front_end/CMakeFiles/front_end_generate_messages_lisp.dir/depend
 	$(MAKE) -f front_end/CMakeFiles/front_end_generate_messages_lisp.dir/build.make front_end/CMakeFiles/front_end_generate_messages_lisp.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=47,48,49,50,51,52,53 "Built target front_end_generate_messages_lisp"
@@ -440,38 +557,6 @@ front_end/CMakeFiles/front_end_generate_messages_lisp.dir/clean:
 
 # clean rule for target.
 clean: front_end/CMakeFiles/front_end_generate_messages_lisp.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target front_end/CMakeFiles/front_end_genpy.dir
-
-# All Build rule for target.
-front_end/CMakeFiles/front_end_genpy.dir/all: front_end/CMakeFiles/front_end_generate_messages_py.dir/all
-	$(MAKE) -f front_end/CMakeFiles/front_end_genpy.dir/build.make front_end/CMakeFiles/front_end_genpy.dir/depend
-	$(MAKE) -f front_end/CMakeFiles/front_end_genpy.dir/build.make front_end/CMakeFiles/front_end_genpy.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num= "Built target front_end_genpy"
-.PHONY : front_end/CMakeFiles/front_end_genpy.dir/all
-
-# Build rule for subdir invocation for target.
-front_end/CMakeFiles/front_end_genpy.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 7
-	$(MAKE) -f CMakeFiles/Makefile2 front_end/CMakeFiles/front_end_genpy.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
-.PHONY : front_end/CMakeFiles/front_end_genpy.dir/rule
-
-# Convenience name for target.
-front_end_genpy: front_end/CMakeFiles/front_end_genpy.dir/rule
-
-.PHONY : front_end_genpy
-
-# clean rule for target.
-front_end/CMakeFiles/front_end_genpy.dir/clean:
-	$(MAKE) -f front_end/CMakeFiles/front_end_genpy.dir/build.make front_end/CMakeFiles/front_end_genpy.dir/clean
-.PHONY : front_end/CMakeFiles/front_end_genpy.dir/clean
-
-# clean rule for target.
-clean: front_end/CMakeFiles/front_end_genpy.dir/clean
 
 .PHONY : clean
 
@@ -508,6 +593,38 @@ clean: front_end/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean
 .PHONY : clean
 
 #=============================================================================
+# Target rules for target front_end/CMakeFiles/front_end_geneus.dir
+
+# All Build rule for target.
+front_end/CMakeFiles/front_end_geneus.dir/all: front_end/CMakeFiles/front_end_generate_messages_eus.dir/all
+	$(MAKE) -f front_end/CMakeFiles/front_end_geneus.dir/build.make front_end/CMakeFiles/front_end_geneus.dir/depend
+	$(MAKE) -f front_end/CMakeFiles/front_end_geneus.dir/build.make front_end/CMakeFiles/front_end_geneus.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num= "Built target front_end_geneus"
+.PHONY : front_end/CMakeFiles/front_end_geneus.dir/all
+
+# Build rule for subdir invocation for target.
+front_end/CMakeFiles/front_end_geneus.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 8
+	$(MAKE) -f CMakeFiles/Makefile2 front_end/CMakeFiles/front_end_geneus.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
+.PHONY : front_end/CMakeFiles/front_end_geneus.dir/rule
+
+# Convenience name for target.
+front_end_geneus: front_end/CMakeFiles/front_end_geneus.dir/rule
+
+.PHONY : front_end_geneus
+
+# clean rule for target.
+front_end/CMakeFiles/front_end_geneus.dir/clean:
+	$(MAKE) -f front_end/CMakeFiles/front_end_geneus.dir/build.make front_end/CMakeFiles/front_end_geneus.dir/clean
+.PHONY : front_end/CMakeFiles/front_end_geneus.dir/clean
+
+# clean rule for target.
+clean: front_end/CMakeFiles/front_end_geneus.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target front_end/CMakeFiles/std_msgs_generate_messages_eus.dir
 
 # All Build rule for target.
@@ -540,6 +657,38 @@ clean: front_end/CMakeFiles/std_msgs_generate_messages_eus.dir/clean
 .PHONY : clean
 
 #=============================================================================
+# Target rules for target front_end/CMakeFiles/_front_end_generate_messages_check_deps_interFrameTracks.dir
+
+# All Build rule for target.
+front_end/CMakeFiles/_front_end_generate_messages_check_deps_interFrameTracks.dir/all:
+	$(MAKE) -f front_end/CMakeFiles/_front_end_generate_messages_check_deps_interFrameTracks.dir/build.make front_end/CMakeFiles/_front_end_generate_messages_check_deps_interFrameTracks.dir/depend
+	$(MAKE) -f front_end/CMakeFiles/_front_end_generate_messages_check_deps_interFrameTracks.dir/build.make front_end/CMakeFiles/_front_end_generate_messages_check_deps_interFrameTracks.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num= "Built target _front_end_generate_messages_check_deps_interFrameTracks"
+.PHONY : front_end/CMakeFiles/_front_end_generate_messages_check_deps_interFrameTracks.dir/all
+
+# Build rule for subdir invocation for target.
+front_end/CMakeFiles/_front_end_generate_messages_check_deps_interFrameTracks.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 front_end/CMakeFiles/_front_end_generate_messages_check_deps_interFrameTracks.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
+.PHONY : front_end/CMakeFiles/_front_end_generate_messages_check_deps_interFrameTracks.dir/rule
+
+# Convenience name for target.
+_front_end_generate_messages_check_deps_interFrameTracks: front_end/CMakeFiles/_front_end_generate_messages_check_deps_interFrameTracks.dir/rule
+
+.PHONY : _front_end_generate_messages_check_deps_interFrameTracks
+
+# clean rule for target.
+front_end/CMakeFiles/_front_end_generate_messages_check_deps_interFrameTracks.dir/clean:
+	$(MAKE) -f front_end/CMakeFiles/_front_end_generate_messages_check_deps_interFrameTracks.dir/build.make front_end/CMakeFiles/_front_end_generate_messages_check_deps_interFrameTracks.dir/clean
+.PHONY : front_end/CMakeFiles/_front_end_generate_messages_check_deps_interFrameTracks.dir/clean
+
+# clean rule for target.
+clean: front_end/CMakeFiles/_front_end_generate_messages_check_deps_interFrameTracks.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target front_end/CMakeFiles/roscpp_generate_messages_lisp.dir
 
 # All Build rule for target.
@@ -568,6 +717,38 @@ front_end/CMakeFiles/roscpp_generate_messages_lisp.dir/clean:
 
 # clean rule for target.
 clean: front_end/CMakeFiles/roscpp_generate_messages_lisp.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target front_end/CMakeFiles/_front_end_generate_messages_check_deps_windowStatus.dir
+
+# All Build rule for target.
+front_end/CMakeFiles/_front_end_generate_messages_check_deps_windowStatus.dir/all:
+	$(MAKE) -f front_end/CMakeFiles/_front_end_generate_messages_check_deps_windowStatus.dir/build.make front_end/CMakeFiles/_front_end_generate_messages_check_deps_windowStatus.dir/depend
+	$(MAKE) -f front_end/CMakeFiles/_front_end_generate_messages_check_deps_windowStatus.dir/build.make front_end/CMakeFiles/_front_end_generate_messages_check_deps_windowStatus.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num= "Built target _front_end_generate_messages_check_deps_windowStatus"
+.PHONY : front_end/CMakeFiles/_front_end_generate_messages_check_deps_windowStatus.dir/all
+
+# Build rule for subdir invocation for target.
+front_end/CMakeFiles/_front_end_generate_messages_check_deps_windowStatus.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 front_end/CMakeFiles/_front_end_generate_messages_check_deps_windowStatus.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
+.PHONY : front_end/CMakeFiles/_front_end_generate_messages_check_deps_windowStatus.dir/rule
+
+# Convenience name for target.
+_front_end_generate_messages_check_deps_windowStatus: front_end/CMakeFiles/_front_end_generate_messages_check_deps_windowStatus.dir/rule
+
+.PHONY : _front_end_generate_messages_check_deps_windowStatus
+
+# clean rule for target.
+front_end/CMakeFiles/_front_end_generate_messages_check_deps_windowStatus.dir/clean:
+	$(MAKE) -f front_end/CMakeFiles/_front_end_generate_messages_check_deps_windowStatus.dir/build.make front_end/CMakeFiles/_front_end_generate_messages_check_deps_windowStatus.dir/clean
+.PHONY : front_end/CMakeFiles/_front_end_generate_messages_check_deps_windowStatus.dir/clean
+
+# clean rule for target.
+clean: front_end/CMakeFiles/_front_end_generate_messages_check_deps_windowStatus.dir/clean
 
 .PHONY : clean
 
@@ -607,27 +788,30 @@ clean: front_end/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/clean
 # Target rules for target front_end/CMakeFiles/front_end_generate_messages_cpp.dir
 
 # All Build rule for target.
+front_end/CMakeFiles/front_end_generate_messages_cpp.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_interFrameTracks.dir/all
+front_end/CMakeFiles/front_end_generate_messages_cpp.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_windowStatus.dir/all
 front_end/CMakeFiles/front_end_generate_messages_cpp.dir/all: front_end/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/all
-front_end/CMakeFiles/front_end_generate_messages_cpp.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_loopStereoFrame.dir/all
 front_end/CMakeFiles/front_end_generate_messages_cpp.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_kPoint.dir/all
 front_end/CMakeFiles/front_end_generate_messages_cpp.dir/all: front_end/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/all
 front_end/CMakeFiles/front_end_generate_messages_cpp.dir/all: front_end/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
+front_end/CMakeFiles/front_end_generate_messages_cpp.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoFeatures.dir/all
 front_end/CMakeFiles/front_end_generate_messages_cpp.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_frameDetection.dir/all
-front_end/CMakeFiles/front_end_generate_messages_cpp.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleStereo.dir/all
+front_end/CMakeFiles/front_end_generate_messages_cpp.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_getStereoFeatures.dir/all
 front_end/CMakeFiles/front_end_generate_messages_cpp.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_ProcTime.dir/all
-front_end/CMakeFiles/front_end_generate_messages_cpp.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_Descriptors.dir/all
-front_end/CMakeFiles/front_end_generate_messages_cpp.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_frameDescription.dir/all
+front_end/CMakeFiles/front_end_generate_messages_cpp.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_cvMatch.dir/all
+front_end/CMakeFiles/front_end_generate_messages_cpp.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoLandmarks.dir/all
+front_end/CMakeFiles/front_end_generate_messages_cpp.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_windowMatching.dir/all
+front_end/CMakeFiles/front_end_generate_messages_cpp.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoMatching.dir/all
 front_end/CMakeFiles/front_end_generate_messages_cpp.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_Homography.dir/all
 front_end/CMakeFiles/front_end_generate_messages_cpp.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleImageDetection.dir/all
-front_end/CMakeFiles/front_end_generate_messages_cpp.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleImageDescription.dir/all
 	$(MAKE) -f front_end/CMakeFiles/front_end_generate_messages_cpp.dir/build.make front_end/CMakeFiles/front_end_generate_messages_cpp.dir/depend
 	$(MAKE) -f front_end/CMakeFiles/front_end_generate_messages_cpp.dir/build.make front_end/CMakeFiles/front_end_generate_messages_cpp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=34,35,36,37,38,39,40 "Built target front_end_generate_messages_cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=31,32,33,34,35,36,37,38 "Built target front_end_generate_messages_cpp"
 .PHONY : front_end/CMakeFiles/front_end_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
 front_end/CMakeFiles/front_end_generate_messages_cpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 7
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 8
 	$(MAKE) -f CMakeFiles/Makefile2 front_end/CMakeFiles/front_end_generate_messages_cpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
 .PHONY : front_end/CMakeFiles/front_end_generate_messages_cpp.dir/rule
@@ -740,70 +924,6 @@ front_end/CMakeFiles/roscpp_generate_messages_eus.dir/clean:
 
 # clean rule for target.
 clean: front_end/CMakeFiles/roscpp_generate_messages_eus.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target front_end/CMakeFiles/front_end_geneus.dir
-
-# All Build rule for target.
-front_end/CMakeFiles/front_end_geneus.dir/all: front_end/CMakeFiles/front_end_generate_messages_eus.dir/all
-	$(MAKE) -f front_end/CMakeFiles/front_end_geneus.dir/build.make front_end/CMakeFiles/front_end_geneus.dir/depend
-	$(MAKE) -f front_end/CMakeFiles/front_end_geneus.dir/build.make front_end/CMakeFiles/front_end_geneus.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num= "Built target front_end_geneus"
-.PHONY : front_end/CMakeFiles/front_end_geneus.dir/all
-
-# Build rule for subdir invocation for target.
-front_end/CMakeFiles/front_end_geneus.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 6
-	$(MAKE) -f CMakeFiles/Makefile2 front_end/CMakeFiles/front_end_geneus.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
-.PHONY : front_end/CMakeFiles/front_end_geneus.dir/rule
-
-# Convenience name for target.
-front_end_geneus: front_end/CMakeFiles/front_end_geneus.dir/rule
-
-.PHONY : front_end_geneus
-
-# clean rule for target.
-front_end/CMakeFiles/front_end_geneus.dir/clean:
-	$(MAKE) -f front_end/CMakeFiles/front_end_geneus.dir/build.make front_end/CMakeFiles/front_end_geneus.dir/clean
-.PHONY : front_end/CMakeFiles/front_end_geneus.dir/clean
-
-# clean rule for target.
-clean: front_end/CMakeFiles/front_end_geneus.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target front_end/CMakeFiles/_front_end_generate_messages_check_deps_loopStereoFrame.dir
-
-# All Build rule for target.
-front_end/CMakeFiles/_front_end_generate_messages_check_deps_loopStereoFrame.dir/all:
-	$(MAKE) -f front_end/CMakeFiles/_front_end_generate_messages_check_deps_loopStereoFrame.dir/build.make front_end/CMakeFiles/_front_end_generate_messages_check_deps_loopStereoFrame.dir/depend
-	$(MAKE) -f front_end/CMakeFiles/_front_end_generate_messages_check_deps_loopStereoFrame.dir/build.make front_end/CMakeFiles/_front_end_generate_messages_check_deps_loopStereoFrame.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num= "Built target _front_end_generate_messages_check_deps_loopStereoFrame"
-.PHONY : front_end/CMakeFiles/_front_end_generate_messages_check_deps_loopStereoFrame.dir/all
-
-# Build rule for subdir invocation for target.
-front_end/CMakeFiles/_front_end_generate_messages_check_deps_loopStereoFrame.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 front_end/CMakeFiles/_front_end_generate_messages_check_deps_loopStereoFrame.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
-.PHONY : front_end/CMakeFiles/_front_end_generate_messages_check_deps_loopStereoFrame.dir/rule
-
-# Convenience name for target.
-_front_end_generate_messages_check_deps_loopStereoFrame: front_end/CMakeFiles/_front_end_generate_messages_check_deps_loopStereoFrame.dir/rule
-
-.PHONY : _front_end_generate_messages_check_deps_loopStereoFrame
-
-# clean rule for target.
-front_end/CMakeFiles/_front_end_generate_messages_check_deps_loopStereoFrame.dir/clean:
-	$(MAKE) -f front_end/CMakeFiles/_front_end_generate_messages_check_deps_loopStereoFrame.dir/build.make front_end/CMakeFiles/_front_end_generate_messages_check_deps_loopStereoFrame.dir/clean
-.PHONY : front_end/CMakeFiles/_front_end_generate_messages_check_deps_loopStereoFrame.dir/clean
-
-# clean rule for target.
-clean: front_end/CMakeFiles/_front_end_generate_messages_check_deps_loopStereoFrame.dir/clean
 
 .PHONY : clean
 
@@ -1032,6 +1152,38 @@ clean: front_end/CMakeFiles/roscpp_generate_messages_nodejs.dir/clean
 .PHONY : clean
 
 #=============================================================================
+# Target rules for target front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoFeatures.dir
+
+# All Build rule for target.
+front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoFeatures.dir/all:
+	$(MAKE) -f front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoFeatures.dir/build.make front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoFeatures.dir/depend
+	$(MAKE) -f front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoFeatures.dir/build.make front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoFeatures.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num= "Built target _front_end_generate_messages_check_deps_stereoFeatures"
+.PHONY : front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoFeatures.dir/all
+
+# Build rule for subdir invocation for target.
+front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoFeatures.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoFeatures.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
+.PHONY : front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoFeatures.dir/rule
+
+# Convenience name for target.
+_front_end_generate_messages_check_deps_stereoFeatures: front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoFeatures.dir/rule
+
+.PHONY : _front_end_generate_messages_check_deps_stereoFeatures
+
+# clean rule for target.
+front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoFeatures.dir/clean:
+	$(MAKE) -f front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoFeatures.dir/build.make front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoFeatures.dir/clean
+.PHONY : front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoFeatures.dir/clean
+
+# clean rule for target.
+clean: front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoFeatures.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target front_end/CMakeFiles/_front_end_generate_messages_check_deps_frameDetection.dir
 
 # All Build rule for target.
@@ -1075,7 +1227,7 @@ front_end/CMakeFiles/front_end_gencpp.dir/all: front_end/CMakeFiles/front_end_ge
 
 # Build rule for subdir invocation for target.
 front_end/CMakeFiles/front_end_gencpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 7
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 8
 	$(MAKE) -f CMakeFiles/Makefile2 front_end/CMakeFiles/front_end_gencpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
 .PHONY : front_end/CMakeFiles/front_end_gencpp.dir/rule
@@ -1192,82 +1344,6 @@ clean: front_end/CMakeFiles/roscpp_generate_messages_py.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleStereo.dir
-
-# All Build rule for target.
-front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleStereo.dir/all:
-	$(MAKE) -f front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleStereo.dir/build.make front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleStereo.dir/depend
-	$(MAKE) -f front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleStereo.dir/build.make front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleStereo.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num= "Built target _front_end_generate_messages_check_deps_singleStereo"
-.PHONY : front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleStereo.dir/all
-
-# Build rule for subdir invocation for target.
-front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleStereo.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleStereo.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
-.PHONY : front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleStereo.dir/rule
-
-# Convenience name for target.
-_front_end_generate_messages_check_deps_singleStereo: front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleStereo.dir/rule
-
-.PHONY : _front_end_generate_messages_check_deps_singleStereo
-
-# clean rule for target.
-front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleStereo.dir/clean:
-	$(MAKE) -f front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleStereo.dir/build.make front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleStereo.dir/clean
-.PHONY : front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleStereo.dir/clean
-
-# clean rule for target.
-clean: front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleStereo.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target front_end/CMakeFiles/front_end_generate_messages_py.dir
-
-# All Build rule for target.
-front_end/CMakeFiles/front_end_generate_messages_py.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_loopStereoFrame.dir/all
-front_end/CMakeFiles/front_end_generate_messages_py.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_kPoint.dir/all
-front_end/CMakeFiles/front_end_generate_messages_py.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_frameDetection.dir/all
-front_end/CMakeFiles/front_end_generate_messages_py.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleStereo.dir/all
-front_end/CMakeFiles/front_end_generate_messages_py.dir/all: front_end/CMakeFiles/sensor_msgs_generate_messages_py.dir/all
-front_end/CMakeFiles/front_end_generate_messages_py.dir/all: front_end/CMakeFiles/geometry_msgs_generate_messages_py.dir/all
-front_end/CMakeFiles/front_end_generate_messages_py.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_ProcTime.dir/all
-front_end/CMakeFiles/front_end_generate_messages_py.dir/all: front_end/CMakeFiles/std_msgs_generate_messages_py.dir/all
-front_end/CMakeFiles/front_end_generate_messages_py.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_Descriptors.dir/all
-front_end/CMakeFiles/front_end_generate_messages_py.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_frameDescription.dir/all
-front_end/CMakeFiles/front_end_generate_messages_py.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_Homography.dir/all
-front_end/CMakeFiles/front_end_generate_messages_py.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleImageDetection.dir/all
-front_end/CMakeFiles/front_end_generate_messages_py.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleImageDescription.dir/all
-	$(MAKE) -f front_end/CMakeFiles/front_end_generate_messages_py.dir/build.make front_end/CMakeFiles/front_end_generate_messages_py.dir/depend
-	$(MAKE) -f front_end/CMakeFiles/front_end_generate_messages_py.dir/build.make front_end/CMakeFiles/front_end_generate_messages_py.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=60,61,62,63,64,65,66 "Built target front_end_generate_messages_py"
-.PHONY : front_end/CMakeFiles/front_end_generate_messages_py.dir/all
-
-# Build rule for subdir invocation for target.
-front_end/CMakeFiles/front_end_generate_messages_py.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 7
-	$(MAKE) -f CMakeFiles/Makefile2 front_end/CMakeFiles/front_end_generate_messages_py.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
-.PHONY : front_end/CMakeFiles/front_end_generate_messages_py.dir/rule
-
-# Convenience name for target.
-front_end_generate_messages_py: front_end/CMakeFiles/front_end_generate_messages_py.dir/rule
-
-.PHONY : front_end_generate_messages_py
-
-# clean rule for target.
-front_end/CMakeFiles/front_end_generate_messages_py.dir/clean:
-	$(MAKE) -f front_end/CMakeFiles/front_end_generate_messages_py.dir/build.make front_end/CMakeFiles/front_end_generate_messages_py.dir/clean
-.PHONY : front_end/CMakeFiles/front_end_generate_messages_py.dir/clean
-
-# clean rule for target.
-clean: front_end/CMakeFiles/front_end_generate_messages_py.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
 # Target rules for target front_end/CMakeFiles/sensor_msgs_generate_messages_py.dir
 
 # All Build rule for target.
@@ -1300,34 +1376,34 @@ clean: front_end/CMakeFiles/sensor_msgs_generate_messages_py.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target front_end/CMakeFiles/front_end_gennodejs.dir
+# Target rules for target front_end/CMakeFiles/std_msgs_generate_messages_py.dir
 
 # All Build rule for target.
-front_end/CMakeFiles/front_end_gennodejs.dir/all: front_end/CMakeFiles/front_end_generate_messages_nodejs.dir/all
-	$(MAKE) -f front_end/CMakeFiles/front_end_gennodejs.dir/build.make front_end/CMakeFiles/front_end_gennodejs.dir/depend
-	$(MAKE) -f front_end/CMakeFiles/front_end_gennodejs.dir/build.make front_end/CMakeFiles/front_end_gennodejs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num= "Built target front_end_gennodejs"
-.PHONY : front_end/CMakeFiles/front_end_gennodejs.dir/all
+front_end/CMakeFiles/std_msgs_generate_messages_py.dir/all:
+	$(MAKE) -f front_end/CMakeFiles/std_msgs_generate_messages_py.dir/build.make front_end/CMakeFiles/std_msgs_generate_messages_py.dir/depend
+	$(MAKE) -f front_end/CMakeFiles/std_msgs_generate_messages_py.dir/build.make front_end/CMakeFiles/std_msgs_generate_messages_py.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num= "Built target std_msgs_generate_messages_py"
+.PHONY : front_end/CMakeFiles/std_msgs_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
-front_end/CMakeFiles/front_end_gennodejs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 6
-	$(MAKE) -f CMakeFiles/Makefile2 front_end/CMakeFiles/front_end_gennodejs.dir/all
+front_end/CMakeFiles/std_msgs_generate_messages_py.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
-.PHONY : front_end/CMakeFiles/front_end_gennodejs.dir/rule
+	$(MAKE) -f CMakeFiles/Makefile2 front_end/CMakeFiles/std_msgs_generate_messages_py.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
+.PHONY : front_end/CMakeFiles/std_msgs_generate_messages_py.dir/rule
 
 # Convenience name for target.
-front_end_gennodejs: front_end/CMakeFiles/front_end_gennodejs.dir/rule
+std_msgs_generate_messages_py: front_end/CMakeFiles/std_msgs_generate_messages_py.dir/rule
 
-.PHONY : front_end_gennodejs
-
-# clean rule for target.
-front_end/CMakeFiles/front_end_gennodejs.dir/clean:
-	$(MAKE) -f front_end/CMakeFiles/front_end_gennodejs.dir/build.make front_end/CMakeFiles/front_end_gennodejs.dir/clean
-.PHONY : front_end/CMakeFiles/front_end_gennodejs.dir/clean
+.PHONY : std_msgs_generate_messages_py
 
 # clean rule for target.
-clean: front_end/CMakeFiles/front_end_gennodejs.dir/clean
+front_end/CMakeFiles/std_msgs_generate_messages_py.dir/clean:
+	$(MAKE) -f front_end/CMakeFiles/std_msgs_generate_messages_py.dir/build.make front_end/CMakeFiles/std_msgs_generate_messages_py.dir/clean
+.PHONY : front_end/CMakeFiles/std_msgs_generate_messages_py.dir/clean
+
+# clean rule for target.
+clean: front_end/CMakeFiles/std_msgs_generate_messages_py.dir/clean
 
 .PHONY : clean
 
@@ -1428,75 +1504,34 @@ clean: front_end/CMakeFiles/geometry_msgs_generate_messages_py.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target front_end/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir
+# Target rules for target front_end/CMakeFiles/_front_end_generate_messages_check_deps_getStereoFeatures.dir
 
 # All Build rule for target.
-front_end/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all:
-	$(MAKE) -f front_end/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make front_end/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/depend
-	$(MAKE) -f front_end/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make front_end/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num= "Built target rosgraph_msgs_generate_messages_cpp"
-.PHONY : front_end/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all
+front_end/CMakeFiles/_front_end_generate_messages_check_deps_getStereoFeatures.dir/all:
+	$(MAKE) -f front_end/CMakeFiles/_front_end_generate_messages_check_deps_getStereoFeatures.dir/build.make front_end/CMakeFiles/_front_end_generate_messages_check_deps_getStereoFeatures.dir/depend
+	$(MAKE) -f front_end/CMakeFiles/_front_end_generate_messages_check_deps_getStereoFeatures.dir/build.make front_end/CMakeFiles/_front_end_generate_messages_check_deps_getStereoFeatures.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num= "Built target _front_end_generate_messages_check_deps_getStereoFeatures"
+.PHONY : front_end/CMakeFiles/_front_end_generate_messages_check_deps_getStereoFeatures.dir/all
 
 # Build rule for subdir invocation for target.
-front_end/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
+front_end/CMakeFiles/_front_end_generate_messages_check_deps_getStereoFeatures.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 front_end/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 front_end/CMakeFiles/_front_end_generate_messages_check_deps_getStereoFeatures.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
-.PHONY : front_end/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
+.PHONY : front_end/CMakeFiles/_front_end_generate_messages_check_deps_getStereoFeatures.dir/rule
 
 # Convenience name for target.
-rosgraph_msgs_generate_messages_cpp: front_end/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
+_front_end_generate_messages_check_deps_getStereoFeatures: front_end/CMakeFiles/_front_end_generate_messages_check_deps_getStereoFeatures.dir/rule
 
-.PHONY : rosgraph_msgs_generate_messages_cpp
-
-# clean rule for target.
-front_end/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/clean:
-	$(MAKE) -f front_end/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make front_end/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/clean
-.PHONY : front_end/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/clean
+.PHONY : _front_end_generate_messages_check_deps_getStereoFeatures
 
 # clean rule for target.
-clean: front_end/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target front_end/CMakeFiles/front_end_generate_messages.dir
-
-# All Build rule for target.
-front_end/CMakeFiles/front_end_generate_messages.dir/all: front_end/CMakeFiles/front_end_generate_messages_lisp.dir/all
-front_end/CMakeFiles/front_end_generate_messages.dir/all: front_end/CMakeFiles/front_end_generate_messages_cpp.dir/all
-front_end/CMakeFiles/front_end_generate_messages.dir/all: front_end/CMakeFiles/front_end_generate_messages_py.dir/all
-front_end/CMakeFiles/front_end_generate_messages.dir/all: front_end/CMakeFiles/front_end_generate_messages_eus.dir/all
-front_end/CMakeFiles/front_end_generate_messages.dir/all: front_end/CMakeFiles/front_end_generate_messages_nodejs.dir/all
-	$(MAKE) -f front_end/CMakeFiles/front_end_generate_messages.dir/build.make front_end/CMakeFiles/front_end_generate_messages.dir/depend
-	$(MAKE) -f front_end/CMakeFiles/front_end_generate_messages.dir/build.make front_end/CMakeFiles/front_end_generate_messages.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num= "Built target front_end_generate_messages"
-.PHONY : front_end/CMakeFiles/front_end_generate_messages.dir/all
-
-# Include target in all.
-all: front_end/CMakeFiles/front_end_generate_messages.dir/all
-
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-front_end/CMakeFiles/front_end_generate_messages.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 33
-	$(MAKE) -f CMakeFiles/Makefile2 front_end/CMakeFiles/front_end_generate_messages.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
-.PHONY : front_end/CMakeFiles/front_end_generate_messages.dir/rule
-
-# Convenience name for target.
-front_end_generate_messages: front_end/CMakeFiles/front_end_generate_messages.dir/rule
-
-.PHONY : front_end_generate_messages
+front_end/CMakeFiles/_front_end_generate_messages_check_deps_getStereoFeatures.dir/clean:
+	$(MAKE) -f front_end/CMakeFiles/_front_end_generate_messages_check_deps_getStereoFeatures.dir/build.make front_end/CMakeFiles/_front_end_generate_messages_check_deps_getStereoFeatures.dir/clean
+.PHONY : front_end/CMakeFiles/_front_end_generate_messages_check_deps_getStereoFeatures.dir/clean
 
 # clean rule for target.
-front_end/CMakeFiles/front_end_generate_messages.dir/clean:
-	$(MAKE) -f front_end/CMakeFiles/front_end_generate_messages.dir/build.make front_end/CMakeFiles/front_end_generate_messages.dir/clean
-.PHONY : front_end/CMakeFiles/front_end_generate_messages.dir/clean
-
-# clean rule for target.
-clean: front_end/CMakeFiles/front_end_generate_messages.dir/clean
+clean: front_end/CMakeFiles/_front_end_generate_messages_check_deps_getStereoFeatures.dir/clean
 
 .PHONY : clean
 
@@ -1565,98 +1600,203 @@ clean: front_end/CMakeFiles/_front_end_generate_messages_check_deps_ProcTime.dir
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target front_end/CMakeFiles/std_msgs_generate_messages_py.dir
+# Target rules for target front_end/CMakeFiles/_front_end_generate_messages_check_deps_cvMatch.dir
 
 # All Build rule for target.
-front_end/CMakeFiles/std_msgs_generate_messages_py.dir/all:
-	$(MAKE) -f front_end/CMakeFiles/std_msgs_generate_messages_py.dir/build.make front_end/CMakeFiles/std_msgs_generate_messages_py.dir/depend
-	$(MAKE) -f front_end/CMakeFiles/std_msgs_generate_messages_py.dir/build.make front_end/CMakeFiles/std_msgs_generate_messages_py.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num= "Built target std_msgs_generate_messages_py"
-.PHONY : front_end/CMakeFiles/std_msgs_generate_messages_py.dir/all
+front_end/CMakeFiles/_front_end_generate_messages_check_deps_cvMatch.dir/all:
+	$(MAKE) -f front_end/CMakeFiles/_front_end_generate_messages_check_deps_cvMatch.dir/build.make front_end/CMakeFiles/_front_end_generate_messages_check_deps_cvMatch.dir/depend
+	$(MAKE) -f front_end/CMakeFiles/_front_end_generate_messages_check_deps_cvMatch.dir/build.make front_end/CMakeFiles/_front_end_generate_messages_check_deps_cvMatch.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num= "Built target _front_end_generate_messages_check_deps_cvMatch"
+.PHONY : front_end/CMakeFiles/_front_end_generate_messages_check_deps_cvMatch.dir/all
 
 # Build rule for subdir invocation for target.
-front_end/CMakeFiles/std_msgs_generate_messages_py.dir/rule: cmake_check_build_system
+front_end/CMakeFiles/_front_end_generate_messages_check_deps_cvMatch.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 front_end/CMakeFiles/std_msgs_generate_messages_py.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 front_end/CMakeFiles/_front_end_generate_messages_check_deps_cvMatch.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
-.PHONY : front_end/CMakeFiles/std_msgs_generate_messages_py.dir/rule
+.PHONY : front_end/CMakeFiles/_front_end_generate_messages_check_deps_cvMatch.dir/rule
 
 # Convenience name for target.
-std_msgs_generate_messages_py: front_end/CMakeFiles/std_msgs_generate_messages_py.dir/rule
+_front_end_generate_messages_check_deps_cvMatch: front_end/CMakeFiles/_front_end_generate_messages_check_deps_cvMatch.dir/rule
 
-.PHONY : std_msgs_generate_messages_py
-
-# clean rule for target.
-front_end/CMakeFiles/std_msgs_generate_messages_py.dir/clean:
-	$(MAKE) -f front_end/CMakeFiles/std_msgs_generate_messages_py.dir/build.make front_end/CMakeFiles/std_msgs_generate_messages_py.dir/clean
-.PHONY : front_end/CMakeFiles/std_msgs_generate_messages_py.dir/clean
+.PHONY : _front_end_generate_messages_check_deps_cvMatch
 
 # clean rule for target.
-clean: front_end/CMakeFiles/std_msgs_generate_messages_py.dir/clean
+front_end/CMakeFiles/_front_end_generate_messages_check_deps_cvMatch.dir/clean:
+	$(MAKE) -f front_end/CMakeFiles/_front_end_generate_messages_check_deps_cvMatch.dir/build.make front_end/CMakeFiles/_front_end_generate_messages_check_deps_cvMatch.dir/clean
+.PHONY : front_end/CMakeFiles/_front_end_generate_messages_check_deps_cvMatch.dir/clean
+
+# clean rule for target.
+clean: front_end/CMakeFiles/_front_end_generate_messages_check_deps_cvMatch.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target front_end/CMakeFiles/_front_end_generate_messages_check_deps_Descriptors.dir
+# Target rules for target front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoLandmarks.dir
 
 # All Build rule for target.
-front_end/CMakeFiles/_front_end_generate_messages_check_deps_Descriptors.dir/all:
-	$(MAKE) -f front_end/CMakeFiles/_front_end_generate_messages_check_deps_Descriptors.dir/build.make front_end/CMakeFiles/_front_end_generate_messages_check_deps_Descriptors.dir/depend
-	$(MAKE) -f front_end/CMakeFiles/_front_end_generate_messages_check_deps_Descriptors.dir/build.make front_end/CMakeFiles/_front_end_generate_messages_check_deps_Descriptors.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num= "Built target _front_end_generate_messages_check_deps_Descriptors"
-.PHONY : front_end/CMakeFiles/_front_end_generate_messages_check_deps_Descriptors.dir/all
+front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoLandmarks.dir/all:
+	$(MAKE) -f front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoLandmarks.dir/build.make front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoLandmarks.dir/depend
+	$(MAKE) -f front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoLandmarks.dir/build.make front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoLandmarks.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num= "Built target _front_end_generate_messages_check_deps_stereoLandmarks"
+.PHONY : front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoLandmarks.dir/all
 
 # Build rule for subdir invocation for target.
-front_end/CMakeFiles/_front_end_generate_messages_check_deps_Descriptors.dir/rule: cmake_check_build_system
+front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoLandmarks.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 front_end/CMakeFiles/_front_end_generate_messages_check_deps_Descriptors.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoLandmarks.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
-.PHONY : front_end/CMakeFiles/_front_end_generate_messages_check_deps_Descriptors.dir/rule
+.PHONY : front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoLandmarks.dir/rule
 
 # Convenience name for target.
-_front_end_generate_messages_check_deps_Descriptors: front_end/CMakeFiles/_front_end_generate_messages_check_deps_Descriptors.dir/rule
+_front_end_generate_messages_check_deps_stereoLandmarks: front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoLandmarks.dir/rule
 
-.PHONY : _front_end_generate_messages_check_deps_Descriptors
-
-# clean rule for target.
-front_end/CMakeFiles/_front_end_generate_messages_check_deps_Descriptors.dir/clean:
-	$(MAKE) -f front_end/CMakeFiles/_front_end_generate_messages_check_deps_Descriptors.dir/build.make front_end/CMakeFiles/_front_end_generate_messages_check_deps_Descriptors.dir/clean
-.PHONY : front_end/CMakeFiles/_front_end_generate_messages_check_deps_Descriptors.dir/clean
+.PHONY : _front_end_generate_messages_check_deps_stereoLandmarks
 
 # clean rule for target.
-clean: front_end/CMakeFiles/_front_end_generate_messages_check_deps_Descriptors.dir/clean
+front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoLandmarks.dir/clean:
+	$(MAKE) -f front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoLandmarks.dir/build.make front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoLandmarks.dir/clean
+.PHONY : front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoLandmarks.dir/clean
+
+# clean rule for target.
+clean: front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoLandmarks.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target front_end/CMakeFiles/_front_end_generate_messages_check_deps_frameDescription.dir
+# Target rules for target front_end/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir
 
 # All Build rule for target.
-front_end/CMakeFiles/_front_end_generate_messages_check_deps_frameDescription.dir/all:
-	$(MAKE) -f front_end/CMakeFiles/_front_end_generate_messages_check_deps_frameDescription.dir/build.make front_end/CMakeFiles/_front_end_generate_messages_check_deps_frameDescription.dir/depend
-	$(MAKE) -f front_end/CMakeFiles/_front_end_generate_messages_check_deps_frameDescription.dir/build.make front_end/CMakeFiles/_front_end_generate_messages_check_deps_frameDescription.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num= "Built target _front_end_generate_messages_check_deps_frameDescription"
-.PHONY : front_end/CMakeFiles/_front_end_generate_messages_check_deps_frameDescription.dir/all
+front_end/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all:
+	$(MAKE) -f front_end/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make front_end/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/depend
+	$(MAKE) -f front_end/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make front_end/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num= "Built target rosgraph_msgs_generate_messages_cpp"
+.PHONY : front_end/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
-front_end/CMakeFiles/_front_end_generate_messages_check_deps_frameDescription.dir/rule: cmake_check_build_system
+front_end/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 front_end/CMakeFiles/_front_end_generate_messages_check_deps_frameDescription.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 front_end/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
-.PHONY : front_end/CMakeFiles/_front_end_generate_messages_check_deps_frameDescription.dir/rule
+.PHONY : front_end/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
-_front_end_generate_messages_check_deps_frameDescription: front_end/CMakeFiles/_front_end_generate_messages_check_deps_frameDescription.dir/rule
+rosgraph_msgs_generate_messages_cpp: front_end/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
 
-.PHONY : _front_end_generate_messages_check_deps_frameDescription
-
-# clean rule for target.
-front_end/CMakeFiles/_front_end_generate_messages_check_deps_frameDescription.dir/clean:
-	$(MAKE) -f front_end/CMakeFiles/_front_end_generate_messages_check_deps_frameDescription.dir/build.make front_end/CMakeFiles/_front_end_generate_messages_check_deps_frameDescription.dir/clean
-.PHONY : front_end/CMakeFiles/_front_end_generate_messages_check_deps_frameDescription.dir/clean
+.PHONY : rosgraph_msgs_generate_messages_cpp
 
 # clean rule for target.
-clean: front_end/CMakeFiles/_front_end_generate_messages_check_deps_frameDescription.dir/clean
+front_end/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/clean:
+	$(MAKE) -f front_end/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make front_end/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/clean
+.PHONY : front_end/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/clean
+
+# clean rule for target.
+clean: front_end/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target front_end/CMakeFiles/front_end_generate_messages.dir
+
+# All Build rule for target.
+front_end/CMakeFiles/front_end_generate_messages.dir/all: front_end/CMakeFiles/front_end_generate_messages_py.dir/all
+front_end/CMakeFiles/front_end_generate_messages.dir/all: front_end/CMakeFiles/front_end_generate_messages_lisp.dir/all
+front_end/CMakeFiles/front_end_generate_messages.dir/all: front_end/CMakeFiles/front_end_generate_messages_cpp.dir/all
+front_end/CMakeFiles/front_end_generate_messages.dir/all: front_end/CMakeFiles/front_end_generate_messages_eus.dir/all
+front_end/CMakeFiles/front_end_generate_messages.dir/all: front_end/CMakeFiles/front_end_generate_messages_nodejs.dir/all
+	$(MAKE) -f front_end/CMakeFiles/front_end_generate_messages.dir/build.make front_end/CMakeFiles/front_end_generate_messages.dir/depend
+	$(MAKE) -f front_end/CMakeFiles/front_end_generate_messages.dir/build.make front_end/CMakeFiles/front_end_generate_messages.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num= "Built target front_end_generate_messages"
+.PHONY : front_end/CMakeFiles/front_end_generate_messages.dir/all
+
+# Include target in all.
+all: front_end/CMakeFiles/front_end_generate_messages.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+front_end/CMakeFiles/front_end_generate_messages.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 39
+	$(MAKE) -f CMakeFiles/Makefile2 front_end/CMakeFiles/front_end_generate_messages.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
+.PHONY : front_end/CMakeFiles/front_end_generate_messages.dir/rule
+
+# Convenience name for target.
+front_end_generate_messages: front_end/CMakeFiles/front_end_generate_messages.dir/rule
+
+.PHONY : front_end_generate_messages
+
+# clean rule for target.
+front_end/CMakeFiles/front_end_generate_messages.dir/clean:
+	$(MAKE) -f front_end/CMakeFiles/front_end_generate_messages.dir/build.make front_end/CMakeFiles/front_end_generate_messages.dir/clean
+.PHONY : front_end/CMakeFiles/front_end_generate_messages.dir/clean
+
+# clean rule for target.
+clean: front_end/CMakeFiles/front_end_generate_messages.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target front_end/CMakeFiles/_front_end_generate_messages_check_deps_windowMatching.dir
+
+# All Build rule for target.
+front_end/CMakeFiles/_front_end_generate_messages_check_deps_windowMatching.dir/all:
+	$(MAKE) -f front_end/CMakeFiles/_front_end_generate_messages_check_deps_windowMatching.dir/build.make front_end/CMakeFiles/_front_end_generate_messages_check_deps_windowMatching.dir/depend
+	$(MAKE) -f front_end/CMakeFiles/_front_end_generate_messages_check_deps_windowMatching.dir/build.make front_end/CMakeFiles/_front_end_generate_messages_check_deps_windowMatching.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num= "Built target _front_end_generate_messages_check_deps_windowMatching"
+.PHONY : front_end/CMakeFiles/_front_end_generate_messages_check_deps_windowMatching.dir/all
+
+# Build rule for subdir invocation for target.
+front_end/CMakeFiles/_front_end_generate_messages_check_deps_windowMatching.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 front_end/CMakeFiles/_front_end_generate_messages_check_deps_windowMatching.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
+.PHONY : front_end/CMakeFiles/_front_end_generate_messages_check_deps_windowMatching.dir/rule
+
+# Convenience name for target.
+_front_end_generate_messages_check_deps_windowMatching: front_end/CMakeFiles/_front_end_generate_messages_check_deps_windowMatching.dir/rule
+
+.PHONY : _front_end_generate_messages_check_deps_windowMatching
+
+# clean rule for target.
+front_end/CMakeFiles/_front_end_generate_messages_check_deps_windowMatching.dir/clean:
+	$(MAKE) -f front_end/CMakeFiles/_front_end_generate_messages_check_deps_windowMatching.dir/build.make front_end/CMakeFiles/_front_end_generate_messages_check_deps_windowMatching.dir/clean
+.PHONY : front_end/CMakeFiles/_front_end_generate_messages_check_deps_windowMatching.dir/clean
+
+# clean rule for target.
+clean: front_end/CMakeFiles/_front_end_generate_messages_check_deps_windowMatching.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoMatching.dir
+
+# All Build rule for target.
+front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoMatching.dir/all:
+	$(MAKE) -f front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoMatching.dir/build.make front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoMatching.dir/depend
+	$(MAKE) -f front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoMatching.dir/build.make front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoMatching.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num= "Built target _front_end_generate_messages_check_deps_stereoMatching"
+.PHONY : front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoMatching.dir/all
+
+# Build rule for subdir invocation for target.
+front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoMatching.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoMatching.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
+.PHONY : front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoMatching.dir/rule
+
+# Convenience name for target.
+_front_end_generate_messages_check_deps_stereoMatching: front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoMatching.dir/rule
+
+.PHONY : _front_end_generate_messages_check_deps_stereoMatching
+
+# clean rule for target.
+front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoMatching.dir/clean:
+	$(MAKE) -f front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoMatching.dir/build.make front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoMatching.dir/clean
+.PHONY : front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoMatching.dir/clean
+
+# clean rule for target.
+clean: front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoMatching.dir/clean
 
 .PHONY : clean
 
@@ -1729,26 +1869,29 @@ clean: front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleImageD
 
 # All Build rule for target.
 front_end/CMakeFiles/front_end_generate_messages_eus.dir/all: front_end/CMakeFiles/std_msgs_generate_messages_eus.dir/all
-front_end/CMakeFiles/front_end_generate_messages_eus.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_loopStereoFrame.dir/all
+front_end/CMakeFiles/front_end_generate_messages_eus.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_interFrameTracks.dir/all
+front_end/CMakeFiles/front_end_generate_messages_eus.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_windowStatus.dir/all
 front_end/CMakeFiles/front_end_generate_messages_eus.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_kPoint.dir/all
 front_end/CMakeFiles/front_end_generate_messages_eus.dir/all: front_end/CMakeFiles/sensor_msgs_generate_messages_eus.dir/all
+front_end/CMakeFiles/front_end_generate_messages_eus.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoFeatures.dir/all
 front_end/CMakeFiles/front_end_generate_messages_eus.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_frameDetection.dir/all
-front_end/CMakeFiles/front_end_generate_messages_eus.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleStereo.dir/all
+front_end/CMakeFiles/front_end_generate_messages_eus.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_getStereoFeatures.dir/all
 front_end/CMakeFiles/front_end_generate_messages_eus.dir/all: front_end/CMakeFiles/geometry_msgs_generate_messages_eus.dir/all
 front_end/CMakeFiles/front_end_generate_messages_eus.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_ProcTime.dir/all
-front_end/CMakeFiles/front_end_generate_messages_eus.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_Descriptors.dir/all
-front_end/CMakeFiles/front_end_generate_messages_eus.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_frameDescription.dir/all
+front_end/CMakeFiles/front_end_generate_messages_eus.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_cvMatch.dir/all
+front_end/CMakeFiles/front_end_generate_messages_eus.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoLandmarks.dir/all
+front_end/CMakeFiles/front_end_generate_messages_eus.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_windowMatching.dir/all
+front_end/CMakeFiles/front_end_generate_messages_eus.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoMatching.dir/all
 front_end/CMakeFiles/front_end_generate_messages_eus.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_Homography.dir/all
 front_end/CMakeFiles/front_end_generate_messages_eus.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleImageDetection.dir/all
-front_end/CMakeFiles/front_end_generate_messages_eus.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleImageDescription.dir/all
 	$(MAKE) -f front_end/CMakeFiles/front_end_generate_messages_eus.dir/build.make front_end/CMakeFiles/front_end_generate_messages_eus.dir/depend
 	$(MAKE) -f front_end/CMakeFiles/front_end_generate_messages_eus.dir/build.make front_end/CMakeFiles/front_end_generate_messages_eus.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=41,42,43,44,45,46 "Built target front_end_generate_messages_eus"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=39,40,41,42,43,44,45,46 "Built target front_end_generate_messages_eus"
 .PHONY : front_end/CMakeFiles/front_end_generate_messages_eus.dir/all
 
 # Build rule for subdir invocation for target.
 front_end/CMakeFiles/front_end_generate_messages_eus.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 8
 	$(MAKE) -f CMakeFiles/Makefile2 front_end/CMakeFiles/front_end_generate_messages_eus.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
 .PHONY : front_end/CMakeFiles/front_end_generate_messages_eus.dir/rule
@@ -1833,62 +1976,33 @@ clean: front_end/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleImageDescription.dir
-
-# All Build rule for target.
-front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleImageDescription.dir/all:
-	$(MAKE) -f front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleImageDescription.dir/build.make front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleImageDescription.dir/depend
-	$(MAKE) -f front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleImageDescription.dir/build.make front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleImageDescription.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num= "Built target _front_end_generate_messages_check_deps_singleImageDescription"
-.PHONY : front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleImageDescription.dir/all
-
-# Build rule for subdir invocation for target.
-front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleImageDescription.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleImageDescription.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
-.PHONY : front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleImageDescription.dir/rule
-
-# Convenience name for target.
-_front_end_generate_messages_check_deps_singleImageDescription: front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleImageDescription.dir/rule
-
-.PHONY : _front_end_generate_messages_check_deps_singleImageDescription
-
-# clean rule for target.
-front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleImageDescription.dir/clean:
-	$(MAKE) -f front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleImageDescription.dir/build.make front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleImageDescription.dir/clean
-.PHONY : front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleImageDescription.dir/clean
-
-# clean rule for target.
-clean: front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleImageDescription.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
 # Target rules for target front_end/CMakeFiles/front_end_generate_messages_nodejs.dir
 
 # All Build rule for target.
-front_end/CMakeFiles/front_end_generate_messages_nodejs.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_loopStereoFrame.dir/all
+front_end/CMakeFiles/front_end_generate_messages_nodejs.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_interFrameTracks.dir/all
+front_end/CMakeFiles/front_end_generate_messages_nodejs.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_windowStatus.dir/all
 front_end/CMakeFiles/front_end_generate_messages_nodejs.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_kPoint.dir/all
 front_end/CMakeFiles/front_end_generate_messages_nodejs.dir/all: front_end/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/all
+front_end/CMakeFiles/front_end_generate_messages_nodejs.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoFeatures.dir/all
 front_end/CMakeFiles/front_end_generate_messages_nodejs.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_frameDetection.dir/all
-front_end/CMakeFiles/front_end_generate_messages_nodejs.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleStereo.dir/all
 front_end/CMakeFiles/front_end_generate_messages_nodejs.dir/all: front_end/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/all
 front_end/CMakeFiles/front_end_generate_messages_nodejs.dir/all: front_end/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
+front_end/CMakeFiles/front_end_generate_messages_nodejs.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_getStereoFeatures.dir/all
 front_end/CMakeFiles/front_end_generate_messages_nodejs.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_ProcTime.dir/all
-front_end/CMakeFiles/front_end_generate_messages_nodejs.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_Descriptors.dir/all
-front_end/CMakeFiles/front_end_generate_messages_nodejs.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_frameDescription.dir/all
+front_end/CMakeFiles/front_end_generate_messages_nodejs.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_cvMatch.dir/all
+front_end/CMakeFiles/front_end_generate_messages_nodejs.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoLandmarks.dir/all
+front_end/CMakeFiles/front_end_generate_messages_nodejs.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_windowMatching.dir/all
+front_end/CMakeFiles/front_end_generate_messages_nodejs.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_stereoMatching.dir/all
 front_end/CMakeFiles/front_end_generate_messages_nodejs.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_Homography.dir/all
 front_end/CMakeFiles/front_end_generate_messages_nodejs.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleImageDetection.dir/all
-front_end/CMakeFiles/front_end_generate_messages_nodejs.dir/all: front_end/CMakeFiles/_front_end_generate_messages_check_deps_singleImageDescription.dir/all
 	$(MAKE) -f front_end/CMakeFiles/front_end_generate_messages_nodejs.dir/build.make front_end/CMakeFiles/front_end_generate_messages_nodejs.dir/depend
 	$(MAKE) -f front_end/CMakeFiles/front_end_generate_messages_nodejs.dir/build.make front_end/CMakeFiles/front_end_generate_messages_nodejs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=54,55,56,57,58,59 "Built target front_end_generate_messages_nodejs"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=54,55,56,57,58,59,60,61 "Built target front_end_generate_messages_nodejs"
 .PHONY : front_end/CMakeFiles/front_end_generate_messages_nodejs.dir/all
 
 # Build rule for subdir invocation for target.
 front_end/CMakeFiles/front_end_generate_messages_nodejs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 8
 	$(MAKE) -f CMakeFiles/Makefile2 front_end/CMakeFiles/front_end_generate_messages_nodejs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
 .PHONY : front_end/CMakeFiles/front_end_generate_messages_nodejs.dir/rule
@@ -1930,6 +2044,7 @@ front_end/src/preinstall:
 # Target rules for target front_end/src/CMakeFiles/feature_node_cpp.dir
 
 # All Build rule for target.
+front_end/src/CMakeFiles/feature_node_cpp.dir/all: front_end/CMakeFiles/front_end_generate_messages_py.dir/all
 front_end/src/CMakeFiles/feature_node_cpp.dir/all: front_end/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/all
 front_end/src/CMakeFiles/feature_node_cpp.dir/all: front_end/CMakeFiles/front_end_generate_messages_lisp.dir/all
 front_end/src/CMakeFiles/feature_node_cpp.dir/all: front_end/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
@@ -1949,20 +2064,19 @@ front_end/src/CMakeFiles/feature_node_cpp.dir/all: front_end/CMakeFiles/roscpp_g
 front_end/src/CMakeFiles/feature_node_cpp.dir/all: front_end/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/all
 front_end/src/CMakeFiles/feature_node_cpp.dir/all: front_end/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/all
 front_end/src/CMakeFiles/feature_node_cpp.dir/all: front_end/CMakeFiles/roscpp_generate_messages_py.dir/all
-front_end/src/CMakeFiles/feature_node_cpp.dir/all: front_end/CMakeFiles/front_end_generate_messages_py.dir/all
 front_end/src/CMakeFiles/feature_node_cpp.dir/all: front_end/CMakeFiles/sensor_msgs_generate_messages_py.dir/all
+front_end/src/CMakeFiles/feature_node_cpp.dir/all: front_end/CMakeFiles/std_msgs_generate_messages_py.dir/all
 front_end/src/CMakeFiles/feature_node_cpp.dir/all: front_end/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/all
 front_end/src/CMakeFiles/feature_node_cpp.dir/all: front_end/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
 front_end/src/CMakeFiles/feature_node_cpp.dir/all: front_end/CMakeFiles/geometry_msgs_generate_messages_py.dir/all
-front_end/src/CMakeFiles/feature_node_cpp.dir/all: front_end/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all
 front_end/src/CMakeFiles/feature_node_cpp.dir/all: front_end/CMakeFiles/geometry_msgs_generate_messages_eus.dir/all
-front_end/src/CMakeFiles/feature_node_cpp.dir/all: front_end/CMakeFiles/std_msgs_generate_messages_py.dir/all
+front_end/src/CMakeFiles/feature_node_cpp.dir/all: front_end/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all
 front_end/src/CMakeFiles/feature_node_cpp.dir/all: front_end/CMakeFiles/front_end_generate_messages_eus.dir/all
 front_end/src/CMakeFiles/feature_node_cpp.dir/all: front_end/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/all
 front_end/src/CMakeFiles/feature_node_cpp.dir/all: front_end/CMakeFiles/front_end_generate_messages_nodejs.dir/all
 	$(MAKE) -f front_end/src/CMakeFiles/feature_node_cpp.dir/build.make front_end/src/CMakeFiles/feature_node_cpp.dir/depend
 	$(MAKE) -f front_end/src/CMakeFiles/feature_node_cpp.dir/build.make front_end/src/CMakeFiles/feature_node_cpp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=33 "Built target feature_node_cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=30 "Built target feature_node_cpp"
 .PHONY : front_end/src/CMakeFiles/feature_node_cpp.dir/all
 
 # Include target in all.
@@ -1972,7 +2086,7 @@ all: front_end/src/CMakeFiles/feature_node_cpp.dir/all
 
 # Build rule for subdir invocation for target.
 front_end/src/CMakeFiles/feature_node_cpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 34
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 40
 	$(MAKE) -f CMakeFiles/Makefile2 front_end/src/CMakeFiles/feature_node_cpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
 .PHONY : front_end/src/CMakeFiles/feature_node_cpp.dir/rule
@@ -2036,7 +2150,7 @@ dataset/CMakeFiles/dataset_genpy.dir/all: dataset/CMakeFiles/dataset_generate_me
 
 # Build rule for subdir invocation for target.
 dataset/CMakeFiles/dataset_genpy.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 10
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 11
 	$(MAKE) -f CMakeFiles/Makefile2 dataset/CMakeFiles/dataset_genpy.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
 .PHONY : dataset/CMakeFiles/dataset_genpy.dir/rule
@@ -2062,20 +2176,20 @@ clean: dataset/CMakeFiles/dataset_genpy.dir/clean
 # All Build rule for target.
 dataset/CMakeFiles/dataset_generate_messages_py.dir/all: front_end/CMakeFiles/front_end_generate_messages_py.dir/all
 dataset/CMakeFiles/dataset_generate_messages_py.dir/all: front_end/CMakeFiles/sensor_msgs_generate_messages_py.dir/all
-dataset/CMakeFiles/dataset_generate_messages_py.dir/all: front_end/CMakeFiles/geometry_msgs_generate_messages_py.dir/all
 dataset/CMakeFiles/dataset_generate_messages_py.dir/all: front_end/CMakeFiles/std_msgs_generate_messages_py.dir/all
+dataset/CMakeFiles/dataset_generate_messages_py.dir/all: front_end/CMakeFiles/geometry_msgs_generate_messages_py.dir/all
 dataset/CMakeFiles/dataset_generate_messages_py.dir/all: dataset/CMakeFiles/_dataset_generate_messages_check_deps_publishImage.dir/all
 dataset/CMakeFiles/dataset_generate_messages_py.dir/all: dataset/CMakeFiles/_dataset_generate_messages_check_deps_getDatasetInfo.dir/all
 dataset/CMakeFiles/dataset_generate_messages_py.dir/all: dataset/CMakeFiles/_dataset_generate_messages_check_deps_updateImage.dir/all
 dataset/CMakeFiles/dataset_generate_messages_py.dir/all: dataset/CMakeFiles/_dataset_generate_messages_check_deps_resetDataset.dir/all
 	$(MAKE) -f dataset/CMakeFiles/dataset_generate_messages_py.dir/build.make dataset/CMakeFiles/dataset_generate_messages_py.dir/depend
 	$(MAKE) -f dataset/CMakeFiles/dataset_generate_messages_py.dir/build.make dataset/CMakeFiles/dataset_generate_messages_py.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=30,31,32 "Built target dataset_generate_messages_py"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=27,28,29 "Built target dataset_generate_messages_py"
 .PHONY : dataset/CMakeFiles/dataset_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
 dataset/CMakeFiles/dataset_generate_messages_py.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 10
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 11
 	$(MAKE) -f CMakeFiles/Makefile2 dataset/CMakeFiles/dataset_generate_messages_py.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
 .PHONY : dataset/CMakeFiles/dataset_generate_messages_py.dir/rule
@@ -2109,12 +2223,12 @@ dataset/CMakeFiles/dataset_generate_messages_nodejs.dir/all: dataset/CMakeFiles/
 dataset/CMakeFiles/dataset_generate_messages_nodejs.dir/all: dataset/CMakeFiles/_dataset_generate_messages_check_deps_resetDataset.dir/all
 	$(MAKE) -f dataset/CMakeFiles/dataset_generate_messages_nodejs.dir/build.make dataset/CMakeFiles/dataset_generate_messages_nodejs.dir/depend
 	$(MAKE) -f dataset/CMakeFiles/dataset_generate_messages_nodejs.dir/build.make dataset/CMakeFiles/dataset_generate_messages_nodejs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=27,28,29 "Built target dataset_generate_messages_nodejs"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=25,26 "Built target dataset_generate_messages_nodejs"
 .PHONY : dataset/CMakeFiles/dataset_generate_messages_nodejs.dir/all
 
 # Build rule for subdir invocation for target.
 dataset/CMakeFiles/dataset_generate_messages_nodejs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 9
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 10
 	$(MAKE) -f CMakeFiles/Makefile2 dataset/CMakeFiles/dataset_generate_messages_nodejs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
 .PHONY : dataset/CMakeFiles/dataset_generate_messages_nodejs.dir/rule
@@ -2244,7 +2358,7 @@ dataset/CMakeFiles/dataset_generate_messages_cpp.dir/all: dataset/CMakeFiles/_da
 dataset/CMakeFiles/dataset_generate_messages_cpp.dir/all: dataset/CMakeFiles/_dataset_generate_messages_check_deps_resetDataset.dir/all
 	$(MAKE) -f dataset/CMakeFiles/dataset_generate_messages_cpp.dir/build.make dataset/CMakeFiles/dataset_generate_messages_cpp.dir/depend
 	$(MAKE) -f dataset/CMakeFiles/dataset_generate_messages_cpp.dir/build.make dataset/CMakeFiles/dataset_generate_messages_cpp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=19,20,21 "Built target dataset_generate_messages_cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=18,19 "Built target dataset_generate_messages_cpp"
 .PHONY : dataset/CMakeFiles/dataset_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
@@ -2322,7 +2436,7 @@ all: dataset/CMakeFiles/dataset_generate_messages.dir/all
 
 # Build rule for subdir invocation for target.
 dataset/CMakeFiles/dataset_generate_messages.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 47
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 51
 	$(MAKE) -f CMakeFiles/Makefile2 dataset/CMakeFiles/dataset_generate_messages.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
 .PHONY : dataset/CMakeFiles/dataset_generate_messages.dir/rule
@@ -2420,12 +2534,12 @@ dataset/CMakeFiles/dataset_generate_messages_eus.dir/all: dataset/CMakeFiles/_da
 dataset/CMakeFiles/dataset_generate_messages_eus.dir/all: dataset/CMakeFiles/_dataset_generate_messages_check_deps_resetDataset.dir/all
 	$(MAKE) -f dataset/CMakeFiles/dataset_generate_messages_eus.dir/build.make dataset/CMakeFiles/dataset_generate_messages_eus.dir/depend
 	$(MAKE) -f dataset/CMakeFiles/dataset_generate_messages_eus.dir/build.make dataset/CMakeFiles/dataset_generate_messages_eus.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=22,23,24 "Built target dataset_generate_messages_eus"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=20,21,22 "Built target dataset_generate_messages_eus"
 .PHONY : dataset/CMakeFiles/dataset_generate_messages_eus.dir/all
 
 # Build rule for subdir invocation for target.
 dataset/CMakeFiles/dataset_generate_messages_eus.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 9
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 11
 	$(MAKE) -f CMakeFiles/Makefile2 dataset/CMakeFiles/dataset_generate_messages_eus.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
 .PHONY : dataset/CMakeFiles/dataset_generate_messages_eus.dir/rule
@@ -2457,7 +2571,7 @@ dataset/CMakeFiles/dataset_gennodejs.dir/all: dataset/CMakeFiles/dataset_generat
 
 # Build rule for subdir invocation for target.
 dataset/CMakeFiles/dataset_gennodejs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 9
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 10
 	$(MAKE) -f CMakeFiles/Makefile2 dataset/CMakeFiles/dataset_gennodejs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
 .PHONY : dataset/CMakeFiles/dataset_gennodejs.dir/rule
@@ -2489,7 +2603,7 @@ dataset/CMakeFiles/dataset_geneus.dir/all: dataset/CMakeFiles/dataset_generate_m
 
 # Build rule for subdir invocation for target.
 dataset/CMakeFiles/dataset_geneus.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 9
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 11
 	$(MAKE) -f CMakeFiles/Makefile2 dataset/CMakeFiles/dataset_geneus.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
 .PHONY : dataset/CMakeFiles/dataset_geneus.dir/rule
@@ -2523,7 +2637,7 @@ dataset/CMakeFiles/dataset_generate_messages_lisp.dir/all: dataset/CMakeFiles/_d
 dataset/CMakeFiles/dataset_generate_messages_lisp.dir/all: dataset/CMakeFiles/_dataset_generate_messages_check_deps_resetDataset.dir/all
 	$(MAKE) -f dataset/CMakeFiles/dataset_generate_messages_lisp.dir/build.make dataset/CMakeFiles/dataset_generate_messages_lisp.dir/depend
 	$(MAKE) -f dataset/CMakeFiles/dataset_generate_messages_lisp.dir/build.make dataset/CMakeFiles/dataset_generate_messages_lisp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=25,26 "Built target dataset_generate_messages_lisp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=23,24 "Built target dataset_generate_messages_lisp"
 .PHONY : dataset/CMakeFiles/dataset_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
@@ -2674,7 +2788,7 @@ bumblebee/CMakeFiles/bumblebee_generate_messages_lisp.dir/all: bumblebee/CMakeFi
 bumblebee/CMakeFiles/bumblebee_generate_messages_lisp.dir/all: bumblebee/CMakeFiles/_bumblebee_generate_messages_check_deps_getOffset.dir/all
 	$(MAKE) -f bumblebee/CMakeFiles/bumblebee_generate_messages_lisp.dir/build.make bumblebee/CMakeFiles/bumblebee_generate_messages_lisp.dir/depend
 	$(MAKE) -f bumblebee/CMakeFiles/bumblebee_generate_messages_lisp.dir/build.make bumblebee/CMakeFiles/bumblebee_generate_messages_lisp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=9,10 "Built target bumblebee_generate_messages_lisp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=8,9 "Built target bumblebee_generate_messages_lisp"
 .PHONY : bumblebee/CMakeFiles/bumblebee_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
@@ -2744,7 +2858,7 @@ bumblebee/CMakeFiles/bumblebee_generate_messages_eus.dir/all: bumblebee/CMakeFil
 bumblebee/CMakeFiles/bumblebee_generate_messages_eus.dir/all: bumblebee/CMakeFiles/_bumblebee_generate_messages_check_deps_getOffset.dir/all
 	$(MAKE) -f bumblebee/CMakeFiles/bumblebee_generate_messages_eus.dir/build.make bumblebee/CMakeFiles/bumblebee_generate_messages_eus.dir/depend
 	$(MAKE) -f bumblebee/CMakeFiles/bumblebee_generate_messages_eus.dir/build.make bumblebee/CMakeFiles/bumblebee_generate_messages_eus.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=6,7,8 "Built target bumblebee_generate_messages_eus"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=5,6,7 "Built target bumblebee_generate_messages_eus"
 .PHONY : bumblebee/CMakeFiles/bumblebee_generate_messages_eus.dir/all
 
 # Build rule for subdir invocation for target.
@@ -2774,20 +2888,20 @@ clean: bumblebee/CMakeFiles/bumblebee_generate_messages_eus.dir/clean
 
 # All Build rule for target.
 bumblebee/CMakeFiles/bumblebee_generate_messages_py.dir/all: front_end/CMakeFiles/sensor_msgs_generate_messages_py.dir/all
-bumblebee/CMakeFiles/bumblebee_generate_messages_py.dir/all: front_end/CMakeFiles/geometry_msgs_generate_messages_py.dir/all
 bumblebee/CMakeFiles/bumblebee_generate_messages_py.dir/all: front_end/CMakeFiles/std_msgs_generate_messages_py.dir/all
+bumblebee/CMakeFiles/bumblebee_generate_messages_py.dir/all: front_end/CMakeFiles/geometry_msgs_generate_messages_py.dir/all
 bumblebee/CMakeFiles/bumblebee_generate_messages_py.dir/all: bumblebee/CMakeFiles/_bumblebee_generate_messages_check_deps_getCameraInfo.dir/all
 bumblebee/CMakeFiles/bumblebee_generate_messages_py.dir/all: bumblebee/CMakeFiles/_bumblebee_generate_messages_check_deps_getRectificationMap.dir/all
 bumblebee/CMakeFiles/bumblebee_generate_messages_py.dir/all: bumblebee/CMakeFiles/_bumblebee_generate_messages_check_deps_getQ.dir/all
 bumblebee/CMakeFiles/bumblebee_generate_messages_py.dir/all: bumblebee/CMakeFiles/_bumblebee_generate_messages_check_deps_getOffset.dir/all
 	$(MAKE) -f bumblebee/CMakeFiles/bumblebee_generate_messages_py.dir/build.make bumblebee/CMakeFiles/bumblebee_generate_messages_py.dir/depend
 	$(MAKE) -f bumblebee/CMakeFiles/bumblebee_generate_messages_py.dir/build.make bumblebee/CMakeFiles/bumblebee_generate_messages_py.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=14,15,16 "Built target bumblebee_generate_messages_py"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=13,14 "Built target bumblebee_generate_messages_py"
 .PHONY : bumblebee/CMakeFiles/bumblebee_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
 bumblebee/CMakeFiles/bumblebee_generate_messages_py.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 bumblebee/CMakeFiles/bumblebee_generate_messages_py.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
 .PHONY : bumblebee/CMakeFiles/bumblebee_generate_messages_py.dir/rule
@@ -2948,7 +3062,7 @@ bumblebee/CMakeFiles/bumblebee_generate_messages_nodejs.dir/all: bumblebee/CMake
 bumblebee/CMakeFiles/bumblebee_generate_messages_nodejs.dir/all: bumblebee/CMakeFiles/_bumblebee_generate_messages_check_deps_getOffset.dir/all
 	$(MAKE) -f bumblebee/CMakeFiles/bumblebee_generate_messages_nodejs.dir/build.make bumblebee/CMakeFiles/bumblebee_generate_messages_nodejs.dir/depend
 	$(MAKE) -f bumblebee/CMakeFiles/bumblebee_generate_messages_nodejs.dir/build.make bumblebee/CMakeFiles/bumblebee_generate_messages_nodejs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=11,12,13 "Built target bumblebee_generate_messages_nodejs"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=10,11,12 "Built target bumblebee_generate_messages_nodejs"
 .PHONY : bumblebee/CMakeFiles/bumblebee_generate_messages_nodejs.dir/all
 
 # Build rule for subdir invocation for target.
@@ -3113,7 +3227,7 @@ bumblebee/CMakeFiles/bumblebee_genpy.dir/all: bumblebee/CMakeFiles/bumblebee_gen
 
 # Build rule for subdir invocation for target.
 bumblebee/CMakeFiles/bumblebee_genpy.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 bumblebee/CMakeFiles/bumblebee_genpy.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
 .PHONY : bumblebee/CMakeFiles/bumblebee_genpy.dir/rule
@@ -3210,12 +3324,12 @@ bumblebee/CMakeFiles/bumblebee_generate_messages_cpp.dir/all: bumblebee/CMakeFil
 bumblebee/CMakeFiles/bumblebee_generate_messages_cpp.dir/all: bumblebee/CMakeFiles/_bumblebee_generate_messages_check_deps_getOffset.dir/all
 	$(MAKE) -f bumblebee/CMakeFiles/bumblebee_generate_messages_cpp.dir/build.make bumblebee/CMakeFiles/bumblebee_generate_messages_cpp.dir/depend
 	$(MAKE) -f bumblebee/CMakeFiles/bumblebee_generate_messages_cpp.dir/build.make bumblebee/CMakeFiles/bumblebee_generate_messages_cpp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=3,4,5 "Built target bumblebee_generate_messages_cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=3,4 "Built target bumblebee_generate_messages_cpp"
 .PHONY : bumblebee/CMakeFiles/bumblebee_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
 bumblebee/CMakeFiles/bumblebee_generate_messages_cpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 bumblebee/CMakeFiles/bumblebee_generate_messages_cpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
 .PHONY : bumblebee/CMakeFiles/bumblebee_generate_messages_cpp.dir/rule
@@ -3448,7 +3562,7 @@ all: bumblebee/CMakeFiles/bumblebee_generate_messages.dir/all
 
 # Build rule for subdir invocation for target.
 bumblebee/CMakeFiles/bumblebee_generate_messages.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 14
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 12
 	$(MAKE) -f CMakeFiles/Makefile2 bumblebee/CMakeFiles/bumblebee_generate_messages.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
 .PHONY : bumblebee/CMakeFiles/bumblebee_generate_messages.dir/rule
@@ -3576,7 +3690,7 @@ bumblebee/CMakeFiles/bumblebee_gencpp.dir/all: bumblebee/CMakeFiles/bumblebee_ge
 
 # Build rule for subdir invocation for target.
 bumblebee/CMakeFiles/bumblebee_gencpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 bumblebee/CMakeFiles/bumblebee_gencpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
 .PHONY : bumblebee/CMakeFiles/bumblebee_gencpp.dir/rule
@@ -3642,12 +3756,12 @@ bumblebee/src/CMakeFiles/bumblebee_config_node.dir/all: front_end/CMakeFiles/ros
 bumblebee/src/CMakeFiles/bumblebee_config_node.dir/all: front_end/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/all
 bumblebee/src/CMakeFiles/bumblebee_config_node.dir/all: front_end/CMakeFiles/roscpp_generate_messages_py.dir/all
 bumblebee/src/CMakeFiles/bumblebee_config_node.dir/all: front_end/CMakeFiles/sensor_msgs_generate_messages_py.dir/all
+bumblebee/src/CMakeFiles/bumblebee_config_node.dir/all: front_end/CMakeFiles/std_msgs_generate_messages_py.dir/all
 bumblebee/src/CMakeFiles/bumblebee_config_node.dir/all: front_end/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/all
 bumblebee/src/CMakeFiles/bumblebee_config_node.dir/all: front_end/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
 bumblebee/src/CMakeFiles/bumblebee_config_node.dir/all: front_end/CMakeFiles/geometry_msgs_generate_messages_py.dir/all
-bumblebee/src/CMakeFiles/bumblebee_config_node.dir/all: front_end/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all
 bumblebee/src/CMakeFiles/bumblebee_config_node.dir/all: front_end/CMakeFiles/geometry_msgs_generate_messages_eus.dir/all
-bumblebee/src/CMakeFiles/bumblebee_config_node.dir/all: front_end/CMakeFiles/std_msgs_generate_messages_py.dir/all
+bumblebee/src/CMakeFiles/bumblebee_config_node.dir/all: front_end/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all
 bumblebee/src/CMakeFiles/bumblebee_config_node.dir/all: front_end/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/all
 bumblebee/src/CMakeFiles/bumblebee_config_node.dir/all: bumblebee/CMakeFiles/bumblebee_generate_messages_lisp.dir/all
 bumblebee/src/CMakeFiles/bumblebee_config_node.dir/all: bumblebee/CMakeFiles/bumblebee_generate_messages_eus.dir/all
@@ -3681,7 +3795,7 @@ all: bumblebee/src/CMakeFiles/bumblebee_config_node.dir/all
 
 # Build rule for subdir invocation for target.
 bumblebee/src/CMakeFiles/bumblebee_config_node.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 16
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 14
 	$(MAKE) -f CMakeFiles/Makefile2 bumblebee/src/CMakeFiles/bumblebee_config_node.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
 .PHONY : bumblebee/src/CMakeFiles/bumblebee_config_node.dir/rule
@@ -3723,12 +3837,12 @@ bumblebee/src/CMakeFiles/viso_config_node.dir/all: front_end/CMakeFiles/rosgraph
 bumblebee/src/CMakeFiles/viso_config_node.dir/all: front_end/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/all
 bumblebee/src/CMakeFiles/viso_config_node.dir/all: front_end/CMakeFiles/roscpp_generate_messages_py.dir/all
 bumblebee/src/CMakeFiles/viso_config_node.dir/all: front_end/CMakeFiles/sensor_msgs_generate_messages_py.dir/all
+bumblebee/src/CMakeFiles/viso_config_node.dir/all: front_end/CMakeFiles/std_msgs_generate_messages_py.dir/all
 bumblebee/src/CMakeFiles/viso_config_node.dir/all: front_end/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/all
 bumblebee/src/CMakeFiles/viso_config_node.dir/all: front_end/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
 bumblebee/src/CMakeFiles/viso_config_node.dir/all: front_end/CMakeFiles/geometry_msgs_generate_messages_py.dir/all
-bumblebee/src/CMakeFiles/viso_config_node.dir/all: front_end/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all
 bumblebee/src/CMakeFiles/viso_config_node.dir/all: front_end/CMakeFiles/geometry_msgs_generate_messages_eus.dir/all
-bumblebee/src/CMakeFiles/viso_config_node.dir/all: front_end/CMakeFiles/std_msgs_generate_messages_py.dir/all
+bumblebee/src/CMakeFiles/viso_config_node.dir/all: front_end/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all
 bumblebee/src/CMakeFiles/viso_config_node.dir/all: front_end/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/all
 bumblebee/src/CMakeFiles/viso_config_node.dir/all: bumblebee/CMakeFiles/bumblebee_generate_messages_lisp.dir/all
 bumblebee/src/CMakeFiles/viso_config_node.dir/all: bumblebee/CMakeFiles/bumblebee_generate_messages_eus.dir/all
@@ -3752,7 +3866,7 @@ bumblebee/src/CMakeFiles/viso_config_node.dir/all: bumblebee/CMakeFiles/actionli
 bumblebee/src/CMakeFiles/viso_config_node.dir/all: bumblebee/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/all
 	$(MAKE) -f bumblebee/src/CMakeFiles/viso_config_node.dir/build.make bumblebee/src/CMakeFiles/viso_config_node.dir/depend
 	$(MAKE) -f bumblebee/src/CMakeFiles/viso_config_node.dir/build.make bumblebee/src/CMakeFiles/viso_config_node.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=84,85 "Built target viso_config_node"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=85,86 "Built target viso_config_node"
 .PHONY : bumblebee/src/CMakeFiles/viso_config_node.dir/all
 
 # Include target in all.
@@ -3762,7 +3876,7 @@ all: bumblebee/src/CMakeFiles/viso_config_node.dir/all
 
 # Build rule for subdir invocation for target.
 bumblebee/src/CMakeFiles/viso_config_node.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 16
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 14
 	$(MAKE) -f CMakeFiles/Makefile2 bumblebee/src/CMakeFiles/viso_config_node.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
 .PHONY : bumblebee/src/CMakeFiles/viso_config_node.dir/rule
@@ -3804,12 +3918,12 @@ bumblebee/src/CMakeFiles/bumblebee_node.dir/all: front_end/CMakeFiles/rosgraph_m
 bumblebee/src/CMakeFiles/bumblebee_node.dir/all: front_end/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/all
 bumblebee/src/CMakeFiles/bumblebee_node.dir/all: front_end/CMakeFiles/roscpp_generate_messages_py.dir/all
 bumblebee/src/CMakeFiles/bumblebee_node.dir/all: front_end/CMakeFiles/sensor_msgs_generate_messages_py.dir/all
+bumblebee/src/CMakeFiles/bumblebee_node.dir/all: front_end/CMakeFiles/std_msgs_generate_messages_py.dir/all
 bumblebee/src/CMakeFiles/bumblebee_node.dir/all: front_end/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/all
 bumblebee/src/CMakeFiles/bumblebee_node.dir/all: front_end/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
 bumblebee/src/CMakeFiles/bumblebee_node.dir/all: front_end/CMakeFiles/geometry_msgs_generate_messages_py.dir/all
-bumblebee/src/CMakeFiles/bumblebee_node.dir/all: front_end/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all
 bumblebee/src/CMakeFiles/bumblebee_node.dir/all: front_end/CMakeFiles/geometry_msgs_generate_messages_eus.dir/all
-bumblebee/src/CMakeFiles/bumblebee_node.dir/all: front_end/CMakeFiles/std_msgs_generate_messages_py.dir/all
+bumblebee/src/CMakeFiles/bumblebee_node.dir/all: front_end/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all
 bumblebee/src/CMakeFiles/bumblebee_node.dir/all: front_end/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/all
 bumblebee/src/CMakeFiles/bumblebee_node.dir/all: bumblebee/CMakeFiles/bumblebee_generate_messages_lisp.dir/all
 bumblebee/src/CMakeFiles/bumblebee_node.dir/all: bumblebee/CMakeFiles/bumblebee_generate_messages_eus.dir/all
@@ -3833,7 +3947,7 @@ bumblebee/src/CMakeFiles/bumblebee_node.dir/all: bumblebee/CMakeFiles/actionlib_
 bumblebee/src/CMakeFiles/bumblebee_node.dir/all: bumblebee/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/all
 	$(MAKE) -f bumblebee/src/CMakeFiles/bumblebee_node.dir/build.make bumblebee/src/CMakeFiles/bumblebee_node.dir/depend
 	$(MAKE) -f bumblebee/src/CMakeFiles/bumblebee_node.dir/build.make bumblebee/src/CMakeFiles/bumblebee_node.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=17,18 "Built target bumblebee_node"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=15,16,17 "Built target bumblebee_node"
 .PHONY : bumblebee/src/CMakeFiles/bumblebee_node.dir/all
 
 # Include target in all.
@@ -3843,7 +3957,7 @@ all: bumblebee/src/CMakeFiles/bumblebee_node.dir/all
 
 # Build rule for subdir invocation for target.
 bumblebee/src/CMakeFiles/bumblebee_node.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 16
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 15
 	$(MAKE) -f CMakeFiles/Makefile2 bumblebee/src/CMakeFiles/bumblebee_node.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
 .PHONY : bumblebee/src/CMakeFiles/bumblebee_node.dir/rule
@@ -3885,12 +3999,12 @@ bumblebee/src/CMakeFiles/stereoTF_node.dir/all: front_end/CMakeFiles/rosgraph_ms
 bumblebee/src/CMakeFiles/stereoTF_node.dir/all: front_end/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/all
 bumblebee/src/CMakeFiles/stereoTF_node.dir/all: front_end/CMakeFiles/roscpp_generate_messages_py.dir/all
 bumblebee/src/CMakeFiles/stereoTF_node.dir/all: front_end/CMakeFiles/sensor_msgs_generate_messages_py.dir/all
+bumblebee/src/CMakeFiles/stereoTF_node.dir/all: front_end/CMakeFiles/std_msgs_generate_messages_py.dir/all
 bumblebee/src/CMakeFiles/stereoTF_node.dir/all: front_end/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/all
 bumblebee/src/CMakeFiles/stereoTF_node.dir/all: front_end/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
 bumblebee/src/CMakeFiles/stereoTF_node.dir/all: front_end/CMakeFiles/geometry_msgs_generate_messages_py.dir/all
-bumblebee/src/CMakeFiles/stereoTF_node.dir/all: front_end/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all
 bumblebee/src/CMakeFiles/stereoTF_node.dir/all: front_end/CMakeFiles/geometry_msgs_generate_messages_eus.dir/all
-bumblebee/src/CMakeFiles/stereoTF_node.dir/all: front_end/CMakeFiles/std_msgs_generate_messages_py.dir/all
+bumblebee/src/CMakeFiles/stereoTF_node.dir/all: front_end/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all
 bumblebee/src/CMakeFiles/stereoTF_node.dir/all: front_end/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/all
 bumblebee/src/CMakeFiles/stereoTF_node.dir/all: bumblebee/CMakeFiles/bumblebee_generate_messages_lisp.dir/all
 bumblebee/src/CMakeFiles/stereoTF_node.dir/all: bumblebee/CMakeFiles/bumblebee_generate_messages_eus.dir/all
@@ -3914,7 +4028,7 @@ bumblebee/src/CMakeFiles/stereoTF_node.dir/all: bumblebee/CMakeFiles/actionlib_g
 bumblebee/src/CMakeFiles/stereoTF_node.dir/all: bumblebee/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/all
 	$(MAKE) -f bumblebee/src/CMakeFiles/stereoTF_node.dir/build.make bumblebee/src/CMakeFiles/stereoTF_node.dir/depend
 	$(MAKE) -f bumblebee/src/CMakeFiles/stereoTF_node.dir/build.make bumblebee/src/CMakeFiles/stereoTF_node.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=81,82,83 "Built target stereoTF_node"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=83,84 "Built target stereoTF_node"
 .PHONY : bumblebee/src/CMakeFiles/stereoTF_node.dir/all
 
 # Include target in all.
@@ -3924,7 +4038,7 @@ all: bumblebee/src/CMakeFiles/stereoTF_node.dir/all
 
 # Build rule for subdir invocation for target.
 bumblebee/src/CMakeFiles/stereoTF_node.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 17
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 14
 	$(MAKE) -f CMakeFiles/Makefile2 bumblebee/src/CMakeFiles/stereoTF_node.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
 .PHONY : bumblebee/src/CMakeFiles/stereoTF_node.dir/rule
@@ -4055,7 +4169,7 @@ slam_analysis/CMakeFiles/slam_analysis_generate_messages_cpp.dir/all: slam_analy
 slam_analysis/CMakeFiles/slam_analysis_generate_messages_cpp.dir/all: slam_analysis/CMakeFiles/_slam_analysis_generate_messages_check_deps_plotFrame.dir/all
 	$(MAKE) -f slam_analysis/CMakeFiles/slam_analysis_generate_messages_cpp.dir/build.make slam_analysis/CMakeFiles/slam_analysis_generate_messages_cpp.dir/depend
 	$(MAKE) -f slam_analysis/CMakeFiles/slam_analysis_generate_messages_cpp.dir/build.make slam_analysis/CMakeFiles/slam_analysis_generate_messages_cpp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=70,71 "Built target slam_analysis_generate_messages_cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=73 "Built target slam_analysis_generate_messages_cpp"
 .PHONY : slam_analysis/CMakeFiles/slam_analysis_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
@@ -4197,7 +4311,7 @@ all: slam_analysis/CMakeFiles/slam_analysis_generate_messages.dir/all
 
 # Build rule for subdir invocation for target.
 slam_analysis/CMakeFiles/slam_analysis_generate_messages.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 44
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 49
 	$(MAKE) -f CMakeFiles/Makefile2 slam_analysis/CMakeFiles/slam_analysis_generate_messages.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
 .PHONY : slam_analysis/CMakeFiles/slam_analysis_generate_messages.dir/rule
@@ -4325,7 +4439,7 @@ slam_analysis/CMakeFiles/slam_analysis_geneus.dir/all: slam_analysis/CMakeFiles/
 
 # Build rule for subdir invocation for target.
 slam_analysis/CMakeFiles/slam_analysis_geneus.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 8
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 11
 	$(MAKE) -f CMakeFiles/Makefile2 slam_analysis/CMakeFiles/slam_analysis_geneus.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
 .PHONY : slam_analysis/CMakeFiles/slam_analysis_geneus.dir/rule
@@ -4389,7 +4503,7 @@ slam_analysis/CMakeFiles/slam_analysis_genpy.dir/all: slam_analysis/CMakeFiles/s
 
 # Build rule for subdir invocation for target.
 slam_analysis/CMakeFiles/slam_analysis_genpy.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 10
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 11
 	$(MAKE) -f CMakeFiles/Makefile2 slam_analysis/CMakeFiles/slam_analysis_genpy.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
 .PHONY : slam_analysis/CMakeFiles/slam_analysis_genpy.dir/rule
@@ -4420,12 +4534,12 @@ slam_analysis/CMakeFiles/slam_analysis_generate_messages_lisp.dir/all: slam_anal
 slam_analysis/CMakeFiles/slam_analysis_generate_messages_lisp.dir/all: slam_analysis/CMakeFiles/_slam_analysis_generate_messages_check_deps_plotFrame.dir/all
 	$(MAKE) -f slam_analysis/CMakeFiles/slam_analysis_generate_messages_lisp.dir/build.make slam_analysis/CMakeFiles/slam_analysis_generate_messages_lisp.dir/depend
 	$(MAKE) -f slam_analysis/CMakeFiles/slam_analysis_generate_messages_lisp.dir/build.make slam_analysis/CMakeFiles/slam_analysis_generate_messages_lisp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=74,75 "Built target slam_analysis_generate_messages_lisp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=77 "Built target slam_analysis_generate_messages_lisp"
 .PHONY : slam_analysis/CMakeFiles/slam_analysis_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
 slam_analysis/CMakeFiles/slam_analysis_generate_messages_lisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 9
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 8
 	$(MAKE) -f CMakeFiles/Makefile2 slam_analysis/CMakeFiles/slam_analysis_generate_messages_lisp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
 .PHONY : slam_analysis/CMakeFiles/slam_analysis_generate_messages_lisp.dir/rule
@@ -4457,7 +4571,7 @@ slam_analysis/CMakeFiles/slam_analysis_genlisp.dir/all: slam_analysis/CMakeFiles
 
 # Build rule for subdir invocation for target.
 slam_analysis/CMakeFiles/slam_analysis_genlisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 9
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 8
 	$(MAKE) -f CMakeFiles/Makefile2 slam_analysis/CMakeFiles/slam_analysis_genlisp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
 .PHONY : slam_analysis/CMakeFiles/slam_analysis_genlisp.dir/rule
@@ -4488,12 +4602,12 @@ slam_analysis/CMakeFiles/slam_analysis_generate_messages_eus.dir/all: slam_analy
 slam_analysis/CMakeFiles/slam_analysis_generate_messages_eus.dir/all: slam_analysis/CMakeFiles/_slam_analysis_generate_messages_check_deps_plotFrame.dir/all
 	$(MAKE) -f slam_analysis/CMakeFiles/slam_analysis_generate_messages_eus.dir/build.make slam_analysis/CMakeFiles/slam_analysis_generate_messages_eus.dir/depend
 	$(MAKE) -f slam_analysis/CMakeFiles/slam_analysis_generate_messages_eus.dir/build.make slam_analysis/CMakeFiles/slam_analysis_generate_messages_eus.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=72,73 "Built target slam_analysis_generate_messages_eus"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=74,75,76 "Built target slam_analysis_generate_messages_eus"
 .PHONY : slam_analysis/CMakeFiles/slam_analysis_generate_messages_eus.dir/all
 
 # Build rule for subdir invocation for target.
 slam_analysis/CMakeFiles/slam_analysis_generate_messages_eus.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 8
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 11
 	$(MAKE) -f CMakeFiles/Makefile2 slam_analysis/CMakeFiles/slam_analysis_generate_messages_eus.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
 .PHONY : slam_analysis/CMakeFiles/slam_analysis_generate_messages_eus.dir/rule
@@ -4525,7 +4639,7 @@ slam_analysis/CMakeFiles/slam_analysis_gennodejs.dir/all: slam_analysis/CMakeFil
 
 # Build rule for subdir invocation for target.
 slam_analysis/CMakeFiles/slam_analysis_gennodejs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 8
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 10
 	$(MAKE) -f CMakeFiles/Makefile2 slam_analysis/CMakeFiles/slam_analysis_gennodejs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
 .PHONY : slam_analysis/CMakeFiles/slam_analysis_gennodejs.dir/rule
@@ -4556,12 +4670,12 @@ slam_analysis/CMakeFiles/slam_analysis_generate_messages_nodejs.dir/all: slam_an
 slam_analysis/CMakeFiles/slam_analysis_generate_messages_nodejs.dir/all: slam_analysis/CMakeFiles/_slam_analysis_generate_messages_check_deps_plotFrame.dir/all
 	$(MAKE) -f slam_analysis/CMakeFiles/slam_analysis_generate_messages_nodejs.dir/build.make slam_analysis/CMakeFiles/slam_analysis_generate_messages_nodejs.dir/depend
 	$(MAKE) -f slam_analysis/CMakeFiles/slam_analysis_generate_messages_nodejs.dir/build.make slam_analysis/CMakeFiles/slam_analysis_generate_messages_nodejs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=76,77 "Built target slam_analysis_generate_messages_nodejs"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=78,79 "Built target slam_analysis_generate_messages_nodejs"
 .PHONY : slam_analysis/CMakeFiles/slam_analysis_generate_messages_nodejs.dir/all
 
 # Build rule for subdir invocation for target.
 slam_analysis/CMakeFiles/slam_analysis_generate_messages_nodejs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 8
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 10
 	$(MAKE) -f CMakeFiles/Makefile2 slam_analysis/CMakeFiles/slam_analysis_generate_messages_nodejs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
 .PHONY : slam_analysis/CMakeFiles/slam_analysis_generate_messages_nodejs.dir/rule
@@ -4592,12 +4706,12 @@ slam_analysis/CMakeFiles/slam_analysis_generate_messages_py.dir/all: slam_analys
 slam_analysis/CMakeFiles/slam_analysis_generate_messages_py.dir/all: slam_analysis/CMakeFiles/_slam_analysis_generate_messages_check_deps_plotFrame.dir/all
 	$(MAKE) -f slam_analysis/CMakeFiles/slam_analysis_generate_messages_py.dir/build.make slam_analysis/CMakeFiles/slam_analysis_generate_messages_py.dir/depend
 	$(MAKE) -f slam_analysis/CMakeFiles/slam_analysis_generate_messages_py.dir/build.make slam_analysis/CMakeFiles/slam_analysis_generate_messages_py.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=78,79,80 "Built target slam_analysis_generate_messages_py"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=80,81,82 "Built target slam_analysis_generate_messages_py"
 .PHONY : slam_analysis/CMakeFiles/slam_analysis_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
 slam_analysis/CMakeFiles/slam_analysis_generate_messages_py.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 10
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 11
 	$(MAKE) -f CMakeFiles/Makefile2 slam_analysis/CMakeFiles/slam_analysis_generate_messages_py.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
 .PHONY : slam_analysis/CMakeFiles/slam_analysis_generate_messages_py.dir/rule
@@ -4661,7 +4775,7 @@ viso_extractor/CMakeFiles/viso_extractor_genpy.dir/all: viso_extractor/CMakeFile
 
 # Build rule for subdir invocation for target.
 viso_extractor/CMakeFiles/viso_extractor_genpy.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 viso_extractor/CMakeFiles/viso_extractor_genpy.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
 .PHONY : viso_extractor/CMakeFiles/viso_extractor_genpy.dir/rule
@@ -4693,7 +4807,7 @@ viso_extractor/CMakeFiles/viso_extractor_gennodejs.dir/all: viso_extractor/CMake
 
 # Build rule for subdir invocation for target.
 viso_extractor/CMakeFiles/viso_extractor_gennodejs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 viso_extractor/CMakeFiles/viso_extractor_gennodejs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
 .PHONY : viso_extractor/CMakeFiles/viso_extractor_gennodejs.dir/rule
@@ -4724,12 +4838,12 @@ viso_extractor/CMakeFiles/viso_extractor_generate_messages_cpp.dir/all: viso_ext
 viso_extractor/CMakeFiles/viso_extractor_generate_messages_cpp.dir/all: viso_extractor/CMakeFiles/_viso_extractor_generate_messages_check_deps_VisoFrame.dir/all
 	$(MAKE) -f viso_extractor/CMakeFiles/viso_extractor_generate_messages_cpp.dir/build.make viso_extractor/CMakeFiles/viso_extractor_generate_messages_cpp.dir/depend
 	$(MAKE) -f viso_extractor/CMakeFiles/viso_extractor_generate_messages_cpp.dir/build.make viso_extractor/CMakeFiles/viso_extractor_generate_messages_cpp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=86 "Built target viso_extractor_generate_messages_cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=87,88 "Built target viso_extractor_generate_messages_cpp"
 .PHONY : viso_extractor/CMakeFiles/viso_extractor_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
 viso_extractor/CMakeFiles/viso_extractor_generate_messages_cpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 viso_extractor/CMakeFiles/viso_extractor_generate_messages_cpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
 .PHONY : viso_extractor/CMakeFiles/viso_extractor_generate_messages_cpp.dir/rule
@@ -4754,18 +4868,18 @@ clean: viso_extractor/CMakeFiles/viso_extractor_generate_messages_cpp.dir/clean
 
 # All Build rule for target.
 viso_extractor/CMakeFiles/viso_extractor_generate_messages_py.dir/all: front_end/CMakeFiles/sensor_msgs_generate_messages_py.dir/all
-viso_extractor/CMakeFiles/viso_extractor_generate_messages_py.dir/all: front_end/CMakeFiles/geometry_msgs_generate_messages_py.dir/all
 viso_extractor/CMakeFiles/viso_extractor_generate_messages_py.dir/all: front_end/CMakeFiles/std_msgs_generate_messages_py.dir/all
+viso_extractor/CMakeFiles/viso_extractor_generate_messages_py.dir/all: front_end/CMakeFiles/geometry_msgs_generate_messages_py.dir/all
 viso_extractor/CMakeFiles/viso_extractor_generate_messages_py.dir/all: viso_extractor/CMakeFiles/_viso_extractor_generate_messages_check_deps_pMatch.dir/all
 viso_extractor/CMakeFiles/viso_extractor_generate_messages_py.dir/all: viso_extractor/CMakeFiles/_viso_extractor_generate_messages_check_deps_VisoFrame.dir/all
 	$(MAKE) -f viso_extractor/CMakeFiles/viso_extractor_generate_messages_py.dir/build.make viso_extractor/CMakeFiles/viso_extractor_generate_messages_py.dir/depend
 	$(MAKE) -f viso_extractor/CMakeFiles/viso_extractor_generate_messages_py.dir/build.make viso_extractor/CMakeFiles/viso_extractor_generate_messages_py.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=92,93 "Built target viso_extractor_generate_messages_py"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=93 "Built target viso_extractor_generate_messages_py"
 .PHONY : viso_extractor/CMakeFiles/viso_extractor_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
 viso_extractor/CMakeFiles/viso_extractor_generate_messages_py.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 viso_extractor/CMakeFiles/viso_extractor_generate_messages_py.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
 .PHONY : viso_extractor/CMakeFiles/viso_extractor_generate_messages_py.dir/rule
@@ -4861,7 +4975,7 @@ viso_extractor/CMakeFiles/viso_extractor_genlisp.dir/all: viso_extractor/CMakeFi
 
 # Build rule for subdir invocation for target.
 viso_extractor/CMakeFiles/viso_extractor_genlisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 viso_extractor/CMakeFiles/viso_extractor_genlisp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
 .PHONY : viso_extractor/CMakeFiles/viso_extractor_genlisp.dir/rule
@@ -4892,12 +5006,12 @@ viso_extractor/CMakeFiles/viso_extractor_generate_messages_eus.dir/all: viso_ext
 viso_extractor/CMakeFiles/viso_extractor_generate_messages_eus.dir/all: viso_extractor/CMakeFiles/_viso_extractor_generate_messages_check_deps_VisoFrame.dir/all
 	$(MAKE) -f viso_extractor/CMakeFiles/viso_extractor_generate_messages_eus.dir/build.make viso_extractor/CMakeFiles/viso_extractor_generate_messages_eus.dir/depend
 	$(MAKE) -f viso_extractor/CMakeFiles/viso_extractor_generate_messages_eus.dir/build.make viso_extractor/CMakeFiles/viso_extractor_generate_messages_eus.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=87,88 "Built target viso_extractor_generate_messages_eus"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=89 "Built target viso_extractor_generate_messages_eus"
 .PHONY : viso_extractor/CMakeFiles/viso_extractor_generate_messages_eus.dir/all
 
 # Build rule for subdir invocation for target.
 viso_extractor/CMakeFiles/viso_extractor_generate_messages_eus.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 viso_extractor/CMakeFiles/viso_extractor_generate_messages_eus.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
 .PHONY : viso_extractor/CMakeFiles/viso_extractor_generate_messages_eus.dir/rule
@@ -4929,7 +5043,7 @@ viso_extractor/CMakeFiles/viso_extractor_gencpp.dir/all: viso_extractor/CMakeFil
 
 # Build rule for subdir invocation for target.
 viso_extractor/CMakeFiles/viso_extractor_gencpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 viso_extractor/CMakeFiles/viso_extractor_gencpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
 .PHONY : viso_extractor/CMakeFiles/viso_extractor_gencpp.dir/rule
@@ -4970,7 +5084,7 @@ all: viso_extractor/CMakeFiles/viso_extractor_generate_messages.dir/all
 
 # Build rule for subdir invocation for target.
 viso_extractor/CMakeFiles/viso_extractor_generate_messages.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 8
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 7
 	$(MAKE) -f CMakeFiles/Makefile2 viso_extractor/CMakeFiles/viso_extractor_generate_messages.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
 .PHONY : viso_extractor/CMakeFiles/viso_extractor_generate_messages.dir/rule
@@ -5001,12 +5115,12 @@ viso_extractor/CMakeFiles/viso_extractor_generate_messages_lisp.dir/all: viso_ex
 viso_extractor/CMakeFiles/viso_extractor_generate_messages_lisp.dir/all: viso_extractor/CMakeFiles/_viso_extractor_generate_messages_check_deps_VisoFrame.dir/all
 	$(MAKE) -f viso_extractor/CMakeFiles/viso_extractor_generate_messages_lisp.dir/build.make viso_extractor/CMakeFiles/viso_extractor_generate_messages_lisp.dir/depend
 	$(MAKE) -f viso_extractor/CMakeFiles/viso_extractor_generate_messages_lisp.dir/build.make viso_extractor/CMakeFiles/viso_extractor_generate_messages_lisp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=89,90 "Built target viso_extractor_generate_messages_lisp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=90 "Built target viso_extractor_generate_messages_lisp"
 .PHONY : viso_extractor/CMakeFiles/viso_extractor_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
 viso_extractor/CMakeFiles/viso_extractor_generate_messages_lisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 viso_extractor/CMakeFiles/viso_extractor_generate_messages_lisp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
 .PHONY : viso_extractor/CMakeFiles/viso_extractor_generate_messages_lisp.dir/rule
@@ -5038,7 +5152,7 @@ viso_extractor/CMakeFiles/viso_extractor_geneus.dir/all: viso_extractor/CMakeFil
 
 # Build rule for subdir invocation for target.
 viso_extractor/CMakeFiles/viso_extractor_geneus.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 viso_extractor/CMakeFiles/viso_extractor_geneus.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
 .PHONY : viso_extractor/CMakeFiles/viso_extractor_geneus.dir/rule
@@ -5080,12 +5194,12 @@ viso_extractor/CMakeFiles/viso_node.dir/all: front_end/CMakeFiles/rosgraph_msgs_
 viso_extractor/CMakeFiles/viso_node.dir/all: front_end/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/all
 viso_extractor/CMakeFiles/viso_node.dir/all: front_end/CMakeFiles/roscpp_generate_messages_py.dir/all
 viso_extractor/CMakeFiles/viso_node.dir/all: front_end/CMakeFiles/sensor_msgs_generate_messages_py.dir/all
+viso_extractor/CMakeFiles/viso_node.dir/all: front_end/CMakeFiles/std_msgs_generate_messages_py.dir/all
 viso_extractor/CMakeFiles/viso_node.dir/all: front_end/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/all
 viso_extractor/CMakeFiles/viso_node.dir/all: front_end/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
 viso_extractor/CMakeFiles/viso_node.dir/all: front_end/CMakeFiles/geometry_msgs_generate_messages_py.dir/all
-viso_extractor/CMakeFiles/viso_node.dir/all: front_end/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all
 viso_extractor/CMakeFiles/viso_node.dir/all: front_end/CMakeFiles/geometry_msgs_generate_messages_eus.dir/all
-viso_extractor/CMakeFiles/viso_node.dir/all: front_end/CMakeFiles/std_msgs_generate_messages_py.dir/all
+viso_extractor/CMakeFiles/viso_node.dir/all: front_end/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all
 viso_extractor/CMakeFiles/viso_node.dir/all: front_end/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/all
 viso_extractor/CMakeFiles/viso_node.dir/all: bumblebee/CMakeFiles/actionlib_msgs_generate_messages_py.dir/all
 viso_extractor/CMakeFiles/viso_node.dir/all: bumblebee/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/all
@@ -5124,7 +5238,7 @@ all: viso_extractor/CMakeFiles/viso_node.dir/all
 
 # Build rule for subdir invocation for target.
 viso_extractor/CMakeFiles/viso_node.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 14
 	$(MAKE) -f CMakeFiles/Makefile2 viso_extractor/CMakeFiles/viso_node.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
 .PHONY : viso_extractor/CMakeFiles/viso_node.dir/rule
@@ -5155,12 +5269,12 @@ viso_extractor/CMakeFiles/viso_extractor_generate_messages_nodejs.dir/all: viso_
 viso_extractor/CMakeFiles/viso_extractor_generate_messages_nodejs.dir/all: viso_extractor/CMakeFiles/_viso_extractor_generate_messages_check_deps_VisoFrame.dir/all
 	$(MAKE) -f viso_extractor/CMakeFiles/viso_extractor_generate_messages_nodejs.dir/build.make viso_extractor/CMakeFiles/viso_extractor_generate_messages_nodejs.dir/depend
 	$(MAKE) -f viso_extractor/CMakeFiles/viso_extractor_generate_messages_nodejs.dir/build.make viso_extractor/CMakeFiles/viso_extractor_generate_messages_nodejs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=91 "Built target viso_extractor_generate_messages_nodejs"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=91,92 "Built target viso_extractor_generate_messages_nodejs"
 .PHONY : viso_extractor/CMakeFiles/viso_extractor_generate_messages_nodejs.dir/all
 
 # Build rule for subdir invocation for target.
 viso_extractor/CMakeFiles/viso_extractor_generate_messages_nodejs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 viso_extractor/CMakeFiles/viso_extractor_generate_messages_nodejs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles 0
 .PHONY : viso_extractor/CMakeFiles/viso_extractor_generate_messages_nodejs.dir/rule

@@ -13,6 +13,4 @@
           OCTAVE
           CLASS_ID-VAL
           CLASS_ID
-          DESCRIPTORS-VAL
-          DESCRIPTORS
 ))

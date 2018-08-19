@@ -53,75 +53,109 @@ CMAKE_BINARY_DIR = /home/ryan/git/vSLAM_Analysis/src/build
 # Include the progress variables for this target.
 include front_end/CMakeFiles/front_end_generate_messages_lisp.dir/progress.make
 
+front_end/CMakeFiles/front_end_generate_messages_lisp: devel/share/common-lisp/ros/front_end/msg/windowStatus.lisp
+front_end/CMakeFiles/front_end_generate_messages_lisp: devel/share/common-lisp/ros/front_end/msg/stereoFeatures.lisp
 front_end/CMakeFiles/front_end_generate_messages_lisp: devel/share/common-lisp/ros/front_end/msg/ProcTime.lisp
 front_end/CMakeFiles/front_end_generate_messages_lisp: devel/share/common-lisp/ros/front_end/msg/frameDetection.lisp
-front_end/CMakeFiles/front_end_generate_messages_lisp: devel/share/common-lisp/ros/front_end/msg/Descriptors.lisp
-front_end/CMakeFiles/front_end_generate_messages_lisp: devel/share/common-lisp/ros/front_end/msg/loopStereoFrame.lisp
-front_end/CMakeFiles/front_end_generate_messages_lisp: devel/share/common-lisp/ros/front_end/msg/frameDescription.lisp
+front_end/CMakeFiles/front_end_generate_messages_lisp: devel/share/common-lisp/ros/front_end/msg/stereoLandmarks.lisp
+front_end/CMakeFiles/front_end_generate_messages_lisp: devel/share/common-lisp/ros/front_end/msg/cvMatch.lisp
+front_end/CMakeFiles/front_end_generate_messages_lisp: devel/share/common-lisp/ros/front_end/msg/interFrameTracks.lisp
 front_end/CMakeFiles/front_end_generate_messages_lisp: devel/share/common-lisp/ros/front_end/msg/Homography.lisp
 front_end/CMakeFiles/front_end_generate_messages_lisp: devel/share/common-lisp/ros/front_end/msg/kPoint.lisp
-front_end/CMakeFiles/front_end_generate_messages_lisp: devel/share/common-lisp/ros/front_end/srv/singleStereo.lisp
+front_end/CMakeFiles/front_end_generate_messages_lisp: devel/share/common-lisp/ros/front_end/srv/windowMatching.lisp
+front_end/CMakeFiles/front_end_generate_messages_lisp: devel/share/common-lisp/ros/front_end/srv/getStereoFeatures.lisp
 front_end/CMakeFiles/front_end_generate_messages_lisp: devel/share/common-lisp/ros/front_end/srv/singleImageDetection.lisp
-front_end/CMakeFiles/front_end_generate_messages_lisp: devel/share/common-lisp/ros/front_end/srv/singleImageDescription.lisp
+front_end/CMakeFiles/front_end_generate_messages_lisp: devel/share/common-lisp/ros/front_end/srv/stereoMatching.lisp
 
+
+devel/share/common-lisp/ros/front_end/msg/windowStatus.lisp: /opt/ros/kinetic/lib/genlisp/gen_lisp.py
+devel/share/common-lisp/ros/front_end/msg/windowStatus.lisp: ../front_end/msg/windowStatus.msg
+devel/share/common-lisp/ros/front_end/msg/windowStatus.lisp: ../front_end/msg/stereoLandmarks.msg
+devel/share/common-lisp/ros/front_end/msg/windowStatus.lisp: ../front_end/msg/cvMatch.msg
+devel/share/common-lisp/ros/front_end/msg/windowStatus.lisp: ../front_end/msg/interFrameTracks.msg
+devel/share/common-lisp/ros/front_end/msg/windowStatus.lisp: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
+devel/share/common-lisp/ros/front_end/msg/windowStatus.lisp: ../front_end/msg/ProcTime.msg
+devel/share/common-lisp/ros/front_end/msg/windowStatus.lisp: ../front_end/msg/kPoint.msg
+devel/share/common-lisp/ros/front_end/msg/windowStatus.lisp: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Lisp code from front_end/windowStatus.msg"
+	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/windowStatus.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/common-lisp/ros/front_end/msg
+
+devel/share/common-lisp/ros/front_end/msg/stereoFeatures.lisp: /opt/ros/kinetic/lib/genlisp/gen_lisp.py
+devel/share/common-lisp/ros/front_end/msg/stereoFeatures.lisp: ../front_end/msg/stereoFeatures.msg
+devel/share/common-lisp/ros/front_end/msg/stereoFeatures.lisp: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
+devel/share/common-lisp/ros/front_end/msg/stereoFeatures.lisp: ../front_end/msg/kPoint.msg
+devel/share/common-lisp/ros/front_end/msg/stereoFeatures.lisp: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+devel/share/common-lisp/ros/front_end/msg/stereoFeatures.lisp: ../front_end/msg/ProcTime.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Lisp code from front_end/stereoFeatures.msg"
+	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoFeatures.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/common-lisp/ros/front_end/msg
 
 devel/share/common-lisp/ros/front_end/msg/ProcTime.lisp: /opt/ros/kinetic/lib/genlisp/gen_lisp.py
 devel/share/common-lisp/ros/front_end/msg/ProcTime.lisp: ../front_end/msg/ProcTime.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Lisp code from front_end/ProcTime.msg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Lisp code from front_end/ProcTime.msg"
 	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/common-lisp/ros/front_end/msg
 
 devel/share/common-lisp/ros/front_end/msg/frameDetection.lisp: /opt/ros/kinetic/lib/genlisp/gen_lisp.py
 devel/share/common-lisp/ros/front_end/msg/frameDetection.lisp: ../front_end/msg/frameDetection.msg
-devel/share/common-lisp/ros/front_end/msg/frameDetection.lisp: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
 devel/share/common-lisp/ros/front_end/msg/frameDetection.lisp: ../front_end/msg/kPoint.msg
-devel/share/common-lisp/ros/front_end/msg/frameDetection.lisp: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
 devel/share/common-lisp/ros/front_end/msg/frameDetection.lisp: ../front_end/msg/ProcTime.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Lisp code from front_end/frameDetection.msg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating Lisp code from front_end/frameDetection.msg"
 	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/frameDetection.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/common-lisp/ros/front_end/msg
 
-devel/share/common-lisp/ros/front_end/msg/Descriptors.lisp: /opt/ros/kinetic/lib/genlisp/gen_lisp.py
-devel/share/common-lisp/ros/front_end/msg/Descriptors.lisp: ../front_end/msg/Descriptors.msg
-devel/share/common-lisp/ros/front_end/msg/Descriptors.lisp: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
-devel/share/common-lisp/ros/front_end/msg/Descriptors.lisp: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
-devel/share/common-lisp/ros/front_end/msg/Descriptors.lisp: ../front_end/msg/ProcTime.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Lisp code from front_end/Descriptors.msg"
-	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/Descriptors.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/common-lisp/ros/front_end/msg
+devel/share/common-lisp/ros/front_end/msg/stereoLandmarks.lisp: /opt/ros/kinetic/lib/genlisp/gen_lisp.py
+devel/share/common-lisp/ros/front_end/msg/stereoLandmarks.lisp: ../front_end/msg/stereoLandmarks.msg
+devel/share/common-lisp/ros/front_end/msg/stereoLandmarks.lisp: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
+devel/share/common-lisp/ros/front_end/msg/stereoLandmarks.lisp: ../front_end/msg/ProcTime.msg
+devel/share/common-lisp/ros/front_end/msg/stereoLandmarks.lisp: ../front_end/msg/kPoint.msg
+devel/share/common-lisp/ros/front_end/msg/stereoLandmarks.lisp: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+devel/share/common-lisp/ros/front_end/msg/stereoLandmarks.lisp: ../front_end/msg/cvMatch.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating Lisp code from front_end/stereoLandmarks.msg"
+	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoLandmarks.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/common-lisp/ros/front_end/msg
 
-devel/share/common-lisp/ros/front_end/msg/loopStereoFrame.lisp: /opt/ros/kinetic/lib/genlisp/gen_lisp.py
-devel/share/common-lisp/ros/front_end/msg/loopStereoFrame.lisp: ../front_end/msg/loopStereoFrame.msg
-devel/share/common-lisp/ros/front_end/msg/loopStereoFrame.lisp: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
-devel/share/common-lisp/ros/front_end/msg/loopStereoFrame.lisp: ../front_end/msg/kPoint.msg
-devel/share/common-lisp/ros/front_end/msg/loopStereoFrame.lisp: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
-devel/share/common-lisp/ros/front_end/msg/loopStereoFrame.lisp: ../front_end/msg/ProcTime.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating Lisp code from front_end/loopStereoFrame.msg"
-	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/loopStereoFrame.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/common-lisp/ros/front_end/msg
+devel/share/common-lisp/ros/front_end/msg/cvMatch.lisp: /opt/ros/kinetic/lib/genlisp/gen_lisp.py
+devel/share/common-lisp/ros/front_end/msg/cvMatch.lisp: ../front_end/msg/cvMatch.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Generating Lisp code from front_end/cvMatch.msg"
+	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/cvMatch.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/common-lisp/ros/front_end/msg
 
-devel/share/common-lisp/ros/front_end/msg/frameDescription.lisp: /opt/ros/kinetic/lib/genlisp/gen_lisp.py
-devel/share/common-lisp/ros/front_end/msg/frameDescription.lisp: ../front_end/msg/frameDescription.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating Lisp code from front_end/frameDescription.msg"
-	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/frameDescription.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/common-lisp/ros/front_end/msg
+devel/share/common-lisp/ros/front_end/msg/interFrameTracks.lisp: /opt/ros/kinetic/lib/genlisp/gen_lisp.py
+devel/share/common-lisp/ros/front_end/msg/interFrameTracks.lisp: ../front_end/msg/interFrameTracks.msg
+devel/share/common-lisp/ros/front_end/msg/interFrameTracks.lisp: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
+devel/share/common-lisp/ros/front_end/msg/interFrameTracks.lisp: ../front_end/msg/cvMatch.msg
+devel/share/common-lisp/ros/front_end/msg/interFrameTracks.lisp: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Generating Lisp code from front_end/interFrameTracks.msg"
+	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/interFrameTracks.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/common-lisp/ros/front_end/msg
 
 devel/share/common-lisp/ros/front_end/msg/Homography.lisp: /opt/ros/kinetic/lib/genlisp/gen_lisp.py
 devel/share/common-lisp/ros/front_end/msg/Homography.lisp: ../front_end/msg/Homography.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Generating Lisp code from front_end/Homography.msg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Generating Lisp code from front_end/Homography.msg"
 	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/Homography.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/common-lisp/ros/front_end/msg
 
 devel/share/common-lisp/ros/front_end/msg/kPoint.lisp: /opt/ros/kinetic/lib/genlisp/gen_lisp.py
 devel/share/common-lisp/ros/front_end/msg/kPoint.lisp: ../front_end/msg/kPoint.msg
-devel/share/common-lisp/ros/front_end/msg/kPoint.lisp: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
-devel/share/common-lisp/ros/front_end/msg/kPoint.lisp: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Generating Lisp code from front_end/kPoint.msg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Generating Lisp code from front_end/kPoint.msg"
 	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/common-lisp/ros/front_end/msg
 
-devel/share/common-lisp/ros/front_end/srv/singleStereo.lisp: /opt/ros/kinetic/lib/genlisp/gen_lisp.py
-devel/share/common-lisp/ros/front_end/srv/singleStereo.lisp: ../front_end/srv/singleStereo.srv
-devel/share/common-lisp/ros/front_end/srv/singleStereo.lisp: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
-devel/share/common-lisp/ros/front_end/srv/singleStereo.lisp: ../front_end/msg/ProcTime.msg
-devel/share/common-lisp/ros/front_end/srv/singleStereo.lisp: ../front_end/msg/kPoint.msg
-devel/share/common-lisp/ros/front_end/srv/singleStereo.lisp: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
-devel/share/common-lisp/ros/front_end/srv/singleStereo.lisp: ../front_end/msg/Descriptors.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Generating Lisp code from front_end/singleStereo.srv"
-	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleStereo.srv -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/common-lisp/ros/front_end/srv
+devel/share/common-lisp/ros/front_end/srv/windowMatching.lisp: /opt/ros/kinetic/lib/genlisp/gen_lisp.py
+devel/share/common-lisp/ros/front_end/srv/windowMatching.lisp: ../front_end/srv/windowMatching.srv
+devel/share/common-lisp/ros/front_end/srv/windowMatching.lisp: ../front_end/msg/stereoLandmarks.msg
+devel/share/common-lisp/ros/front_end/srv/windowMatching.lisp: ../front_end/msg/cvMatch.msg
+devel/share/common-lisp/ros/front_end/srv/windowMatching.lisp: ../front_end/msg/interFrameTracks.msg
+devel/share/common-lisp/ros/front_end/srv/windowMatching.lisp: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
+devel/share/common-lisp/ros/front_end/srv/windowMatching.lisp: ../front_end/msg/ProcTime.msg
+devel/share/common-lisp/ros/front_end/srv/windowMatching.lisp: ../front_end/msg/windowStatus.msg
+devel/share/common-lisp/ros/front_end/srv/windowMatching.lisp: ../front_end/msg/kPoint.msg
+devel/share/common-lisp/ros/front_end/srv/windowMatching.lisp: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Generating Lisp code from front_end/windowMatching.srv"
+	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/ryan/git/vSLAM_Analysis/src/front_end/srv/windowMatching.srv -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/common-lisp/ros/front_end/srv
+
+devel/share/common-lisp/ros/front_end/srv/getStereoFeatures.lisp: /opt/ros/kinetic/lib/genlisp/gen_lisp.py
+devel/share/common-lisp/ros/front_end/srv/getStereoFeatures.lisp: ../front_end/srv/getStereoFeatures.srv
+devel/share/common-lisp/ros/front_end/srv/getStereoFeatures.lisp: ../front_end/msg/ProcTime.msg
+devel/share/common-lisp/ros/front_end/srv/getStereoFeatures.lisp: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
+devel/share/common-lisp/ros/front_end/srv/getStereoFeatures.lisp: ../front_end/msg/kPoint.msg
+devel/share/common-lisp/ros/front_end/srv/getStereoFeatures.lisp: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+devel/share/common-lisp/ros/front_end/srv/getStereoFeatures.lisp: ../front_end/msg/stereoFeatures.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Generating Lisp code from front_end/getStereoFeatures.srv"
+	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/ryan/git/vSLAM_Analysis/src/front_end/srv/getStereoFeatures.srv -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/common-lisp/ros/front_end/srv
 
 devel/share/common-lisp/ros/front_end/srv/singleImageDetection.lisp: /opt/ros/kinetic/lib/genlisp/gen_lisp.py
 devel/share/common-lisp/ros/front_end/srv/singleImageDetection.lisp: ../front_end/srv/singleImageDetection.srv
@@ -130,30 +164,35 @@ devel/share/common-lisp/ros/front_end/srv/singleImageDetection.lisp: ../front_en
 devel/share/common-lisp/ros/front_end/srv/singleImageDetection.lisp: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
 devel/share/common-lisp/ros/front_end/srv/singleImageDetection.lisp: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
 devel/share/common-lisp/ros/front_end/srv/singleImageDetection.lisp: ../front_end/msg/kPoint.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Generating Lisp code from front_end/singleImageDetection.srv"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Generating Lisp code from front_end/singleImageDetection.srv"
 	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleImageDetection.srv -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/common-lisp/ros/front_end/srv
 
-devel/share/common-lisp/ros/front_end/srv/singleImageDescription.lisp: /opt/ros/kinetic/lib/genlisp/gen_lisp.py
-devel/share/common-lisp/ros/front_end/srv/singleImageDescription.lisp: ../front_end/srv/singleImageDescription.srv
-devel/share/common-lisp/ros/front_end/srv/singleImageDescription.lisp: ../front_end/msg/Descriptors.msg
-devel/share/common-lisp/ros/front_end/srv/singleImageDescription.lisp: ../front_end/msg/ProcTime.msg
-devel/share/common-lisp/ros/front_end/srv/singleImageDescription.lisp: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
-devel/share/common-lisp/ros/front_end/srv/singleImageDescription.lisp: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
-devel/share/common-lisp/ros/front_end/srv/singleImageDescription.lisp: ../front_end/msg/kPoint.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Generating Lisp code from front_end/singleImageDescription.srv"
-	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleImageDescription.srv -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/common-lisp/ros/front_end/srv
+devel/share/common-lisp/ros/front_end/srv/stereoMatching.lisp: /opt/ros/kinetic/lib/genlisp/gen_lisp.py
+devel/share/common-lisp/ros/front_end/srv/stereoMatching.lisp: ../front_end/srv/stereoMatching.srv
+devel/share/common-lisp/ros/front_end/srv/stereoMatching.lisp: ../front_end/msg/stereoLandmarks.msg
+devel/share/common-lisp/ros/front_end/srv/stereoMatching.lisp: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+devel/share/common-lisp/ros/front_end/srv/stereoMatching.lisp: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
+devel/share/common-lisp/ros/front_end/srv/stereoMatching.lisp: ../front_end/msg/ProcTime.msg
+devel/share/common-lisp/ros/front_end/srv/stereoMatching.lisp: ../front_end/msg/stereoFeatures.msg
+devel/share/common-lisp/ros/front_end/srv/stereoMatching.lisp: ../front_end/msg/kPoint.msg
+devel/share/common-lisp/ros/front_end/srv/stereoMatching.lisp: ../front_end/msg/cvMatch.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Generating Lisp code from front_end/stereoMatching.srv"
+	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/ryan/git/vSLAM_Analysis/src/front_end/srv/stereoMatching.srv -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/common-lisp/ros/front_end/srv
 
 front_end_generate_messages_lisp: front_end/CMakeFiles/front_end_generate_messages_lisp
+front_end_generate_messages_lisp: devel/share/common-lisp/ros/front_end/msg/windowStatus.lisp
+front_end_generate_messages_lisp: devel/share/common-lisp/ros/front_end/msg/stereoFeatures.lisp
 front_end_generate_messages_lisp: devel/share/common-lisp/ros/front_end/msg/ProcTime.lisp
 front_end_generate_messages_lisp: devel/share/common-lisp/ros/front_end/msg/frameDetection.lisp
-front_end_generate_messages_lisp: devel/share/common-lisp/ros/front_end/msg/Descriptors.lisp
-front_end_generate_messages_lisp: devel/share/common-lisp/ros/front_end/msg/loopStereoFrame.lisp
-front_end_generate_messages_lisp: devel/share/common-lisp/ros/front_end/msg/frameDescription.lisp
+front_end_generate_messages_lisp: devel/share/common-lisp/ros/front_end/msg/stereoLandmarks.lisp
+front_end_generate_messages_lisp: devel/share/common-lisp/ros/front_end/msg/cvMatch.lisp
+front_end_generate_messages_lisp: devel/share/common-lisp/ros/front_end/msg/interFrameTracks.lisp
 front_end_generate_messages_lisp: devel/share/common-lisp/ros/front_end/msg/Homography.lisp
 front_end_generate_messages_lisp: devel/share/common-lisp/ros/front_end/msg/kPoint.lisp
-front_end_generate_messages_lisp: devel/share/common-lisp/ros/front_end/srv/singleStereo.lisp
+front_end_generate_messages_lisp: devel/share/common-lisp/ros/front_end/srv/windowMatching.lisp
+front_end_generate_messages_lisp: devel/share/common-lisp/ros/front_end/srv/getStereoFeatures.lisp
 front_end_generate_messages_lisp: devel/share/common-lisp/ros/front_end/srv/singleImageDetection.lisp
-front_end_generate_messages_lisp: devel/share/common-lisp/ros/front_end/srv/singleImageDescription.lisp
+front_end_generate_messages_lisp: devel/share/common-lisp/ros/front_end/srv/stereoMatching.lisp
 front_end_generate_messages_lisp: front_end/CMakeFiles/front_end_generate_messages_lisp.dir/build.make
 
 .PHONY : front_end_generate_messages_lisp

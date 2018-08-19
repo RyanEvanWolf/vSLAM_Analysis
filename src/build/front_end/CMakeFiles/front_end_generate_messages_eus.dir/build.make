@@ -53,76 +53,110 @@ CMAKE_BINARY_DIR = /home/ryan/git/vSLAM_Analysis/src/build
 # Include the progress variables for this target.
 include front_end/CMakeFiles/front_end_generate_messages_eus.dir/progress.make
 
+front_end/CMakeFiles/front_end_generate_messages_eus: devel/share/roseus/ros/front_end/msg/windowStatus.l
+front_end/CMakeFiles/front_end_generate_messages_eus: devel/share/roseus/ros/front_end/msg/stereoFeatures.l
 front_end/CMakeFiles/front_end_generate_messages_eus: devel/share/roseus/ros/front_end/msg/ProcTime.l
 front_end/CMakeFiles/front_end_generate_messages_eus: devel/share/roseus/ros/front_end/msg/frameDetection.l
-front_end/CMakeFiles/front_end_generate_messages_eus: devel/share/roseus/ros/front_end/msg/Descriptors.l
-front_end/CMakeFiles/front_end_generate_messages_eus: devel/share/roseus/ros/front_end/msg/loopStereoFrame.l
-front_end/CMakeFiles/front_end_generate_messages_eus: devel/share/roseus/ros/front_end/msg/frameDescription.l
+front_end/CMakeFiles/front_end_generate_messages_eus: devel/share/roseus/ros/front_end/msg/stereoLandmarks.l
+front_end/CMakeFiles/front_end_generate_messages_eus: devel/share/roseus/ros/front_end/msg/cvMatch.l
+front_end/CMakeFiles/front_end_generate_messages_eus: devel/share/roseus/ros/front_end/msg/interFrameTracks.l
 front_end/CMakeFiles/front_end_generate_messages_eus: devel/share/roseus/ros/front_end/msg/Homography.l
 front_end/CMakeFiles/front_end_generate_messages_eus: devel/share/roseus/ros/front_end/msg/kPoint.l
-front_end/CMakeFiles/front_end_generate_messages_eus: devel/share/roseus/ros/front_end/srv/singleStereo.l
+front_end/CMakeFiles/front_end_generate_messages_eus: devel/share/roseus/ros/front_end/srv/windowMatching.l
+front_end/CMakeFiles/front_end_generate_messages_eus: devel/share/roseus/ros/front_end/srv/getStereoFeatures.l
 front_end/CMakeFiles/front_end_generate_messages_eus: devel/share/roseus/ros/front_end/srv/singleImageDetection.l
-front_end/CMakeFiles/front_end_generate_messages_eus: devel/share/roseus/ros/front_end/srv/singleImageDescription.l
+front_end/CMakeFiles/front_end_generate_messages_eus: devel/share/roseus/ros/front_end/srv/stereoMatching.l
 front_end/CMakeFiles/front_end_generate_messages_eus: devel/share/roseus/ros/front_end/manifest.l
 
 
+devel/share/roseus/ros/front_end/msg/windowStatus.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
+devel/share/roseus/ros/front_end/msg/windowStatus.l: ../front_end/msg/windowStatus.msg
+devel/share/roseus/ros/front_end/msg/windowStatus.l: ../front_end/msg/stereoLandmarks.msg
+devel/share/roseus/ros/front_end/msg/windowStatus.l: ../front_end/msg/cvMatch.msg
+devel/share/roseus/ros/front_end/msg/windowStatus.l: ../front_end/msg/interFrameTracks.msg
+devel/share/roseus/ros/front_end/msg/windowStatus.l: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
+devel/share/roseus/ros/front_end/msg/windowStatus.l: ../front_end/msg/ProcTime.msg
+devel/share/roseus/ros/front_end/msg/windowStatus.l: ../front_end/msg/kPoint.msg
+devel/share/roseus/ros/front_end/msg/windowStatus.l: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating EusLisp code from front_end/windowStatus.msg"
+	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/windowStatus.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/roseus/ros/front_end/msg
+
+devel/share/roseus/ros/front_end/msg/stereoFeatures.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
+devel/share/roseus/ros/front_end/msg/stereoFeatures.l: ../front_end/msg/stereoFeatures.msg
+devel/share/roseus/ros/front_end/msg/stereoFeatures.l: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
+devel/share/roseus/ros/front_end/msg/stereoFeatures.l: ../front_end/msg/kPoint.msg
+devel/share/roseus/ros/front_end/msg/stereoFeatures.l: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+devel/share/roseus/ros/front_end/msg/stereoFeatures.l: ../front_end/msg/ProcTime.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating EusLisp code from front_end/stereoFeatures.msg"
+	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoFeatures.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/roseus/ros/front_end/msg
+
 devel/share/roseus/ros/front_end/msg/ProcTime.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
 devel/share/roseus/ros/front_end/msg/ProcTime.l: ../front_end/msg/ProcTime.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating EusLisp code from front_end/ProcTime.msg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating EusLisp code from front_end/ProcTime.msg"
 	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/roseus/ros/front_end/msg
 
 devel/share/roseus/ros/front_end/msg/frameDetection.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
 devel/share/roseus/ros/front_end/msg/frameDetection.l: ../front_end/msg/frameDetection.msg
-devel/share/roseus/ros/front_end/msg/frameDetection.l: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
 devel/share/roseus/ros/front_end/msg/frameDetection.l: ../front_end/msg/kPoint.msg
-devel/share/roseus/ros/front_end/msg/frameDetection.l: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
 devel/share/roseus/ros/front_end/msg/frameDetection.l: ../front_end/msg/ProcTime.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating EusLisp code from front_end/frameDetection.msg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating EusLisp code from front_end/frameDetection.msg"
 	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/frameDetection.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/roseus/ros/front_end/msg
 
-devel/share/roseus/ros/front_end/msg/Descriptors.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
-devel/share/roseus/ros/front_end/msg/Descriptors.l: ../front_end/msg/Descriptors.msg
-devel/share/roseus/ros/front_end/msg/Descriptors.l: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
-devel/share/roseus/ros/front_end/msg/Descriptors.l: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
-devel/share/roseus/ros/front_end/msg/Descriptors.l: ../front_end/msg/ProcTime.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating EusLisp code from front_end/Descriptors.msg"
-	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/Descriptors.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/roseus/ros/front_end/msg
+devel/share/roseus/ros/front_end/msg/stereoLandmarks.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
+devel/share/roseus/ros/front_end/msg/stereoLandmarks.l: ../front_end/msg/stereoLandmarks.msg
+devel/share/roseus/ros/front_end/msg/stereoLandmarks.l: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
+devel/share/roseus/ros/front_end/msg/stereoLandmarks.l: ../front_end/msg/ProcTime.msg
+devel/share/roseus/ros/front_end/msg/stereoLandmarks.l: ../front_end/msg/kPoint.msg
+devel/share/roseus/ros/front_end/msg/stereoLandmarks.l: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+devel/share/roseus/ros/front_end/msg/stereoLandmarks.l: ../front_end/msg/cvMatch.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating EusLisp code from front_end/stereoLandmarks.msg"
+	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoLandmarks.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/roseus/ros/front_end/msg
 
-devel/share/roseus/ros/front_end/msg/loopStereoFrame.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
-devel/share/roseus/ros/front_end/msg/loopStereoFrame.l: ../front_end/msg/loopStereoFrame.msg
-devel/share/roseus/ros/front_end/msg/loopStereoFrame.l: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
-devel/share/roseus/ros/front_end/msg/loopStereoFrame.l: ../front_end/msg/kPoint.msg
-devel/share/roseus/ros/front_end/msg/loopStereoFrame.l: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
-devel/share/roseus/ros/front_end/msg/loopStereoFrame.l: ../front_end/msg/ProcTime.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating EusLisp code from front_end/loopStereoFrame.msg"
-	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/loopStereoFrame.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/roseus/ros/front_end/msg
+devel/share/roseus/ros/front_end/msg/cvMatch.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
+devel/share/roseus/ros/front_end/msg/cvMatch.l: ../front_end/msg/cvMatch.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Generating EusLisp code from front_end/cvMatch.msg"
+	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/cvMatch.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/roseus/ros/front_end/msg
 
-devel/share/roseus/ros/front_end/msg/frameDescription.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
-devel/share/roseus/ros/front_end/msg/frameDescription.l: ../front_end/msg/frameDescription.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating EusLisp code from front_end/frameDescription.msg"
-	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/frameDescription.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/roseus/ros/front_end/msg
+devel/share/roseus/ros/front_end/msg/interFrameTracks.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
+devel/share/roseus/ros/front_end/msg/interFrameTracks.l: ../front_end/msg/interFrameTracks.msg
+devel/share/roseus/ros/front_end/msg/interFrameTracks.l: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
+devel/share/roseus/ros/front_end/msg/interFrameTracks.l: ../front_end/msg/cvMatch.msg
+devel/share/roseus/ros/front_end/msg/interFrameTracks.l: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Generating EusLisp code from front_end/interFrameTracks.msg"
+	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/interFrameTracks.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/roseus/ros/front_end/msg
 
 devel/share/roseus/ros/front_end/msg/Homography.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
 devel/share/roseus/ros/front_end/msg/Homography.l: ../front_end/msg/Homography.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Generating EusLisp code from front_end/Homography.msg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Generating EusLisp code from front_end/Homography.msg"
 	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/Homography.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/roseus/ros/front_end/msg
 
 devel/share/roseus/ros/front_end/msg/kPoint.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
 devel/share/roseus/ros/front_end/msg/kPoint.l: ../front_end/msg/kPoint.msg
-devel/share/roseus/ros/front_end/msg/kPoint.l: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
-devel/share/roseus/ros/front_end/msg/kPoint.l: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Generating EusLisp code from front_end/kPoint.msg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Generating EusLisp code from front_end/kPoint.msg"
 	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/roseus/ros/front_end/msg
 
-devel/share/roseus/ros/front_end/srv/singleStereo.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
-devel/share/roseus/ros/front_end/srv/singleStereo.l: ../front_end/srv/singleStereo.srv
-devel/share/roseus/ros/front_end/srv/singleStereo.l: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
-devel/share/roseus/ros/front_end/srv/singleStereo.l: ../front_end/msg/ProcTime.msg
-devel/share/roseus/ros/front_end/srv/singleStereo.l: ../front_end/msg/kPoint.msg
-devel/share/roseus/ros/front_end/srv/singleStereo.l: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
-devel/share/roseus/ros/front_end/srv/singleStereo.l: ../front_end/msg/Descriptors.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Generating EusLisp code from front_end/singleStereo.srv"
-	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleStereo.srv -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/roseus/ros/front_end/srv
+devel/share/roseus/ros/front_end/srv/windowMatching.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
+devel/share/roseus/ros/front_end/srv/windowMatching.l: ../front_end/srv/windowMatching.srv
+devel/share/roseus/ros/front_end/srv/windowMatching.l: ../front_end/msg/stereoLandmarks.msg
+devel/share/roseus/ros/front_end/srv/windowMatching.l: ../front_end/msg/cvMatch.msg
+devel/share/roseus/ros/front_end/srv/windowMatching.l: ../front_end/msg/interFrameTracks.msg
+devel/share/roseus/ros/front_end/srv/windowMatching.l: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
+devel/share/roseus/ros/front_end/srv/windowMatching.l: ../front_end/msg/ProcTime.msg
+devel/share/roseus/ros/front_end/srv/windowMatching.l: ../front_end/msg/windowStatus.msg
+devel/share/roseus/ros/front_end/srv/windowMatching.l: ../front_end/msg/kPoint.msg
+devel/share/roseus/ros/front_end/srv/windowMatching.l: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Generating EusLisp code from front_end/windowMatching.srv"
+	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/ryan/git/vSLAM_Analysis/src/front_end/srv/windowMatching.srv -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/roseus/ros/front_end/srv
+
+devel/share/roseus/ros/front_end/srv/getStereoFeatures.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
+devel/share/roseus/ros/front_end/srv/getStereoFeatures.l: ../front_end/srv/getStereoFeatures.srv
+devel/share/roseus/ros/front_end/srv/getStereoFeatures.l: ../front_end/msg/ProcTime.msg
+devel/share/roseus/ros/front_end/srv/getStereoFeatures.l: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
+devel/share/roseus/ros/front_end/srv/getStereoFeatures.l: ../front_end/msg/kPoint.msg
+devel/share/roseus/ros/front_end/srv/getStereoFeatures.l: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+devel/share/roseus/ros/front_end/srv/getStereoFeatures.l: ../front_end/msg/stereoFeatures.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Generating EusLisp code from front_end/getStereoFeatures.srv"
+	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/ryan/git/vSLAM_Analysis/src/front_end/srv/getStereoFeatures.srv -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/roseus/ros/front_end/srv
 
 devel/share/roseus/ros/front_end/srv/singleImageDetection.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
 devel/share/roseus/ros/front_end/srv/singleImageDetection.l: ../front_end/srv/singleImageDetection.srv
@@ -131,34 +165,39 @@ devel/share/roseus/ros/front_end/srv/singleImageDetection.l: ../front_end/msg/Pr
 devel/share/roseus/ros/front_end/srv/singleImageDetection.l: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
 devel/share/roseus/ros/front_end/srv/singleImageDetection.l: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
 devel/share/roseus/ros/front_end/srv/singleImageDetection.l: ../front_end/msg/kPoint.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Generating EusLisp code from front_end/singleImageDetection.srv"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Generating EusLisp code from front_end/singleImageDetection.srv"
 	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleImageDetection.srv -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/roseus/ros/front_end/srv
 
-devel/share/roseus/ros/front_end/srv/singleImageDescription.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
-devel/share/roseus/ros/front_end/srv/singleImageDescription.l: ../front_end/srv/singleImageDescription.srv
-devel/share/roseus/ros/front_end/srv/singleImageDescription.l: ../front_end/msg/Descriptors.msg
-devel/share/roseus/ros/front_end/srv/singleImageDescription.l: ../front_end/msg/ProcTime.msg
-devel/share/roseus/ros/front_end/srv/singleImageDescription.l: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
-devel/share/roseus/ros/front_end/srv/singleImageDescription.l: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
-devel/share/roseus/ros/front_end/srv/singleImageDescription.l: ../front_end/msg/kPoint.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Generating EusLisp code from front_end/singleImageDescription.srv"
-	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleImageDescription.srv -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/roseus/ros/front_end/srv
+devel/share/roseus/ros/front_end/srv/stereoMatching.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
+devel/share/roseus/ros/front_end/srv/stereoMatching.l: ../front_end/srv/stereoMatching.srv
+devel/share/roseus/ros/front_end/srv/stereoMatching.l: ../front_end/msg/stereoLandmarks.msg
+devel/share/roseus/ros/front_end/srv/stereoMatching.l: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+devel/share/roseus/ros/front_end/srv/stereoMatching.l: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
+devel/share/roseus/ros/front_end/srv/stereoMatching.l: ../front_end/msg/ProcTime.msg
+devel/share/roseus/ros/front_end/srv/stereoMatching.l: ../front_end/msg/stereoFeatures.msg
+devel/share/roseus/ros/front_end/srv/stereoMatching.l: ../front_end/msg/kPoint.msg
+devel/share/roseus/ros/front_end/srv/stereoMatching.l: ../front_end/msg/cvMatch.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Generating EusLisp code from front_end/stereoMatching.srv"
+	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/ryan/git/vSLAM_Analysis/src/front_end/srv/stereoMatching.srv -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/roseus/ros/front_end/srv
 
 devel/share/roseus/ros/front_end/manifest.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Generating EusLisp manifest code for front_end"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Generating EusLisp manifest code for front_end"
 	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/roseus/ros/front_end front_end std_msgs sensor_msgs geometry_msgs
 
 front_end_generate_messages_eus: front_end/CMakeFiles/front_end_generate_messages_eus
+front_end_generate_messages_eus: devel/share/roseus/ros/front_end/msg/windowStatus.l
+front_end_generate_messages_eus: devel/share/roseus/ros/front_end/msg/stereoFeatures.l
 front_end_generate_messages_eus: devel/share/roseus/ros/front_end/msg/ProcTime.l
 front_end_generate_messages_eus: devel/share/roseus/ros/front_end/msg/frameDetection.l
-front_end_generate_messages_eus: devel/share/roseus/ros/front_end/msg/Descriptors.l
-front_end_generate_messages_eus: devel/share/roseus/ros/front_end/msg/loopStereoFrame.l
-front_end_generate_messages_eus: devel/share/roseus/ros/front_end/msg/frameDescription.l
+front_end_generate_messages_eus: devel/share/roseus/ros/front_end/msg/stereoLandmarks.l
+front_end_generate_messages_eus: devel/share/roseus/ros/front_end/msg/cvMatch.l
+front_end_generate_messages_eus: devel/share/roseus/ros/front_end/msg/interFrameTracks.l
 front_end_generate_messages_eus: devel/share/roseus/ros/front_end/msg/Homography.l
 front_end_generate_messages_eus: devel/share/roseus/ros/front_end/msg/kPoint.l
-front_end_generate_messages_eus: devel/share/roseus/ros/front_end/srv/singleStereo.l
+front_end_generate_messages_eus: devel/share/roseus/ros/front_end/srv/windowMatching.l
+front_end_generate_messages_eus: devel/share/roseus/ros/front_end/srv/getStereoFeatures.l
 front_end_generate_messages_eus: devel/share/roseus/ros/front_end/srv/singleImageDetection.l
-front_end_generate_messages_eus: devel/share/roseus/ros/front_end/srv/singleImageDescription.l
+front_end_generate_messages_eus: devel/share/roseus/ros/front_end/srv/stereoMatching.l
 front_end_generate_messages_eus: devel/share/roseus/ros/front_end/manifest.l
 front_end_generate_messages_eus: front_end/CMakeFiles/front_end_generate_messages_eus.dir/build.make
 

@@ -53,75 +53,109 @@ CMAKE_BINARY_DIR = /home/ryan/git/vSLAM_Analysis/src/build
 # Include the progress variables for this target.
 include front_end/CMakeFiles/front_end_generate_messages_nodejs.dir/progress.make
 
+front_end/CMakeFiles/front_end_generate_messages_nodejs: devel/share/gennodejs/ros/front_end/msg/windowStatus.js
+front_end/CMakeFiles/front_end_generate_messages_nodejs: devel/share/gennodejs/ros/front_end/msg/stereoFeatures.js
 front_end/CMakeFiles/front_end_generate_messages_nodejs: devel/share/gennodejs/ros/front_end/msg/ProcTime.js
 front_end/CMakeFiles/front_end_generate_messages_nodejs: devel/share/gennodejs/ros/front_end/msg/frameDetection.js
-front_end/CMakeFiles/front_end_generate_messages_nodejs: devel/share/gennodejs/ros/front_end/msg/Descriptors.js
-front_end/CMakeFiles/front_end_generate_messages_nodejs: devel/share/gennodejs/ros/front_end/msg/loopStereoFrame.js
-front_end/CMakeFiles/front_end_generate_messages_nodejs: devel/share/gennodejs/ros/front_end/msg/frameDescription.js
+front_end/CMakeFiles/front_end_generate_messages_nodejs: devel/share/gennodejs/ros/front_end/msg/stereoLandmarks.js
+front_end/CMakeFiles/front_end_generate_messages_nodejs: devel/share/gennodejs/ros/front_end/msg/cvMatch.js
+front_end/CMakeFiles/front_end_generate_messages_nodejs: devel/share/gennodejs/ros/front_end/msg/interFrameTracks.js
 front_end/CMakeFiles/front_end_generate_messages_nodejs: devel/share/gennodejs/ros/front_end/msg/Homography.js
 front_end/CMakeFiles/front_end_generate_messages_nodejs: devel/share/gennodejs/ros/front_end/msg/kPoint.js
-front_end/CMakeFiles/front_end_generate_messages_nodejs: devel/share/gennodejs/ros/front_end/srv/singleStereo.js
+front_end/CMakeFiles/front_end_generate_messages_nodejs: devel/share/gennodejs/ros/front_end/srv/windowMatching.js
+front_end/CMakeFiles/front_end_generate_messages_nodejs: devel/share/gennodejs/ros/front_end/srv/getStereoFeatures.js
 front_end/CMakeFiles/front_end_generate_messages_nodejs: devel/share/gennodejs/ros/front_end/srv/singleImageDetection.js
-front_end/CMakeFiles/front_end_generate_messages_nodejs: devel/share/gennodejs/ros/front_end/srv/singleImageDescription.js
+front_end/CMakeFiles/front_end_generate_messages_nodejs: devel/share/gennodejs/ros/front_end/srv/stereoMatching.js
 
+
+devel/share/gennodejs/ros/front_end/msg/windowStatus.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
+devel/share/gennodejs/ros/front_end/msg/windowStatus.js: ../front_end/msg/windowStatus.msg
+devel/share/gennodejs/ros/front_end/msg/windowStatus.js: ../front_end/msg/stereoLandmarks.msg
+devel/share/gennodejs/ros/front_end/msg/windowStatus.js: ../front_end/msg/cvMatch.msg
+devel/share/gennodejs/ros/front_end/msg/windowStatus.js: ../front_end/msg/interFrameTracks.msg
+devel/share/gennodejs/ros/front_end/msg/windowStatus.js: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
+devel/share/gennodejs/ros/front_end/msg/windowStatus.js: ../front_end/msg/ProcTime.msg
+devel/share/gennodejs/ros/front_end/msg/windowStatus.js: ../front_end/msg/kPoint.msg
+devel/share/gennodejs/ros/front_end/msg/windowStatus.js: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Javascript code from front_end/windowStatus.msg"
+	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/windowStatus.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/gennodejs/ros/front_end/msg
+
+devel/share/gennodejs/ros/front_end/msg/stereoFeatures.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
+devel/share/gennodejs/ros/front_end/msg/stereoFeatures.js: ../front_end/msg/stereoFeatures.msg
+devel/share/gennodejs/ros/front_end/msg/stereoFeatures.js: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
+devel/share/gennodejs/ros/front_end/msg/stereoFeatures.js: ../front_end/msg/kPoint.msg
+devel/share/gennodejs/ros/front_end/msg/stereoFeatures.js: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+devel/share/gennodejs/ros/front_end/msg/stereoFeatures.js: ../front_end/msg/ProcTime.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Javascript code from front_end/stereoFeatures.msg"
+	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoFeatures.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/gennodejs/ros/front_end/msg
 
 devel/share/gennodejs/ros/front_end/msg/ProcTime.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
 devel/share/gennodejs/ros/front_end/msg/ProcTime.js: ../front_end/msg/ProcTime.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Javascript code from front_end/ProcTime.msg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Javascript code from front_end/ProcTime.msg"
 	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/gennodejs/ros/front_end/msg
 
 devel/share/gennodejs/ros/front_end/msg/frameDetection.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
 devel/share/gennodejs/ros/front_end/msg/frameDetection.js: ../front_end/msg/frameDetection.msg
-devel/share/gennodejs/ros/front_end/msg/frameDetection.js: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
 devel/share/gennodejs/ros/front_end/msg/frameDetection.js: ../front_end/msg/kPoint.msg
-devel/share/gennodejs/ros/front_end/msg/frameDetection.js: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
 devel/share/gennodejs/ros/front_end/msg/frameDetection.js: ../front_end/msg/ProcTime.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Javascript code from front_end/frameDetection.msg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating Javascript code from front_end/frameDetection.msg"
 	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/frameDetection.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/gennodejs/ros/front_end/msg
 
-devel/share/gennodejs/ros/front_end/msg/Descriptors.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
-devel/share/gennodejs/ros/front_end/msg/Descriptors.js: ../front_end/msg/Descriptors.msg
-devel/share/gennodejs/ros/front_end/msg/Descriptors.js: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
-devel/share/gennodejs/ros/front_end/msg/Descriptors.js: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
-devel/share/gennodejs/ros/front_end/msg/Descriptors.js: ../front_end/msg/ProcTime.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Javascript code from front_end/Descriptors.msg"
-	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/Descriptors.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/gennodejs/ros/front_end/msg
+devel/share/gennodejs/ros/front_end/msg/stereoLandmarks.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
+devel/share/gennodejs/ros/front_end/msg/stereoLandmarks.js: ../front_end/msg/stereoLandmarks.msg
+devel/share/gennodejs/ros/front_end/msg/stereoLandmarks.js: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
+devel/share/gennodejs/ros/front_end/msg/stereoLandmarks.js: ../front_end/msg/ProcTime.msg
+devel/share/gennodejs/ros/front_end/msg/stereoLandmarks.js: ../front_end/msg/kPoint.msg
+devel/share/gennodejs/ros/front_end/msg/stereoLandmarks.js: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+devel/share/gennodejs/ros/front_end/msg/stereoLandmarks.js: ../front_end/msg/cvMatch.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating Javascript code from front_end/stereoLandmarks.msg"
+	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoLandmarks.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/gennodejs/ros/front_end/msg
 
-devel/share/gennodejs/ros/front_end/msg/loopStereoFrame.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
-devel/share/gennodejs/ros/front_end/msg/loopStereoFrame.js: ../front_end/msg/loopStereoFrame.msg
-devel/share/gennodejs/ros/front_end/msg/loopStereoFrame.js: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
-devel/share/gennodejs/ros/front_end/msg/loopStereoFrame.js: ../front_end/msg/kPoint.msg
-devel/share/gennodejs/ros/front_end/msg/loopStereoFrame.js: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
-devel/share/gennodejs/ros/front_end/msg/loopStereoFrame.js: ../front_end/msg/ProcTime.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating Javascript code from front_end/loopStereoFrame.msg"
-	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/loopStereoFrame.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/gennodejs/ros/front_end/msg
+devel/share/gennodejs/ros/front_end/msg/cvMatch.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
+devel/share/gennodejs/ros/front_end/msg/cvMatch.js: ../front_end/msg/cvMatch.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Generating Javascript code from front_end/cvMatch.msg"
+	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/cvMatch.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/gennodejs/ros/front_end/msg
 
-devel/share/gennodejs/ros/front_end/msg/frameDescription.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
-devel/share/gennodejs/ros/front_end/msg/frameDescription.js: ../front_end/msg/frameDescription.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating Javascript code from front_end/frameDescription.msg"
-	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/frameDescription.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/gennodejs/ros/front_end/msg
+devel/share/gennodejs/ros/front_end/msg/interFrameTracks.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
+devel/share/gennodejs/ros/front_end/msg/interFrameTracks.js: ../front_end/msg/interFrameTracks.msg
+devel/share/gennodejs/ros/front_end/msg/interFrameTracks.js: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
+devel/share/gennodejs/ros/front_end/msg/interFrameTracks.js: ../front_end/msg/cvMatch.msg
+devel/share/gennodejs/ros/front_end/msg/interFrameTracks.js: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Generating Javascript code from front_end/interFrameTracks.msg"
+	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/interFrameTracks.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/gennodejs/ros/front_end/msg
 
 devel/share/gennodejs/ros/front_end/msg/Homography.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
 devel/share/gennodejs/ros/front_end/msg/Homography.js: ../front_end/msg/Homography.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Generating Javascript code from front_end/Homography.msg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Generating Javascript code from front_end/Homography.msg"
 	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/Homography.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/gennodejs/ros/front_end/msg
 
 devel/share/gennodejs/ros/front_end/msg/kPoint.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
 devel/share/gennodejs/ros/front_end/msg/kPoint.js: ../front_end/msg/kPoint.msg
-devel/share/gennodejs/ros/front_end/msg/kPoint.js: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
-devel/share/gennodejs/ros/front_end/msg/kPoint.js: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Generating Javascript code from front_end/kPoint.msg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Generating Javascript code from front_end/kPoint.msg"
 	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/gennodejs/ros/front_end/msg
 
-devel/share/gennodejs/ros/front_end/srv/singleStereo.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
-devel/share/gennodejs/ros/front_end/srv/singleStereo.js: ../front_end/srv/singleStereo.srv
-devel/share/gennodejs/ros/front_end/srv/singleStereo.js: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
-devel/share/gennodejs/ros/front_end/srv/singleStereo.js: ../front_end/msg/ProcTime.msg
-devel/share/gennodejs/ros/front_end/srv/singleStereo.js: ../front_end/msg/kPoint.msg
-devel/share/gennodejs/ros/front_end/srv/singleStereo.js: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
-devel/share/gennodejs/ros/front_end/srv/singleStereo.js: ../front_end/msg/Descriptors.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Generating Javascript code from front_end/singleStereo.srv"
-	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleStereo.srv -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/gennodejs/ros/front_end/srv
+devel/share/gennodejs/ros/front_end/srv/windowMatching.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
+devel/share/gennodejs/ros/front_end/srv/windowMatching.js: ../front_end/srv/windowMatching.srv
+devel/share/gennodejs/ros/front_end/srv/windowMatching.js: ../front_end/msg/stereoLandmarks.msg
+devel/share/gennodejs/ros/front_end/srv/windowMatching.js: ../front_end/msg/cvMatch.msg
+devel/share/gennodejs/ros/front_end/srv/windowMatching.js: ../front_end/msg/interFrameTracks.msg
+devel/share/gennodejs/ros/front_end/srv/windowMatching.js: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
+devel/share/gennodejs/ros/front_end/srv/windowMatching.js: ../front_end/msg/ProcTime.msg
+devel/share/gennodejs/ros/front_end/srv/windowMatching.js: ../front_end/msg/windowStatus.msg
+devel/share/gennodejs/ros/front_end/srv/windowMatching.js: ../front_end/msg/kPoint.msg
+devel/share/gennodejs/ros/front_end/srv/windowMatching.js: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Generating Javascript code from front_end/windowMatching.srv"
+	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/ryan/git/vSLAM_Analysis/src/front_end/srv/windowMatching.srv -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/gennodejs/ros/front_end/srv
+
+devel/share/gennodejs/ros/front_end/srv/getStereoFeatures.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
+devel/share/gennodejs/ros/front_end/srv/getStereoFeatures.js: ../front_end/srv/getStereoFeatures.srv
+devel/share/gennodejs/ros/front_end/srv/getStereoFeatures.js: ../front_end/msg/ProcTime.msg
+devel/share/gennodejs/ros/front_end/srv/getStereoFeatures.js: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
+devel/share/gennodejs/ros/front_end/srv/getStereoFeatures.js: ../front_end/msg/kPoint.msg
+devel/share/gennodejs/ros/front_end/srv/getStereoFeatures.js: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+devel/share/gennodejs/ros/front_end/srv/getStereoFeatures.js: ../front_end/msg/stereoFeatures.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Generating Javascript code from front_end/getStereoFeatures.srv"
+	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/ryan/git/vSLAM_Analysis/src/front_end/srv/getStereoFeatures.srv -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/gennodejs/ros/front_end/srv
 
 devel/share/gennodejs/ros/front_end/srv/singleImageDetection.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
 devel/share/gennodejs/ros/front_end/srv/singleImageDetection.js: ../front_end/srv/singleImageDetection.srv
@@ -130,30 +164,35 @@ devel/share/gennodejs/ros/front_end/srv/singleImageDetection.js: ../front_end/ms
 devel/share/gennodejs/ros/front_end/srv/singleImageDetection.js: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
 devel/share/gennodejs/ros/front_end/srv/singleImageDetection.js: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
 devel/share/gennodejs/ros/front_end/srv/singleImageDetection.js: ../front_end/msg/kPoint.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Generating Javascript code from front_end/singleImageDetection.srv"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Generating Javascript code from front_end/singleImageDetection.srv"
 	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleImageDetection.srv -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/gennodejs/ros/front_end/srv
 
-devel/share/gennodejs/ros/front_end/srv/singleImageDescription.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
-devel/share/gennodejs/ros/front_end/srv/singleImageDescription.js: ../front_end/srv/singleImageDescription.srv
-devel/share/gennodejs/ros/front_end/srv/singleImageDescription.js: ../front_end/msg/Descriptors.msg
-devel/share/gennodejs/ros/front_end/srv/singleImageDescription.js: ../front_end/msg/ProcTime.msg
-devel/share/gennodejs/ros/front_end/srv/singleImageDescription.js: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
-devel/share/gennodejs/ros/front_end/srv/singleImageDescription.js: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
-devel/share/gennodejs/ros/front_end/srv/singleImageDescription.js: ../front_end/msg/kPoint.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Generating Javascript code from front_end/singleImageDescription.srv"
-	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleImageDescription.srv -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/gennodejs/ros/front_end/srv
+devel/share/gennodejs/ros/front_end/srv/stereoMatching.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
+devel/share/gennodejs/ros/front_end/srv/stereoMatching.js: ../front_end/srv/stereoMatching.srv
+devel/share/gennodejs/ros/front_end/srv/stereoMatching.js: ../front_end/msg/stereoLandmarks.msg
+devel/share/gennodejs/ros/front_end/srv/stereoMatching.js: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+devel/share/gennodejs/ros/front_end/srv/stereoMatching.js: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
+devel/share/gennodejs/ros/front_end/srv/stereoMatching.js: ../front_end/msg/ProcTime.msg
+devel/share/gennodejs/ros/front_end/srv/stereoMatching.js: ../front_end/msg/stereoFeatures.msg
+devel/share/gennodejs/ros/front_end/srv/stereoMatching.js: ../front_end/msg/kPoint.msg
+devel/share/gennodejs/ros/front_end/srv/stereoMatching.js: ../front_end/msg/cvMatch.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Generating Javascript code from front_end/stereoMatching.srv"
+	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/ryan/git/vSLAM_Analysis/src/front_end/srv/stereoMatching.srv -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/share/gennodejs/ros/front_end/srv
 
 front_end_generate_messages_nodejs: front_end/CMakeFiles/front_end_generate_messages_nodejs
+front_end_generate_messages_nodejs: devel/share/gennodejs/ros/front_end/msg/windowStatus.js
+front_end_generate_messages_nodejs: devel/share/gennodejs/ros/front_end/msg/stereoFeatures.js
 front_end_generate_messages_nodejs: devel/share/gennodejs/ros/front_end/msg/ProcTime.js
 front_end_generate_messages_nodejs: devel/share/gennodejs/ros/front_end/msg/frameDetection.js
-front_end_generate_messages_nodejs: devel/share/gennodejs/ros/front_end/msg/Descriptors.js
-front_end_generate_messages_nodejs: devel/share/gennodejs/ros/front_end/msg/loopStereoFrame.js
-front_end_generate_messages_nodejs: devel/share/gennodejs/ros/front_end/msg/frameDescription.js
+front_end_generate_messages_nodejs: devel/share/gennodejs/ros/front_end/msg/stereoLandmarks.js
+front_end_generate_messages_nodejs: devel/share/gennodejs/ros/front_end/msg/cvMatch.js
+front_end_generate_messages_nodejs: devel/share/gennodejs/ros/front_end/msg/interFrameTracks.js
 front_end_generate_messages_nodejs: devel/share/gennodejs/ros/front_end/msg/Homography.js
 front_end_generate_messages_nodejs: devel/share/gennodejs/ros/front_end/msg/kPoint.js
-front_end_generate_messages_nodejs: devel/share/gennodejs/ros/front_end/srv/singleStereo.js
+front_end_generate_messages_nodejs: devel/share/gennodejs/ros/front_end/srv/windowMatching.js
+front_end_generate_messages_nodejs: devel/share/gennodejs/ros/front_end/srv/getStereoFeatures.js
 front_end_generate_messages_nodejs: devel/share/gennodejs/ros/front_end/srv/singleImageDetection.js
-front_end_generate_messages_nodejs: devel/share/gennodejs/ros/front_end/srv/singleImageDescription.js
+front_end_generate_messages_nodejs: devel/share/gennodejs/ros/front_end/srv/stereoMatching.js
 front_end_generate_messages_nodejs: front_end/CMakeFiles/front_end_generate_messages_nodejs.dir/build.make
 
 .PHONY : front_end_generate_messages_nodejs

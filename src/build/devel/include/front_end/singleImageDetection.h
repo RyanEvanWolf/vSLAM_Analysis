@@ -40,7 +40,7 @@ template<>
 struct MD5Sum< ::front_end::singleImageDetection > {
   static const char* value()
   {
-    return "48205b8c8040e40e02f025ebed0f5df8";
+    return "a394ddda8400e32e0cbdb38aaf30224b";
   }
 
   static const char* value(const ::front_end::singleImageDetection&) { return value(); }

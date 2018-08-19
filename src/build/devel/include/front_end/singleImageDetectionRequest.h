@@ -26,15 +26,13 @@ struct singleImageDetectionRequest_
   typedef singleImageDetectionRequest_<ContainerAllocator> Type;
 
   singleImageDetectionRequest_()
-    : detectorName()
-    , det_attrib()
+    : detID()
     , returnKP(false)
     , leftImg()
     , rightImg()  {
     }
   singleImageDetectionRequest_(const ContainerAllocator& _alloc)
-    : detectorName(_alloc)
-    , det_attrib(_alloc)
+    : detID(_alloc)
     , returnKP(false)
     , leftImg(_alloc)
     , rightImg(_alloc)  {
@@ -43,11 +41,8 @@ struct singleImageDetectionRequest_
 
 
 
-   typedef std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other >  _detectorName_type;
-  _detectorName_type detectorName;
-
-   typedef std::vector<std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other > , typename ContainerAllocator::template rebind<std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other > >::other >  _det_attrib_type;
-  _det_attrib_type det_attrib;
+   typedef std::vector<std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other > , typename ContainerAllocator::template rebind<std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other > >::other >  _detID_type;
+  _detID_type detID;
 
    typedef uint8_t _returnKP_type;
   _returnKP_type returnKP;
@@ -135,12 +130,12 @@ struct MD5Sum< ::front_end::singleImageDetectionRequest_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "80ba475ac6e398b1ac3fdeeb465f415a";
+    return "a769e27b885c5f5c528a5bba8cc9e67c";
   }
 
   static const char* value(const ::front_end::singleImageDetectionRequest_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x80ba475ac6e398b1ULL;
-  static const uint64_t static_value2 = 0xac3fdeeb465f415aULL;
+  static const uint64_t static_value1 = 0xa769e27b885c5f5cULL;
+  static const uint64_t static_value2 = 0x528a5bba8cc9e67cULL;
 };
 
 template<class ContainerAllocator>
@@ -159,8 +154,7 @@ struct Definition< ::front_end::singleImageDetectionRequest_<ContainerAllocator>
 {
   static const char* value()
   {
-    return "string detectorName\n\
-string[] det_attrib\n\
+    return "string[] detID\n\
 bool returnKP\n\
 sensor_msgs/Image leftImg\n\
 sensor_msgs/Image rightImg\n\
@@ -230,8 +224,7 @@ namespace serialization
   {
     template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
     {
-      stream.next(m.detectorName);
-      stream.next(m.det_attrib);
+      stream.next(m.detID);
       stream.next(m.returnKP);
       stream.next(m.leftImg);
       stream.next(m.rightImg);
@@ -253,13 +246,11 @@ struct Printer< ::front_end::singleImageDetectionRequest_<ContainerAllocator> >
 {
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::front_end::singleImageDetectionRequest_<ContainerAllocator>& v)
   {
-    s << indent << "detectorName: ";
-    Printer<std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other > >::stream(s, indent + "  ", v.detectorName);
-    s << indent << "det_attrib[]" << std::endl;
-    for (size_t i = 0; i < v.det_attrib.size(); ++i)
+    s << indent << "detID[]" << std::endl;
+    for (size_t i = 0; i < v.detID.size(); ++i)
     {
-      s << indent << "  det_attrib[" << i << "]: ";
-      Printer<std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other > >::stream(s, indent + "  ", v.det_attrib[i]);
+      s << indent << "  detID[" << i << "]: ";
+      Printer<std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other > >::stream(s, indent + "  ", v.detID[i]);
     }
     s << indent << "returnKP: ";
     Printer<uint8_t>::stream(s, indent + "  ", v.returnKP);

@@ -1,8 +1,6 @@
 (cl:in-package front_end-srv)
-(cl:export '(DETECTORNAME-VAL
-          DETECTORNAME
-          DET_ATTRIB-VAL
-          DET_ATTRIB
+(cl:export '(DETID-VAL
+          DETID
           RETURNKP-VAL
           RETURNKP
           LEFTIMG-VAL

@@ -1,0 +1,6 @@
+set(viso_extractor_SETUP_PY_VERSION "0.0.0")
+set(viso_extractor_SETUP_PY_SCRIPTS "")
+set(viso_extractor_SETUP_PY_PACKAGES "viso_extractor")
+set(viso_extractor_SETUP_PY_PACKAGE_DIRS "src/viso_extractor")
+set(viso_extractor_SETUP_PY_MODULES "")
+set(viso_extractor_SETUP_PY_MODULE_DIRS "")

@@ -53,77 +53,111 @@ CMAKE_BINARY_DIR = /home/ryan/git/vSLAM_Analysis/src/build
 # Include the progress variables for this target.
 include front_end/CMakeFiles/front_end_generate_messages_py.dir/progress.make
 
+front_end/CMakeFiles/front_end_generate_messages_py: devel/lib/python2.7/dist-packages/front_end/msg/_windowStatus.py
+front_end/CMakeFiles/front_end_generate_messages_py: devel/lib/python2.7/dist-packages/front_end/msg/_stereoFeatures.py
 front_end/CMakeFiles/front_end_generate_messages_py: devel/lib/python2.7/dist-packages/front_end/msg/_ProcTime.py
 front_end/CMakeFiles/front_end_generate_messages_py: devel/lib/python2.7/dist-packages/front_end/msg/_frameDetection.py
-front_end/CMakeFiles/front_end_generate_messages_py: devel/lib/python2.7/dist-packages/front_end/msg/_Descriptors.py
-front_end/CMakeFiles/front_end_generate_messages_py: devel/lib/python2.7/dist-packages/front_end/msg/_loopStereoFrame.py
-front_end/CMakeFiles/front_end_generate_messages_py: devel/lib/python2.7/dist-packages/front_end/msg/_frameDescription.py
+front_end/CMakeFiles/front_end_generate_messages_py: devel/lib/python2.7/dist-packages/front_end/msg/_stereoLandmarks.py
+front_end/CMakeFiles/front_end_generate_messages_py: devel/lib/python2.7/dist-packages/front_end/msg/_cvMatch.py
+front_end/CMakeFiles/front_end_generate_messages_py: devel/lib/python2.7/dist-packages/front_end/msg/_interFrameTracks.py
 front_end/CMakeFiles/front_end_generate_messages_py: devel/lib/python2.7/dist-packages/front_end/msg/_Homography.py
 front_end/CMakeFiles/front_end_generate_messages_py: devel/lib/python2.7/dist-packages/front_end/msg/_kPoint.py
-front_end/CMakeFiles/front_end_generate_messages_py: devel/lib/python2.7/dist-packages/front_end/srv/_singleStereo.py
+front_end/CMakeFiles/front_end_generate_messages_py: devel/lib/python2.7/dist-packages/front_end/srv/_windowMatching.py
+front_end/CMakeFiles/front_end_generate_messages_py: devel/lib/python2.7/dist-packages/front_end/srv/_getStereoFeatures.py
 front_end/CMakeFiles/front_end_generate_messages_py: devel/lib/python2.7/dist-packages/front_end/srv/_singleImageDetection.py
-front_end/CMakeFiles/front_end_generate_messages_py: devel/lib/python2.7/dist-packages/front_end/srv/_singleImageDescription.py
+front_end/CMakeFiles/front_end_generate_messages_py: devel/lib/python2.7/dist-packages/front_end/srv/_stereoMatching.py
 front_end/CMakeFiles/front_end_generate_messages_py: devel/lib/python2.7/dist-packages/front_end/msg/__init__.py
 front_end/CMakeFiles/front_end_generate_messages_py: devel/lib/python2.7/dist-packages/front_end/srv/__init__.py
 
 
+devel/lib/python2.7/dist-packages/front_end/msg/_windowStatus.py: /opt/ros/kinetic/lib/genpy/genmsg_py.py
+devel/lib/python2.7/dist-packages/front_end/msg/_windowStatus.py: ../front_end/msg/windowStatus.msg
+devel/lib/python2.7/dist-packages/front_end/msg/_windowStatus.py: ../front_end/msg/stereoLandmarks.msg
+devel/lib/python2.7/dist-packages/front_end/msg/_windowStatus.py: ../front_end/msg/cvMatch.msg
+devel/lib/python2.7/dist-packages/front_end/msg/_windowStatus.py: ../front_end/msg/interFrameTracks.msg
+devel/lib/python2.7/dist-packages/front_end/msg/_windowStatus.py: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
+devel/lib/python2.7/dist-packages/front_end/msg/_windowStatus.py: ../front_end/msg/ProcTime.msg
+devel/lib/python2.7/dist-packages/front_end/msg/_windowStatus.py: ../front_end/msg/kPoint.msg
+devel/lib/python2.7/dist-packages/front_end/msg/_windowStatus.py: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Python from MSG front_end/windowStatus"
+	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/windowStatus.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/lib/python2.7/dist-packages/front_end/msg
+
+devel/lib/python2.7/dist-packages/front_end/msg/_stereoFeatures.py: /opt/ros/kinetic/lib/genpy/genmsg_py.py
+devel/lib/python2.7/dist-packages/front_end/msg/_stereoFeatures.py: ../front_end/msg/stereoFeatures.msg
+devel/lib/python2.7/dist-packages/front_end/msg/_stereoFeatures.py: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
+devel/lib/python2.7/dist-packages/front_end/msg/_stereoFeatures.py: ../front_end/msg/kPoint.msg
+devel/lib/python2.7/dist-packages/front_end/msg/_stereoFeatures.py: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+devel/lib/python2.7/dist-packages/front_end/msg/_stereoFeatures.py: ../front_end/msg/ProcTime.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Python from MSG front_end/stereoFeatures"
+	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoFeatures.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/lib/python2.7/dist-packages/front_end/msg
+
 devel/lib/python2.7/dist-packages/front_end/msg/_ProcTime.py: /opt/ros/kinetic/lib/genpy/genmsg_py.py
 devel/lib/python2.7/dist-packages/front_end/msg/_ProcTime.py: ../front_end/msg/ProcTime.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Python from MSG front_end/ProcTime"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Python from MSG front_end/ProcTime"
 	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/ProcTime.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/lib/python2.7/dist-packages/front_end/msg
 
 devel/lib/python2.7/dist-packages/front_end/msg/_frameDetection.py: /opt/ros/kinetic/lib/genpy/genmsg_py.py
 devel/lib/python2.7/dist-packages/front_end/msg/_frameDetection.py: ../front_end/msg/frameDetection.msg
-devel/lib/python2.7/dist-packages/front_end/msg/_frameDetection.py: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
 devel/lib/python2.7/dist-packages/front_end/msg/_frameDetection.py: ../front_end/msg/kPoint.msg
-devel/lib/python2.7/dist-packages/front_end/msg/_frameDetection.py: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
 devel/lib/python2.7/dist-packages/front_end/msg/_frameDetection.py: ../front_end/msg/ProcTime.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Python from MSG front_end/frameDetection"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating Python from MSG front_end/frameDetection"
 	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/frameDetection.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/lib/python2.7/dist-packages/front_end/msg
 
-devel/lib/python2.7/dist-packages/front_end/msg/_Descriptors.py: /opt/ros/kinetic/lib/genpy/genmsg_py.py
-devel/lib/python2.7/dist-packages/front_end/msg/_Descriptors.py: ../front_end/msg/Descriptors.msg
-devel/lib/python2.7/dist-packages/front_end/msg/_Descriptors.py: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
-devel/lib/python2.7/dist-packages/front_end/msg/_Descriptors.py: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
-devel/lib/python2.7/dist-packages/front_end/msg/_Descriptors.py: ../front_end/msg/ProcTime.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Python from MSG front_end/Descriptors"
-	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/Descriptors.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/lib/python2.7/dist-packages/front_end/msg
+devel/lib/python2.7/dist-packages/front_end/msg/_stereoLandmarks.py: /opt/ros/kinetic/lib/genpy/genmsg_py.py
+devel/lib/python2.7/dist-packages/front_end/msg/_stereoLandmarks.py: ../front_end/msg/stereoLandmarks.msg
+devel/lib/python2.7/dist-packages/front_end/msg/_stereoLandmarks.py: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
+devel/lib/python2.7/dist-packages/front_end/msg/_stereoLandmarks.py: ../front_end/msg/ProcTime.msg
+devel/lib/python2.7/dist-packages/front_end/msg/_stereoLandmarks.py: ../front_end/msg/kPoint.msg
+devel/lib/python2.7/dist-packages/front_end/msg/_stereoLandmarks.py: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+devel/lib/python2.7/dist-packages/front_end/msg/_stereoLandmarks.py: ../front_end/msg/cvMatch.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating Python from MSG front_end/stereoLandmarks"
+	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/stereoLandmarks.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/lib/python2.7/dist-packages/front_end/msg
 
-devel/lib/python2.7/dist-packages/front_end/msg/_loopStereoFrame.py: /opt/ros/kinetic/lib/genpy/genmsg_py.py
-devel/lib/python2.7/dist-packages/front_end/msg/_loopStereoFrame.py: ../front_end/msg/loopStereoFrame.msg
-devel/lib/python2.7/dist-packages/front_end/msg/_loopStereoFrame.py: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
-devel/lib/python2.7/dist-packages/front_end/msg/_loopStereoFrame.py: ../front_end/msg/kPoint.msg
-devel/lib/python2.7/dist-packages/front_end/msg/_loopStereoFrame.py: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
-devel/lib/python2.7/dist-packages/front_end/msg/_loopStereoFrame.py: ../front_end/msg/ProcTime.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating Python from MSG front_end/loopStereoFrame"
-	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/loopStereoFrame.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/lib/python2.7/dist-packages/front_end/msg
+devel/lib/python2.7/dist-packages/front_end/msg/_cvMatch.py: /opt/ros/kinetic/lib/genpy/genmsg_py.py
+devel/lib/python2.7/dist-packages/front_end/msg/_cvMatch.py: ../front_end/msg/cvMatch.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Generating Python from MSG front_end/cvMatch"
+	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/cvMatch.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/lib/python2.7/dist-packages/front_end/msg
 
-devel/lib/python2.7/dist-packages/front_end/msg/_frameDescription.py: /opt/ros/kinetic/lib/genpy/genmsg_py.py
-devel/lib/python2.7/dist-packages/front_end/msg/_frameDescription.py: ../front_end/msg/frameDescription.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating Python from MSG front_end/frameDescription"
-	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/frameDescription.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/lib/python2.7/dist-packages/front_end/msg
+devel/lib/python2.7/dist-packages/front_end/msg/_interFrameTracks.py: /opt/ros/kinetic/lib/genpy/genmsg_py.py
+devel/lib/python2.7/dist-packages/front_end/msg/_interFrameTracks.py: ../front_end/msg/interFrameTracks.msg
+devel/lib/python2.7/dist-packages/front_end/msg/_interFrameTracks.py: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
+devel/lib/python2.7/dist-packages/front_end/msg/_interFrameTracks.py: ../front_end/msg/cvMatch.msg
+devel/lib/python2.7/dist-packages/front_end/msg/_interFrameTracks.py: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Generating Python from MSG front_end/interFrameTracks"
+	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/interFrameTracks.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/lib/python2.7/dist-packages/front_end/msg
 
 devel/lib/python2.7/dist-packages/front_end/msg/_Homography.py: /opt/ros/kinetic/lib/genpy/genmsg_py.py
 devel/lib/python2.7/dist-packages/front_end/msg/_Homography.py: ../front_end/msg/Homography.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Generating Python from MSG front_end/Homography"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Generating Python from MSG front_end/Homography"
 	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/Homography.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/lib/python2.7/dist-packages/front_end/msg
 
 devel/lib/python2.7/dist-packages/front_end/msg/_kPoint.py: /opt/ros/kinetic/lib/genpy/genmsg_py.py
 devel/lib/python2.7/dist-packages/front_end/msg/_kPoint.py: ../front_end/msg/kPoint.msg
-devel/lib/python2.7/dist-packages/front_end/msg/_kPoint.py: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
-devel/lib/python2.7/dist-packages/front_end/msg/_kPoint.py: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Generating Python from MSG front_end/kPoint"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Generating Python from MSG front_end/kPoint"
 	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/ryan/git/vSLAM_Analysis/src/front_end/msg/kPoint.msg -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/lib/python2.7/dist-packages/front_end/msg
 
-devel/lib/python2.7/dist-packages/front_end/srv/_singleStereo.py: /opt/ros/kinetic/lib/genpy/gensrv_py.py
-devel/lib/python2.7/dist-packages/front_end/srv/_singleStereo.py: ../front_end/srv/singleStereo.srv
-devel/lib/python2.7/dist-packages/front_end/srv/_singleStereo.py: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
-devel/lib/python2.7/dist-packages/front_end/srv/_singleStereo.py: ../front_end/msg/ProcTime.msg
-devel/lib/python2.7/dist-packages/front_end/srv/_singleStereo.py: ../front_end/msg/kPoint.msg
-devel/lib/python2.7/dist-packages/front_end/srv/_singleStereo.py: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
-devel/lib/python2.7/dist-packages/front_end/srv/_singleStereo.py: ../front_end/msg/Descriptors.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Generating Python code from SRV front_end/singleStereo"
-	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genpy/cmake/../../../lib/genpy/gensrv_py.py /home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleStereo.srv -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/lib/python2.7/dist-packages/front_end/srv
+devel/lib/python2.7/dist-packages/front_end/srv/_windowMatching.py: /opt/ros/kinetic/lib/genpy/gensrv_py.py
+devel/lib/python2.7/dist-packages/front_end/srv/_windowMatching.py: ../front_end/srv/windowMatching.srv
+devel/lib/python2.7/dist-packages/front_end/srv/_windowMatching.py: ../front_end/msg/stereoLandmarks.msg
+devel/lib/python2.7/dist-packages/front_end/srv/_windowMatching.py: ../front_end/msg/cvMatch.msg
+devel/lib/python2.7/dist-packages/front_end/srv/_windowMatching.py: ../front_end/msg/interFrameTracks.msg
+devel/lib/python2.7/dist-packages/front_end/srv/_windowMatching.py: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
+devel/lib/python2.7/dist-packages/front_end/srv/_windowMatching.py: ../front_end/msg/ProcTime.msg
+devel/lib/python2.7/dist-packages/front_end/srv/_windowMatching.py: ../front_end/msg/windowStatus.msg
+devel/lib/python2.7/dist-packages/front_end/srv/_windowMatching.py: ../front_end/msg/kPoint.msg
+devel/lib/python2.7/dist-packages/front_end/srv/_windowMatching.py: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Generating Python code from SRV front_end/windowMatching"
+	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genpy/cmake/../../../lib/genpy/gensrv_py.py /home/ryan/git/vSLAM_Analysis/src/front_end/srv/windowMatching.srv -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/lib/python2.7/dist-packages/front_end/srv
+
+devel/lib/python2.7/dist-packages/front_end/srv/_getStereoFeatures.py: /opt/ros/kinetic/lib/genpy/gensrv_py.py
+devel/lib/python2.7/dist-packages/front_end/srv/_getStereoFeatures.py: ../front_end/srv/getStereoFeatures.srv
+devel/lib/python2.7/dist-packages/front_end/srv/_getStereoFeatures.py: ../front_end/msg/ProcTime.msg
+devel/lib/python2.7/dist-packages/front_end/srv/_getStereoFeatures.py: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
+devel/lib/python2.7/dist-packages/front_end/srv/_getStereoFeatures.py: ../front_end/msg/kPoint.msg
+devel/lib/python2.7/dist-packages/front_end/srv/_getStereoFeatures.py: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+devel/lib/python2.7/dist-packages/front_end/srv/_getStereoFeatures.py: ../front_end/msg/stereoFeatures.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Generating Python code from SRV front_end/getStereoFeatures"
+	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genpy/cmake/../../../lib/genpy/gensrv_py.py /home/ryan/git/vSLAM_Analysis/src/front_end/srv/getStereoFeatures.srv -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/lib/python2.7/dist-packages/front_end/srv
 
 devel/lib/python2.7/dist-packages/front_end/srv/_singleImageDetection.py: /opt/ros/kinetic/lib/genpy/gensrv_py.py
 devel/lib/python2.7/dist-packages/front_end/srv/_singleImageDetection.py: ../front_end/srv/singleImageDetection.srv
@@ -132,58 +166,69 @@ devel/lib/python2.7/dist-packages/front_end/srv/_singleImageDetection.py: ../fro
 devel/lib/python2.7/dist-packages/front_end/srv/_singleImageDetection.py: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
 devel/lib/python2.7/dist-packages/front_end/srv/_singleImageDetection.py: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
 devel/lib/python2.7/dist-packages/front_end/srv/_singleImageDetection.py: ../front_end/msg/kPoint.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Generating Python code from SRV front_end/singleImageDetection"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Generating Python code from SRV front_end/singleImageDetection"
 	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genpy/cmake/../../../lib/genpy/gensrv_py.py /home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleImageDetection.srv -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/lib/python2.7/dist-packages/front_end/srv
 
-devel/lib/python2.7/dist-packages/front_end/srv/_singleImageDescription.py: /opt/ros/kinetic/lib/genpy/gensrv_py.py
-devel/lib/python2.7/dist-packages/front_end/srv/_singleImageDescription.py: ../front_end/srv/singleImageDescription.srv
-devel/lib/python2.7/dist-packages/front_end/srv/_singleImageDescription.py: ../front_end/msg/Descriptors.msg
-devel/lib/python2.7/dist-packages/front_end/srv/_singleImageDescription.py: ../front_end/msg/ProcTime.msg
-devel/lib/python2.7/dist-packages/front_end/srv/_singleImageDescription.py: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
-devel/lib/python2.7/dist-packages/front_end/srv/_singleImageDescription.py: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
-devel/lib/python2.7/dist-packages/front_end/srv/_singleImageDescription.py: ../front_end/msg/kPoint.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Generating Python code from SRV front_end/singleImageDescription"
-	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genpy/cmake/../../../lib/genpy/gensrv_py.py /home/ryan/git/vSLAM_Analysis/src/front_end/srv/singleImageDescription.srv -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/lib/python2.7/dist-packages/front_end/srv
+devel/lib/python2.7/dist-packages/front_end/srv/_stereoMatching.py: /opt/ros/kinetic/lib/genpy/gensrv_py.py
+devel/lib/python2.7/dist-packages/front_end/srv/_stereoMatching.py: ../front_end/srv/stereoMatching.srv
+devel/lib/python2.7/dist-packages/front_end/srv/_stereoMatching.py: ../front_end/msg/stereoLandmarks.msg
+devel/lib/python2.7/dist-packages/front_end/srv/_stereoMatching.py: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+devel/lib/python2.7/dist-packages/front_end/srv/_stereoMatching.py: /opt/ros/kinetic/share/sensor_msgs/msg/Image.msg
+devel/lib/python2.7/dist-packages/front_end/srv/_stereoMatching.py: ../front_end/msg/ProcTime.msg
+devel/lib/python2.7/dist-packages/front_end/srv/_stereoMatching.py: ../front_end/msg/stereoFeatures.msg
+devel/lib/python2.7/dist-packages/front_end/srv/_stereoMatching.py: ../front_end/msg/kPoint.msg
+devel/lib/python2.7/dist-packages/front_end/srv/_stereoMatching.py: ../front_end/msg/cvMatch.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Generating Python code from SRV front_end/stereoMatching"
+	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genpy/cmake/../../../lib/genpy/gensrv_py.py /home/ryan/git/vSLAM_Analysis/src/front_end/srv/stereoMatching.srv -Ifront_end:/home/ryan/git/vSLAM_Analysis/src/front_end/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p front_end -o /home/ryan/git/vSLAM_Analysis/src/build/devel/lib/python2.7/dist-packages/front_end/srv
 
 devel/lib/python2.7/dist-packages/front_end/msg/__init__.py: /opt/ros/kinetic/lib/genpy/genmsg_py.py
+devel/lib/python2.7/dist-packages/front_end/msg/__init__.py: devel/lib/python2.7/dist-packages/front_end/msg/_windowStatus.py
+devel/lib/python2.7/dist-packages/front_end/msg/__init__.py: devel/lib/python2.7/dist-packages/front_end/msg/_stereoFeatures.py
 devel/lib/python2.7/dist-packages/front_end/msg/__init__.py: devel/lib/python2.7/dist-packages/front_end/msg/_ProcTime.py
 devel/lib/python2.7/dist-packages/front_end/msg/__init__.py: devel/lib/python2.7/dist-packages/front_end/msg/_frameDetection.py
-devel/lib/python2.7/dist-packages/front_end/msg/__init__.py: devel/lib/python2.7/dist-packages/front_end/msg/_Descriptors.py
-devel/lib/python2.7/dist-packages/front_end/msg/__init__.py: devel/lib/python2.7/dist-packages/front_end/msg/_loopStereoFrame.py
-devel/lib/python2.7/dist-packages/front_end/msg/__init__.py: devel/lib/python2.7/dist-packages/front_end/msg/_frameDescription.py
+devel/lib/python2.7/dist-packages/front_end/msg/__init__.py: devel/lib/python2.7/dist-packages/front_end/msg/_stereoLandmarks.py
+devel/lib/python2.7/dist-packages/front_end/msg/__init__.py: devel/lib/python2.7/dist-packages/front_end/msg/_cvMatch.py
+devel/lib/python2.7/dist-packages/front_end/msg/__init__.py: devel/lib/python2.7/dist-packages/front_end/msg/_interFrameTracks.py
 devel/lib/python2.7/dist-packages/front_end/msg/__init__.py: devel/lib/python2.7/dist-packages/front_end/msg/_Homography.py
 devel/lib/python2.7/dist-packages/front_end/msg/__init__.py: devel/lib/python2.7/dist-packages/front_end/msg/_kPoint.py
-devel/lib/python2.7/dist-packages/front_end/msg/__init__.py: devel/lib/python2.7/dist-packages/front_end/srv/_singleStereo.py
+devel/lib/python2.7/dist-packages/front_end/msg/__init__.py: devel/lib/python2.7/dist-packages/front_end/srv/_windowMatching.py
+devel/lib/python2.7/dist-packages/front_end/msg/__init__.py: devel/lib/python2.7/dist-packages/front_end/srv/_getStereoFeatures.py
 devel/lib/python2.7/dist-packages/front_end/msg/__init__.py: devel/lib/python2.7/dist-packages/front_end/srv/_singleImageDetection.py
-devel/lib/python2.7/dist-packages/front_end/msg/__init__.py: devel/lib/python2.7/dist-packages/front_end/srv/_singleImageDescription.py
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Generating Python msg __init__.py for front_end"
+devel/lib/python2.7/dist-packages/front_end/msg/__init__.py: devel/lib/python2.7/dist-packages/front_end/srv/_stereoMatching.py
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Generating Python msg __init__.py for front_end"
 	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/ryan/git/vSLAM_Analysis/src/build/devel/lib/python2.7/dist-packages/front_end/msg --initpy
 
 devel/lib/python2.7/dist-packages/front_end/srv/__init__.py: /opt/ros/kinetic/lib/genpy/genmsg_py.py
+devel/lib/python2.7/dist-packages/front_end/srv/__init__.py: devel/lib/python2.7/dist-packages/front_end/msg/_windowStatus.py
+devel/lib/python2.7/dist-packages/front_end/srv/__init__.py: devel/lib/python2.7/dist-packages/front_end/msg/_stereoFeatures.py
 devel/lib/python2.7/dist-packages/front_end/srv/__init__.py: devel/lib/python2.7/dist-packages/front_end/msg/_ProcTime.py
 devel/lib/python2.7/dist-packages/front_end/srv/__init__.py: devel/lib/python2.7/dist-packages/front_end/msg/_frameDetection.py
-devel/lib/python2.7/dist-packages/front_end/srv/__init__.py: devel/lib/python2.7/dist-packages/front_end/msg/_Descriptors.py
-devel/lib/python2.7/dist-packages/front_end/srv/__init__.py: devel/lib/python2.7/dist-packages/front_end/msg/_loopStereoFrame.py
-devel/lib/python2.7/dist-packages/front_end/srv/__init__.py: devel/lib/python2.7/dist-packages/front_end/msg/_frameDescription.py
+devel/lib/python2.7/dist-packages/front_end/srv/__init__.py: devel/lib/python2.7/dist-packages/front_end/msg/_stereoLandmarks.py
+devel/lib/python2.7/dist-packages/front_end/srv/__init__.py: devel/lib/python2.7/dist-packages/front_end/msg/_cvMatch.py
+devel/lib/python2.7/dist-packages/front_end/srv/__init__.py: devel/lib/python2.7/dist-packages/front_end/msg/_interFrameTracks.py
 devel/lib/python2.7/dist-packages/front_end/srv/__init__.py: devel/lib/python2.7/dist-packages/front_end/msg/_Homography.py
 devel/lib/python2.7/dist-packages/front_end/srv/__init__.py: devel/lib/python2.7/dist-packages/front_end/msg/_kPoint.py
-devel/lib/python2.7/dist-packages/front_end/srv/__init__.py: devel/lib/python2.7/dist-packages/front_end/srv/_singleStereo.py
+devel/lib/python2.7/dist-packages/front_end/srv/__init__.py: devel/lib/python2.7/dist-packages/front_end/srv/_windowMatching.py
+devel/lib/python2.7/dist-packages/front_end/srv/__init__.py: devel/lib/python2.7/dist-packages/front_end/srv/_getStereoFeatures.py
 devel/lib/python2.7/dist-packages/front_end/srv/__init__.py: devel/lib/python2.7/dist-packages/front_end/srv/_singleImageDetection.py
-devel/lib/python2.7/dist-packages/front_end/srv/__init__.py: devel/lib/python2.7/dist-packages/front_end/srv/_singleImageDescription.py
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Generating Python srv __init__.py for front_end"
+devel/lib/python2.7/dist-packages/front_end/srv/__init__.py: devel/lib/python2.7/dist-packages/front_end/srv/_stereoMatching.py
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ryan/git/vSLAM_Analysis/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Generating Python srv __init__.py for front_end"
 	cd /home/ryan/git/vSLAM_Analysis/src/build/front_end && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/ryan/git/vSLAM_Analysis/src/build/devel/lib/python2.7/dist-packages/front_end/srv --initpy
 
 front_end_generate_messages_py: front_end/CMakeFiles/front_end_generate_messages_py
+front_end_generate_messages_py: devel/lib/python2.7/dist-packages/front_end/msg/_windowStatus.py
+front_end_generate_messages_py: devel/lib/python2.7/dist-packages/front_end/msg/_stereoFeatures.py
 front_end_generate_messages_py: devel/lib/python2.7/dist-packages/front_end/msg/_ProcTime.py
 front_end_generate_messages_py: devel/lib/python2.7/dist-packages/front_end/msg/_frameDetection.py
-front_end_generate_messages_py: devel/lib/python2.7/dist-packages/front_end/msg/_Descriptors.py
-front_end_generate_messages_py: devel/lib/python2.7/dist-packages/front_end/msg/_loopStereoFrame.py
-front_end_generate_messages_py: devel/lib/python2.7/dist-packages/front_end/msg/_frameDescription.py
+front_end_generate_messages_py: devel/lib/python2.7/dist-packages/front_end/msg/_stereoLandmarks.py
+front_end_generate_messages_py: devel/lib/python2.7/dist-packages/front_end/msg/_cvMatch.py
+front_end_generate_messages_py: devel/lib/python2.7/dist-packages/front_end/msg/_interFrameTracks.py
 front_end_generate_messages_py: devel/lib/python2.7/dist-packages/front_end/msg/_Homography.py
 front_end_generate_messages_py: devel/lib/python2.7/dist-packages/front_end/msg/_kPoint.py
-front_end_generate_messages_py: devel/lib/python2.7/dist-packages/front_end/srv/_singleStereo.py
+front_end_generate_messages_py: devel/lib/python2.7/dist-packages/front_end/srv/_windowMatching.py
+front_end_generate_messages_py: devel/lib/python2.7/dist-packages/front_end/srv/_getStereoFeatures.py
 front_end_generate_messages_py: devel/lib/python2.7/dist-packages/front_end/srv/_singleImageDetection.py
-front_end_generate_messages_py: devel/lib/python2.7/dist-packages/front_end/srv/_singleImageDescription.py
+front_end_generate_messages_py: devel/lib/python2.7/dist-packages/front_end/srv/_stereoMatching.py
 front_end_generate_messages_py: devel/lib/python2.7/dist-packages/front_end/msg/__init__.py
 front_end_generate_messages_py: devel/lib/python2.7/dist-packages/front_end/srv/__init__.py
 front_end_generate_messages_py: front_end/CMakeFiles/front_end_generate_messages_py.dir/build.make

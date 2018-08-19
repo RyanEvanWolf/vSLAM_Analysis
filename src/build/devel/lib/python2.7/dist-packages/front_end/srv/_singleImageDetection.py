@@ -9,11 +9,10 @@ import std_msgs.msg
 import sensor_msgs.msg
 
 class singleImageDetectionRequest(genpy.Message):
-  _md5sum = "80ba475ac6e398b1ac3fdeeb465f415a"
+  _md5sum = "a769e27b885c5f5c528a5bba8cc9e67c"
   _type = "front_end/singleImageDetectionRequest"
   _has_header = False #flag to mark the presence of a Header object
-  _full_text = """string detectorName
-string[] det_attrib
+  _full_text = """string[] detID
 bool returnKP
 sensor_msgs/Image leftImg
 sensor_msgs/Image rightImg
@@ -66,8 +65,8 @@ time stamp
 # 1: global frame
 string frame_id
 """
-  __slots__ = ['detectorName','det_attrib','returnKP','leftImg','rightImg']
-  _slot_types = ['string','string[]','bool','sensor_msgs/Image','sensor_msgs/Image']
+  __slots__ = ['detID','returnKP','leftImg','rightImg']
+  _slot_types = ['string[]','bool','sensor_msgs/Image','sensor_msgs/Image']
 
   def __init__(self, *args, **kwds):
     """
@@ -77,7 +76,7 @@ string frame_id
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       detectorName,det_attrib,returnKP,leftImg,rightImg
+       detID,returnKP,leftImg,rightImg
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -86,10 +85,8 @@ string frame_id
     if args or kwds:
       super(singleImageDetectionRequest, self).__init__(*args, **kwds)
       #message fields cannot be None, assign default values for those that are
-      if self.detectorName is None:
-        self.detectorName = ''
-      if self.det_attrib is None:
-        self.det_attrib = []
+      if self.detID is None:
+        self.detID = []
       if self.returnKP is None:
         self.returnKP = False
       if self.leftImg is None:
@@ -97,8 +94,7 @@ string frame_id
       if self.rightImg is None:
         self.rightImg = sensor_msgs.msg.Image()
     else:
-      self.detectorName = ''
-      self.det_attrib = []
+      self.detID = []
       self.returnKP = False
       self.leftImg = sensor_msgs.msg.Image()
       self.rightImg = sensor_msgs.msg.Image()
@@ -115,15 +111,9 @@ string frame_id
     :param buff: buffer, ``StringIO``
     """
     try:
-      _x = self.detectorName
-      length = len(_x)
-      if python3 or type(_x) == unicode:
-        _x = _x.encode('utf-8')
-        length = len(_x)
-      buff.write(struct.pack('<I%ss'%length, length, _x))
-      length = len(self.det_attrib)
+      length = len(self.detID)
       buff.write(_struct_I.pack(length))
-      for val1 in self.det_attrib:
+      for val1 in self.detID:
         length = len(val1)
         if python3 or type(val1) == unicode:
           val1 = val1.encode('utf-8')
@@ -196,16 +186,7 @@ string frame_id
       start = end
       end += 4
       (length,) = _struct_I.unpack(str[start:end])
-      start = end
-      end += length
-      if python3:
-        self.detectorName = str[start:end].decode('utf-8')
-      else:
-        self.detectorName = str[start:end]
-      start = end
-      end += 4
-      (length,) = _struct_I.unpack(str[start:end])
-      self.det_attrib = []
+      self.detID = []
       for i in range(0, length):
         start = end
         end += 4
@@ -216,7 +197,7 @@ string frame_id
           val1 = str[start:end].decode('utf-8')
         else:
           val1 = str[start:end]
-        self.det_attrib.append(val1)
+        self.detID.append(val1)
       _x = self
       start = end
       end += 13
@@ -302,15 +283,9 @@ string frame_id
     :param numpy: numpy python module
     """
     try:
-      _x = self.detectorName
-      length = len(_x)
-      if python3 or type(_x) == unicode:
-        _x = _x.encode('utf-8')
-        length = len(_x)
-      buff.write(struct.pack('<I%ss'%length, length, _x))
-      length = len(self.det_attrib)
+      length = len(self.detID)
       buff.write(_struct_I.pack(length))
-      for val1 in self.det_attrib:
+      for val1 in self.detID:
         length = len(val1)
         if python3 or type(val1) == unicode:
           val1 = val1.encode('utf-8')
@@ -384,16 +359,7 @@ string frame_id
       start = end
       end += 4
       (length,) = _struct_I.unpack(str[start:end])
-      start = end
-      end += length
-      if python3:
-        self.detectorName = str[start:end].decode('utf-8')
-      else:
-        self.detectorName = str[start:end]
-      start = end
-      end += 4
-      (length,) = _struct_I.unpack(str[start:end])
-      self.det_attrib = []
+      self.detID = []
       for i in range(0, length):
         start = end
         end += 4
@@ -404,7 +370,7 @@ string frame_id
           val1 = str[start:end].decode('utf-8')
         else:
           val1 = str[start:end]
-        self.det_attrib.append(val1)
+        self.detID.append(val1)
       _x = self
       start = end
       end += 13
@@ -518,11 +484,9 @@ import genpy
 import struct
 
 import front_end.msg
-import std_msgs.msg
-import sensor_msgs.msg
 
 class singleImageDetectionResponse(genpy.Message):
-  _md5sum = "6fc97d3ab2e9ba441043d078dbb98455"
+  _md5sum = "818a37b3eec0230db61f52d78803c13e"
   _type = "front_end/singleImageDetectionResponse"
   _has_header = False #flag to mark the presence of a Header object
   _full_text = """front_end/frameDetection[] outputFrames
@@ -531,6 +495,7 @@ class singleImageDetectionResponse(genpy.Message):
 ================================================================================
 MSG: front_end/frameDetection
 front_end/kPoint[] leftFeatures
+string detID
 uint16 nLeft
 float32 l_xAvg
 float32 l_yAvg
@@ -553,54 +518,6 @@ float32 angle
 float32 response
 int32 octave
 int32 class_id
-sensor_msgs/Image[] descriptors
-================================================================================
-MSG: sensor_msgs/Image
-# This message contains an uncompressed image
-# (0, 0) is at top-left corner of image
-#
-
-Header header        # Header timestamp should be acquisition time of image
-                     # Header frame_id should be optical frame of camera
-                     # origin of frame should be optical center of cameara
-                     # +x should point to the right in the image
-                     # +y should point down in the image
-                     # +z should point into to plane of the image
-                     # If the frame_id here and the frame_id of the CameraInfo
-                     # message associated with the image conflict
-                     # the behavior is undefined
-
-uint32 height         # image height, that is, number of rows
-uint32 width          # image width, that is, number of columns
-
-# The legal values for encoding are in file src/image_encodings.cpp
-# If you want to standardize a new string format, join
-# ros-users@lists.sourceforge.net and send an email proposing a new encoding.
-
-string encoding       # Encoding of pixels -- channel meaning, ordering, size
-                      # taken from the list of strings in include/sensor_msgs/image_encodings.h
-
-uint8 is_bigendian    # is this data bigendian?
-uint32 step           # Full row length in bytes
-uint8[] data          # actual matrix data, size is (step * rows)
-
-================================================================================
-MSG: std_msgs/Header
-# Standard metadata for higher-level stamped data types.
-# This is generally used to communicate timestamped data 
-# in a particular coordinate frame.
-# 
-# sequence ID: consecutively increasing ID 
-uint32 seq
-#Two-integer timestamp that is expressed as:
-# * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')
-# * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')
-# time-handling sugar is provided by the client library
-time stamp
-#Frame this data is associated with
-# 0: no frame
-# 1: global frame
-string frame_id
 
 ================================================================================
 MSG: front_end/ProcTime
@@ -652,37 +569,12 @@ float64 seconds
         for val2 in val1.leftFeatures:
           _x = val2
           buff.write(_get_struct_5f2i().pack(_x.x, _x.y, _x.size, _x.angle, _x.response, _x.octave, _x.class_id))
-          length = len(val2.descriptors)
-          buff.write(_struct_I.pack(length))
-          for val3 in val2.descriptors:
-            _v1 = val3.header
-            buff.write(_get_struct_I().pack(_v1.seq))
-            _v2 = _v1.stamp
-            _x = _v2
-            buff.write(_get_struct_2I().pack(_x.secs, _x.nsecs))
-            _x = _v1.frame_id
-            length = len(_x)
-            if python3 or type(_x) == unicode:
-              _x = _x.encode('utf-8')
-              length = len(_x)
-            buff.write(struct.pack('<I%ss'%length, length, _x))
-            _x = val3
-            buff.write(_get_struct_2I().pack(_x.height, _x.width))
-            _x = val3.encoding
-            length = len(_x)
-            if python3 or type(_x) == unicode:
-              _x = _x.encode('utf-8')
-              length = len(_x)
-            buff.write(struct.pack('<I%ss'%length, length, _x))
-            _x = val3
-            buff.write(_get_struct_BI().pack(_x.is_bigendian, _x.step))
-            _x = val3.data
-            length = len(_x)
-            # - if encoded as a list instead, serialize as bytes instead of string
-            if type(_x) in [list, tuple]:
-              buff.write(struct.pack('<I%sB'%length, length, *_x))
-            else:
-              buff.write(struct.pack('<I%ss'%length, length, _x))
+        _x = val1.detID
+        length = len(_x)
+        if python3 or type(_x) == unicode:
+          _x = _x.encode('utf-8')
+          length = len(_x)
+        buff.write(struct.pack('<I%ss'%length, length, _x))
         _x = val1
         buff.write(_get_struct_H4f().pack(_x.nLeft, _x.l_xAvg, _x.l_yAvg, _x.l_xStd, _x.l_yStd))
         length = len(val1.rightFeatures)
@@ -690,37 +582,6 @@ float64 seconds
         for val2 in val1.rightFeatures:
           _x = val2
           buff.write(_get_struct_5f2i().pack(_x.x, _x.y, _x.size, _x.angle, _x.response, _x.octave, _x.class_id))
-          length = len(val2.descriptors)
-          buff.write(_struct_I.pack(length))
-          for val3 in val2.descriptors:
-            _v3 = val3.header
-            buff.write(_get_struct_I().pack(_v3.seq))
-            _v4 = _v3.stamp
-            _x = _v4
-            buff.write(_get_struct_2I().pack(_x.secs, _x.nsecs))
-            _x = _v3.frame_id
-            length = len(_x)
-            if python3 or type(_x) == unicode:
-              _x = _x.encode('utf-8')
-              length = len(_x)
-            buff.write(struct.pack('<I%ss'%length, length, _x))
-            _x = val3
-            buff.write(_get_struct_2I().pack(_x.height, _x.width))
-            _x = val3.encoding
-            length = len(_x)
-            if python3 or type(_x) == unicode:
-              _x = _x.encode('utf-8')
-              length = len(_x)
-            buff.write(struct.pack('<I%ss'%length, length, _x))
-            _x = val3
-            buff.write(_get_struct_BI().pack(_x.is_bigendian, _x.step))
-            _x = val3.data
-            length = len(_x)
-            # - if encoded as a list instead, serialize as bytes instead of string
-            if type(_x) in [list, tuple]:
-              buff.write(struct.pack('<I%sB'%length, length, *_x))
-            else:
-              buff.write(struct.pack('<I%ss'%length, length, _x))
         _x = val1
         buff.write(_get_struct_H4f().pack(_x.nRight, _x.r_xAvg, _x.r_yAvg, _x.r_xStd, _x.r_yStd))
         length = len(val1.processingTime)
@@ -761,55 +622,16 @@ float64 seconds
           start = end
           end += 28
           (_x.x, _x.y, _x.size, _x.angle, _x.response, _x.octave, _x.class_id,) = _get_struct_5f2i().unpack(str[start:end])
-          start = end
-          end += 4
-          (length,) = _struct_I.unpack(str[start:end])
-          val2.descriptors = []
-          for i in range(0, length):
-            val3 = sensor_msgs.msg.Image()
-            _v5 = val3.header
-            start = end
-            end += 4
-            (_v5.seq,) = _get_struct_I().unpack(str[start:end])
-            _v6 = _v5.stamp
-            _x = _v6
-            start = end
-            end += 8
-            (_x.secs, _x.nsecs,) = _get_struct_2I().unpack(str[start:end])
-            start = end
-            end += 4
-            (length,) = _struct_I.unpack(str[start:end])
-            start = end
-            end += length
-            if python3:
-              _v5.frame_id = str[start:end].decode('utf-8')
-            else:
-              _v5.frame_id = str[start:end]
-            _x = val3
-            start = end
-            end += 8
-            (_x.height, _x.width,) = _get_struct_2I().unpack(str[start:end])
-            start = end
-            end += 4
-            (length,) = _struct_I.unpack(str[start:end])
-            start = end
-            end += length
-            if python3:
-              val3.encoding = str[start:end].decode('utf-8')
-            else:
-              val3.encoding = str[start:end]
-            _x = val3
-            start = end
-            end += 5
-            (_x.is_bigendian, _x.step,) = _get_struct_BI().unpack(str[start:end])
-            start = end
-            end += 4
-            (length,) = _struct_I.unpack(str[start:end])
-            start = end
-            end += length
-            val3.data = str[start:end]
-            val2.descriptors.append(val3)
           val1.leftFeatures.append(val2)
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        start = end
+        end += length
+        if python3:
+          val1.detID = str[start:end].decode('utf-8')
+        else:
+          val1.detID = str[start:end]
         _x = val1
         start = end
         end += 18
@@ -824,54 +646,6 @@ float64 seconds
           start = end
           end += 28
           (_x.x, _x.y, _x.size, _x.angle, _x.response, _x.octave, _x.class_id,) = _get_struct_5f2i().unpack(str[start:end])
-          start = end
-          end += 4
-          (length,) = _struct_I.unpack(str[start:end])
-          val2.descriptors = []
-          for i in range(0, length):
-            val3 = sensor_msgs.msg.Image()
-            _v7 = val3.header
-            start = end
-            end += 4
-            (_v7.seq,) = _get_struct_I().unpack(str[start:end])
-            _v8 = _v7.stamp
-            _x = _v8
-            start = end
-            end += 8
-            (_x.secs, _x.nsecs,) = _get_struct_2I().unpack(str[start:end])
-            start = end
-            end += 4
-            (length,) = _struct_I.unpack(str[start:end])
-            start = end
-            end += length
-            if python3:
-              _v7.frame_id = str[start:end].decode('utf-8')
-            else:
-              _v7.frame_id = str[start:end]
-            _x = val3
-            start = end
-            end += 8
-            (_x.height, _x.width,) = _get_struct_2I().unpack(str[start:end])
-            start = end
-            end += 4
-            (length,) = _struct_I.unpack(str[start:end])
-            start = end
-            end += length
-            if python3:
-              val3.encoding = str[start:end].decode('utf-8')
-            else:
-              val3.encoding = str[start:end]
-            _x = val3
-            start = end
-            end += 5
-            (_x.is_bigendian, _x.step,) = _get_struct_BI().unpack(str[start:end])
-            start = end
-            end += 4
-            (length,) = _struct_I.unpack(str[start:end])
-            start = end
-            end += length
-            val3.data = str[start:end]
-            val2.descriptors.append(val3)
           val1.rightFeatures.append(val2)
         _x = val1
         start = end
@@ -917,37 +691,12 @@ float64 seconds
         for val2 in val1.leftFeatures:
           _x = val2
           buff.write(_get_struct_5f2i().pack(_x.x, _x.y, _x.size, _x.angle, _x.response, _x.octave, _x.class_id))
-          length = len(val2.descriptors)
-          buff.write(_struct_I.pack(length))
-          for val3 in val2.descriptors:
-            _v9 = val3.header
-            buff.write(_get_struct_I().pack(_v9.seq))
-            _v10 = _v9.stamp
-            _x = _v10
-            buff.write(_get_struct_2I().pack(_x.secs, _x.nsecs))
-            _x = _v9.frame_id
-            length = len(_x)
-            if python3 or type(_x) == unicode:
-              _x = _x.encode('utf-8')
-              length = len(_x)
-            buff.write(struct.pack('<I%ss'%length, length, _x))
-            _x = val3
-            buff.write(_get_struct_2I().pack(_x.height, _x.width))
-            _x = val3.encoding
-            length = len(_x)
-            if python3 or type(_x) == unicode:
-              _x = _x.encode('utf-8')
-              length = len(_x)
-            buff.write(struct.pack('<I%ss'%length, length, _x))
-            _x = val3
-            buff.write(_get_struct_BI().pack(_x.is_bigendian, _x.step))
-            _x = val3.data
-            length = len(_x)
-            # - if encoded as a list instead, serialize as bytes instead of string
-            if type(_x) in [list, tuple]:
-              buff.write(struct.pack('<I%sB'%length, length, *_x))
-            else:
-              buff.write(struct.pack('<I%ss'%length, length, _x))
+        _x = val1.detID
+        length = len(_x)
+        if python3 or type(_x) == unicode:
+          _x = _x.encode('utf-8')
+          length = len(_x)
+        buff.write(struct.pack('<I%ss'%length, length, _x))
         _x = val1
         buff.write(_get_struct_H4f().pack(_x.nLeft, _x.l_xAvg, _x.l_yAvg, _x.l_xStd, _x.l_yStd))
         length = len(val1.rightFeatures)
@@ -955,37 +704,6 @@ float64 seconds
         for val2 in val1.rightFeatures:
           _x = val2
           buff.write(_get_struct_5f2i().pack(_x.x, _x.y, _x.size, _x.angle, _x.response, _x.octave, _x.class_id))
-          length = len(val2.descriptors)
-          buff.write(_struct_I.pack(length))
-          for val3 in val2.descriptors:
-            _v11 = val3.header
-            buff.write(_get_struct_I().pack(_v11.seq))
-            _v12 = _v11.stamp
-            _x = _v12
-            buff.write(_get_struct_2I().pack(_x.secs, _x.nsecs))
-            _x = _v11.frame_id
-            length = len(_x)
-            if python3 or type(_x) == unicode:
-              _x = _x.encode('utf-8')
-              length = len(_x)
-            buff.write(struct.pack('<I%ss'%length, length, _x))
-            _x = val3
-            buff.write(_get_struct_2I().pack(_x.height, _x.width))
-            _x = val3.encoding
-            length = len(_x)
-            if python3 or type(_x) == unicode:
-              _x = _x.encode('utf-8')
-              length = len(_x)
-            buff.write(struct.pack('<I%ss'%length, length, _x))
-            _x = val3
-            buff.write(_get_struct_BI().pack(_x.is_bigendian, _x.step))
-            _x = val3.data
-            length = len(_x)
-            # - if encoded as a list instead, serialize as bytes instead of string
-            if type(_x) in [list, tuple]:
-              buff.write(struct.pack('<I%sB'%length, length, *_x))
-            else:
-              buff.write(struct.pack('<I%ss'%length, length, _x))
         _x = val1
         buff.write(_get_struct_H4f().pack(_x.nRight, _x.r_xAvg, _x.r_yAvg, _x.r_xStd, _x.r_yStd))
         length = len(val1.processingTime)
@@ -1027,55 +745,16 @@ float64 seconds
           start = end
           end += 28
           (_x.x, _x.y, _x.size, _x.angle, _x.response, _x.octave, _x.class_id,) = _get_struct_5f2i().unpack(str[start:end])
-          start = end
-          end += 4
-          (length,) = _struct_I.unpack(str[start:end])
-          val2.descriptors = []
-          for i in range(0, length):
-            val3 = sensor_msgs.msg.Image()
-            _v13 = val3.header
-            start = end
-            end += 4
-            (_v13.seq,) = _get_struct_I().unpack(str[start:end])
-            _v14 = _v13.stamp
-            _x = _v14
-            start = end
-            end += 8
-            (_x.secs, _x.nsecs,) = _get_struct_2I().unpack(str[start:end])
-            start = end
-            end += 4
-            (length,) = _struct_I.unpack(str[start:end])
-            start = end
-            end += length
-            if python3:
-              _v13.frame_id = str[start:end].decode('utf-8')
-            else:
-              _v13.frame_id = str[start:end]
-            _x = val3
-            start = end
-            end += 8
-            (_x.height, _x.width,) = _get_struct_2I().unpack(str[start:end])
-            start = end
-            end += 4
-            (length,) = _struct_I.unpack(str[start:end])
-            start = end
-            end += length
-            if python3:
-              val3.encoding = str[start:end].decode('utf-8')
-            else:
-              val3.encoding = str[start:end]
-            _x = val3
-            start = end
-            end += 5
-            (_x.is_bigendian, _x.step,) = _get_struct_BI().unpack(str[start:end])
-            start = end
-            end += 4
-            (length,) = _struct_I.unpack(str[start:end])
-            start = end
-            end += length
-            val3.data = str[start:end]
-            val2.descriptors.append(val3)
           val1.leftFeatures.append(val2)
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        start = end
+        end += length
+        if python3:
+          val1.detID = str[start:end].decode('utf-8')
+        else:
+          val1.detID = str[start:end]
         _x = val1
         start = end
         end += 18
@@ -1090,54 +769,6 @@ float64 seconds
           start = end
           end += 28
           (_x.x, _x.y, _x.size, _x.angle, _x.response, _x.octave, _x.class_id,) = _get_struct_5f2i().unpack(str[start:end])
-          start = end
-          end += 4
-          (length,) = _struct_I.unpack(str[start:end])
-          val2.descriptors = []
-          for i in range(0, length):
-            val3 = sensor_msgs.msg.Image()
-            _v15 = val3.header
-            start = end
-            end += 4
-            (_v15.seq,) = _get_struct_I().unpack(str[start:end])
-            _v16 = _v15.stamp
-            _x = _v16
-            start = end
-            end += 8
-            (_x.secs, _x.nsecs,) = _get_struct_2I().unpack(str[start:end])
-            start = end
-            end += 4
-            (length,) = _struct_I.unpack(str[start:end])
-            start = end
-            end += length
-            if python3:
-              _v15.frame_id = str[start:end].decode('utf-8')
-            else:
-              _v15.frame_id = str[start:end]
-            _x = val3
-            start = end
-            end += 8
-            (_x.height, _x.width,) = _get_struct_2I().unpack(str[start:end])
-            start = end
-            end += 4
-            (length,) = _struct_I.unpack(str[start:end])
-            start = end
-            end += length
-            if python3:
-              val3.encoding = str[start:end].decode('utf-8')
-            else:
-              val3.encoding = str[start:end]
-            _x = val3
-            start = end
-            end += 5
-            (_x.is_bigendian, _x.step,) = _get_struct_BI().unpack(str[start:end])
-            start = end
-            end += 4
-            (length,) = _struct_I.unpack(str[start:end])
-            start = end
-            end += length
-            val3.data = str[start:end]
-            val2.descriptors.append(val3)
           val1.rightFeatures.append(val2)
         _x = val1
         start = end
@@ -1189,20 +820,8 @@ def _get_struct_5f2i():
     if _struct_5f2i is None:
         _struct_5f2i = struct.Struct("<5f2i")
     return _struct_5f2i
-_struct_BI = None
-def _get_struct_BI():
-    global _struct_BI
-    if _struct_BI is None:
-        _struct_BI = struct.Struct("<BI")
-    return _struct_BI
-_struct_2I = None
-def _get_struct_2I():
-    global _struct_2I
-    if _struct_2I is None:
-        _struct_2I = struct.Struct("<2I")
-    return _struct_2I
 class singleImageDetection(object):
   _type          = 'front_end/singleImageDetection'
-  _md5sum = '48205b8c8040e40e02f025ebed0f5df8'
+  _md5sum = 'a394ddda8400e32e0cbdb38aaf30224b'
   _request_class  = singleImageDetectionRequest
   _response_class = singleImageDetectionResponse

@@ -28,6 +28,7 @@ struct frameDetection_
 
   frameDetection_()
     : leftFeatures()
+    , detID()
     , nLeft(0)
     , l_xAvg(0.0)
     , l_yAvg(0.0)
@@ -43,6 +44,7 @@ struct frameDetection_
     }
   frameDetection_(const ContainerAllocator& _alloc)
     : leftFeatures(_alloc)
+    , detID(_alloc)
     , nLeft(0)
     , l_xAvg(0.0)
     , l_yAvg(0.0)
@@ -62,6 +64,9 @@ struct frameDetection_
 
    typedef std::vector< ::front_end::kPoint_<ContainerAllocator> , typename ContainerAllocator::template rebind< ::front_end::kPoint_<ContainerAllocator> >::other >  _leftFeatures_type;
   _leftFeatures_type leftFeatures;
+
+   typedef std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other >  _detID_type;
+  _detID_type detID;
 
    typedef uint16_t _nLeft_type;
   _nLeft_type nLeft;
@@ -176,12 +181,12 @@ struct MD5Sum< ::front_end::frameDetection_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "5b378d7898a705c971a9f19f64611f00";
+    return "c89ff5835b42d14d6becea0d41610e82";
   }
 
   static const char* value(const ::front_end::frameDetection_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x5b378d7898a705c9ULL;
-  static const uint64_t static_value2 = 0x71a9f19f64611f00ULL;
+  static const uint64_t static_value1 = 0xc89ff5835b42d14dULL;
+  static const uint64_t static_value2 = 0x6becea0d41610e82ULL;
 };
 
 template<class ContainerAllocator>
@@ -201,6 +206,7 @@ struct Definition< ::front_end::frameDetection_<ContainerAllocator> >
   static const char* value()
   {
     return "front_end/kPoint[] leftFeatures\n\
+string detID\n\
 uint16 nLeft\n\
 float32 l_xAvg\n\
 float32 l_yAvg\n\
@@ -223,54 +229,6 @@ float32 angle\n\
 float32 response\n\
 int32 octave\n\
 int32 class_id\n\
-sensor_msgs/Image[] descriptors\n\
-================================================================================\n\
-MSG: sensor_msgs/Image\n\
-# This message contains an uncompressed image\n\
-# (0, 0) is at top-left corner of image\n\
-#\n\
-\n\
-Header header        # Header timestamp should be acquisition time of image\n\
-                     # Header frame_id should be optical frame of camera\n\
-                     # origin of frame should be optical center of cameara\n\
-                     # +x should point to the right in the image\n\
-                     # +y should point down in the image\n\
-                     # +z should point into to plane of the image\n\
-                     # If the frame_id here and the frame_id of the CameraInfo\n\
-                     # message associated with the image conflict\n\
-                     # the behavior is undefined\n\
-\n\
-uint32 height         # image height, that is, number of rows\n\
-uint32 width          # image width, that is, number of columns\n\
-\n\
-# The legal values for encoding are in file src/image_encodings.cpp\n\
-# If you want to standardize a new string format, join\n\
-# ros-users@lists.sourceforge.net and send an email proposing a new encoding.\n\
-\n\
-string encoding       # Encoding of pixels -- channel meaning, ordering, size\n\
-                      # taken from the list of strings in include/sensor_msgs/image_encodings.h\n\
-\n\
-uint8 is_bigendian    # is this data bigendian?\n\
-uint32 step           # Full row length in bytes\n\
-uint8[] data          # actual matrix data, size is (step * rows)\n\
-\n\
-================================================================================\n\
-MSG: std_msgs/Header\n\
-# Standard metadata for higher-level stamped data types.\n\
-# This is generally used to communicate timestamped data \n\
-# in a particular coordinate frame.\n\
-# \n\
-# sequence ID: consecutively increasing ID \n\
-uint32 seq\n\
-#Two-integer timestamp that is expressed as:\n\
-# * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')\n\
-# * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')\n\
-# time-handling sugar is provided by the client library\n\
-time stamp\n\
-#Frame this data is associated with\n\
-# 0: no frame\n\
-# 1: global frame\n\
-string frame_id\n\
 \n\
 ================================================================================\n\
 MSG: front_end/ProcTime\n\
@@ -295,6 +253,7 @@ namespace serialization
     template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
     {
       stream.next(m.leftFeatures);
+      stream.next(m.detID);
       stream.next(m.nLeft);
       stream.next(m.l_xAvg);
       stream.next(m.l_yAvg);
@@ -333,6 +292,8 @@ struct Printer< ::front_end::frameDetection_<ContainerAllocator> >
       s << indent;
       Printer< ::front_end::kPoint_<ContainerAllocator> >::stream(s, indent + "    ", v.leftFeatures[i]);
     }
+    s << indent << "detID: ";
+    Printer<std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other > >::stream(s, indent + "  ", v.detID);
     s << indent << "nLeft: ";
     Printer<uint16_t>::stream(s, indent + "  ", v.nLeft);
     s << indent << "l_xAvg: ";
