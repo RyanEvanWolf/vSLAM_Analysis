@@ -7,24 +7,81 @@ import time
 
 import rospy
 import argparse
-from dataset.bumbleDataSet import videoSequence,loop
-from front_end.utils import *
+
+
+from dataset.storage import *
+
+
+
+from sensor_msgs.msg import Image,PointCloud
+
+
+
+global wait
+
+def updateWait(data):
+    global wait
+
+    wait=False
 
 if __name__ == '__main__':
     rospy.init_node('playback_loop')
-    print(sys.argv)
+    # print(sys.argv)
     parser = argparse.ArgumentParser()
-    parser.add_argument("track_id")
-    parser.add_argument("loop_number")
-    parser.add_argument("meta_data")
+    parser.add_argument("loop_number",type=int)
+    parser.add_argument("--delayMs",help="Delay in milliseconds between playback",default=1200,type=int)
+    parser.add_argument("--wait",default=1,type=int)
     args,unknown = parser.parse_known_args()
 
-    print(args)
-    sequence=videoSequence(args.meta_data)
-    sequence.printSummary()
-    
-    print("beginning Sequence")
-    sequence.playbackLoop(args.track_id,int(args.loop_number))
+    data=vidPublisher("/home/ryan/DATA_A_calB",args.loop_number)
 
-    print("end")
+    if(args.wait):
+        rospy.Subscriber("/live/debug/deltaStereo",PointCloud,updateWait)
+
+    global wait
+
+    
+    imgIndex=0
+    time.sleep(1)
+    while(imgIndex<len(data.lAbsImgDir)):
+        wait=args.wait
+        data.publishImageIndex(imgIndex)
+        print("Sent ",imgIndex)
+
+        imgIndex+=1
+        while(wait):
+            time.sleep(0.1)
+        time.sleep(args.delayMs/1000.0)
+
+
+
+
+
+
+
+        # print(imgIndex)
+        # if(imgIndex==0):
+        #     data.publishImageIndex(imgIndex)
+        #     imgIndex+=1
+        #     time.sleep(1)
+        # data.publishImageIndex(imgIndex)
+        # time.sleep(1)
+        # #rospy.wait_for_message("backend/debug/tracks",Image)
+        # imgIndex+=1
+
+    # rootDir,lImages,rImages=getImageSet(args.meta_data,args.loop_number)
+    # loopA=loadImages(lImages)
+    # print(lImages[0],lImages[-1])
+    # print(len(loopA))
+    # for a in l:
+    #     cv2.imshow("a",a)
+    #     cv2.waitKey(args.delayMs)
+    # print(args)
+    # sequence=videoSequence(args.meta_data)
+    # sequence.printSummary()
+    
+    # print("beginning Sequence")
+    # sequence.playbackLoop(args.track_id,int(args.loop_number))
+
+    # print("end")
 
